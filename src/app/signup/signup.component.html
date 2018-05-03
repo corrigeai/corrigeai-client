@@ -1,14 +1,33 @@
 <div class="container">
     <h2>Participe hoje do Twitter</h2>
     
-    <div class="form-group">
-        <input type="text" class="form-control" placeholder="Nome completo" [(ngModel)]="name">
-    </div>
-    <div class="form-group">
-        <input type="email" class="form-control" placeholder="Email" [(ngModel)]="email">
-    </div>
-    <div class="form-group">
-        <input type="password" class="form-control" placeholder="Senha" [(ngModel)]="pass">
-    </div>
-    <button type="submit" class="btn btn-default" (click)="signup()">Inscrever-se</button>
+    <form class="fields" [formGroup]="signUpForm" (ngSubmit)="submitForm(signUpForm.value)">
+        <div class="form-group">
+            <input [ngClass]="{'has-error':!signUpForm.controls['name'].valid && signUpForm.controls['name'].touched}"
+                class="form-control"
+                type="text" placeholder="Email"
+                [formControl]="signUpForm.controls['name']">
+        </div>
+
+        <div class="form-group">
+            <input [ngClass]="{'has-error':!signUpForm.controls['email'].valid && signUpForm.controls['email'].touched}"
+                class="form-control"
+                type="email" placeholder="Email"
+                [formControl]="signUpForm.controls['email']">
+        </div>
+
+        <div class="form-group">
+            <input [ngClass]="{'has-error':!signUpForm.controls['password'].valid && signUpForm.controls['password'].touched}"
+                class="form-control"
+                type="password" placeholder="Senha"
+                [formControl]="signUpForm.controls['password']">
+        </div>
+
+        <div class="error-message"[hidden]="!error">{{error}}</div>
+
+        <button class="btn btn-default"
+            type="submit"
+            [ngClass]="{'disabled': !signUpForm.valid}"
+            [disabled]='!signUpForm.valid'>Inscrever-se</button>
+    </form>      
 </div>
