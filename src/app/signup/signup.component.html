@@ -3,21 +3,24 @@
     
     <form class="fields" [formGroup]="signUpForm" (ngSubmit)="submitForm(signUpForm.value)">
         <div class="form-group">
-            <input [ngClass]="{'has-error':!signUpForm.controls['name'].valid && signUpForm.controls['name'].touched}"
+            <input [ngClass]="{'has-error': !signUpForm.controls['name'].valid && signUpForm.controls['name'].touched,
+                               'touched': signUpForm.controls['name'].touched }"
                 class="form-control"
-                type="text" placeholder="Email"
+                type="text" placeholder="Nome completo"
                 [formControl]="signUpForm.controls['name']">
         </div>
 
         <div class="form-group">
-            <input [ngClass]="{'has-error':!signUpForm.controls['email'].valid && signUpForm.controls['email'].touched}"
+            <input [ngClass]="{'has-error':!signUpForm.controls['email'].valid && signUpForm.controls['email'].touched,
+                               'touched': signUpForm.controls['email'].touched }"
                 class="form-control"
                 type="email" placeholder="Email"
                 [formControl]="signUpForm.controls['email']">
         </div>
 
         <div class="form-group">
-            <input [ngClass]="{'has-error':!signUpForm.controls['password'].valid && signUpForm.controls['password'].touched}"
+            <input [ngClass]="{'has-error':!signUpForm.controls['password'].valid && signUpForm.controls['password'].touched,
+                               'touched': signUpForm.controls['password'].touched }"
                 class="form-control"
                 type="password" placeholder="Senha"
                 [formControl]="signUpForm.controls['password']">
@@ -25,7 +28,7 @@
 
         <div class="error-message"[hidden]="!error">{{error}}</div>
 
-        <button class="btn btn-default"
+        <button class="btn btn-block"
             type="submit"
             [ngClass]="{'disabled': !signUpForm.valid}"
             [disabled]='!signUpForm.valid'>Inscrever-se</button>

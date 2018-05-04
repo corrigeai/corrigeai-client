@@ -1,3 +1,29 @@
-.has-error{
-    border: 1px solid red;
+.container {
+  h2 {
+    margin-top: 10%;
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .fields {
+    width: 400px;
+    margin: auto;
+  
+    .has-error {
+        border: 1px solid red;
+    }
+
+    .touched {
+      background-color: rgb(250, 255, 189);
+    }
+  
+    button {
+      background-color: #1da1f2;
+      color: white;
+      border-radius: 30px;
+      font-size: 20px;
+      padding: 10px;
+    }
+  }
 }
