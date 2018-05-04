@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app.routing.module';
 import { SignupComponent } from './signup/signup.component';
 import { AuthenticationService } from './services/authentication.service';
 
@@ -19,7 +20,8 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [
     {provide: 'API', useValue: environment.BASE_URL},
