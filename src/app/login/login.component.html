@@ -1,3 +1,28 @@
-<p>
-  login works!
-</p>
+<div class="container">
+  <h2>Bem-Vindo de Volta</h2>
+  
+  <form class="fields" [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm.value)">
+      <div class="form-group">
+          <input [ngClass]="{'has-error':!loginForm.controls['email'].valid && loginForm.controls['email'].touched,
+                             'touched': loginForm.controls['email'].touched }"
+              class="form-control"
+              type="email" placeholder="Email"
+              [formControl]="loginForm.controls['email']">
+      </div>
+
+      <div class="form-group">
+          <input [ngClass]="{'has-error':!loginForm.controls['password'].valid && loginForm.controls['password'].touched,
+                             'touched': loginForm.controls['password'].touched }"
+              class="form-control"
+              type="password" placeholder="Senha"
+              [formControl]="loginForm.controls['password']">
+      </div>
+
+      <div class="error-message"[hidden]="!error">{{error}}</div>
+
+      <button class="btn btn-block"
+          type="submit"
+          [ngClass]="{'disabled': !loginForm.valid}"
+          [disabled]='!loginForm.valid'>Entrar</button>
+  </form>      
+</div>

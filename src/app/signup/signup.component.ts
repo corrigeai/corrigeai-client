@@ -16,8 +16,8 @@ export class SignupComponent {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private authService: AuthenticationService) {
-
+    private authService: AuthenticationService
+  ) {
     this.signUpForm = formBuilder.group({
       'name': [null, Validators.required],
       'email': [null, Validators.required],
