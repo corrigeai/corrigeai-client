@@ -7,6 +7,7 @@ import {EditUserBody, LoginBody, RegistrationBody} from '../models/body-obj.mode
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import {Observer} from 'rxjs/Observer';
 
 @Injectable()
 export class AuthenticationService {
@@ -51,4 +52,17 @@ export class AuthenticationService {
         return  Observable.throw(error.json());
       });
   }
+
+  logOut() {
+    localStorage.clear();
+  }
+
+  isLoggedIn() {
+    return Observable.create(
+      (observer: Observer<boolean>) => {
+        observer.next(localStorage.getItem('token') !== null);
+      }
+    );
+  }
+
 }
