@@ -5,12 +5,12 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class SignupComponent {
-  signUpForm: FormGroup;
+export class LoginComponent {
+  loginForm: FormGroup;
   error: any;
 
   constructor(
@@ -18,21 +18,20 @@ export class SignupComponent {
     private formBuilder: FormBuilder,
     private authService: AuthenticationService
   ) {
-    this.signUpForm = formBuilder.group({
-      'name': [null, Validators.required],
+    this.loginForm = formBuilder.group({
       'email': [null, Validators.required],
       'password': [null, Validators.required],
     });
   }
 
   submitForm(form: any): void {
-    this.authService.signUp(form)
+    this.authService.login(form)
       .subscribe(
         result => {
           if (result) {
             this.router.navigate(['/']);
             this.error = undefined;
-            this.signUpForm.reset();
+            this.loginForm.reset();
           }
         },
         error => this.error = error

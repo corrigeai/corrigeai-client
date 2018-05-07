@@ -11,11 +11,13 @@ import { AuthenticationService } from './services/authentication.service';
 
 // Loading environment
 import { environment } from '../environments/environment';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignupComponent
+    SignupComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
