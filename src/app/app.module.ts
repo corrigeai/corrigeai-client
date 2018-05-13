@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { SignupComponent } from './signup/signup.component';
+import { UpdatePassComponent } from './update-pass/update-pass.component';
 import { AuthenticationService } from './services/authentication.service';
 
 // Loading environment
@@ -17,6 +18,7 @@ import { LoginComponent } from './login/login.component';
   declarations: [
     AppComponent,
     SignupComponent,
+    UpdatePassComponent,
     LoginComponent
   ],
   imports: [

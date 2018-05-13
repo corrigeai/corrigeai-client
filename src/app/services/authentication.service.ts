@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
-import {LoginBody, RegistrationBody} from '../models/body-obj.model';
+import {LoginBody, RegistrationBody, UpdatePassBody} from '../models/body-obj.model';
 import { environment } from '../../environments/environment';
 
 import 'rxjs/add/operator/map';
@@ -40,6 +40,11 @@ export class AuthenticationService {
         return  Observable.throw(error.json());
       });
   }
+
+  updatePassword(userData: UpdatePassBody) {
+
+  }
+
 
   logOut() {
     localStorage.clear();
