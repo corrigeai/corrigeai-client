@@ -19,7 +19,7 @@ export class LoginComponent {
     private authService: AuthenticationService
   ) {
     this.loginForm = formBuilder.group({
-      'username': [null, Validators.required],
+      'email': [null, Validators.required],
       'password': [null, Validators.required],
     });
   }

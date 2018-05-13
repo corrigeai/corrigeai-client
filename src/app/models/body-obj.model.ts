@@ -16,6 +16,6 @@ export class EditUserBody {
 }
 
 export class LoginBody {
-  username: string;
+  email: string;
   password: string;
 }
