@@ -26,7 +26,7 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule
   ],
   providers: [
-    {provide: 'API', useValue: environment.BASE_URL},
+    {provide: 'API', useValue: environment.apiUrl},
     AuthenticationService
   ],
   bootstrap: [AppComponent]
