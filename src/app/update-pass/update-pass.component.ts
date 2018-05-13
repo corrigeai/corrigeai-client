@@ -31,6 +31,17 @@ export class UpdatePassComponent implements OnInit {
   }
 
   submitForm(form: any): void {
-    
-  }
+    this.authService.updatePassword(form)
+    .subscribe(
+      result => {
+        if (result) {
+          this.router.navigate(['/']);
+          this.error = undefined;
+          this.updatePassForm.reset();
+        }
+      },
+      error => this.error = error
+    );
+}
+  
 }

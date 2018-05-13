@@ -17,7 +17,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   signUp(userData: RegistrationBody): Observable<Boolean> {
-    return this.http.post(this.API.concat('/user'), userData)
+    return this.http.post(this.API.concat('/users/signup'), userData)
     .map((res: Response) => {
       if (res) {
         return true;
@@ -42,6 +42,15 @@ export class AuthenticationService {
   }
 
   updatePassword(userData: UpdatePassBody) {
+    return this.http.put(this.API.concat('/users/reset_password'), userData)
+    .map((res: Response) => {
+      if (res) {
+        return true;
+      }
+      return false;
+    }).catch((error: Response) => {
+      return  Observable.throw(error.json());
+    });
 
   }
 
