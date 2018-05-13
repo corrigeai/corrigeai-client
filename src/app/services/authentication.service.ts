@@ -17,7 +17,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   signUp(userData: RegistrationBody): Observable<Boolean> {
-    return this.http.post(this.API.concat('/user'), userData)
+    return this.http.post(this.API.concat('/tuiterapi/users/signup'), userData)
     .map((res: Response) => {
       if (res) {
         return true;
