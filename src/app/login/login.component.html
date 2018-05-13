@@ -3,11 +3,11 @@
   
   <form class="fields" [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm.value)">
       <div class="form-group">
-          <input [ngClass]="{'has-error':!loginForm.controls['email'].valid && loginForm.controls['email'].touched,
-                             'touched': loginForm.controls['email'].touched }"
+          <input [ngClass]="{'has-error':!loginForm.controls['username'].valid && loginForm.controls['username'].touched,
+                             'touched': loginForm.controls['username'].touched }"
               class="form-control"
-              type="email" placeholder="Email"
-              [formControl]="loginForm.controls['email']">
+              type="email" placeholder="Username"
+              [formControl]="loginForm.controls['username']">
       </div>
 
       <div class="form-group">
