@@ -23,6 +23,6 @@ export class UpdatePassBody {
 }
 
 export class LoginBody {
-  username: string;
+  email: string;
   password: string;
 }
