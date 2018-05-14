@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { AuthenticationService } from '../services/authentication.service';
+import { CustomValidators } from '../shared/custom-validators';
 
 @Component({
   selector: 'app-update-pass',
@@ -21,16 +22,18 @@ export class UpdatePassComponent implements OnInit {
 
   ngOnInit() {
     this.updatePassForm = this.formBuilder.group({
-      'old-pass': [null, Validators.required],
+      'oldPassword': [null, Validators.required],
       'email': [null, Validators.required],
-      'new-pass': [null, Validators.required],
-      'confirm-new-pass': [null, Validators.required],
+      'newPassword': [null, Validators.required],
+      'confirmPassword': [null, Validators.required],
+    }, {
+      validator: CustomValidators.Match('newPassword', 'confirmPassword')
     });
 
-    console.log(this.updatePassForm);
   }
 
   submitForm(form: any): void {
+    delete form.confirmPassword;
     this.authService.updatePassword(form)
     .subscribe(
       result => {

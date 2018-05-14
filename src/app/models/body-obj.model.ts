@@ -19,7 +19,6 @@ export class UpdatePassBody {
   email: string;
   oldPassword: string;
   newPassword: string;
-  confirmNewPassword: string;
 }
 
 export class LoginBody {

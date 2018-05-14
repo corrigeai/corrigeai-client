@@ -10,25 +10,25 @@
                 [formControl]="updatePassForm.controls['email']">
         </div>
       <div class="form-group">
-            <input [ngClass]="{'has-error':!updatePassForm.controls['old-pass'].valid && updatePassForm.controls['old-pass'].touched,
-                               'touched': updatePassForm.controls['old-pass'].touched }"
+            <input [ngClass]="{'has-error':!updatePassForm.controls['oldPassword'].valid && updatePassForm.controls['oldPassword'].touched,
+                               'touched': updatePassForm.controls['oldPassword'].touched }"
                 class="form-control"
                 type="password" placeholder="Senha antiga"
-                [formControl]="updatePassForm.controls['old-pass']">
+                [formControl]="updatePassForm.controls['oldPassword']">
         </div>
         <div class="form-group">
-            <input [ngClass]="{'has-error':!updatePassForm.controls['new-pass'].valid && updatePassForm.controls['new-pass'].touched,
-                               'touched': updatePassForm.controls['new-pass'].touched }"
+            <input [ngClass]="{'has-error':!updatePassForm.controls['newPassword'].valid && updatePassForm.controls['newPassword'].touched,
+                               'touched': updatePassForm.controls['newPassword'].touched }"
                 class="form-control"
                 type="password" placeholder="Senha"
-                [formControl]="updatePassForm.controls['new-pass']">
+                [formControl]="updatePassForm.controls['newPassword']">
         </div>
         <div class="form-group">
-            <input [ngClass]="{'has-error':!updatePassForm.controls['confirm-new-pass'].valid && updatePassForm.controls['confirm-new-pass'].touched,
-                               'touched': updatePassForm.controls['confirm-new-pass'].touched }"
+            <input [ngClass]="{'has-error':!updatePassForm.controls['confirmPassword'].valid && updatePassForm.controls['confirmPassword'].touched,
+                               'touched': updatePassForm.controls['confirmPassword'].touched }"
                 class="form-control"
                 type="password" placeholder="Confirmar Senha"
-                [formControl]="updatePassForm.controls['confirm-new-pass']">
+                [formControl]="updatePassForm.controls['confirmPassword']">
         </div>
       <div class="error-message"[hidden]="!error">{{error}}</div>
 
