@@ -12,12 +12,16 @@ import { AuthenticationService } from './services/authentication.service';
 // Loading environment
 import { environment } from '../environments/environment';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,7 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule
   ],
   providers: [
-    {provide: 'API', useValue: environment.BASE_URL},
+    {provide: 'API', useValue: environment.apiUrl},
     AuthenticationService
   ],
   bootstrap: [AppComponent]

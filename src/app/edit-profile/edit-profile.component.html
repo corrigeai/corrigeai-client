@@ -1,0 +1,47 @@
+<div class="header-container color-dark">
+  <h2>Edite seu Perfil</h2>
+</div>
+
+<div class="editContainer">
+<form class="fields" [formGroup]="editProfileForm" (ngSubmit)="submitForm(loginForm.value)">
+  <div class="form-group">
+    <input [ngClass]="{'has-error':!editProfileForm.controls['name'].valid && editProfileForm.controls['name'].touched,
+                             'touched': editProfileForm.controls['name'].touched }"
+           class="form-control"
+           type="text" placeholder="Nome Completo"
+           [formControl]="editProfileForm.controls['name']">
+  </div>
+
+  <div class="form-group">
+    <input [ngClass]="{'has-error':!editProfileForm.controls['userName'].valid && editProfileForm.controls['userName'].touched,
+                             'touched': editProfileForm.controls['userName'].touched }"
+           class="form-control"
+           type="text" placeholder="Nome de Usuário"
+           [formControl]="editProfileForm.controls['userName']">
+  </div>
+
+  <div class="form-group">
+    <input [ngClass]="{'has-error':!editProfileForm.controls['date'].valid && editProfileForm.controls['date'].touched,
+                             'touched': editProfileForm.controls['date'].touched }"
+           class="form-control"
+           type="text" placeholder="Data de Nascimento"
+           [formControl]="editProfileForm.controls['date']">
+  </div>
+
+  <div class="form-group">
+    <input [ngClass]="{'has-error':!editProfileForm.controls['gender'].valid && editProfileForm.controls['gender'].touched,
+                             'touched': editProfileForm.controls['gender'].touched }"
+           class="form-control"
+           type="text" placeholder="Sexo"
+           [formControl]="editProfileForm.controls['gender']">
+  </div>
+
+  <div class="error-message"[hidden]="!error">{{error}}</div>
+</form>
+</div>
+
+<div class="buttons">
+  <button class="btn btn-block">
+    Salvar Altereações
+  </button>
+</div>
