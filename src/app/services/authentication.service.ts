@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
-import {LoginBody, RegistrationBody} from '../models/body-obj.model';
+import {LoginBody, RegistrationBody, UpdatePassBody} from '../models/body-obj.model';
 import { environment } from '../../environments/environment';
 
 import 'rxjs/add/operator/map';
@@ -17,7 +17,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   signUp(userData: RegistrationBody): Observable<Boolean> {
-    return this.http.post(this.API.concat('/user'), userData)
+    return this.http.post(this.API.concat('/tuiterapi/users/signup'), userData)
     .map((res: Response) => {
       if (res) {
         return true;
@@ -28,18 +28,27 @@ export class AuthenticationService {
     });
   }
 
-  login(userData: LoginBody): Observable<Boolean> {
-    return this.http.post(this.API.concat('/auth'), userData)
+  login(userData: LoginBody): Observable<any> {
+    return this.http.post(this.API.concat('/tuiterapi/authentication/login'), userData)
+    .map((response: Response) => response.json())
+    .catch((error: Response) => {
+        return  Observable.throw(error.json());
+      });
+  }
+
+  updatePassword(userData: UpdatePassBody) {
+    return this.http.put(this.API.concat('/users/reset_password'), userData)
     .map((res: Response) => {
       if (res) {
-        localStorage.setItem('currentUser', JSON.stringify(res));
         return true;
       }
       return false;
     }).catch((error: Response) => {
-        return  Observable.throw(error.json());
-      });
+      return  Observable.throw(error.json());
+    });
+
   }
+
 
   logOut() {
     localStorage.clear();

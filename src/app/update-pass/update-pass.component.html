@@ -1,0 +1,34 @@
+<div class="container">
+    <h2>Mude sua senha</h2>
+
+    <form class="fields" [formGroup]="updatePassForm" (ngSubmit)="submitForm(updatePassForm.value)">
+
+      <div class="form-group">
+            <input [ngClass]="{'has-error':!updatePassForm.controls['oldPassword'].valid && updatePassForm.controls['oldPassword'].touched,
+                               'touched': updatePassForm.controls['oldPassword'].touched }"
+                class="form-control"
+                type="password" placeholder="Senha antiga"
+                [formControl]="updatePassForm.controls['oldPassword']">
+        </div>
+        <div class="form-group">
+            <input [ngClass]="{'has-error':!updatePassForm.controls['newPassword'].valid && updatePassForm.controls['newPassword'].touched,
+                               'touched': updatePassForm.controls['newPassword'].touched }"
+                class="form-control"
+                type="password" placeholder="Senha"
+                [formControl]="updatePassForm.controls['newPassword']">
+        </div>
+        <div class="form-group">
+            <input [ngClass]="{'has-error':!updatePassForm.controls['confirmPassword'].valid && updatePassForm.controls['confirmPassword'].touched,
+                               'touched': updatePassForm.controls['confirmPassword'].touched }"
+                class="form-control"
+                type="password" placeholder="Confirmar Senha"
+                [formControl]="updatePassForm.controls['confirmPassword']">
+        </div>
+      <div class="error-message"[hidden]="!error">{{error}}</div>
+
+      <button class="btn btn-block"
+          type="submit"
+          [ngClass]="{'disabled': !updatePassForm.valid}"
+          [disabled]='!updatePassForm.valid'>Mudar Senha</button>
+  </form>      
+</div>
