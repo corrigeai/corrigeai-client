@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
@@ -20,8 +21,9 @@ export class EditProfileComponent implements OnInit {
   ) {
     this.editProfileForm = this.formBuilder.group({
       'name': [null, Validators.required],
-      'email': [null, Validators.required],
-      'passwotd': [null, Validators.required]
+      'photoUrl': [null, Validators.required],
+      'gender': [null, Validators.required],
+      'username': [null, Validators.required]
       })
   }
 
