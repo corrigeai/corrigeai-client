@@ -2,13 +2,7 @@
     <h2>Mude sua senha</h2>
 
     <form class="fields" [formGroup]="updatePassForm" (ngSubmit)="submitForm(updatePassForm.value)">
-        <div class="form-group">
-            <input [ngClass]="{'has-error':!updatePassForm.controls['email'].valid && updatePassForm.controls['email'].touched,
-                               'touched': updatePassForm.controls['email'].touched }"
-                class="form-control"
-                type="email" placeholder="Email"
-                [formControl]="updatePassForm.controls['email']">
-        </div>
+
       <div class="form-group">
             <input [ngClass]="{'has-error':!updatePassForm.controls['oldPassword'].valid && updatePassForm.controls['oldPassword'].touched,
                                'touched': updatePassForm.controls['oldPassword'].touched }"

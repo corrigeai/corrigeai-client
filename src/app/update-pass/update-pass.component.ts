@@ -23,7 +23,6 @@ export class UpdatePassComponent implements OnInit {
   ngOnInit() {  
     this.updatePassForm = this.formBuilder.group({
       'oldPassword': [null, Validators.required],
-      'email': [null, Validators.required],
       'newPassword': [null, Validators.required],
       'confirmPassword': [null, Validators.required],
     }, {
