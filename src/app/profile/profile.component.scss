@@ -1,43 +1,32 @@
 @import "../signup/signup.component.scss";
-.header-container{
-  background-color: #2885C4;
-  width:1000px;
-  margin: auto;
-  margin-bottom: 70px;
-  padding: 15px;
-  border-radius: 30px;
 
-  h2 {
-    margin-bottom: 30px;
-    font-weight: bold;
-    text-align: center;
-  }
+.col-md-6 { min-width:100%; min-width:100%; }
+
+.padding-0{
+  padding-right:0;
+  padding-left:0;
 }
 
-.container{
-  background-color: #2885C4;
-  margin: auto;
-  margin-bottom: 40px;
-  width:600px;
-  padding: 20px;
-
-  .label{
-    ont-weight: bold;
-  }
-
-  .p{
-    font-weight: lighter;
-  }
+.column {
+  float: left;
+  width: 50%;
 }
 
-.buttons{
-  margin: auto;
-
-  .btn-block{
-    margin: auto;
-    margin-bottom: 20px;
-    width: 300px;
-  }
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
+tr {
+  color: white;
+}
 
+tr:hover {
+  color: black;
+}
+
+h2 {
+  color: white;
+}
