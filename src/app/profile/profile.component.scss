@@ -1,32 +1,61 @@
-@import "../signup/signup.component.scss";
-
-.col-md-6 { min-width:100%; min-width:100%; }
-
-.padding-0{
-  padding-right:0;
-  padding-left:0;
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-height: 500px;
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  background-color: rgba(20, 5, 0, 0.75);
 }
 
-.column {
-  float: left;
-  width: 50%;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-tr {
+h1 {
   color: white;
 }
+.title {
+  color: silver;
+  font-size: 18px;
+}
 
-tr:hover {
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: black;
+  background-color: lightslategray;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
   color: black;
 }
 
-h2 {
-  color: white;
+button:hover, a:hover {
+  opacity: 0.7;
 }
+
+img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+#cardImage {
+  max-width: 300px;
+}
+
+#cardBody  {
+  max-width: 300px;
+}
+
+#profilePic {
+  padding: 10px;
+  width:100%;
+  height:100%;
+  max-height: 100%;
+  max-width: 100%;
+}
+
