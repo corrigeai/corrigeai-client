@@ -15,7 +15,12 @@ export class EditUserBody {
   newPassword: string;
 }
 
+export class UpdatePassBody {
+  oldPassword: string;
+  newPassword: string;
+}
+
 export class LoginBody {
-  username: string;
+  email: string;
   password: string;
 }

@@ -7,13 +7,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
+import { UpdatePassComponent } from './update-pass/update-pass.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AuthGuardService } from './auth-guard.service';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { AuthenticationService } from './services/authentication.service';
 
 // Loading environment
 import { environment } from '../environments/environment';
-import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +24,9 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     SignupComponent,
     LoginComponent,
     ProfileComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    UpdatePassComponent
+
   ],
   imports: [
     BrowserModule,
@@ -31,7 +36,8 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
   ],
   providers: [
     {provide: 'API', useValue: environment.apiUrl},
-    AuthenticationService
+    AuthenticationService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })

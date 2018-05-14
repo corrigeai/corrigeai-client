@@ -11,6 +11,29 @@
         </div>
 
         <div class="form-group">
+        <label>
+            <input type="radio" value="Male" [formControl]="signUpForm.controls['gender']">
+              <span>homem</span>
+          </label>
+          <label>
+            <input type="radio" value="Female" [formControl]="signUpForm.controls['gender']">
+              <span>mulher</span>
+          </label>
+          <label>
+            <input type="radio" value="Unknown" [formControl]="signUpForm.controls['gender']">
+              <span>outro</span>
+          </label>
+        </div>
+
+        <div class="form-group">
+            <input [ngClass]="{'has-error': !signUpForm.controls['username'].valid && signUpForm.controls['username'].touched,
+                               'touched': signUpForm.controls['username'].touched }"
+                class="form-control"
+                type="text" placeholder="Nome de Usuário"
+                [formControl]="signUpForm.controls['username']">
+        </div>
+
+        <div class="form-group">
             <input [ngClass]="{'has-error':!signUpForm.controls['email'].valid && signUpForm.controls['email'].touched,
                                'touched': signUpForm.controls['email'].touched }"
                 class="form-control"
