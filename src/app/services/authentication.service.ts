@@ -28,15 +28,10 @@ export class AuthenticationService {
     });
   }
 
-  login(userData: LoginBody): Observable<Boolean> {
+  login(userData: LoginBody): Observable<any> {
     return this.http.post(this.API.concat('/tuiterapi/authentication/login'), userData)
-    .map((res: Response) => {
-      if (res) {
-        localStorage.setItem('currentUser', JSON.stringify(res));
-        return true;
-      }
-      return false;
-    }).catch((error: Response) => {
+    .map((response: Response) => response.json())
+    .catch((error: Response) => {
         return  Observable.throw(error.json());
       });
   }

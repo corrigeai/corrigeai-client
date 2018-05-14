@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { AuthenticationService } from '../services/authentication.service';
 import { CustomValidators } from '../shared/custom-validators';
 
+import {Subscription} from 'rxjs/Subscription';
+
 @Component({
   selector: 'app-update-pass',
   templateUrl: './update-pass.component.html',
   styleUrls: ['./update-pass.component.scss']
 })
-export class UpdatePassComponent implements OnInit {
+export class UpdatePassComponent implements OnInit, OnDestroy {
+  isLoggedSubscription: Subscription;
   updatePassForm: FormGroup;
   error: any;
 
@@ -21,6 +24,13 @@ export class UpdatePassComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.isLoggedSubscription = this.authService.isLoggedIn().subscribe(
+      (isLogged) => {
+        if (!isLogged) {
+          this.router.navigate(['login']);
+        }
+      });
+  
     this.updatePassForm = this.formBuilder.group({
       'oldPassword': [null, Validators.required],
       'email': [null, Validators.required],
@@ -45,6 +55,10 @@ export class UpdatePassComponent implements OnInit {
       },
       error => this.error = error
     );
+}
+
+ngOnDestroy() {
+  this.isLoggedSubscription.unsubscribe();
 }
   
 }

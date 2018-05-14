@@ -26,16 +26,22 @@ export class LoginComponent {
 
   submitForm(form: any): void {
     this.authService.login(form)
-      .subscribe(
-        result => {
-          if (result) {
-            this.router.navigate(['/']);
-            this.error = undefined;
-            this.loginForm.reset();
-          }
+    .subscribe(
+      data => {
+          let info = data;
+          delete info.token;
+          delete info.id;
+
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('userId', data.id);
+          localStorage.setItem('userInfo', info);
+
+          this.router.navigate(['/']);
+          this.error = undefined;
+          this.loginForm.reset();      
         },
-        error => this.error = error
-      );
+      error => this.error = error
+    );
   }
 
 }
