@@ -13,8 +13,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: 'update-pass', component: UpdatePassComponent, canActivate: [AuthGuardService] },
-  {path: 'profile', component: ProfileComponent},
-  {path: 'edit-profile', component: EditProfileComponent},
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
+  {path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuardService]},
   {
     path: '**',
     redirectTo: '/signup'
