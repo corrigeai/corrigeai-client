@@ -4,7 +4,7 @@ import {
   CanActivateChild,
   Router,
   RouterStateSnapshot} from '@angular/router';
-import {Injectable} from '@angular/core';
+import {Injectable, OnDestroy} from '@angular/core';
 
 import {Observable} from 'rxjs/Observable';
 import { AuthenticationService } from './services/authentication.service';
@@ -19,12 +19,13 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
 
   canActivate(route: ActivatedRouteSnapshot,
               state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return this.authService.isLoggedIn().then(
+    return this.authService.isLoggedIn().subscribe(
       (authenticated: boolean) => {
         if (authenticated) {
           return true;
         } else {
-          this.router.navigate(['/']);
+          this.router.navigate(['login']);
+          return false;
         }
       }
     );
@@ -35,4 +36,5 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
                    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     return this.canActivate(route, state);
   }
+
 }

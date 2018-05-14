@@ -5,15 +5,12 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from '../services/authentication.service';
 import { CustomValidators } from '../shared/custom-validators';
 
-import {Subscription} from 'rxjs/Subscription';
-
 @Component({
   selector: 'app-update-pass',
   templateUrl: './update-pass.component.html',
   styleUrls: ['./update-pass.component.scss']
 })
-export class UpdatePassComponent implements OnInit, OnDestroy {
-  isLoggedSubscription: Subscription;
+export class UpdatePassComponent implements OnInit {
   updatePassForm: FormGroup;
   error: any;
 
@@ -23,14 +20,7 @@ export class UpdatePassComponent implements OnInit, OnDestroy {
     private authService: AuthenticationService
   ) {}
 
-  ngOnInit() {
-    this.isLoggedSubscription = this.authService.isLoggedIn().subscribe(
-      (isLogged) => {
-        if (!isLogged) {
-          this.router.navigate(['login']);
-        }
-      });
-  
+  ngOnInit() {  
     this.updatePassForm = this.formBuilder.group({
       'oldPassword': [null, Validators.required],
       'email': [null, Validators.required],
@@ -57,8 +47,4 @@ export class UpdatePassComponent implements OnInit, OnDestroy {
     );
 }
 
-ngOnDestroy() {
-  this.isLoggedSubscription.unsubscribe();
-}
-  
 }

@@ -13,6 +13,7 @@ import { AuthenticationService } from './services/authentication.service';
 // Loading environment
 import { environment } from '../environments/environment';
 import { LoginComponent } from './login/login.component';
+import { AuthGuardService } from './auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LoginComponent } from './login/login.component';
   ],
   providers: [
     {provide: 'API', useValue: environment.apiUrl},
-    AuthenticationService
+    AuthenticationService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
