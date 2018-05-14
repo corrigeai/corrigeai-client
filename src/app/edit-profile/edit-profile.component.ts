@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { AuthenticationService } from '../services/authentication.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -17,7 +17,7 @@ export class EditProfileComponent implements OnInit {
 
   constructor(private router: Router,
               private formBuilder: FormBuilder,
-              private authService: AuthenticationService
+              private userService: UserService
   ) {
     this.editProfileForm = this.formBuilder.group({
       'name': [null, Validators.required],
@@ -28,6 +28,20 @@ export class EditProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  submitForm(form: any): void {
+    this.userService.editUser(form)
+    .subscribe(
+      result => {
+        if (result) {
+          this.router.navigate(['/']);
+          this.error = undefined;
+          this.editProfileForm.reset();
+        }
+      },
+      error => this.error = error
+    );
   }
 
 }
