@@ -19,6 +19,7 @@ import { UserService } from './services/user.service';
 
 // Loading environment
 import { environment } from '../environments/environment';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { environment } from '../environments/environment';
     AppComponent,
     SignupComponent,
     HeaderComponent,
+    HomeComponent,
     LoginComponent,
     DropdownDirective,
     ProfileComponent,
