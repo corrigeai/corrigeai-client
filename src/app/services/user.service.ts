@@ -17,7 +17,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   editUser(userData: EditUserBody): Observable<Boolean> {
-    return this.http.post(this.API.concat('/edit-user'), userData)
+    return this.http.post(this.API.concat('tuiterapi/users/edit'), userData)
       .map((res: Response) => {
         if (res) {
           return true;
