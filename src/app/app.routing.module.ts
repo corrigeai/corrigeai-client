@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'update-pass', component: UpdatePassComponent },
   {path: 'profile', component: ProfileComponent},
-  {path: 'editprofile', component: EditProfileComponent},
+  {path: 'edit-profile', component: EditProfileComponent},
   {
     path: '**',
     redirectTo: '/signup'

@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { UpdatePassComponent } from './update-pass/update-pass.component';
+import { DropdownDirective } from './shared/dropdown.directive';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGuardService } from './auth-guard.service';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
@@ -26,6 +27,7 @@ import { environment } from '../environments/environment';
     SignupComponent,
     HeaderComponent,
     LoginComponent,
+    DropdownDirective,
     ProfileComponent,
     EditProfileComponent,
     UpdatePassComponent
