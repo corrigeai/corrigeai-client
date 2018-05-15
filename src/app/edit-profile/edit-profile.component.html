@@ -1,0 +1,46 @@
+<div class="container">
+  <h2>Edit your Profile</h2>
+
+  <form class="fields" [formGroup]="editProfileForm" (ngSubmit)="submitForm(editProfileForm.value)">
+
+    <div class="form-group">
+      <input [ngClass]="{'has-error': !editProfileForm.controls['name'].valid && editProfileForm.controls['name'].touched,
+                                 'touched': editProfileForm.controls['name'].touched }" class="form-control" type="text"
+        placeholder="Nome completo" [formControl]="editProfileForm.controls['name']">
+    </div>
+
+    <div class="form-group" style="color:silver;">
+      <label>
+        <input type="radio" value="Male" [formControl]="editProfileForm.controls['gender']">
+        <span>homem</span>
+      </label>
+      <label>
+        <input type="radio" value="Female" [formControl]="editProfileForm.controls['gender']">
+        <span>mulher</span>
+      </label>
+      <label>
+        <input type="radio" value="Unknown" [formControl]="editProfileForm.controls['gender']">
+        <span>outro</span>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <input [ngClass]="{'has-error': !editProfileForm.controls['username'].valid && editProfileForm.controls['username'].touched,
+                                 'touched': editProfileForm.controls['username'].touched }" class="form-control" type="text"
+        placeholder="Nome de Usuário" [formControl]="editProfileForm.controls['username']">
+    </div>
+
+
+    <div class="form-group">
+      <input [ngClass]="{'has-error': !editProfileForm.controls['photoUrl'].valid && editProfileForm.controls['username'].touched,
+                                   'touched': editProfileForm.controls['photoUrl'].touched }" class="form-control" type="text"
+        placeholder="URL da foto" [formControl]="editProfileForm.controls['photoUrl']">
+    </div>
+
+
+
+    <div class="error-message" [hidden]="!error">{{error}}</div>
+
+    <button class="btn btn-block" type="submit" [ngClass]="{'disabled': !editProfileForm.valid}" [disabled]='!editProfileForm.valid'>Editar Perfil</button>
+  </form>
+</div>
