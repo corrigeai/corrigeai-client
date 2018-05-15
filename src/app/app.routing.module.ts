@@ -12,9 +12,9 @@ import {EditProfileComponent} from "./edit-profile/edit-profile.component";
 const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'update-pass', component: UpdatePassComponent, canActivate: [AuthGuardService] },
-  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
-  {path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuardService]},
+  { path: 'update-pass', component: UpdatePassComponent },
+  {path: 'profile', component: ProfileComponent},
+  {path: 'editprofile', component: EditProfileComponent},
   {
     path: '**',
     redirectTo: '/signup'

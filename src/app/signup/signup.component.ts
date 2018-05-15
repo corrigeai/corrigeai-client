@@ -32,7 +32,7 @@ export class SignupComponent {
       .subscribe(
         result => {
           if (result) {
-            this.router.navigate(['/']);
+            this.router.navigate(['login']);
             this.error = undefined;
             this.signUpForm.reset();
           }
