@@ -8,16 +8,18 @@ import { UpdatePassComponent } from './update-pass/update-pass.component';
 import { AuthGuardService } from './auth-guard.service';
 import {ProfileComponent} from "./profile/profile.component";
 import {EditProfileComponent} from "./edit-profile/edit-profile.component";
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
+  { path: '', component: HomeComponent , pathMatch: 'full'},
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'update-pass', component: UpdatePassComponent, canActivate: [AuthGuardService] },
-  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
-  {path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuardService]},
+  { path: 'update-pass', component: UpdatePassComponent },
+  {path: 'profile', component: ProfileComponent},
+  {path: 'edit-profile', component: EditProfileComponent},
   {
     path: '**',
-    redirectTo: '/signup'
+    redirectTo: '/'
   }
 ];
 
