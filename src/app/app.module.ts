@@ -20,6 +20,9 @@ import { UserService } from './services/user.service';
 // Loading environment
 import { environment } from '../environments/environment';
 import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { WorkstationComponent } from './workstation/workstation.component';
+import { EssayCardComponent } from './essay-card/essay-card.component';
 
 
 @NgModule({
@@ -32,7 +35,10 @@ import { HomeComponent } from './home/home.component';
     DropdownDirective,
     ProfileComponent,
     EditProfileComponent,
-    UpdatePassComponent
+    UpdatePassComponent,
+    NavbarComponent,
+    WorkstationComponent,
+    EssayCardComponent
 
   ],
   imports: [
