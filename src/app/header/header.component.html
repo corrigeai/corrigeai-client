@@ -1,7 +1,9 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a href="#" class="navbar-brand">Tuiter</a>
+      <a href="#" rel="home" class="navbar-brand">
+          <img src="../../assets/tuiter.png">
+      </a>
     </div>
 
     <div class="collapse navbar-collapse">
@@ -15,6 +17,7 @@
             <li><a style="cursor: pointer;" routerLink="/login">Login</a></li>
             <li><a style="cursor: pointer;" routerLink="/signup">Sign up</a></li>
             <li><a style="cursor: pointer;" routerLink="/update-pass">Update Password</a></li>
+            <li><a style="cursor: pointer;" (click)="onLogout()">Logout</a></li>
           </ul>
         </li>
       </ul>
