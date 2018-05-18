@@ -6,3 +6,13 @@ h1 {
     color:silver;
     font-weight: bold;
 }
+
+#outer {
+    border: 1px solid black;
+      display: inline-block;
+  }
+  .inner {
+    font-size: 12px;
+    display: inline-block;
+    border: 1px solid red;
+  }
