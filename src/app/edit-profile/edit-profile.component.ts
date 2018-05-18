@@ -19,11 +19,13 @@ export class EditProfileComponent implements OnInit {
               private formBuilder: FormBuilder,
               private userService: UserService
   ) {
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+
     this.editProfileForm = this.formBuilder.group({
-      'name': [null, Validators.required],
-      'photoUrl': [null, Validators.required],
-      'gender': [null, Validators.required],
-      'username': [null, Validators.required]
+      'name': [user.name, Validators.required],
+      'photoUrl': [user.photo_url, Validators.required],
+      'gender': [user.gender, Validators.required],
+      'requester': [user.username, Validators.required]
       })
   }
 
@@ -31,6 +33,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   submitForm(form: any): void {
+    console.log(form);
     this.userService.editUser(form)
     .subscribe(
       result => {
