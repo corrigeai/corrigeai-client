@@ -17,14 +17,15 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   editUser(userData: EditUserBody): Observable<Boolean> {
-    const token = "Bearer ".concat(localStorage.getItem('token'));
+    const value =  JSON.parse(localStorage.getItem('token'));
+    const token = `Bearer ${value}`;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'Authorization': token
       })
     };
-    console.log(this.http.put(this.API.concat('tuiterapi/users/edit'), userData, httpOptions));
+
     return this.http.put(this.API.concat('tuiterapi/users/edit'), userData, httpOptions)
       .map((res: Response) => {
         if (res) {
