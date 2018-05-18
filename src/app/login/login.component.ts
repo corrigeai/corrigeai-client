@@ -19,7 +19,7 @@ export class LoginComponent {
     private authService: AuthenticationService
   ) {
     this.loginForm = formBuilder.group({
-      'email': [null, Validators.required],
+      'identifier': [null, Validators.required],
       'password': [null, Validators.required],
     });
   }
@@ -27,20 +27,14 @@ export class LoginComponent {
   submitForm(form: any): void {
     this.authService.login(form)
     .subscribe(
-      data => {
-          let info = data;
-          delete info.token;
-          delete info.id;
-
-          localStorage.setItem('token', data.token);
-          localStorage.setItem('userId', data.id);
-          localStorage.setItem('userInfo', info);
-
+      (data) => {
+          localStorage.setItem('token', JSON.stringify(data.token));
+          localStorage.setItem('currentUser', JSON.stringify(data.user));
           this.router.navigate(['/']);
           this.error = undefined;
           this.loginForm.reset();      
         },
-      error => this.error = error
+      (error) => this.error = error
     );
   }
 

@@ -17,14 +17,11 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
   
-    if (localStorage.getItem('userInfo') !== null) {
-      const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-      
-      this.name = userInfo.name;
-      this.gender = userInfo.gender;
-      this.email = userInfo.email;
-      this.username = userInfo.username;  
-    }
+      const user = JSON.parse(localStorage.getItem('currentUser'));      
+      this.name = user.name;
+      this.gender = user.gender;
+      this.email = user.email;
+      this.username = user.username;  
   }
 
   onEditProfile() {
