@@ -38,7 +38,8 @@ export class AuthenticationService {
   }
 
   updatePassword(userData: UpdatePassBody) {
-    return this.http.patch(this.API.concat('tuiterapi/users/pass'), userData)
+    const userId = JSON.parse(localStorage.getItem('currentUser')).id;
+    return this.http.patch(this.API.concat('tuiterapi/users/'+userId+'/pass'), userData)
     .map((res: Response) => {
       if (res) {
         return true;
@@ -58,7 +59,7 @@ export class AuthenticationService {
   isLoggedIn() {
     return Observable.create(
       (observer: Observer<boolean>) => {
-        observer.next(localStorage.getItem('token') !== null);
+        observer.next(localStorage.getItem('token') != null);
       }
     );
   }

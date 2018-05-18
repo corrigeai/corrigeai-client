@@ -26,14 +26,13 @@ export class EditProfileComponent implements OnInit {
       'photoUrl': [user.photo_url, Validators.required],
       'gender': [user.gender, Validators.required],
       'requester': [user.username, Validators.required]
-      })
+      });
   }
 
   ngOnInit() {
   }
 
   submitForm(form: any): void {
-    console.log(form);
     this.userService.editUser(form)
     .subscribe(
       result => {
