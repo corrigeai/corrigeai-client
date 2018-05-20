@@ -19,12 +19,17 @@ export class EditProfileComponent implements OnInit {
               private formBuilder: FormBuilder,
               private userService: UserService
   ) {
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+
     this.editProfileForm = this.formBuilder.group({
-      'name': [null, Validators.required],
-      'photoUrl': [null, Validators.required],
-      'gender': [null, Validators.required],
-      'username': [null, Validators.required]
-      })
+      'name': [user.name, Validators.required],
+      'photoUrl': [user.photoUrl],
+      'gender': [user.gender, Validators.required],
+      'username': [user.username, 
+                   [Validators.required,
+                    Validators.pattern('^[a-zA-Z0-9_-]*$'),
+                     Validators.minLength(4)]]
+      });
   }
 
   ngOnInit() {
@@ -35,7 +40,7 @@ export class EditProfileComponent implements OnInit {
     .subscribe(
       result => {
         if (result) {
-          this.router.navigate(['/']);
+          this.router.navigate(['profile']);
           this.error = undefined;
           this.editProfileForm.reset();
         }
