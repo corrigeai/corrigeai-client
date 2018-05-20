@@ -17,6 +17,17 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient) { }
 
+  getOptions() {
+    const token =  JSON.parse(localStorage.getItem('token'));
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': token
+      })
+    };
+    return httpOptions;
+  }
+
   signUp(userData: RegistrationBody): Observable<Boolean> {
     return this.http.post(this.API.concat('tuiterapi/users'), userData)
     .map((res: Response) => {
@@ -38,15 +49,9 @@ export class AuthenticationService {
   }
 
   updatePassword(userData: UpdatePassBody) {
-    const token =  JSON.parse(localStorage.getItem('token'));
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Authorization': token
-      })
-    };
-    
+    const httpOptions = this.getOptions();
     const userId = JSON.parse(localStorage.getItem('currentUser')).id;
+
     return this.http.patch(this.API.concat('tuiterapi/users/'+userId+'/pass'), userData, httpOptions)
     .map((res: Response) => {
       if (res) {
@@ -67,7 +72,7 @@ export class AuthenticationService {
   isLoggedIn() {
     return Observable.create(
       (observer: Observer<boolean>) => {
-        observer.next(localStorage.getItem('token') != null);
+        observer.next(localStorage.getItem('token') !== null);
       }
     );
   }
