@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import {LoginBody, RegistrationBody, UpdatePassBody} from '../models/body-obj.model';
 import { environment } from '../../environments/environment';
@@ -38,8 +38,16 @@ export class AuthenticationService {
   }
 
   updatePassword(userData: UpdatePassBody) {
+    const token =  JSON.parse(localStorage.getItem('token'));
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': token
+      })
+    };
+    
     const userId = JSON.parse(localStorage.getItem('currentUser')).id;
-    return this.http.patch(this.API.concat('tuiterapi/users/'+userId+'/pass'), userData)
+    return this.http.patch(this.API.concat('tuiterapi/users/'+userId+'/pass'), userData, httpOptions)
     .map((res: Response) => {
       if (res) {
         return true;

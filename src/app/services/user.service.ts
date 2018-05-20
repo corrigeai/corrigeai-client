@@ -17,8 +17,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   editUser(userData: EditUserBody): Observable<Boolean> {
-    const value =  JSON.parse(localStorage.getItem('token'));
-    const token = `Bearer ${value}`;
+    const token =  JSON.parse(localStorage.getItem('token'));
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -26,7 +25,8 @@ export class UserService {
       })
     };
 
-    return this.http.put(this.API.concat('tuiterapi/users/edit'), userData, httpOptions)
+    const userId = JSON.parse(localStorage.getItem('currentUser')).id;
+    return this.http.put(this.API.concat('tuiterapi/users/'+userId), userData, httpOptions)
       .map((res: Response) => {
         if (res) {
           return true;
