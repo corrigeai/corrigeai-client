@@ -10,7 +10,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { HomeComponent } from './home/home.component';
 import { WorkstationComponent } from './workstation/workstation.component';
-import { EssayCardComponent } from './essay-card/essay-card.component';
+import { CreateEssayComponent } from './create-essay/create-essay.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent , pathMatch: 'full'},
@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'edit-profile', component: EditProfileComponent},
   { path: 'essays', component: WorkstationComponent },
-  { path: 'essay', component: EssayCardComponent },
+  { path: 'essay', component: CreateEssayComponent },
   {
     path: '**',
     redirectTo: '/'
