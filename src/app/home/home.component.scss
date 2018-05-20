@@ -1,18 +1,24 @@
 @import "../signup/signup.component.scss";
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-h1 {
+h3 {
     font-family: 'Open Sans',serif;
     color:silver;
-    font-weight: bold;
+    text-align: left;
 }
 
 #outer {
     border: 1px solid black;
       display: inline-block;
   }
-  .inner {
+
+.inner {
     font-size: 12px;
     display: inline-block;
     border: 1px solid red;
+  }
+
+ #collab {
+    max-width: 125%;
+    height: auto;
   }
