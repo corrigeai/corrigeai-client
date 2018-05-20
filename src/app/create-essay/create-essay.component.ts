@@ -23,7 +23,7 @@ export class CreateEssayComponent implements OnInit {
                 });
         }
 
-    onErrorHandled() {
+    onEndSubmission() {
         this.display = 'none';
     }
 
@@ -38,6 +38,7 @@ export class CreateEssayComponent implements OnInit {
 
     submitForm(form: any): void {
         console.log(form);
+        this.onEndSubmission();
     //    this.userService.editUser(form)
     //     .subscribe(
     //       result => {
