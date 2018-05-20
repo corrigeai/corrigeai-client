@@ -23,6 +23,7 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { WorkstationComponent } from './workstation/workstation.component';
 import { EssayCardComponent } from './essay-card/essay-card.component';
+import { EssayService } from './services/essay.service';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { EssayCardComponent } from './essay-card/essay-card.component';
     {provide: 'API', useValue: environment.apiUrl},
     AuthenticationService,
     AuthGuardService,
-    UserService
+    UserService,
+    EssayService
   ],
   bootstrap: [AppComponent]
 })

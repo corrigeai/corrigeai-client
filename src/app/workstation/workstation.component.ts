@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EssayService } from '../services/essay.service';
 
 @Component({
   selector: 'app-workstation',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkstationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private essayService: EssayService) { }
 
   ngOnInit() {
+  }
+
+  onNewEssay() {
+    console.log("Button works at least");
+    this.essayService.createEssay();
+
   }
 
 }
