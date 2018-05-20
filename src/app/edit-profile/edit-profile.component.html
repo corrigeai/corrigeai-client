@@ -25,14 +25,14 @@
     </div>
 
     <div class="form-group">
-      <input [ngClass]="{'has-error': !editProfileForm.controls['requester'].valid && editProfileForm.controls['requester'].touched,
-                                 'touched': editProfileForm.controls['requester'].touched }" class="form-control" type="text"
-        placeholder="Nome de Usuário" [formControl]="editProfileForm.controls['requester']">
+      <input [ngClass]="{'has-error': !editProfileForm.controls['username'].valid && editProfileForm.controls['username'].touched,
+                                 'touched': editProfileForm.controls['username'].touched }" class="form-control" type="text"
+        placeholder="Nome de Usuário" [formControl]="editProfileForm.controls['username']">
     </div>
 
 
     <div class="form-group">
-      <input [ngClass]="{'has-error': !editProfileForm.controls['photoUrl'].valid && editProfileForm.controls['requester'].touched,
+      <input [ngClass]="{'has-error': !editProfileForm.controls['photoUrl'].valid && editProfileForm.controls['username'].touched,
                                    'touched': editProfileForm.controls['photoUrl'].touched }" class="form-control" type="text"
         placeholder="URL da foto" [formControl]="editProfileForm.controls['photoUrl']">
     </div>

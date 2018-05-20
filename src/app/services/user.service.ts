@@ -29,6 +29,7 @@ export class UserService {
     return this.http.put(this.API.concat('tuiterapi/users/'+userId), userData, httpOptions)
       .map((res: Response) => {
         if (res) {
+          localStorage.setItem('currentUser', JSON.stringify(res));
           return true;
         }
         return false;

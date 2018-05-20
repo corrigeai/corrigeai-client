@@ -23,9 +23,12 @@ export class EditProfileComponent implements OnInit {
 
     this.editProfileForm = this.formBuilder.group({
       'name': [user.name, Validators.required],
-      'photoUrl': [user.photo_url, Validators.required],
+      'photoUrl': [user.photoUrl],
       'gender': [user.gender, Validators.required],
-      'requester': [user.username, Validators.required]
+      'username': [user.username, 
+                   [Validators.required,
+                    Validators.pattern('^[a-zA-Z0-9_-]*$'),
+                     Validators.minLength(4)]]
       });
   }
 
@@ -37,7 +40,7 @@ export class EditProfileComponent implements OnInit {
     .subscribe(
       result => {
         if (result) {
-          this.router.navigate(['/']);
+          this.router.navigate(['profile']);
           this.error = undefined;
           this.editProfileForm.reset();
         }
