@@ -1,0 +1,15 @@
+.container {
+    .plus {
+        position: absolute;
+        right: 10%;
+        bottom: 10%;
+
+        span {
+            font-size: 2em;
+            background-color: red;
+            color: white;
+            padding: 25px;
+            border-radius: 45px;
+        }
+    }
+}

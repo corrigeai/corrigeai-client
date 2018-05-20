@@ -36,6 +36,7 @@ export class UpdatePassComponent implements OnInit {
     this.authService.updatePassword(form)
     .subscribe(
       result => {
+        console.log(result);
         if (result) {
           this.router.navigate(['/']);
           this.error = undefined;

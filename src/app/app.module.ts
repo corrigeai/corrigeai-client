@@ -20,6 +20,11 @@ import { UserService } from './services/user.service';
 // Loading environment
 import { environment } from '../environments/environment';
 import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { WorkstationComponent } from './workstation/workstation.component';
+import {CreateEssayComponent} from './create-essay/create-essay.component';
+import { EssayCardComponent } from './essay-card/essay-card.component';
+import { EssayService } from './services/essay.service';
 
 
 @NgModule({
@@ -32,7 +37,11 @@ import { HomeComponent } from './home/home.component';
     DropdownDirective,
     ProfileComponent,
     EditProfileComponent,
-    UpdatePassComponent
+    UpdatePassComponent,
+    NavbarComponent,
+    WorkstationComponent,
+    CreateEssayComponent,
+    EssayCardComponent
 
   ],
   imports: [
@@ -45,7 +54,8 @@ import { HomeComponent } from './home/home.component';
     {provide: 'API', useValue: environment.apiUrl},
     AuthenticationService,
     AuthGuardService,
-    UserService
+    UserService,
+    EssayService
   ],
   bootstrap: [AppComponent]
 })
