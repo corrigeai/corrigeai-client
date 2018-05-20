@@ -22,9 +22,16 @@ export class SignupComponent {
   ) {
     this.signUpForm = formBuilder.group({
       'name': [null, Validators.required],
-      'email': [null, Validators.required],
-      'username': [null, Validators.required],
-      'password': [null, Validators.required],
+      'email': [null, 
+                [Validators.required,
+                 Validators.email]],
+      'username': [null, 
+                   [Validators.required,
+                    Validators.pattern('^[a-zA-Z0-9_-]*$'),
+                    Validators.minLength(4)]],
+      'password': [null, 
+                   [Validators.required,
+                    Validators.minLength(6)]],
       'gender': [null, Validators.required],
     });
   }

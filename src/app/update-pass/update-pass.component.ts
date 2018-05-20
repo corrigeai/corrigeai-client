@@ -22,9 +22,9 @@ export class UpdatePassComponent implements OnInit {
 
   ngOnInit() {  
     this.updatePassForm = this.formBuilder.group({
-      'oldPassword': [null, Validators.required],
-      'newPassword': [null, Validators.required],
-      'confirmPassword': [null, Validators.required],
+      'oldPassword': [null, [Validators.required, Validators.minLength(6)]],
+      'newPassword': [null, [Validators.required, Validators.minLength(6)]],
+      'confirmPassword': [null, [Validators.required, Validators.minLength(6)]],
     }, {
       validator: CustomValidators.Match('newPassword', 'confirmPassword')
     });
