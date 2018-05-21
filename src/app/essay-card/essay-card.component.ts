@@ -13,7 +13,6 @@ export class EssayCardComponent implements OnInit {
     constructor(private essayService: EssayService) {}
 
     ngOnInit() {
-      console.log("I guess the card exists");
     }
 
     onEditEssay() {

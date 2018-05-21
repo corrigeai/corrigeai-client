@@ -46,5 +46,15 @@ export class EssayService {
           });
     }
 
+    editEssay(essayData): Observable<any> {
+        const essayId = essayData.id;
+        delete essayData.id;
+        const httpOptions = this.authService.getOptions();
+        return this.http.put(this.API.concat('tuiterapi/essays/'+essayId), essayData, httpOptions)
+        .catch((error: Response) => {
+            return  Observable.throw(error);
+          });
+    }
+
 
 }

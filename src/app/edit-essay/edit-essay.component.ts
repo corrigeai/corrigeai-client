@@ -13,6 +13,7 @@ export class EditEssayComponent implements OnInit {
     editEssayForm: FormGroup;
     fileToUpload: File = null;
     display = 'none';
+    original;
 
     constructor(private formBuilder: FormBuilder,private cd: ChangeDetectorRef,
          private essayService: EssayService) {
@@ -32,10 +33,12 @@ export class EditEssayComponent implements OnInit {
         this.essayService.essayEdited
         .subscribe(
             (essay: Essay) => {
+                let isValidFile = (essay.content, File);
+                this.original = essay;
                 this.editEssayForm.patchValue({
-                    essayImg : essay.essayImg,
+                    essayImg : essay.content,
                     theme : essay.theme,
-                    essayText: essay.essayText,
+                    essayText: essay.content,
                     title : essay.title
                 });
                 this.display = 'block';
@@ -43,9 +46,25 @@ export class EditEssayComponent implements OnInit {
         );
     }
 
-    submitForm(form: any): void {           
-        this.onEndSubmission();
+    complyForm(form: any):any {
+        form["id"] = this.original.id;
+        form["content"] = (form["essayText"] !== null ? form["essayText"] : form["essayImg"])
+        delete form.essayImg;
+        delete form.essayText;
+        return form;
+    }
+    
+    submitForm(form: any): void {
+        form = this.complyForm(form);
 
+        this.essayService.editEssay(form)
+        .subscribe(
+            (essay) => {
+                let index = this.essayService.userEssayList.indexOf(this.original);
+                this.essayService.userEssayList[index] = essay;
+                this.onEndSubmission();
+            }
+        );           
     }
 
     onFileChange(event) {
