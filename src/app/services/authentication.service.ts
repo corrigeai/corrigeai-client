@@ -54,10 +54,7 @@ export class AuthenticationService {
 
     return this.http.patch(this.API.concat('tuiterapi/users/'+userId+'/pass'), userData, httpOptions)
     .map((res: Response) => {
-      if (res) {
         return true;
-      }
-      return false;
     }).catch((error: Response) => {
       return  Observable.throw(error.json());
     });
