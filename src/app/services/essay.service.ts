@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment';
 import { Essay } from "../models/essay";
 
 import { Observable } from 'rxjs/Observable';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable()
 export class EssayService {
@@ -15,7 +16,7 @@ export class EssayService {
 
     API = environment.apiUrl;
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient,private authService: AuthenticationService) { }
 
     notifyEssayCreation() {
         this.essayCreated.emit();
@@ -26,7 +27,17 @@ export class EssayService {
     }
 
     createEssay(essayData): Observable<any> {
-        return this.http.post(this.API.concat('tuiterapi/essays'), essayData)
+        const httpOptions = this.authService.getOptions();
+        return this.http.post(this.API.concat('tuiterapi/essays'), essayData, httpOptions)
+        .catch((error: Response) => {
+            return  Observable.throw(error);
+          });
+    }
+
+    getUserEssays(essayData): Observable<any> {
+        const httpOptions = this.authService.getOptions();
+        const userId = JSON.parse(localStorage.getItem('currentUser')).id;
+        return this.http.get(this.API.concat('tuiterapi/users/'+userId+'/essays'), httpOptions)
         .catch((error: Response) => {
             return  Observable.throw(error);
           });
