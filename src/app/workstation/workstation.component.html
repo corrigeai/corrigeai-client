@@ -1,14 +1,30 @@
-<app-navbar></app-navbar>
-
 <div class="container">
-  <h2>Minhas Redações</h2>
-
-  <div class="essays">
-
-  </div>
-
-
+<div class="essays">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Minhas Redações</h2>
+        </div>
+        <div class="col-md-12">&nbsp;</div>
+      </div>
+      <div class="row">
+          <div class="col-md-12">
+              <div class="essays">
+                  <ul>
+                    <li *ngFor="let essay of userEssays">
+                      <app-essay-card 
+                          [title] = "essay.title"
+                          [theme] = "essay.theme"
+                          [textBody] = "essay.textBody"
+                      ></app-essay-card>
+                    </li>
+                  </ul>
+                </div>           
+          </div>
+      </div>
+  </div>     
   <a style="cursor: pointer;" class="plus" (click)="onNewEssay()">
-    <span class="glyphicon glyphicon-pencil"></span>
-  </a>
+      <span class="glyphicon glyphicon-pencil"></span>
+    </a>     
+    </div>
+
 <app-create-essay></app-create-essay>
