@@ -34,10 +34,10 @@ export class EssayService {
           });
     }
 
-    getUserEssays(essayData): Observable<any> {
+    getUserEssays(): Observable<any> {
         const httpOptions = this.authService.getOptions();
         const userId = JSON.parse(localStorage.getItem('currentUser')).id;
-        return this.http.get(this.API.concat('tuiterapi/users/'+userId+'/essays'), httpOptions)
+        return this.http.get<Essay[]>(this.API.concat('tuiterapi/users/'+userId+'/essays'), httpOptions)
         .catch((error: Response) => {
             return  Observable.throw(error);
           });

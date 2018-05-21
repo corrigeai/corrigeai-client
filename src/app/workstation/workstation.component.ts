@@ -15,7 +15,10 @@ export class WorkstationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userEssays = this.essayService.userEssayList;
+    this.essayService.getUserEssays().subscribe(
+      (essays) => { this.userEssays = essays;
+      }
+    );
 
   }
 

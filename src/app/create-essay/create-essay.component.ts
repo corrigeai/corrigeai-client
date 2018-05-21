@@ -46,13 +46,12 @@ export class CreateEssayComponent implements OnInit {
             essayData["title"] = form.title;
             essayData["content"] = (form.essayText !== null ? form.essayText : form.essayImg);            
 
-            this.essayService.createEssay(essayData).
-            subscribe(
-                (essay: Essay) => {
-                    this.essayService.userEssayList.push(essay);
+            this.essayService.createEssay(essayData)
+            .subscribe(
+                () => {
+                    this.onEndSubmission();
                 }
             );
-        this.onEndSubmission();
 
     }
 

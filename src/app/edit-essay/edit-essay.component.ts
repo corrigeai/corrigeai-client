@@ -43,20 +43,7 @@ export class EditEssayComponent implements OnInit {
         );
     }
 
-    submitForm(form: any): void {
-            // var essayData = {};
-            // essayData["userUsername"] = JSON.parse(localStorage.getItem('currentUser')).username;
-            // essayData["theme"] = form.theme;
-            // essayData["title"] = form.title;
-            // essayData["content"] = (form.essayText !== null ? form.essayText : form.essayImg);            
-
-            // this.essayService.createEssay(essayData).
-            // subscribe(
-            //     (essay: Essay) => {
-            //         this.essayService.userEssayList.push(essay);
-            //     }
-            // );
-            
+    submitForm(form: any): void {           
         this.onEndSubmission();
 
     }
