@@ -13,7 +13,6 @@ export class CreateEssayComponent implements OnInit {
     createEssayForm: FormGroup;
     fileToUpload: File = null;
     display = 'none';
-    edit = false;
 
     constructor(private formBuilder: FormBuilder,private cd: ChangeDetectorRef,
          private essayService: EssayService) {
@@ -35,29 +34,12 @@ export class CreateEssayComponent implements OnInit {
                 () => {
                     this.createEssayForm.reset();
                     this.display = 'block';
-                    this.edit = false;
                 }
             );
-        
-        this.essayService.essayEdited
-        .subscribe(
-            (essay: Essay) => {
-                this.createEssayForm.patchValue({
-                    essayImg : essay.essayImg,
-                    theme : essay.theme,
-                    essayText: essay.essayText,
-                    title : essay.title
-                });
-                this.display = 'block';
-                this.edit = true;
-            }
-        );
     }
 
     submitForm(form: any): void {
-        if(this.edit){
-           // TO DO related to edition
-        } else {
+
             var essayData = {};
             essayData["userUsername"] = JSON.parse(localStorage.getItem('currentUser')).username;
             essayData["theme"] = form.theme;
@@ -70,7 +52,6 @@ export class CreateEssayComponent implements OnInit {
                     this.essayService.userEssayList.push(essay);
                 }
             );
-        }
         this.onEndSubmission();
 
     }

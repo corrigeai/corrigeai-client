@@ -11,7 +11,8 @@ export class WorkstationComponent implements OnInit {
   // essay: Essay = new Essay('A queda de Dom Quixote','Emo Vibes', null);
   userEssays :Essay[];
 
-  constructor(private essayService: EssayService) { }
+  constructor(private essayService: EssayService) {
+  }
 
   ngOnInit() {
     this.userEssays = this.essayService.userEssayList;
