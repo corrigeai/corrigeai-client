@@ -3,12 +3,12 @@ export class Essay {
     theme: string;
     essayText: string;
     essayImg: any;
+    content: any;
 
-    constructor(title: string, theme: string, essayText?: string, essayImg? : any) {
+    constructor(title: string, theme: string, content: any) {
         this.title = title;
         this.theme = theme;
-        this.essayText = essayText;
-        this.essayImg = essayImg;
+        this.content = content;
     }
 
 }

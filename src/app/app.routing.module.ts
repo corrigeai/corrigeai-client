@@ -19,8 +19,7 @@ const routes: Routes = [
   { path: 'update-pass', component: UpdatePassComponent, canActivate: [AuthGuardService] },
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
   {path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuardService]},
-  { path: 'essays', component: WorkstationComponent },
-  { path: 'essaycard', component: EssayCardComponent },
+  { path: 'myessays', component: WorkstationComponent, canActivate: [AuthGuardService]},
   {
     path: '**',
     redirectTo: '/'
