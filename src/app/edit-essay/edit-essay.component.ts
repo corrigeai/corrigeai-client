@@ -33,12 +33,12 @@ export class EditEssayComponent implements OnInit {
         this.essayService.essayEdited
         .subscribe(
             (essay: Essay) => {
-                let isValidFile = (essay.content, File);
                 this.original = essay;
+                console.log(essay.content);
                 this.editEssayForm.patchValue({
-                    essayImg : essay.content,
+                    essayImg : (this.isValid64Base(essay.content) ? this.dataURLtoFile(essay.content,'userFile'): null),
                     theme : essay.theme,
-                    essayText: essay.content,
+                    essayText: (this.isValid64Base(essay.content) ? '': essay.content),
                     title : essay.title
                 });
                 this.display = 'block';
@@ -46,16 +46,31 @@ export class EditEssayComponent implements OnInit {
         );
     }
 
+    dataURLtoFile(dataurl, filename) {
+        var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+            bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+        while(n--){
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        return new File([u8arr], filename, {type:mime});
+    }
+
+    isValid64Base(text) {
+        var regex = /^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$/;
+        return regex.test(text);
+    }
+
     complyForm(form: any):any {
         form["id"] = this.original.id;
-        form["content"] = (form["essayText"] !== null ? form["essayText"] : form["essayImg"])
+        form["content"] = ((form["essayText"] !== null && form["essayText"] !== '') ? form["essayText"] : form["essayImg"])
         delete form.essayImg;
         delete form.essayText;
         return form;
     }
-    
+
     submitForm(form: any): void {
         form = this.complyForm(form);
+        console.log(form);
 
         this.essayService.editEssay(form)
         .subscribe(

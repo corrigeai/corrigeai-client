@@ -45,7 +45,7 @@ export class CreateEssayComponent implements OnInit {
             essayData["userUsername"] = JSON.parse(localStorage.getItem('currentUser')).username;
             essayData["theme"] = form.theme;
             essayData["title"] = form.title;
-            essayData["content"] = (form.essayText !== null ? form.essayText : form.essayImg);            
+            essayData["content"] = ((form.essayText !== null && form.essayText !== '') ? form.essayText : form.essayImg);            
 
             this.essayService.createEssay(essayData)
             .subscribe(
