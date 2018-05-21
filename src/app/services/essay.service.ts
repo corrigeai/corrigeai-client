@@ -10,6 +10,7 @@ import { AuthenticationService } from './authentication.service';
 
 @Injectable()
 export class EssayService {
+    
     userEssayList : Essay[] = [];
     essayCreated = new EventEmitter<any>();
     essayEdited = new EventEmitter<Essay>();
@@ -29,6 +30,7 @@ export class EssayService {
     createEssay(essayData): Observable<any> {
         const httpOptions = this.authService.getOptions();
         return this.http.post(this.API.concat('tuiterapi/essays'), essayData, httpOptions)
+        .map((response: Response) => response)
         .catch((error: Response) => {
             return  Observable.throw(error);
           });
@@ -38,6 +40,7 @@ export class EssayService {
         const httpOptions = this.authService.getOptions();
         const userId = JSON.parse(localStorage.getItem('currentUser')).id;
         return this.http.get<Essay[]>(this.API.concat('tuiterapi/users/'+userId+'/essays'), httpOptions)
+        .map((essays: Essay[]) => essays)
         .catch((error: Response) => {
             return  Observable.throw(error);
           });

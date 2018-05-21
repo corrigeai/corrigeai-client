@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
 import { EssayService } from '../services/essay.service';
 import { Essay } from '../models/essay';
 
@@ -16,10 +16,10 @@ export class WorkstationComponent implements OnInit {
 
   ngOnInit() {
     this.essayService.getUserEssays().subscribe(
-      (essays) => { this.userEssays = essays;
-      }
-    );
-
+      (essays) => {
+        this.essayService.userEssayList = essays;
+        this.userEssays = this.essayService.userEssayList;
+      });
   }
 
   onNewEssay() {

@@ -34,6 +34,7 @@ export class CreateEssayComponent implements OnInit {
                 () => {
                     this.createEssayForm.reset();
                     this.display = 'block';
+                    this.cd.markForCheck();
                 }
             );
     }
@@ -48,7 +49,8 @@ export class CreateEssayComponent implements OnInit {
 
             this.essayService.createEssay(essayData)
             .subscribe(
-                () => {
+                (essay) => {
+                    this.essayService.userEssayList.push(essay);
                     this.onEndSubmission();
                 }
             );
