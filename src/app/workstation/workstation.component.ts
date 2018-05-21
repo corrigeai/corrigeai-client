@@ -30,9 +30,7 @@ export class WorkstationComponent implements OnInit {
   }
 
   onNewEssay() {
-    console.log("Button works at least");
     this.essayService.createEssay();
-
   }
 
 }

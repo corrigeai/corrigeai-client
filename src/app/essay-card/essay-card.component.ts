@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { EssayService } from '../services/essay.service';
+import { Essay } from '../models/essay';
 
 @Component({
   selector: 'app-essay-card',
@@ -7,13 +8,16 @@ import { EssayService } from '../services/essay.service';
   styleUrls: ['./essay-card.component.scss']
 })
 export class EssayCardComponent implements OnInit {
-    @Input() title: string = "Lorem ipsum dolor sit amet";
-    @Input() theme: string = "Aliquam eu nibh id est semper efficitur";
-    @Input() textBody: string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget auctor diam. Suspendisse fermentum a nibh sed fringilla. Donec sit amet nisi gravida, laoreet leo nec, faucibus elit. Donec non sollicitudin dolor. Donec ut nisl eu mauris elementum volutpat. Curabitur rutrum ac erat at ultricies. Etiam rutrum facilisis diam sit amet consequat. Sed sed nulla eleifend, pulvinar tortor in, vehicula eros. Vivamus dapibus, lacus eget venenatis tincidunt, risus eros mattis lectus, vitae porttitor mi nisi vitae felis.";
+    @Input() essay: Essay;
 
     constructor(private essayService: EssayService) {}
 
     ngOnInit() {
       console.log("I guess the card exists");
     }
+
+    onEditEssay() {
+      this.essayService.essayEdited.emit(this.essay);
+    }
+
 }

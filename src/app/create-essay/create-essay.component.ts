@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { EssayService } from '../services/essay.service';
+import { Essay } from '../models/essay';
 
 @Component({
   selector: 'app-create-essay',
@@ -31,9 +32,23 @@ export class CreateEssayComponent implements OnInit {
         this.essayService.essayCreated
             .subscribe(
                 () => {
+                    this.createEssayForm.reset();
                     this.display = 'block';
                 }
             );
+        
+        this.essayService.essayEdited
+        .subscribe(
+            (essay: Essay) => {
+                this.createEssayForm.patchValue({
+                    essayImg : essay.essayImg,
+                    theme : essay.theme,
+                    essayText: essay.essayText,
+                    title : essay.title
+                });
+                this.display = 'block';
+            }
+        );
     }
 
     submitForm(form: any): void {

@@ -12,9 +12,7 @@
                   <ul>
                     <li *ngFor="let essay of userEssays">
                       <app-essay-card 
-                          [title] = "essay.title"
-                          [theme] = "essay.theme"
-                          [textBody] = "essay.textBody"
+                          [essay] = "essay"
                       ></app-essay-card>
                     </li>
                   </ul>
@@ -23,7 +21,7 @@
       </div>
   </div>     
   <a style="cursor: pointer;" class="plus" (click)="onNewEssay()">
-      <span class="glyphicon glyphicon-pencil"></span>
+      <span class="glyphicon glyphicon-plus"></span>
     </a>     
     </div>
 

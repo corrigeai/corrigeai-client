@@ -4,12 +4,17 @@
                         <li class="list-group-item">
                                 <span class="badge pull-right"><h4>&nbsp;8.75&nbsp;</h4></span>
                                 <span class="pull-right"><h4>Nota:&nbsp;</h4></span>   
-                            <h3>&nbsp;&nbsp;{{title}}</h3>
+                            <h3>&nbsp;&nbsp;{{essay.title}}</h3>
                         </li>
-                        <li class="list-group-item text-muted"><h4>&nbsp;&nbsp;Tema: {{theme}}</h4></li>
+                        <li class="list-group-item text-muted"><h4>&nbsp;&nbsp;Tema: {{essay.theme}}</h4></li>
                       </ul>
                 <div class="panel-body">
-                        <div class="well">{{textBody}}</div>    
+                        <div class="well">{{essay.essayText}}</div>  
+                <button type="button" 
+                        (click)="onEditEssay()" 
+                        class="btn btn-warning btn-lg">
+                        &nbsp;<span class="glyphicon glyphicon-pencil"></span>&nbsp;
+                </button>  
                 </div>
 </div>
 </div>
