@@ -13,6 +13,7 @@ export class CreateEssayComponent implements OnInit {
     createEssayForm: FormGroup;
     fileToUpload: File = null;
     display = 'none';
+    edit = false;
 
     constructor(private formBuilder: FormBuilder,private cd: ChangeDetectorRef,
          private essayService: EssayService) {
@@ -34,6 +35,7 @@ export class CreateEssayComponent implements OnInit {
                 () => {
                     this.createEssayForm.reset();
                     this.display = 'block';
+                    this.edit = false;
                 }
             );
         
@@ -47,24 +49,30 @@ export class CreateEssayComponent implements OnInit {
                     title : essay.title
                 });
                 this.display = 'block';
+                this.edit = true;
             }
         );
     }
 
     submitForm(form: any): void {
-        console.log(form);
+        if(this.edit){
+           // TO DO related to edition
+        } else {
+            var essayData = {};
+            essayData["userUsername"] = JSON.parse(localStorage.getItem('currentUser')).username;
+            essayData["theme"] = form.theme;
+            essayData["title"] = form.title;
+            essayData["content"] = (form.essayText !== null ? form.essayText : form.essayImg);            
+
+            this.essayService.createEssay(essayData).
+            subscribe(
+                (essay: Essay) => {
+                    this.essayService.userEssayList.push(essay);
+                }
+            );
+        }
         this.onEndSubmission();
-    //    this.userService.editUser(form)
-    //     .subscribe(
-    //       result => {
-    //         if (result) {
-    //           this.router.navigate(['/']);
-    //           this.error = undefined;
-    //           this.editProfileForm.reset();
-    //         }
-    //       },
-    //       error => this.error = error
-    //     );
+
     }
 
     onFileChange(event) {
