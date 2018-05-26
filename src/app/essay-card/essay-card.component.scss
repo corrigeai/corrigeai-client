@@ -9,3 +9,10 @@ li {
 span {
     padding:10px;
 }
+
+.well {
+    word-wrap: break-word;
+    white-space: normal;  
+    max-height: 100px;
+    overflow-y: hidden;  
+}
