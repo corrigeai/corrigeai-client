@@ -56,5 +56,9 @@ export class EssayService {
           });
     }
 
+    reviewEssay(reviewData): Observable<any> {
+        return null;
+    }
+
 
 }

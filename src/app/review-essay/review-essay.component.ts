@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { EssayService } from '../services/essay.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-review-essay',
@@ -11,6 +13,8 @@ export class ReviewEssay {
   
     constructor(
       private formBuilder: FormBuilder,
+      private essayService: EssayService,
+      private router: Router
     ) {
       this.reviewForm = formBuilder.group({
         'comptc1text': [null, Validators.required],
@@ -27,5 +31,11 @@ export class ReviewEssay {
     }
 
     submitForm(form: any): void {
+      this.essayService.reviewEssay(form).subscribe(
+        () => {
+          this.reviewForm.reset();
+          this.router.navigate(['/']);
+        }
+      )
       }
 }
