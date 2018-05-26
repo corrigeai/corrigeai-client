@@ -2,10 +2,10 @@
 <div class="row">
   <div class="col-sm-4"></div>
   <div class="col-sm-4">
-      <object id="profilePic" data="../../assets/default-profile.png" type="image/png" >
-            <img  src="https://appharbor.com/assets/images/stackoverflow-logo.png" 
+            <img  [src]="imagePath"
+            class="thumbnail"
+            onerror="this.src='../../assets/default-profile.png'" 
             alt="Avatar"/>
-      </object>
   </div>
   <div class="col-sm-4"></div>
 </div>

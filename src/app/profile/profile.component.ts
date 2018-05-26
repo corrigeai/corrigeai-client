@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 
 @Component({
@@ -12,8 +13,9 @@ export class ProfileComponent implements OnInit {
   gender: String = "Unknown";
   email: String = "test@test.com";
   username: String = "dummy_user";
+  imagePath: SafeResourceUrl;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,private _sanitizer: DomSanitizer) {}
 
   ngOnInit() {
   
@@ -22,6 +24,8 @@ export class ProfileComponent implements OnInit {
       this.gender = user.gender;
       this.email = user.email;
       this.username = user.username;  
+      this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(user.photoUrl);
+      
   }
 
   onEditProfile() {
