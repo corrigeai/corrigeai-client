@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 import { UserService } from '../services/user.service';
 
@@ -13,13 +14,18 @@ import { UserService } from '../services/user.service';
 export class EditProfileComponent implements OnInit {
 
   editProfileForm: FormGroup;
+  fileToUpload: File = null;
   error: any;
+  imagePath;
 
   constructor(private router: Router,
               private formBuilder: FormBuilder,
-              private userService: UserService
+              private userService: UserService,
+              private cd: ChangeDetectorRef,
+              private _sanitizer: DomSanitizer
   ) {
     const user = JSON.parse(localStorage.getItem('currentUser'));
+    this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(user.photoUrl);
 
     this.editProfileForm = this.formBuilder.group({
       'name': [user.name, Validators.required],
@@ -47,6 +53,26 @@ export class EditProfileComponent implements OnInit {
       },
       error => this.error = error
     );
+  }
+
+  onFileChange(event) {
+    const reader = new FileReader();
+   
+    if(event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+    
+      reader.onload = () => {
+        this.imagePath = reader.result; 
+        this.editProfileForm.patchValue({
+          photoUrl: reader.result
+        });
+        
+        // need to run CD since file load runs outside of zone
+        this.cd.markForCheck();
+      };
+    }
+
   }
 
 }

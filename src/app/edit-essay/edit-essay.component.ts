@@ -15,7 +15,8 @@ export class EditEssayComponent implements OnInit {
     display = 'none';
     original;
 
-    constructor(private formBuilder: FormBuilder,private cd: ChangeDetectorRef,
+    constructor(private formBuilder: FormBuilder,
+        private cd: ChangeDetectorRef,
          private essayService: EssayService) {
             this.editEssayForm = this.formBuilder.group({
                 title : [null, Validators.required],
