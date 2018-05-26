@@ -49,8 +49,8 @@ export class CreateEssayComponent implements OnInit {
 
             this.essayService.createEssay(essayData)
             .subscribe(
-                (essay) => {
-                    this.essayService.userEssayList.push(essay);
+                (essay: Essay) => {
+                    this.essayService.addEssayElement(essay);
                     this.onEndSubmission();
                 }
             );

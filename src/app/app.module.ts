@@ -29,6 +29,7 @@ import { ReviewEssay } from './review-essay/review-essay.component';
 
 // Loading environment
 import { environment } from '../environments/environment';
+import { ReviewService } from './services/review.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { environment } from '../environments/environment';
     AuthenticationService,
     AuthGuardService,
     UserService,
-    EssayService
+    EssayService,
+    ReviewService
   ],
   bootstrap: [AppComponent]
 })

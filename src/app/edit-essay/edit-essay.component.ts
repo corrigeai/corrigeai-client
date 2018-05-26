@@ -76,8 +76,7 @@ export class EditEssayComponent implements OnInit {
         this.essayService.editEssay(form)
         .subscribe(
             (essay) => {
-                let index = this.essayService.userEssayList.indexOf(this.original);
-                this.essayService.userEssayList[index] = essay;
+                this.essayService.updateEssayElement(this.original,essay);
                 this.onEndSubmission();
             }
         );           
