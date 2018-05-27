@@ -24,7 +24,9 @@
                              <div id="content">
                                 <div *ngIf="essay.type == 'Text'">
                                     <strong>
-                                            <p>&ldquo;{{essay.content}}&rdquo;</p>
+                                        <div class="well">
+                                            <p>&ldquo;{{essay.content}}&rdquo;</p> 
+                                        </div>
                                     </strong>            
                                 </div>
                                 <div *ngIf="essay.type != 'Text'">
