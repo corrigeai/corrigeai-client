@@ -1,17 +1,16 @@
 <div class="backdrop" [ngStyle]="{'display': display}"></div>
-<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display': display}">
-    <div class="modal-dialog modal-lg" role="document">
+<div class="modal" role="dialog" [ngStyle]="{'display': display}">
+    <div class="container modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" aria-label="Close" (click)="onEndSubmission()"><span aria-hidden="true">&times;</span></button>
                 <h2 class="modal-title text-center">Editar Redação</h2>
             </div>
-
-            <div class="modal-body" style="padding: 10px;">
                     <div class="row">
                             <div class="col-xs-1"></div>
                             <div class="col-xs-10">
                                     <form class="fields" [formGroup]="editEssayForm" (ngSubmit)="submitForm(editEssayForm.value)">
+                                            <div class="modal-body" >
                                             <h3>Título</h3>
                                             <div class="form-group">
                                               <input [ngClass]="{'has-error': !editEssayForm.controls['title'].valid && editEssayForm.controls['title'].touched,
@@ -41,15 +40,22 @@
                                                   id="comment"
                                                   [formControl]="editEssayForm.controls['essayText']"></textarea>
                                             </div>
-                      
-                                            <button class="btn btn-block btn-danger" type="submit" [ngClass]="{'disabled': !editEssayForm.valid}" [disabled]='!editEssayForm.valid'>Submeter Redação</button>
+                                            <div class="row">&nbsp;</div> 
+                                        </div>                           
+                                            <div class="modal-footer">
+                                                <div class="col-xs-2"></div>
+                                                <div class="col-xs-8">
+                                                    <button 
+                                                    class="btn btn-block btn-danger" type="submit"
+                                                    [ngClass]="{'disabled': !editEssayForm.valid}" 
+                                                    [disabled]='!editEssayForm.valid'>Submeter Redação</button>
+                                                </div>
+                                                <div class="col-xs-2"></div>
+                                                    
+                                            </div>                      
                                           </form>
                                         </div>
                                         <div class="col-xs-1">&nbsp;</div>
-                            </div>   
-                            <div class="row">&nbsp;</div>                         
-                            <div class="modal-footer">
-                            </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

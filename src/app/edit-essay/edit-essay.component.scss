@@ -14,7 +14,13 @@
 .modal-body {
     max-height: calc(100vh - 210px);
     overflow-y: auto;
+    overflow-x: hidden;
 }
+
+.modal-foot {
+    position: fixed;
+}
+
 
 img {
     max-height: 300px;
