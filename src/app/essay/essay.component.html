@@ -21,17 +21,25 @@
         <div class="col-xs-6">
                 <ul class="list-group">
                          <li class="list-group-item">
-                             <div class="well well-sm" id="content">
-                                <strong>
-                                    <p>&ldquo;{{essay.content}}&rdquo;</p>
-                                </strong>
+                             <div id="content">
+                                <div *ngIf="essay.type == 'Text'">
+                                    <strong>
+                                            <p>&ldquo;{{essay.content}}&rdquo;</p>
+                                    </strong>            
+                                </div>
+                                <div *ngIf="essay.type != 'Text'">
+                                            <img  [src]="imagePath"
+                                            class="thumbnail"
+                                            onerror="this.src='../../assets/no_image.png'" 
+                                            alt="Essay"/> 
+                                </div>
                             </div>
                          </li>
                     </ul>  
         </div> 
     </div>  
     <div>     
-            <a style="cursor: pointer;" class="comment" (click)="onNewEssay()">
+            <a style="cursor: pointer;" class="comment" (click)="onReviewEssay()">
                 <span class="glyphicon glyphicon-comment"></span>
             </a>  
         </div>

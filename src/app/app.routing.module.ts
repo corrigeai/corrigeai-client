@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuardService]},
   { path: 'myessays', component: WorkstationComponent, canActivate: [AuthGuardService]},
   { path: 'to-review', component: EssayComponent},
-  { path: 'review', component: ReviewEssay},
+  { path: 'review/:id', component: ReviewEssay},
   {
     path: '**',
     redirectTo: '/'

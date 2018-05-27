@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class ReviewService {
 
-    private reviewsCollection: any[];
+    private reviewsCollection: any[] = [];
 
     API = environment.apiUrl;
 
