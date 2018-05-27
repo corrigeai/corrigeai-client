@@ -1,11 +1,11 @@
 export class Essay {
     title: string;
     theme: string;
-    essayText: string;
-    essayImg: any;
+    id: string;
     content: any;
 
-    constructor(title: string, theme: string, content: any) {
+    constructor(id: string, title: string, theme: string, content: any) {
+        this.id = id;
         this.title = title;
         this.theme = theme;
         this.content = content;

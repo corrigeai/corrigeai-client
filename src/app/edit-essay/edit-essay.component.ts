@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { EssayService } from '../services/essay.service';
 import { Essay } from '../models/essay';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-edit-essay',
@@ -13,8 +14,12 @@ export class EditEssayComponent implements OnInit {
     editEssayForm: FormGroup;
     fileToUpload: File = null;
     display = 'none';
+    original;
+    imagePath;
 
-    constructor(private formBuilder: FormBuilder,private cd: ChangeDetectorRef,
+    constructor(private formBuilder: FormBuilder,
+        private cd: ChangeDetectorRef,
+        private _sanitizer: DomSanitizer,
          private essayService: EssayService) {
             this.editEssayForm = this.formBuilder.group({
                 title : [null, Validators.required],
@@ -32,10 +37,13 @@ export class EditEssayComponent implements OnInit {
         this.essayService.essayEdited
         .subscribe(
             (essay: Essay) => {
+                this.original = essay;
+                this.imagePath;
+                this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(essay.content);
                 this.editEssayForm.patchValue({
-                    essayImg : essay.essayImg,
+                    essayImg : (this.isValid64Base(essay.content) ? essay.content: null),
                     theme : essay.theme,
-                    essayText: essay.essayText,
+                    essayText: (this.isValid64Base(essay.content) ? '': essay.content),
                     title : essay.title
                 });
                 this.display = 'block';
@@ -43,9 +51,31 @@ export class EditEssayComponent implements OnInit {
         );
     }
 
-    submitForm(form: any): void {           
-        this.onEndSubmission();
+    isValid64Base(text) {
+        var regex = /^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$/;
+        return regex.test(text);
+    }
 
+    complyForm(form: any):any {
+        form["id"] = this.original.id;
+        form["content"] = ((form["essayText"] !== null && form["essayText"] !== '') ? form["essayText"] : form["essayImg"])
+        delete form.essayImg;
+        delete form.essayText;
+        return form;
+    }
+
+    submitForm(form: any): void {
+        form = this.complyForm(form);
+        console.log(form);
+
+        this.essayService.editEssay(form)
+        .subscribe(
+            (essay) => {
+                let index = this.essayService.userEssayList.indexOf(this.original);
+                this.essayService.userEssayList[index] = essay;
+                this.onEndSubmission();
+            }
+        );           
     }
 
     onFileChange(event) {
@@ -56,6 +86,7 @@ export class EditEssayComponent implements OnInit {
           reader.readAsDataURL(file);
         
           reader.onload = () => {
+            this.imagePath = reader.result; 
             this.editEssayForm.patchValue({
                 essayImg: reader.result
             });

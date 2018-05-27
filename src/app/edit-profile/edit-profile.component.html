@@ -2,8 +2,17 @@
   <h2>Edit your Profile</h2>
 
   <form class="fields" [formGroup]="editProfileForm" (ngSubmit)="submitForm(editProfileForm.value)">
+    <div class="form-group">
+        <img  [src]="imagePath"
+        class="thumbnail"
+        onerror="this.src='../../assets/default-profile.png'" 
+        alt="Avatar"/>
+        <input type="file"
+        (change)="onFileChange($event)">
+    </div>
 
     <div class="form-group">
+
       <input [ngClass]="{'has-error': !editProfileForm.controls['name'].valid && editProfileForm.controls['name'].touched,
                                  'touched': editProfileForm.controls['name'].touched }" class="form-control" type="text"
         placeholder="Nome completo" [formControl]="editProfileForm.controls['name']">
@@ -29,15 +38,6 @@
                                  'touched': editProfileForm.controls['username'].touched }" class="form-control" type="text"
         placeholder="Nome de Usuário" [formControl]="editProfileForm.controls['username']">
     </div>
-
-
-    <div class="form-group">
-      <input [ngClass]="{'has-error': !editProfileForm.controls['photoUrl'].valid && editProfileForm.controls['username'].touched,
-                                   'touched': editProfileForm.controls['photoUrl'].touched }" class="form-control" type="text"
-        placeholder="URL da foto" [formControl]="editProfileForm.controls['photoUrl']">
-    </div>
-
-
 
     <div class="error-message" [hidden]="!error">{{error}}</div>
 
