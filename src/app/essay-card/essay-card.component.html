@@ -4,14 +4,18 @@
                         <li class="list-group-item">
                                 <span class="badge pull-right"><h4>&nbsp;N/A&nbsp;</h4></span>
                                 <span id="nota" class="pull-right"><h4>Nota:&nbsp;</h4></span>   
-                            <h3>&nbsp;&nbsp;{{essay.title}}</h3>
                         </li>
-                        <li class="list-group-item text-muted "><h4>&nbsp;&nbsp;Tema: {{essay.theme}}</h4></li>
+                        <li class="list-group-item">
+                                <h3>&nbsp;Título:&nbsp;{{essay.title}}</h3>
+                        </li>
+                        <li class="list-group-item text-muted ">
+                                <strong><h4>&nbsp;Tema:&nbsp;{{essay.theme}}</h4></strong>
+                        </li>
                       </ul>
                 <div class="panel-body">
                         <div class="well"><p>{{essay.content}}</p></div>  
                 
-                <div class="col-md-6 form-group">
+                <div class="col-md-5 form-group">
                                 <button type="button" 
                                 (click)="onEditEssay()" 
                                 class="btn btn-block">
@@ -20,6 +24,6 @@
 
                         </div>
                 </div>
-                <div class="col-md-6 form-group"></div>
+                <div class="col-md-7 form-group"></div>
 </div>
 </div>
