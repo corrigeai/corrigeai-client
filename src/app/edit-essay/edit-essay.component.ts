@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { EssayService } from '../services/essay.service';
 import { Essay } from '../models/essay';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-edit-essay',
@@ -14,9 +15,11 @@ export class EditEssayComponent implements OnInit {
     fileToUpload: File = null;
     display = 'none';
     original;
+    imagePath;
 
     constructor(private formBuilder: FormBuilder,
         private cd: ChangeDetectorRef,
+        private _sanitizer: DomSanitizer,
          private essayService: EssayService) {
             this.editEssayForm = this.formBuilder.group({
                 title : [null, Validators.required],
@@ -35,9 +38,10 @@ export class EditEssayComponent implements OnInit {
         .subscribe(
             (essay: Essay) => {
                 this.original = essay;
-                console.log(essay.content);
+                this.imagePath;
+                this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(essay.content);
                 this.editEssayForm.patchValue({
-                    essayImg : (this.isValid64Base(essay.content) ? this.dataURLtoFile(essay.content,'userFile'): null),
+                    essayImg : (this.isValid64Base(essay.content) ? essay.content: null),
                     theme : essay.theme,
                     essayText: (this.isValid64Base(essay.content) ? '': essay.content),
                     title : essay.title
@@ -45,15 +49,6 @@ export class EditEssayComponent implements OnInit {
                 this.display = 'block';
             }
         );
-    }
-
-    dataURLtoFile(dataurl, filename) {
-        var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
-            bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
-        while(n--){
-            u8arr[n] = bstr.charCodeAt(n);
-        }
-        return new File([u8arr], filename, {type:mime});
     }
 
     isValid64Base(text) {
@@ -91,6 +86,7 @@ export class EditEssayComponent implements OnInit {
           reader.readAsDataURL(file);
         
           reader.onload = () => {
+            this.imagePath = reader.result; 
             this.editEssayForm.patchValue({
                 essayImg: reader.result
             });
