@@ -79,4 +79,14 @@ export class EssayService {
           });
     }
 
+    receiveToReview() {
+        const httpOptions = this.authService.getOptions();
+        const userId = JSON.parse(localStorage.getItem('currentUser')).id;
+        return this.http.get<Essay>(this.API.concat('tuiterapi/users/'+userId+'/evaluate'), httpOptions)
+        .catch((error: Response) => {
+            return  Observable.throw(error);
+          });
+        
+    }
+
 }

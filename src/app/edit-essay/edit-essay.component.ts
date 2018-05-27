@@ -41,9 +41,9 @@ export class EditEssayComponent implements OnInit {
                 this.imagePath;
                 this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(essay.content);
                 this.editEssayForm.patchValue({
-                    essayImg : (this.isValid64Base(essay.content) ? essay.content: null),
+                    essayImg : (essay.type == 'Image' ? essay.content: null),
                     theme : essay.theme,
-                    essayText: (this.isValid64Base(essay.content) ? '': essay.content),
+                    essayText: (essay.type == 'Text' ? essay.content: null),
                     title : essay.title
                 });
                 this.display = 'block';
