@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+.well {
+    font-family: 'Open Sans',serif;
+    border-radius: 0;
+}
+
+.list-group-item {
+    font-family: 'Open Sans',serif;
+    background-color:  rgba(5, 5, 5, 0.75);
+    border-radius: 0;
+    border-top: 1px solid transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+
+}
+
+#content {
+    min-height: 300px;
+    min-width: 300px;
+}

@@ -30,6 +30,8 @@ import { ReviewEssay } from './review-essay/review-essay.component';
 // Loading environment
 import { environment } from '../environments/environment';
 import { ReviewService } from './services/review.service';
+import { ReviewStationComponent } from './reviewstation/reviewstation.component';
+import { EssayComponent } from './essay/essay.component';
 
 @NgModule({
   declarations: [
@@ -43,8 +45,10 @@ import { ReviewService } from './services/review.service';
     ProfileComponent,
     EditProfileComponent,
     UpdatePassComponent,
+    ReviewStationComponent,
     NavbarComponent,
     WorkstationComponent,
+    EssayComponent,
     CreateEssayComponent,
     EditEssayComponent,
     EssayCardComponent

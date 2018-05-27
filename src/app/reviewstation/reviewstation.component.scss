@@ -1,0 +1,28 @@
+.container {
+
+    .plus {
+        color:black;
+        position: fixed;
+        bottom: 0;
+        right: 10%;
+        bottom: 10%;
+        span {
+            font-size: 2em;
+            background-color: darkcyan;
+            color: black;
+            padding: 25px;
+            border-radius: 45px;
+
+        }
+    }
+}
+
+.essays {
+    position: relative;
+
+}
+
+h2 {
+    color: silver;
+    font-weight: bold;
+}
