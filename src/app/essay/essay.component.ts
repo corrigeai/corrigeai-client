@@ -26,8 +26,7 @@ export class EssayComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.essayService.receiveToReview().subscribe(
-            (essay) => {
-              console.log(essay);
+            (essay) => { 
               this.essay = essay;
               this.id.next(essay.id);
               if(essay.type == "Image"){
