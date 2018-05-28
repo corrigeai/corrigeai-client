@@ -25,11 +25,13 @@ export class EssayComponent implements OnInit, OnDestroy {
       private _sanitizer: DomSanitizer) {}
 
     ngOnInit() {
-        this.essayService.getUserEssays().subscribe(
-            (essays) => {
-              this.essayService.setEssayCollection(essays);
-              this.id.next(this.essayService.getEssayCollection()[5].id);
-              this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(this.essayService.getEssayCollection()[5].content);
+        this.essayService.receiveToReview().subscribe(
+            (essay) => { 
+              this.essay = essay;
+              this.id.next(essay.id);
+              if(essay.type == "Image"){
+                this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(essay.content);
+              }
             });
     }
 

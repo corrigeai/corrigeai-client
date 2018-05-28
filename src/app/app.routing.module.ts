@@ -21,8 +21,8 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
   {path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuardService]},
   { path: 'myessays', component: WorkstationComponent, canActivate: [AuthGuardService]},
-  { path: 'to-review', component: EssayComponent},
-  { path: 'review/:id', component: ReviewEssay},
+  { path: 'to-review', component: EssayComponent, canActivate: [AuthGuardService]},
+  { path: 'review/:id', component: ReviewEssay, canActivate: [AuthGuardService]},
   {
     path: '**',
     redirectTo: '/'
