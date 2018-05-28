@@ -10,3 +10,13 @@
 .div.form-group {
     padding: 15px;
 }
+
+.modal-body {
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.modal-foot {
+    position: fixed;
+}

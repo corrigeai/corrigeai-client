@@ -1,20 +1,29 @@
 <div class="container">
-        <div class="panel panel-default">
+        <div class="panel panel-default thumbnail">
                 <ul class="list-group">
                         <li class="list-group-item">
-                                <span class="badge pull-right"><h4>&nbsp;8.75&nbsp;</h4></span>
-                                <span class="pull-right"><h4>Nota:&nbsp;</h4></span>   
-                            <h3>&nbsp;&nbsp;{{essay.title}}</h3>
+                                <span class="badge pull-right"><h4>&nbsp;N/A&nbsp;</h4></span>
+                                <span id="nota" class="pull-right"><h4>Nota:&nbsp;</h4></span>   
                         </li>
-                        <li class="list-group-item text-muted"><h4>&nbsp;&nbsp;Tema: {{essay.theme}}</h4></li>
+                        <li class="list-group-item">
+                                <h3>&nbsp;Título:&nbsp;{{essay.title}}</h3>
+                        </li>
+                        <li class="list-group-item text-muted ">
+                                <strong><h4>&nbsp;Tema:&nbsp;{{essay.theme}}</h4></strong>
+                        </li>
                       </ul>
                 <div class="panel-body">
-                        <div class="well">{{essay.content}}</div>  
-                <button type="button" 
-                        (click)="onEditEssay()" 
-                        class="btn btn-warning btn-lg">
-                        &nbsp;<span class="glyphicon glyphicon-pencil"></span>&nbsp;
-                </button>  
+                        <div class="well"><p>{{essay.content}}</p></div>  
+                
+                <div class="col-md-5 form-group">
+                                <button type="button" 
+                                (click)="onEditEssay()" 
+                                class="btn btn-block">
+                                &nbsp;<strong>Editar</strong>&nbsp;
+                        </button>  
+
+                        </div>
                 </div>
+                <div class="col-md-7 form-group"></div>
 </div>
 </div>

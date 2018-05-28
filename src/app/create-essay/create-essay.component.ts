@@ -11,10 +11,11 @@ import { Essay } from '../models/essay';
 })
 export class CreateEssayComponent implements OnInit {
     createEssayForm: FormGroup;
-    fileToUpload: File = null;
+    imagePath = null;
     display = 'none';
 
-    constructor(private formBuilder: FormBuilder,private cd: ChangeDetectorRef,
+    constructor(private formBuilder: FormBuilder,
+        private cd: ChangeDetectorRef,
          private essayService: EssayService) {
             this.createEssayForm = this.formBuilder.group({
                 title : [null, Validators.required],
@@ -26,6 +27,8 @@ export class CreateEssayComponent implements OnInit {
 
     onEndSubmission() {
         this.display = 'none';
+        this.createEssayForm.reset();
+        this.imagePath = null;
     }
 
     ngOnInit() {
@@ -42,15 +45,16 @@ export class CreateEssayComponent implements OnInit {
     submitForm(form: any): void {
 
             var essayData = {};
-            essayData["userUsername"] = JSON.parse(localStorage.getItem('currentUser')).username;
-            essayData["theme"] = form.theme;
-            essayData["title"] = form.title;
-            essayData["content"] = ((form.essayText !== null && form.essayText !== '') ? form.essayText : form.essayImg);            
+            essayData['userUsername'] = JSON.parse(localStorage.getItem('currentUser')).username;
+            essayData['theme'] = form.theme;
+            essayData['title'] = form.title;
+            essayData['content'] = ((form.essayText !== null && form.essayText !== '') ? form.essayText : form.essayImg);
+            essayData['type'] = ((form.essayText !== null && form.essayText !== '') ? 'Text' : 'Image');        
 
             this.essayService.createEssay(essayData)
             .subscribe(
-                (essay) => {
-                    this.essayService.userEssayList.push(essay);
+                (essay: Essay) => {
+                    this.essayService.addEssayElement(essay);
                     this.onEndSubmission();
                 }
             );
@@ -65,6 +69,7 @@ export class CreateEssayComponent implements OnInit {
           reader.readAsDataURL(file);
         
           reader.onload = () => {
+            this.imagePath = reader.result;
             this.createEssayForm.patchValue({
                 essayImg: reader.result
             });

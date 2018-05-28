@@ -11,21 +11,44 @@ import { AuthenticationService } from './authentication.service';
 @Injectable()
 export class EssayService {
     
-    userEssayList : Essay[] = [];
+    private essayCollection : Essay[] = [];
     essayCreated = new EventEmitter<any>();
     essayEdited = new EventEmitter<Essay>();
 
     API = environment.apiUrl;
 
-    constructor(private http: HttpClient,private authService: AuthenticationService) { }
+    constructor(private http: HttpClient,private authService: AuthenticationService) {}
 
-    notifyEssayCreation() {
+    // essayCollection related Methods
+
+    updateEssayElement(original: Essay, newEssay: Essay) {
+        let index = this.essayCollection.indexOf(original);
+        this.essayCollection[index] = newEssay;
+    }
+
+    addEssayElement(essay: Essay):void {
+        this.essayCollection.push(essay);
+    }
+
+    setEssayCollection(essayCollection: Essay[]): void {
+        this.essayCollection = essayCollection;
+    }
+
+    getEssayCollection(): Essay[] {
+        return this.essayCollection;
+    }
+    
+    //Event Emission related methods
+
+    notifyEssayCreation(): void {
         this.essayCreated.emit();
     }
 
-    notifyEssayEdition(essay: Essay) {
+    notifyEssayEdition(essay: Essay): void {
         this.essayEdited.emit(essay);
     }
+
+    //HTTP related methods
 
     createEssay(essayData): Observable<any> {
         const httpOptions = this.authService.getOptions();
@@ -55,6 +78,5 @@ export class EssayService {
             return  Observable.throw(error);
           });
     }
-
 
 }

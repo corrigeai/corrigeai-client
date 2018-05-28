@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -11,6 +10,8 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { HomeComponent } from './home/home.component';
 import { WorkstationComponent } from './workstation/workstation.component';
 import { EssayCardComponent } from './essay-card/essay-card.component';
+import { ReviewEssay } from './review-essay/review-essay.component';
+import { EssayComponent } from './essay/essay.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent , pathMatch: 'full'},
@@ -20,6 +21,8 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
   {path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuardService]},
   { path: 'myessays', component: WorkstationComponent, canActivate: [AuthGuardService]},
+  { path: 'to-review', component: EssayComponent},
+  { path: 'review/:id', component: ReviewEssay},
   {
     path: '**',
     redirectTo: '/'

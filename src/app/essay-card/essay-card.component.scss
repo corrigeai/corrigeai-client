@@ -9,3 +9,41 @@ li {
 span {
     padding:10px;
 }
+
+.well {
+    word-wrap: break-word;
+    white-space: normal;  
+    max-height: 100px;
+    overflow-y: hidden;  
+}
+
+.container {
+    border-radius: 0;
+}
+
+.thumbnail {
+    border-radius: 0;
+    background-color: rgba(255, 255, 255, 0.80);
+}
+
+.well {
+    border-radius: 0;
+}
+
+#nota {
+    border-radius: 0;
+}
+
+button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: black;
+    background-color: lightslategray;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    border-radius: 0;
+  }
