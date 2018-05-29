@@ -61,6 +61,18 @@ export class CreateEssayComponent implements OnInit {
 
     }
 
+    isEmpty(value: any): string {
+        if(value == null){
+            return 'true';
+        }
+        else if (value == '') {
+            return 'true';
+        }
+        else {
+            return 'false';
+        }
+    }
+
     onFileChange(event) {
         const reader = new FileReader();
        

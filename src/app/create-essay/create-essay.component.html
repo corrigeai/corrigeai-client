@@ -32,7 +32,7 @@
                                                             onerror="this.src='../../assets/no_image.png'" 
                                                             alt="Essay"/>                                                
                                                     <input type="file"
-                                                           [disabled]="!createEssayForm.controls['essayText'].value == ''"
+                                                           [disabled]="isEmpty(createEssayForm.controls['essayText'].value) == 'false'"
                                                            (change)="onFileChange($event)">
                                             </div>  
                                             <div class="form-group">
