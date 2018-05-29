@@ -26,6 +26,7 @@ import { EssayCardComponent } from './essay-card/essay-card.component';
 import { EssayService } from './services/essay.service';
 import { EditEssayComponent } from './edit-essay/edit-essay.component';
 import { ReviewEssay } from './review-essay/review-essay.component';
+import { DeleteEssayComponent } from './delete-essay/delete-essay.component';
 
 // Loading environment
 import { environment } from '../environments/environment';
@@ -51,7 +52,8 @@ import { EssayComponent } from './essay/essay.component';
     EssayComponent,
     CreateEssayComponent,
     EditEssayComponent,
-    EssayCardComponent
+    EssayCardComponent,
+    DeleteEssayComponent
 
   ],
   imports: [

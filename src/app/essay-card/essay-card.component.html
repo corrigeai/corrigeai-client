@@ -20,7 +20,14 @@
                                 (click)="onEditEssay()" 
                                 class="btn btn-block">
                                 &nbsp;<strong>Editar</strong>&nbsp;
-                        </button>  
+                        </button>
+                        <button type="button"
+                          (click)="openDeleteEssay()"
+                          class="btn btn-warning btn-lg">
+                    &nbsp;<span class="glyphicon glyphicon-trash"></span>&nbsp;
+                  </button>
+                  <app-delete-essay [display]="display" [hidden]="!display" (displayEvent)="refreshDisplay($event)" (deleteEssay)="onDeleteEssay($event)">
+                  </app-delete-essay>
 
                         </div>
                 </div>

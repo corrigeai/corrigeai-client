@@ -9,7 +9,7 @@ import { Essay } from '../models/essay';
 })
 export class WorkstationComponent implements OnInit {
   // essay: Essay = new Essay('A queda de Dom Quixote','Emo Vibes', null);
-  userEssays :Essay[];
+  userEssays: Essay[];
 
   constructor(private essayService: EssayService) {
   }
@@ -18,6 +18,10 @@ export class WorkstationComponent implements OnInit {
     this.essayService.getUserEssays().subscribe(
       (essays) => {
         this.essayService.setEssayCollection(essays);
+        this.userEssays = this.essayService.getEssayCollection();
+      });
+    this.essayService.essayDeleted
+      .subscribe(() => {
         this.userEssays = this.essayService.getEssayCollection();
       });
   }

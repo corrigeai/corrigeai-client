@@ -11,9 +11,10 @@ import { AuthenticationService } from './authentication.service';
 @Injectable()
 export class EssayService {
     
-    private essayCollection : Essay[] = [];
+    private essayCollection: Essay[] = [];
     essayCreated = new EventEmitter<any>();
     essayEdited = new EventEmitter<Essay>();
+    essayDeleted = new EventEmitter<any>();
 
     API = environment.apiUrl;
 
@@ -48,8 +49,13 @@ export class EssayService {
         this.essayEdited.emit(essay);
     }
 
-    //HTTP related methods
+    notifyEssayDeletion(deletedEssay: Essay) {
+        this.essayCollection = this.essayCollection
+                .filter(essay => essay.id !== deletedEssay.id);
+        this.essayDeleted.emit();
+    }
 
+    //HTTP related methods
     createEssay(essayData): Observable<any> {
         const httpOptions = this.authService.getOptions();
         return this.http.post(this.API.concat('tuiterapi/essays'), essayData, httpOptions)
@@ -57,6 +63,15 @@ export class EssayService {
         .catch((error: Response) => {
             return  Observable.throw(error);
           });
+    }
+
+    deleteEssay(id): Observable<any> {
+        const httpOptions = this.authService.getOptions();
+        return this.http.delete(this.API.concat('tuiterapi/essays/'+id), httpOptions)
+        .map((response: Response) => response)
+        .catch((error: Response) => {
+            return  Observable.throw(error);
+        });
     }
 
     getUserEssays(): Observable<any> {
