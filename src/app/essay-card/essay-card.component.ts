@@ -28,7 +28,10 @@ export class EssayCardComponent implements OnInit {
       this.display = event.value;
     }
 
-    onDeleteEssay(event){
-      this.essayService.deleteEssay(this.essay.id).subscribe();
+    onDeleteEssay(event) {
+      this.essayService.deleteEssay(this.essay.id)
+        .subscribe(() => {
+          this.essayService.notifyEssayDeletion(this.essay);
+        });
     }
 }
