@@ -1,4 +1,6 @@
 <div class="container">
+    <div class="col-xs-0 col-sm-0 col-md-2 col-lg-2"></div>
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
     <h2>Mude sua senha</h2>
 
     <form class="fields" [formGroup]="updatePassForm" (ngSubmit)="submitForm(updatePassForm.value)">
@@ -30,5 +32,7 @@
           type="submit"
           [ngClass]="{'disabled': !updatePassForm.valid}"
           [disabled]='!updatePassForm.valid'>Mudar Senha</button>
-  </form>      
+  </form>
+  </div>     
+  <div class="col-xs-0 col-sm-0 col-md-2 col-lg-2"></div>
 </div>
