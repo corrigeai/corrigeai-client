@@ -6,6 +6,28 @@
   background-color: rgba(5, 5, 5, 0.75);
 }
 
+.thumbnail {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+}
+.thumbnail img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+.thumbnail img.portrait {
+  width: 100%;
+  height: auto;
+}
+
+
 .well {
   border-radius: 0;
 }
@@ -19,19 +41,11 @@ h1 {
 }
 
 button {
-  border: none;
-  outline: 0;
-  display: inline-block;
+  background-color: #1da1f2;
+  color: white;
+  border-radius: 30px;
   font-size: 20px;
   padding: 10px;
-  color: black;
-  background-color: lightslategray;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  font-size: 18px;
-  border-radius: 30px;
-
 }
 
 a {

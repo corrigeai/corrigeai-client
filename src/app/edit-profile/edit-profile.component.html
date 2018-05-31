@@ -1,13 +1,8 @@
 <div class="container">
-        <form class="fields" [formGroup]="editProfileForm" (ngSubmit)="submitForm(editProfileForm.value)">
-
+        <form class="fields" [formGroup]="editProfileForm" (ngSubmit)="submitForm(editProfileForm.value)">  
         <div class="row">
-          <div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">&nbsp;</div>
-        </div>    
-        <div class="row">
-                <div class="col-sm-0 col-xs-0 col-lg-4 col-md-4">
-                </div>
-                <div class="col-sm-12 col-xs-12 col-lg-8 col-md-8">
+                <div class="col-sm-0 col-xs-0 col-md-0 col-lg-4"></div>
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-8">
                         <h2>Edite Seu Perfil</h2>
                 </div>
         </div>
@@ -15,7 +10,7 @@
           <div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">&nbsp;</div>
         </div>
           <div class="row">
-          <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4">
+          <div class="col-sm-12 col-xs-12 col-md-12 col-lg-4">
                 <img  [src]="imagePath"
                 class="img-responsive center thumbnail"
                 onerror="this.src='../../assets/default-profile.png'" 
@@ -31,7 +26,7 @@
                     Selecionar imagem      
                 </label>
           </div>
-        <div class="col-sm-12 col-xs-12 col-lg-8 col-md-8" >
+        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-8" >
                 <div class="form-group">
                         <h3>Nome</h3>
                         <input [ngClass]="{'has-error': !editProfileForm.controls['name'].valid && editProfileForm.controls['name'].touched,
@@ -70,8 +65,8 @@
                 <div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">&nbsp;</div>
         </div>
         <div class="row">
-            <div class="col-sm-0 col-xs-0 col-lg-6 col-md-6"></div>
-            <div class="col-sm-12 col-xs-12 col-lg-4 col-md-4">
+            <div class="col-sm-0 col-xs-0 col-md-3 col-lg-6"></div>
+            <div class="col-sm-12 col-xs-12 col-md-6 col-lg-4">
                 <div class="error-message" [hidden]="!error">{{error}}</div>
                 <button 
                     class="btn btn-block" 
@@ -79,7 +74,7 @@
                     [ngClass]="{'disabled': !editProfileForm.valid}"
                     [disabled]='!editProfileForm.valid'>Editar Perfil</button>        
             </div>  
-            <div class="col-sm-0 col-xs-0 col-lg-2 col-md-2"></div>
+            <div class="col-sm-0 col-xs-0 col-md-3 col-lg-2"></div>
         </div>
       <div class="row">
       <div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">&nbsp;</div>

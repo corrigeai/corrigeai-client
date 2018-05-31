@@ -4,10 +4,16 @@ margin-left:auto;
 margin-right:auto;
 }
 
-.button{
-    margin:0px auto; //it will center them 
+button {
+  background-color: #1da1f2;
+  color: white;
+  border-radius: 30px;
+  font-size: 20px;
+  padding: 10px;
+  margin:0px auto; //it will center them 
+
 }
- 
+
 .thumbnail {
     position: relative;
     width: 250px;
@@ -51,14 +57,6 @@ margin-right:auto;
   
       .touched {
         background-color: rgb(250, 255, 189);
-      }
-    
-      button {
-        background-color: #1da1f2;
-        color: white;
-        border-radius: 30px;
-        font-size: 20px;
-        padding: 10px;
       }
     }
   }
