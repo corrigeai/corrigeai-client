@@ -1,16 +1,27 @@
 <div class="container">
   <h2>Edit your Profile</h2>
-
   <form class="fields" [formGroup]="editProfileForm" (ngSubmit)="submitForm(editProfileForm.value)">
-    <div class="form-group">
-        <img  [src]="imagePath"
-        class="thumbnail"
-        onerror="this.src='../../assets/default-profile.png'" 
-        alt="Avatar"/>
-        <input type="file"
-        (change)="onFileChange($event)">
-    </div>
-
+      <div class="row">
+          <div class="col-md-4 col-lg-4 col-sm-2 col-xs-2"></div>     
+          <div class="col-md-4 col-lg-4 col-sm-8 col-xs-8">
+              <div class="form-group">
+                  <img  [src]="imagePath"
+                  class="img-responsive center thumbnail"
+                  onerror="this.src='../../assets/default-profile.png'" 
+                  alt="Avatar"/>
+                  <input type="file"
+                  class="center"
+                  (change)="onFileChange($event)">
+              </div>       
+          </div>     
+          <div class="col-md-4 col-lg-4 col-sm-2 col-xs-2"></div>     
+      </div>
+      <div class="row">
+          <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">&nbsp;</div>
+      </div>
+      <div class="row">     
+     <div class="col-md-3 col-lg-3 col-sm-0 col-xs-0"></div>     
+     <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">     
     <div class="form-group">
 
       <input [ngClass]="{'has-error': !editProfileForm.controls['name'].valid && editProfileForm.controls['name'].touched,
@@ -42,5 +53,14 @@
     <div class="error-message" [hidden]="!error">{{error}}</div>
 
     <button class="btn btn-block" type="submit" [ngClass]="{'disabled': !editProfileForm.valid}" [disabled]='!editProfileForm.valid'>Editar Perfil</button>
+  </div>
+  </div>
+  <div class="col-md-3 col-lg-3 col-sm-0 col-xs-0"></div>     
   </form>
+  <div class="row">
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">&nbsp;</div>
+  </div>
+  <div class="row">
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">&nbsp;</div>
+  </div>
 </div>
