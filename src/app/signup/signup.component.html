@@ -48,6 +48,14 @@
                 [formControl]="signUpForm.controls['password']">
         </div>
 
+        <div class="form-group">
+            <input [ngClass]="{'has-error':!signUpForm.controls['confirmPassword'].valid && signUpForm.controls['confirmPassword'].touched,
+                               'touched': signUpForm.controls['confirmPassword'].touched }"
+                class="form-control"
+                type="password" placeholder="Confirmar Senha"
+                [formControl]="signUpForm.controls['confirmPassword']">
+        </div>
+
         <div class="error-message"[hidden]="!error">{{error}}</div>
 
         <button class="btn btn-block"
