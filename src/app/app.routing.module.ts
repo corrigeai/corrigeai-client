@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SignupComponent } from './signup/signup.component';
-import { LoginComponent } from './login/login.component';
-import { UpdatePassComponent } from './update-pass/update-pass.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { LoginComponent } from './auth/login/login.component';
+import { UpdatePassComponent } from './auth/update-pass/update-pass.component';
 import { AuthGuardService } from './auth-guard.service';
 import { ProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';

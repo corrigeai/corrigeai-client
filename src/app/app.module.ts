@@ -7,9 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { HeaderComponent } from './header/header.component';
-import { SignupComponent } from './signup/signup.component';
-import { LoginComponent } from './login/login.component';
-import { UpdatePassComponent } from './update-pass/update-pass.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { ProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
@@ -17,6 +14,11 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { WorkstationComponent } from './workstation/workstation.component';
+
+// Authorization related components
+import { SignupComponent } from './auth/signup/signup.component';
+import { LoginComponent } from './auth/login/login.component';
+import { UpdatePassComponent } from './auth/update-pass/update-pass.component';
 
 // Essay related components
 import {CreateEssayComponent} from './essay/create-essay/create-essay.component';

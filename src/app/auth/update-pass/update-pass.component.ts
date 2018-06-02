@@ -2,8 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { AuthenticationService } from '../services/authentication.service';
-import { CustomValidators } from '../shared/custom-validators';
+import { AuthenticationService } from '../../services/authentication.service';
+import { CustomValidators } from '../../shared/custom-validators';
 
 @Component({
   selector: 'app-update-pass',
