@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ViewEncapsulation} from '@angular/core';
 
-import { AuthenticationService } from '../services/authentication.service';
+import { AuthenticationService } from '../../services/authentication.service';
+import { CustomValidators } from '../../shared/custom-validators';
 
 @Component({
   selector: 'app-signup',
@@ -32,11 +33,18 @@ export class SignupComponent {
       'password': [null, 
                    [Validators.required,
                     Validators.minLength(6)]],
+      'confirmPassword': [null, 
+                           [Validators.required, 
+                            Validators.minLength(6)]],
       'gender': [null, Validators.required],
+    },{
+      validator: CustomValidators.Match('password', 'confirmPassword')
     });
   }
 
   submitForm(form: any): void {
+    delete form.confirmPassword;
+
     this.authService.signUp(form)
       .subscribe(
         result => {

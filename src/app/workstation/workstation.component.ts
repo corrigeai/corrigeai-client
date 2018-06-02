@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
 import { EssayService } from '../services/essay.service';
-import { Essay } from '../models/essay';
+import { Essay } from '../../models/essay';
 
 @Component({
   selector: 'app-workstation',

@@ -1,4 +1,3 @@
-<div class="col-sm-12">
     <h2>Participe hoje do CorrigeAí</h2>
     
     <form class="fields" [formGroup]="signUpForm" (ngSubmit)="submitForm(signUpForm.value)">
@@ -49,6 +48,14 @@
                 [formControl]="signUpForm.controls['password']">
         </div>
 
+        <div class="form-group">
+            <input [ngClass]="{'has-error':!signUpForm.controls['confirmPassword'].valid && signUpForm.controls['confirmPassword'].touched,
+                               'touched': signUpForm.controls['confirmPassword'].touched }"
+                class="form-control"
+                type="password" placeholder="Confirmar Senha"
+                [formControl]="signUpForm.controls['confirmPassword']">
+        </div>
+
         <div class="error-message"[hidden]="!error">{{error}}</div>
 
         <button class="btn btn-block"
@@ -56,4 +63,3 @@
             [ngClass]="{'disabled': !signUpForm.valid}"
             [disabled]='!signUpForm.valid'>Inscrever-se</button>
     </form>      
-</div>

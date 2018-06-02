@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { ReviewService } from '../services/review.service';
-import { Review } from '../models/review';
+import { ReviewService } from '../../services/review.service';
+import { Review } from '../../../models/review';
 
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import { Subscription } from 'rxjs/Subscription';

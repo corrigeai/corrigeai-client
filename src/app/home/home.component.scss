@@ -1,4 +1,4 @@
-@import "../signup/signup.component.scss";
+@import "../auth/signup/signup.component.scss";
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 h3 {
@@ -18,7 +18,6 @@ h3 {
     border: 1px solid red;
   }
 
- #collab {
-    max-width: 125%;
-    height: auto;
-  }
+.img-responsive {
+    margin: 0 auto;
+}

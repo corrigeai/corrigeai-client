@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter } from "@angular/core";
 
 import { environment } from '../../environments/environment';
-import { Essay } from "../models/essay";
+import { Essay } from "../../models/essay";
 
 import { Observable } from 'rxjs/Observable';
 import { AuthenticationService } from './authentication.service';
