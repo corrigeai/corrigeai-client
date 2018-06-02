@@ -1,13 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { HeaderComponent } from './header/header.component';
 import { DropdownDirective } from './shared/dropdown.directive';
+import { NotificationComponent } from './notification/notification.component';
 import { ReviewStationComponent } from './reviewstation/reviewstation.component';
 
 // User related components
@@ -44,41 +44,42 @@ import { environment } from '../environments/environment';
 
 
 
+
 @NgModule({
   declarations: [
-    AppComponent,
-    SignupComponent,
-    HeaderComponent,
     ReviewEssay,
+    AppComponent,
     HomeComponent,
-    LoginComponent,
-    DropdownDirective,
-    ProfileComponent,
-    EditProfileComponent,
-    UpdatePassComponent,
-    ReviewStationComponent,
-    NavbarComponent,
-    WorkstationComponent,
     EssayComponent,
-    CreateEssayComponent,
+    LoginComponent,
+    SignupComponent,
+    NavbarComponent,
+    HeaderComponent,
+    ProfileComponent,
+    DropdownDirective,
     EditEssayComponent,
     EssayCardComponent,
-    DeleteEssayComponent
-
+    UpdatePassComponent,
+    CreateEssayComponent,
+    EditProfileComponent,
+    WorkstationComponent,
+    DeleteEssayComponent,
+    NotificationComponent,
+    ReviewStationComponent
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
-    {provide: 'API', useValue: environment.apiUrl},
-    AuthenticationService,
-    AuthGuardService,
     UserService,
     EssayService,
-    ReviewService
+    ReviewService,
+    AuthGuardService,
+    AuthenticationService,
+    {provide: 'API', useValue: environment.apiUrl}
   ],
   bootstrap: [AppComponent]
 })
