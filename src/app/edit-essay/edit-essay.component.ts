@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { EssayService } from '../services/essay.service';
-import { Essay } from '../models/essay';
+import { Essay } from '../../models/essay';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({

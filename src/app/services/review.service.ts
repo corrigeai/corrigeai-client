@@ -4,7 +4,7 @@ import { EventEmitter } from "@angular/core";
 
 import { AuthenticationService } from './authentication.service';
 import { environment } from '../../environments/environment';
-import { Review } from "../models/review";
+import { Review } from "../../models/review";
 
 import { Observable } from 'rxjs/Observable';
 
