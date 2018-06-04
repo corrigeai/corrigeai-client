@@ -26,7 +26,7 @@ export class EssayComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.essayService.receiveToReview().subscribe(
-            (essay) => { 
+            (essay) => {
               this.essay = essay;
               this.id.next(essay.id);
               if(essay.type == "Image"){
@@ -36,11 +36,14 @@ export class EssayComponent implements OnInit, OnDestroy {
     }
 
     onReviewEssay() {
-      this.id.subscribe(
-        (id) => {
-          this.router.navigate(['/review', id]);
-        }
-      );
+
+      console.log(this.id);
+        this.id.subscribe(
+          (id) => {
+            this.router.navigate(['/review', id]);
+          }
+        );
+
     }
 
     ngOnDestroy() {

@@ -9,7 +9,7 @@ import { CustomValidators } from '../../shared/custom-validators';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss'], 
+  styleUrls: ['./signup.component.scss'],
    encapsulation: ViewEncapsulation.None
 })
 export class SignupComponent {
@@ -23,18 +23,18 @@ export class SignupComponent {
   ) {
     this.signUpForm = formBuilder.group({
       'name': [null, Validators.required],
-      'email': [null, 
+      'email': [null,
                 [Validators.required,
                  Validators.email]],
-      'username': [null, 
+      'username': [null,
                    [Validators.required,
                     Validators.pattern('^[a-zA-Z0-9_-]*$'),
                     Validators.minLength(4)]],
-      'password': [null, 
+      'password': [null,
                    [Validators.required,
                     Validators.minLength(6)]],
-      'confirmPassword': [null, 
-                           [Validators.required, 
+      'confirmPassword': [null,
+                           [Validators.required,
                             Validators.minLength(6)]],
       'gender': [null, Validators.required],
     },{
@@ -49,7 +49,7 @@ export class SignupComponent {
       .subscribe(
         result => {
           if (result) {
-            this.router.navigate(['login']);
+            this.router.navigate(['/login']);
             this.error = undefined;
             this.signUpForm.reset();
           }

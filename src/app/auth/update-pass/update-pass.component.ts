@@ -20,7 +20,7 @@ export class UpdatePassComponent implements OnInit {
     private authService: AuthenticationService
   ) {}
 
-  ngOnInit() {  
+  ngOnInit() {
     this.updatePassForm = this.formBuilder.group({
       'oldPassword': [null, [Validators.required, Validators.minLength(6)]],
       'newPassword': [null, [Validators.required, Validators.minLength(6)]],
@@ -37,7 +37,7 @@ export class UpdatePassComponent implements OnInit {
     .subscribe(
       result => {
         if (result) {
-          this.router.navigate(['/']);
+          this.router.navigate(['/profile']);
           this.error = undefined;
           this.updatePassForm.reset();
         }
