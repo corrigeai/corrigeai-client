@@ -7,6 +7,7 @@ import { Essay } from '../../models/essay';
 
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import { Subject } from 'rxjs/Subject';
+import {isUndefined} from "util";
 
 
 @Component({
@@ -36,14 +37,13 @@ export class EssayComponent implements OnInit, OnDestroy {
     }
 
     onReviewEssay() {
-
-      console.log(this.id);
-        this.id.subscribe(
-          (id) => {
-            this.router.navigate(['/review', id]);
-          }
-        );
-
+         this.id.subscribe(
+           (id) => {
+             if(!isUndefined(id)) {
+               this.router.navigate(['/review', id]);
+             }
+           }
+         );
     }
 
     ngOnDestroy() {
