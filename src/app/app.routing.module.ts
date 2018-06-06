@@ -12,6 +12,7 @@ import { WorkstationComponent } from './workstation/workstation.component';
 import { EssayCardComponent } from './essay/essay-card/essay-card.component';
 import { ReviewEssay } from './essay/review-essay/review-essay.component';
 import { EssayComponent } from './essay/essay.component';
+import { NotificationComponent } from './notification/notification.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent , pathMatch: 'full'},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuardService]},
   { path: 'myessays', component: WorkstationComponent, canActivate: [AuthGuardService]},
   { path: 'to-review', component: EssayComponent, canActivate: [AuthGuardService]},
+  { path: 'notifications', component: NotificationComponent, canActivate: [AuthGuardService]},
   { path: 'review/:id', component: ReviewEssay, canActivate: [AuthGuardService]},
   {
     path: '**',

@@ -30,6 +30,8 @@
     "jquery": "^3.3.1",
     "rxjs": "^5.5.6",
     "serve-favicon": "^2.5.0",
+    "sockjs-client": "^1.1.5",
+    "stompjs": "^2.3.3",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {

@@ -1,8 +1,26 @@
-.backdrop {
-    background-color: rgba(0,0,0,0.6);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
+.nav.navbar-nav li a {
+  color:#400B3C;
+  font-weight: bold;
+  font-family: 'Open Sans',serif;
+  font-size: large;
+
+}
+a.navbar-brand {
+  font-family: 'Open Sans',serif;
+  color:#400B3C;
+  font-size: large;
+}
+
+.navbar-brand {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-brand img
+{
+  max-height: 100%;
+}
+
+.nav.navbar-nav.navbar-right a {
+  cursor: pointer;
 }
