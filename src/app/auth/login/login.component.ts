@@ -20,7 +20,11 @@ export class LoginComponent {
   ) {
     this.loginForm = formBuilder.group({
       'identifier': [null, Validators.required],
-      'password': [null, Validators.required],
+      'password': [null,
+        [Validators.required,
+         Validators.minLength(6),
+         Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d^a-zA-Z0-9].{0,}$')]
+      ],
     });
   }
 
