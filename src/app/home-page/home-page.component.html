@@ -1,0 +1,65 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<div id="wrapper">
+  <div id="sidebar-wrapper">
+    <nav id="spy">
+      <ul class="sidebar-nav nav">
+        <li class="sidebar-brand">
+          <img  [src]="imagePath"
+                class="img-responsive center thumbnail"
+                onerror="this.src='../../assets/default-profile.png'"
+                alt="Avatar"/>
+        </li>
+        <div class="side-menu">
+          <p>Username: {{username}}</p>
+          <p>Nome: {{name}}</p>
+          <p>E-mail: {{email}}</p>
+        </div>
+
+      </ul>
+    </nav>
+  </div>
+
+  <div id="page-content-wrapper">
+    <div class="page-content">
+      <div class="container-fluid">
+        <div class="col-md-6">
+          <div class="panel">
+            <p class="panel-body">
+              Minhas redações
+            </p>
+            <img class="image" (click)="goToMyEssays()" src="../../assets/my_essays.png"/>
+          </div>
+        </div>
+          <div class="col-md-6">
+            <div class="panel">
+              <div class="panel-body">
+                Corrigir Redações
+              </div>
+              <img class="image" (click)="goToReview()" src="../../assets/essay.png"/>
+            </div>
+          </div>
+          <div class="row">
+          <div class="col-md-6">
+            <div class="panel">
+              <div class="panel-body">
+                Informações pessoais
+              </div>
+              <img class="image" (click)="goToMyProfile()" src="../../assets/user.png"/>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="panel">
+              <div class="panel-body">
+                Segurança e Privacidade
+              </div>
+              <img class="image" (click)="goToUpdatePass()" src="../../assets/security.png"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -30,12 +30,11 @@ export class LoginComponent {
       (data) => {
           localStorage.setItem('token', JSON.stringify(data.token));
           localStorage.setItem('currentUser', JSON.stringify(data.user));
-          this.router.navigate(['/profile']);
+          this.router.navigate(['/home-page']);
           this.error = undefined;
           this.loginForm.reset();
         },
       (error) => this.error = error
     );
   }
-
 }
