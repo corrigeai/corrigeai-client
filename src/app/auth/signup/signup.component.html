@@ -28,7 +28,7 @@
             <input [ngClass]="{'has-error': !signUpForm.controls['username'].valid && signUpForm.controls['username'].touched,
                                'touched': signUpForm.controls['username'].touched }"
                 class="form-control"
-                type="text" placeholder="Nome de Usuário"
+                type="text" placeholder="Nome de Usuário (4-15 dígitos, sem espaços)"
                 [formControl]="signUpForm.controls['username']">
         </div>
 
@@ -44,7 +44,7 @@
             <input [ngClass]="{'has-error':!signUpForm.controls['password'].valid && signUpForm.controls['password'].touched,
                                'touched': signUpForm.controls['password'].touched }"
                 class="form-control"
-                type="password" placeholder="Senha"
+                type="password" placeholder="Senha (6 dígitos, uma letra e um número)"
                 [formControl]="signUpForm.controls['password']">
         </div>
 
