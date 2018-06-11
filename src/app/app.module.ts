@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app.routing.module';
 import { HeaderComponent } from './header/header.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { NotificationComponent } from './notification/notification.component';
+import { NotificationCardComponent } from './notification/card/notification-card.component';
 import { ReviewStationComponent } from './reviewstation/reviewstation.component';
 
 // User related components
@@ -26,7 +27,7 @@ import { UpdatePassComponent } from './auth/update-pass/update-pass.component';
 // Essay related components
 import { EssayComponent } from './essay/essay.component';
 import { ReviewEssay } from './essay/review-essay/review-essay.component';
-import {CreateEssayComponent} from './essay/create-essay/create-essay.component';
+import { CreateEssayComponent } from './essay/create-essay/create-essay.component';
 import { EssayCardComponent } from './essay/essay-card/essay-card.component';
 import { EditEssayComponent } from './essay/edit-essay/edit-essay.component';
 import { DeleteEssayComponent } from './essay/delete-essay/delete-essay.component';
@@ -36,6 +37,7 @@ import { DeleteEssayComponent } from './essay/delete-essay/delete-essay.componen
 import { UserService } from './services/user.service';
 import { AuthGuardService } from './auth-guard.service';
 import { EssayService } from './services/essay.service';
+import { NotificationService } from './services/notification.service';
 import { ReviewService } from './services/review.service';
 import { AuthenticationService } from './services/authentication.service';
 
@@ -65,6 +67,7 @@ import { environment } from '../environments/environment';
     WorkstationComponent,
     DeleteEssayComponent,
     NotificationComponent,
+    NotificationCardComponent,
     ReviewStationComponent
   ],
   imports: [
@@ -77,6 +80,7 @@ import { environment } from '../environments/environment';
     UserService,
     EssayService,
     ReviewService,
+    NotificationService,
     AuthGuardService,
     AuthenticationService,
     {provide: 'API', useValue: environment.apiUrl}

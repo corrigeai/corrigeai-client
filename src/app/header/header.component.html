@@ -38,11 +38,18 @@
     </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-          <li routerLinkActive="active">
-              <a routerLink="/notifications">
-                <span class="glyphicon glyphicon-bell"></span>&nbsp;&nbsp;
-              </a>
-          </li>
+        <li class="dropdown" appDropdown>
+          <a class="dropdown-toggle" role="button">
+            <span class="glyphicon glyphicon-bell"></span>&nbsp;&nbsp;
+          </a>
+
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
+            <li class="dropdown-header">Notificações</li>
+            <li role="separator" class="divider"></li>
+            <li><app-notification></app-notification></li>
+          </ul>
+        </li>
+
         <li class="dropdown" appDropdown>
           <a class="dropdown-toggle" role="button"><span class="glyphicon glyphicon-triangle-bottom"></span></a>
           <ul class="dropdown-menu">

@@ -3,24 +3,28 @@ import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import $ from 'jquery';
 import { Notification } from '../../models/notification';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
-    selector: 'app-error',
+    selector: 'app-notification',
     templateUrl: './notification.component.html',
     styleUrls: ['./notification.component.scss']
 })
 export class NotificationComponent implements OnInit {
-    private serverUrl = 'http://localhost:3000/tuiterapi/notifications/ws';
-    private stompClient;
-    private n;
-
-    notification: Notification;
+    notifications: Notification[];
     display = 'block';
 
-    constructor() {
-      this.initializeWebSocketConnection();
-      console.log('wow');
-      this.n = 1;
+    constructor(private notificationService: NotificationService) {
+      this.notificationService = this.notificationService;
+
+      const that  = this;
+
+      this.notificationService.connect((notificationFrame) => {
+        if (notificationFrame.body) {
+          that.notificationService.addNotificationElement(notificationFrame.body);
+          that.notifications = that.notificationService.getNotificationCollection();
+        }
+      });
     }
 
     onNotificationHandled() {
@@ -28,33 +32,16 @@ export class NotificationComponent implements OnInit {
     }
 
     ngOnInit() {
-
-    }
-
-    initializeWebSocketConnection() {
-      let socket = new SockJS(this.serverUrl);
-
-      this.stompClient = Stomp.over(socket);
-      const that = this;
-      this.stompClient.connect({}, function(frame) {
-        console.log(frame);
-        that.stompClient.subscribe('/chat', (message) => {
-          console.log("recebeu");
-          if (message.body) {
-            console.log("A mensagem é: " + message.body);
-
-            //$('.chat').append('<div class="message">' + message.body + '</div>');
-          }
-        });
+      this.notificationService.getUserNotifications().subscribe(
+        (notifications) => {
+          this.notificationService.setNotificationCollection(notifications);
+          this.notifications = this.notificationService.getNotificationCollection();
+          this.notificationService.viewUserNotifications().subscribe(
+            (vNotifications) => {
+              this.notificationService.setNotificationCollection(vNotifications);
+              this.notifications = this.notificationService.getNotificationCollection();
+            }
+          );
       });
-    }
-
-    sendMessage() {
-      let notificationData = {};
-      notificationData['userId'] = JSON.parse(localStorage.getItem('currentUser')).userId;
-      notificationData['reviewId'] = 'dasdsjdlaskj';
-      notificationData['description'] = 'This is a custom notification: ' + this.n;
-
-      this.stompClient.send('/tuiterapi/send/message' , {}, JSON.parse(notificationData));
     }
 }

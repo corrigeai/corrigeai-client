@@ -1,26 +1,23 @@
-.nav.navbar-nav li a {
-  color:#400B3C;
-  font-weight: bold;
-  font-family: 'Open Sans',serif;
-  font-size: large;
-
-}
-a.navbar-brand {
-  font-family: 'Open Sans',serif;
-  color:#400B3C;
-  font-size: large;
-}
-
-.navbar-brand {
-  margin: 0;
+.container {
+  width: 350px;
+  border-radius: 0;
+  height: auto;
+  max-height: 300px;
+  overflow-x: hidden;
   padding: 0;
-}
+  margin: 0;
+  border: 0;
 
-.navbar-brand img
-{
-  max-height: 100%;
-}
+  ul {
+    padding: 0;
+    margin: 0;
+    border: 0;
 
-.nav.navbar-nav.navbar-right a {
-  cursor: pointer;
+    li {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      border: 0;
+    }
+  }
 }

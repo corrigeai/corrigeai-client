@@ -1,10 +1,13 @@
 <div class="container">
-    <div class="row">
-            <div class="col-lg-6 col-sm-12 col-xs-12" >
-              asdlsakdlçasdksaçldklçsak
-            </div>
+  <ul>
+    <li *ngFor="let notification of this.notifications">
+      <ul>
+        <li>
+          <app-notification-card [notification] = "notification"></app-notification-card>
+        </li>
+        <li role="separator" class="divider"></li>
+      </ul>
 
-            <button (click)="sendMessage()">Send message</button>
-
-            <div class="chat"></div>
+    </li>
+  </ul>
 </div>

@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { ReviewService } from '../../services/review.service';
+import { NotificationService } from '../../services/notification.service';
 import { Review } from '../../../models/review';
 
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
@@ -19,10 +20,11 @@ export class ReviewEssay implements OnInit {
   reviewForm: FormGroup;
   // private subscription: Subscription;
 
-  
+
     constructor(
       private formBuilder: FormBuilder,
       private reviewService: ReviewService,
+      private notificationService: NotificationService,
       private router: Router,
       private route: ActivatedRoute
     ) {
@@ -88,6 +90,7 @@ export class ReviewEssay implements OnInit {
               this.reviewService.addReviewElement(review);
               this.reviewForm.reset();
               this.router.navigate(['/']);
+              this.notificationService.sendReviewNotification(review.essayId);
             }
           );
         });

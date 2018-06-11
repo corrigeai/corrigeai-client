@@ -10,7 +10,7 @@ import { AuthenticationService } from './authentication.service';
 
 @Injectable()
 export class EssayService {
-    
+
     private essayCollection: Essay[] = [];
     essayCreated = new EventEmitter<any>();
     essayEdited = new EventEmitter<Essay>();
@@ -38,7 +38,7 @@ export class EssayService {
     getEssayCollection(): Essay[] {
         return this.essayCollection;
     }
-    
+
     //Event Emission related methods
 
     notifyEssayCreation(): void {
@@ -101,7 +101,7 @@ export class EssayService {
         .catch((error: Response) => {
             return  Observable.throw(error);
           });
-        
+
     }
 
 }
