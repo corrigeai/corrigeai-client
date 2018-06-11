@@ -1,1 +1,41 @@
-@import "../signup/signup.component.scss";
+    h2 {
+      margin-top: 10%;
+      margin-bottom: 30px;
+      font-weight: bold;
+      text-align: center;
+      color: silver;
+    }
+  
+    .fields {
+      width: 100%;
+      margin: auto;
+    
+      .has-error {
+          border: 1px solid red;
+      }
+  
+      .touched {
+        background-color: rgb(250, 255, 189);
+      }
+    
+      button {
+        background-color: #1da1f2;
+        color: white;
+        border-radius: 30px;
+        font-size: 20px;
+        padding: 10px;
+      }
+    }
+
+    a {
+        background-color: transparent;
+        color: white;
+        border-radius: 30px;
+        font-weight: bold;
+        padding: 10px;
+        text-align:center
+    }
+    
+    a:hover, a:active {
+        color: silver;
+    }
