@@ -9,41 +9,37 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </button>
-          <a class="navbar-brand" rel="home" routerLink='/'>
-            <img src="../../assets/tuiter.png">
+          <a class="navbar-brand" rel="home">
+            <img class="image" (click)="redirect()" src="../../assets/tuiter.png">
           </a>
     </div>
 
     <div class="collapse navbar-collapse" id="alignment-example">
       <ul class="nav navbar-nav">
         <li routerLinkActive="active">
-          <a routerLink="/profile">
+          <a *ngIf="inHome" routerLink="/profile">
             &nbsp;<span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Informação Pessoal
           </a>
         </li>
-          <li routerLinkActive="active">
-              <a routerLink="/update-pass">
+          <li onshow="show" routerLinkActive="active">
+              <a *ngIf="inHome" routerLink="/update-pass">
                 <span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;Segurança e Privacidade
           </a>
         </li>
-        <li routerLinkActive="active">
+        <li *ngIf="inHome" routerLinkActive="active">
           <a routerLink="/myessays">
             <span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Minhas redações
           </a>
       </li>
       <li routerLinkActive="active">
-        <a routerLink="/to-review">
+        <a *ngIf="inHome" routerLink="/to-review">
           <span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;Corrigir redação
         </a>
     </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown" appDropdown>
-          <a class="dropdown-toggle" role="button"><span class="glyphicon glyphicon-triangle-bottom"></span></a>
-          <ul class="dropdown-menu">
-
-          </ul>
-        </li>
+        <span *ngIf="isLogged()" routerLink="/login" class="glyphicon-in-out">Entrar</span>
+        <span *ngIf="!isLogged()" (click)="onLogout()" class="glyphicon-in-out">Sair</span>
       </ul>
     </div>
   </div>
