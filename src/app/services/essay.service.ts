@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter } from "@angular/core";
 
+import { AuthenticationService } from './authentication.service';
 import { environment } from '../../environments/environment';
+import { ErrorService } from './error.service';
 import { Essay } from "../../models/essay";
 
 import { Observable } from 'rxjs/Observable';
-import { AuthenticationService } from './authentication.service';
 
 @Injectable()
 export class EssayService {
@@ -18,7 +19,9 @@ export class EssayService {
 
     API = environment.apiUrl;
 
-    constructor(private http: HttpClient,private authService: AuthenticationService) {}
+    constructor(private http: HttpClient,
+        private authService: AuthenticationService,
+        private errorService: ErrorService) {}
 
     // essayCollection related Methods
 
@@ -61,6 +64,7 @@ export class EssayService {
         return this.http.post(this.API.concat('tuiterapi/essays'), essayData, httpOptions)
         .map((response: Response) => response)
         .catch((error: Response) => {
+            this.errorService.handleError(error);
             return  Observable.throw(error);
           });
     }
@@ -70,6 +74,7 @@ export class EssayService {
         return this.http.delete(this.API.concat('tuiterapi/essays/'+id), httpOptions)
         .map((response: Response) => response)
         .catch((error: Response) => {
+            this.errorService.handleError(error);
             return  Observable.throw(error);
         });
     }
@@ -80,6 +85,7 @@ export class EssayService {
         return this.http.get<Essay[]>(this.API.concat('tuiterapi/users/'+userId+'/essays'), httpOptions)
         .map((essays: Essay[]) => essays)
         .catch((error: Response) => {
+            this.errorService.handleError(error);
             return  Observable.throw(error);
           });
     }
@@ -90,6 +96,7 @@ export class EssayService {
         const httpOptions = this.authService.getOptions();
         return this.http.put(this.API.concat('tuiterapi/essays/'+essayId), essayData, httpOptions)
         .catch((error: Response) => {
+            this.errorService.handleError(error);
             return  Observable.throw(error);
           });
     }
@@ -99,6 +106,7 @@ export class EssayService {
         const userId = JSON.parse(localStorage.getItem('currentUser')).id;
         return this.http.get<Essay>(this.API.concat('tuiterapi/users/'+userId+'/evaluate'), httpOptions)
         .catch((error: Response) => {
+            this.errorService.handleError(error);
             return  Observable.throw(error);
           });
         

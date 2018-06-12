@@ -43,6 +43,7 @@ export class AuthenticationService {
       }
       return false;
     }).catch((error: Response) => {
+      this.errorService.handleError(error);
       return  Observable.throw(error);
     });
   }
@@ -64,9 +65,9 @@ export class AuthenticationService {
     .map((res: Response) => {
         return true;
     }).catch((error: Response) => {
+      this.errorService.handleError(error);
       return  Observable.throw(error);
     });
-
   }
 
 

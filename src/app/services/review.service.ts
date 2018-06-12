@@ -7,6 +7,7 @@ import { environment } from '../../environments/environment';
 import { Review } from "../../models/review";
 
 import { Observable } from 'rxjs/Observable';
+import { ErrorService } from './error.service';
 
 @Injectable()
 export class ReviewService {
@@ -15,7 +16,9 @@ export class ReviewService {
 
     API = environment.apiUrl;
 
-    constructor(private http: HttpClient,private authService: AuthenticationService) {}
+    constructor(private http: HttpClient,
+        private authService: AuthenticationService,
+        private errorService: ErrorService) {}
 
     // reviewsCollection related Methods
 
@@ -43,6 +46,7 @@ export class ReviewService {
         return this.http.post(this.API.concat('tuiterapi/reviews'), reviewData, httpOptions)
         .map((response: Response) => response)
         .catch((error: Response) => {
+            this.errorService.handleError(error);
             return  Observable.throw(error);
           });
     }
