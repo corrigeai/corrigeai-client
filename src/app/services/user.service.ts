@@ -29,7 +29,7 @@ export class UserService {
         }
         return false;
       }).catch((error: Response) => {
-        return  Observable.throw(error.json());
+        return  Observable.throw(error);
       });
   }
 }

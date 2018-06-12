@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
+import { ErrorComponent } from './errors/error.component';
 import { HeaderComponent } from './header/header.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { NotificationComponent } from './notification/notification.component';
@@ -34,9 +35,11 @@ import { DeleteEssayComponent } from './essay/delete-essay/delete-essay.componen
 
 // Services
 import { UserService } from './services/user.service';
-import { AuthGuardService } from './auth-guard.service';
+import { ErrorService } from './services/error.service';
 import { EssayService } from './services/essay.service';
+import { AuthGuardService } from './auth-guard.service';
 import { ReviewService } from './services/review.service';
+
 import { AuthenticationService } from './services/authentication.service';
 
 // Loading environment
@@ -52,6 +55,7 @@ import { environment } from '../environments/environment';
     HomeComponent,
     EssayComponent,
     LoginComponent,
+    ErrorComponent,
     SignupComponent,
     NavbarComponent,
     HeaderComponent,
@@ -76,6 +80,7 @@ import { environment } from '../environments/environment';
   providers: [
     UserService,
     EssayService,
+    ErrorService,
     ReviewService,
     AuthGuardService,
     AuthenticationService,

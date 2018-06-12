@@ -37,8 +37,8 @@ export class LoginComponent {
           this.router.navigate(['/']);
           this.error = undefined;
           this.loginForm.reset();      
-        },
-      (error) => this.error = error
+        }//,
+      // (error) => this.error = error.error.error
     );
   }
 

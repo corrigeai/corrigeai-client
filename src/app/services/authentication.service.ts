@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import {LoginBody, RegistrationBody, UpdatePassBody} from '../../models/body-obj.model';
+import {
+  LoginBody,
+  RegistrationBody,
+  UpdatePassBody
+} from '../../models/body-obj.model';
+import { ErrorService } from './error.service';
+
 import { environment } from '../../environments/environment';
 
 import 'rxjs/add/operator/map';
@@ -15,7 +21,8 @@ export class AuthenticationService {
 
   API = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private errorService: ErrorService) { }
 
   getOptions() {
     const token =  JSON.parse(localStorage.getItem('token'));
@@ -36,7 +43,7 @@ export class AuthenticationService {
       }
       return false;
     }).catch((error: Response) => {
-      return  Observable.throw(error.json());
+      return  Observable.throw(error);
     });
   }
 
@@ -44,6 +51,7 @@ export class AuthenticationService {
     return this.http.post(this.API.concat('tuiterapi/auth/login'), userData)
     .map((response: Response) => response)
     .catch((error: Response) => {
+        this.errorService.handleError(error);
         return  Observable.throw(error);
       });
   }
@@ -56,7 +64,7 @@ export class AuthenticationService {
     .map((res: Response) => {
         return true;
     }).catch((error: Response) => {
-      return  Observable.throw(error.json());
+      return  Observable.throw(error);
     });
 
   }
