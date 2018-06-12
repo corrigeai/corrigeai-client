@@ -101,7 +101,6 @@ export class EssayService {
         .catch((error: Response) => {
             return  Observable.throw(error);
           });
-        
     }
 
 }

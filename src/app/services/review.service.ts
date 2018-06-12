@@ -38,13 +38,12 @@ export class ReviewService {
 
     // HTTP related Methods
 
-    createReview(reviewData): Observable<any> {
+    updateReview(reviewData, reviewId): Observable<any> {
         const httpOptions = this.authService.getOptions();
-        return this.http.post(this.API.concat('tuiterapi/reviews'), reviewData, httpOptions)
+        return this.http.put(this.API.concat('tuiterapi/reviews/'.concat(reviewId)), reviewData, httpOptions)
         .map((response: Response) => response)
         .catch((error: Response) => {
             return  Observable.throw(error);
           });
     }
-
 }
