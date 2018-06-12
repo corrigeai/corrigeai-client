@@ -14,7 +14,6 @@ import { CustomValidators } from '../../shared/custom-validators';
 })
 export class SignupComponent {
   signUpForm: FormGroup;
-  error: any;
 
   constructor(
     private router: Router,
@@ -54,11 +53,9 @@ export class SignupComponent {
         result => {
           if (result) {
             this.router.navigate(['login']);
-            this.error = undefined;
             this.signUpForm.reset();
           }
-        },
-        error => this.error = error
+        }
       );
   }
 

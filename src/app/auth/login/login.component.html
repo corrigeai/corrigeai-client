@@ -17,10 +17,6 @@
               [formControl]="loginForm.controls['password']">
       </div>
 
-      <div class="error-message"
-      id="error_msg"
-      [hidden]="!error">{{error}}</div>
-
       <button class="btn btn-block"
           type="submit"
           [ngClass]="{'disabled': !loginForm.valid}"

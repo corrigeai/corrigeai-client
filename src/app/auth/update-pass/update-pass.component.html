@@ -26,8 +26,6 @@
                 type="password" placeholder="Confirmar Senha"
                 [formControl]="updatePassForm.controls['confirmPassword']">
         </div>
-      <div class="error-message"[hidden]="!error">{{error}}</div>
-
       <button class="btn btn-block"
           type="submit"
           [ngClass]="{'disabled': !updatePassForm.valid}"

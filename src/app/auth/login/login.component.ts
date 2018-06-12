@@ -11,7 +11,6 @@ import { AuthenticationService } from '../../services/authentication.service';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  error: any;
 
   constructor(
     private router: Router,
@@ -35,10 +34,8 @@ export class LoginComponent {
           localStorage.setItem('token', JSON.stringify(data.token));
           localStorage.setItem('currentUser', JSON.stringify(data.user));
           this.router.navigate(['/']);
-          this.error = undefined;
           this.loginForm.reset();      
-        }//,
-      // (error) => this.error = error.error.error
+        }
     );
   }
 

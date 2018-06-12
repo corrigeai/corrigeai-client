@@ -12,7 +12,6 @@ import { CustomValidators } from '../../shared/custom-validators';
 })
 export class UpdatePassComponent implements OnInit {
   updatePassForm: FormGroup;
-  error: any;
 
   constructor(
     private router: Router,
@@ -44,11 +43,9 @@ export class UpdatePassComponent implements OnInit {
       result => {
         if (result) {
           this.router.navigate(['/']);
-          this.error = undefined;
           this.updatePassForm.reset();
         }
-      },
-      error => this.error = error
+      }
     );
 }
 
