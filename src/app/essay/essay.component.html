@@ -17,7 +17,7 @@
                             <h2>{{"Tema: "+essay.theme}}</h2>
                         </div>
                 </li>
-        </div> 
+        </div>
         <div class="col-xs-6">
                 <ul class="list-group">
                          <li class="list-group-item">
@@ -25,24 +25,24 @@
                                 <div *ngIf="essay.type == 'Text'">
                                     <strong>
                                         <div class="well">
-                                            <p>&ldquo;{{essay.content}}&rdquo;</p> 
+                                            <p>&ldquo;{{essay.content}}&rdquo;</p>
                                         </div>
-                                    </strong>            
+                                    </strong>
                                 </div>
                                 <div *ngIf="essay.type != 'Text'">
                                             <img  [src]="imagePath"
                                             class="thumbnail"
-                                            onerror="this.src='../../assets/no_image.png'" 
-                                            alt="Essay"/> 
+                                            onerror="this.src='../../assets/no_image.png'"
+                                            alt="Essay"/>
                                 </div>
                             </div>
                          </li>
-                    </ul>  
-        </div> 
-    </div>  
-    <div>     
+                    </ul>
+        </div>
+    </div>
+    <div>
             <a style="cursor: pointer;" class="comment" (click)="onReviewEssay()">
                 <span class="glyphicon glyphicon-comment"></span>
-            </a>  
+            </a>
         </div>
 </div>

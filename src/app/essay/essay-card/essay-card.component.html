@@ -3,7 +3,7 @@
                 <ul class="list-group">
                         <li class="list-group-item">
                                 <span class="badge pull-right"><h4>&nbsp;N/A&nbsp;</h4></span>
-                                <span id="nota" class="pull-right"><h4>Nota:&nbsp;</h4></span>   
+                                <span id="nota" class="pull-right"><h4>Nota:&nbsp;</h4></span>
                         </li>
                         <li class="list-group-item">
                                 <h3>&nbsp;Título:&nbsp;{{essay.title}}</h3>
@@ -13,11 +13,11 @@
                         </li>
                       </ul>
                 <div class="panel-body">
-                        <div class="well"><p>{{essay.content}}</p></div>  
-                
+                        <div class="well"><p>{{essay.content}}</p></div>
+
                 <div class="col-md-5 form-group">
-                                <button type="button" 
-                                (click)="onEditEssay()" 
+                                <button type="button"
+                                (click)="onEditEssay()"
                                 class="btn btn-block">
                                 &nbsp;<strong>Editar</strong>&nbsp;
                         </button>
@@ -26,11 +26,9 @@
                           class="btn btn-warning btn-lg">
                     &nbsp;<span class="glyphicon glyphicon-trash"></span>&nbsp;
                   </button>
-                  <app-delete-essay [display]="display" [hidden]="!display" (displayEvent)="refreshDisplay($event)" (deleteEssay)="onDeleteEssay($event)">
-                  </app-delete-essay>
-
-                        </div>
+                  <app-delete-essay [display]="display" [hidden]="!display" (displayEvent)="refreshDisplay($event)" (deleteEssay)="onDeleteEssay($event)"></app-delete-essay>
                 </div>
-                <div class="col-md-7 form-group"></div>
+                </div>
+          <div class="col-md-7 form-group"></div>
 </div>
 </div>

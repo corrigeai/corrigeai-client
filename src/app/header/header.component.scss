@@ -5,7 +5,7 @@
     font-weight: bold;
     font-family: 'Open Sans',serif;
     font-size: large;
- 
+
 }
 a.navbar-brand {
     font-family: 'Open Sans',serif;
@@ -25,4 +25,15 @@ a.navbar-brand {
 
 .nav.navbar-nav.navbar-right a {
     cursor: pointer;
+}
+.image {
+  cursor: pointer;
+}
+.glyphicon-in-out{
+  color:#400B3C;
+  margin-top: 5px;
+  font-weight: bold;
+  font-family: 'Open Sans',serif;
+  font-size: large;
+  cursor: pointer;
 }

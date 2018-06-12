@@ -41,6 +41,7 @@ import { AuthenticationService } from './services/authentication.service';
 
 // Loading environment
 import { environment } from '../environments/environment';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 
@@ -65,7 +66,8 @@ import { environment } from '../environments/environment';
     WorkstationComponent,
     DeleteEssayComponent,
     NotificationComponent,
-    ReviewStationComponent
+    ReviewStationComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
