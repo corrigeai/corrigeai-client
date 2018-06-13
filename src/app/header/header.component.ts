@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import {isUndefined} from "util";
+import {getResponseURL} from "@angular/http/src/http_utils";
+import {ngModuleJitUrl} from "@angular/compiler";
 
 @Component({
   selector: 'app-header',
@@ -10,10 +12,11 @@ import {isUndefined} from "util";
 })
 export class HeaderComponent {
   show = true;
-  inHome = false;
+  inHome = true;
 
   constructor(private router: Router,
     private authService: AuthenticationService) {
+    console.log()
   }
 
   onLogout (): void {
@@ -36,9 +39,10 @@ export class HeaderComponent {
     this.isLogged();
     if(!this.show){
       this.router.navigate(['/home-page']);
-      this.inHome = true;
     }else{
       this.router.navigate(['/']);
     }
   }
+
+
 }

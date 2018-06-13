@@ -17,22 +17,22 @@
     <div class="collapse navbar-collapse" id="alignment-example">
       <ul class="nav navbar-nav">
         <li routerLinkActive="active">
-          <a *ngIf="inHome" routerLink="/profile">
+          <a *ngIf="!inHome" routerLink="/profile">
             &nbsp;<span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Informação Pessoal
           </a>
         </li>
-          <li onshow="show" routerLinkActive="active">
-              <a *ngIf="inHome" routerLink="/update-pass">
+          <li routerLinkActive="active">
+              <a *ngIf="!inHome" routerLink="/update-pass">
                 <span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;Segurança e Privacidade
           </a>
         </li>
-        <li *ngIf="inHome" routerLinkActive="active">
-          <a routerLink="/myessays">
+        <li  routerLinkActive="active">
+          <a *ngIf="!inHome" routerLink="/myessays">
             <span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Minhas redações
           </a>
       </li>
       <li routerLinkActive="active">
-        <a *ngIf="inHome" routerLink="/to-review">
+        <a *ngIf="!inHome" routerLink="/to-review">
           <span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;Corrigir redação
         </a>
     </li>
