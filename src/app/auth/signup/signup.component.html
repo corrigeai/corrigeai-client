@@ -1,5 +1,7 @@
-    <h2>Participe hoje do CorrigeAí</h2>
-    
+<div class="container">
+    <div class="col-xs-0 col-sm-0 col-md-2 col-lg-2"></div>
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+    <h2>Inscreva-se no CorrigeAí</h2>
     <form class="fields" [formGroup]="signUpForm" (ngSubmit)="submitForm(signUpForm.value)">
         <div class="form-group">
             <input [ngClass]="{'has-error': !signUpForm.controls['name'].valid && signUpForm.controls['name'].touched,
@@ -28,7 +30,7 @@
             <input [ngClass]="{'has-error': !signUpForm.controls['username'].valid && signUpForm.controls['username'].touched,
                                'touched': signUpForm.controls['username'].touched }"
                 class="form-control"
-                type="text" placeholder="Nome de Usuário"
+                type="text" placeholder="Nome de Usuário (4-15 dígitos, sem espaços)"
                 [formControl]="signUpForm.controls['username']">
         </div>
 
@@ -44,7 +46,7 @@
             <input [ngClass]="{'has-error':!signUpForm.controls['password'].valid && signUpForm.controls['password'].touched,
                                'touched': signUpForm.controls['password'].touched }"
                 class="form-control"
-                type="password" placeholder="Senha"
+                type="password" placeholder="Senha (6 dígitos, uma letra e um número)"
                 [formControl]="signUpForm.controls['password']">
         </div>
 
@@ -55,11 +57,12 @@
                 type="password" placeholder="Confirmar Senha"
                 [formControl]="signUpForm.controls['confirmPassword']">
         </div>
-
-        <div class="error-message"[hidden]="!error">{{error}}</div>
-
+        
         <button class="btn btn-block"
             type="submit"
             [ngClass]="{'disabled': !signUpForm.valid}"
             [disabled]='!signUpForm.valid'>Inscrever-se</button>
     </form>      
+    </div>
+    <div class="col-xs-0 col-sm-0 col-md-2 col-lg-2"></div>
+</div>    

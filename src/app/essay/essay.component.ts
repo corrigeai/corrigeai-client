@@ -18,6 +18,7 @@ export class EssayComponent implements OnInit, OnDestroy {
     essay: Essay = new Essay('','','','','');
     id: Subject<string> = new BehaviorSubject<string>(null);
     imagePath;
+    text;
 
 
     constructor(private essayService: EssayService,
@@ -26,11 +27,14 @@ export class EssayComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.essayService.receiveToReview().subscribe(
-            (essay) => { 
-              this.essay = essay;
-              this.id.next(essay.id);
-              if(essay.type == "Image"){
-                this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(essay.content);
+            (response) => { 
+              this.essay = response.essay;
+              this.id.next(response.essay.id);
+              if(response.type == "Image"){
+                this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(response.essay.content);
+              }
+              else {
+                this.text = response.essay.content;
               }
             });
     }

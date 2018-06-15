@@ -3,7 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { Notification } from "../../models/notification";
 
 @Component({
-    selector: 'app-error',
+    selector: 'app-notification',
     templateUrl: './notification.component.html',
     styleUrls: ['./notification.component.scss']
 })

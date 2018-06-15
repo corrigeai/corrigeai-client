@@ -16,7 +16,7 @@
             <input [ngClass]="{'has-error':!updatePassForm.controls['newPassword'].valid && updatePassForm.controls['newPassword'].touched,
                                'touched': updatePassForm.controls['newPassword'].touched }"
                 class="form-control"
-                type="password" placeholder="Senha"
+                type="password" placeholder="Nova Senha (6 dígitos, uma letra e um número)"
                 [formControl]="updatePassForm.controls['newPassword']">
         </div>
         <div class="form-group">
@@ -26,8 +26,6 @@
                 type="password" placeholder="Confirmar Senha"
                 [formControl]="updatePassForm.controls['confirmPassword']">
         </div>
-      <div class="error-message"[hidden]="!error">{{error}}</div>
-
       <button class="btn btn-block"
           type="submit"
           [ngClass]="{'disabled': !updatePassForm.valid}"

@@ -11,7 +11,6 @@ import { AuthenticationService } from '../../services/authentication.service';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  error: any;
 
   constructor(
     private router: Router,
@@ -20,7 +19,11 @@ export class LoginComponent {
   ) {
     this.loginForm = formBuilder.group({
       'identifier': [null, Validators.required],
-      'password': [null, Validators.required],
+      'password': [null,
+        [Validators.required,
+         Validators.minLength(6),
+         Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d^a-zA-Z0-9].{0,}$')]
+      ],
     });
   }
 
@@ -31,10 +34,8 @@ export class LoginComponent {
           localStorage.setItem('token', JSON.stringify(data.token));
           localStorage.setItem('currentUser', JSON.stringify(data.user));
           this.router.navigate(['/']);
-          this.error = undefined;
           this.loginForm.reset();      
-        },
-      (error) => this.error = error
+        }
     );
   }
 

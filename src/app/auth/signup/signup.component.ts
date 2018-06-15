@@ -14,7 +14,6 @@ import { CustomValidators } from '../../shared/custom-validators';
 })
 export class SignupComponent {
   signUpForm: FormGroup;
-  error: any;
 
   constructor(
     private router: Router,
@@ -22,17 +21,21 @@ export class SignupComponent {
     private authService: AuthenticationService
   ) {
     this.signUpForm = formBuilder.group({
-      'name': [null, Validators.required],
+      'name': [null, 
+                [Validators.required,
+                 Validators.maxLength(100)]],
       'email': [null, 
                 [Validators.required,
                  Validators.email]],
       'username': [null, 
                    [Validators.required,
-                    Validators.pattern('^[a-zA-Z0-9_-]*$'),
-                    Validators.minLength(4)]],
+                    Validators.pattern('^(?!.*[-_]{2,})(?=^[^0-9])(?=^[^-_].*[^-_]$)[\\w\\s-]{0,}$'),
+                    Validators.minLength(4),
+                    Validators.maxLength(15)]],
       'password': [null, 
                    [Validators.required,
-                    Validators.minLength(6)]],
+                    Validators.minLength(6),
+                    Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d^a-zA-Z0-9].{0,}$')]],
       'confirmPassword': [null, 
                            [Validators.required, 
                             Validators.minLength(6)]],
@@ -50,11 +53,9 @@ export class SignupComponent {
         result => {
           if (result) {
             this.router.navigate(['login']);
-            this.error = undefined;
             this.signUpForm.reset();
           }
-        },
-        error => this.error = error
+        }
       );
   }
 
