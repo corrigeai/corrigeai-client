@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { EventEmitter } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import {
@@ -20,6 +21,8 @@ import {Observer} from 'rxjs/Observer';
 export class AuthenticationService {
 
   API = environment.apiUrl;
+  userHasLoggedIn = new EventEmitter<any>();
+  userHasLoggedOut = new EventEmitter<any>();
 
   constructor(private http: HttpClient,
               private errorService: ErrorService) { }
@@ -81,6 +84,14 @@ export class AuthenticationService {
         observer.next(localStorage.getItem('token') !== null);
       }
     );
+  }
+
+  notifyUserLogIn(): void {
+    this.userHasLoggedIn.emit();
+  }
+
+  notifyUserLogOut(): void {
+    this.userHasLoggedOut.emit();
   }
 
 }

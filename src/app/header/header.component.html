@@ -1,6 +1,7 @@
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
-    <div class="navbar-header">
+    
+    <div class="navbar-header" *ngIf="isLogged">
         <button type="button" class="navbar-toggle collapsed"
                 data-toggle="collapse" data-target="#alignment-example"
                 aria-expanded="false">
@@ -13,8 +14,12 @@
             <img src="../../assets/tuiter.png">
           </a>
     </div>
-
-    <div class="collapse navbar-collapse" id="alignment-example">
+    <div class="navbar-header" *ngIf="!isLogged">
+          <a class="navbar-brand" rel="home" routerLink='/'>
+            <img src="../../assets/tuiter.png">
+          </a>
+    </div>
+    <div class="collapse navbar-collapse" id="alignment-example" *ngIf="isLogged">
       <ul class="nav navbar-nav">
         <li routerLinkActive="active">
           <a routerLink="/profile">
