@@ -16,7 +16,6 @@ import { EssayComponent } from './essay/essay.component';
 const routes: Routes = [
   { path: '', component: HomeComponent , pathMatch: 'full'},
   { path: 'signup', component: SignupComponent },
-  { path: 'login', component: LoginComponent },
   { path: 'update-pass', component: UpdatePassComponent, canActivate: [AuthGuardService] },
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
   {path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuardService]},

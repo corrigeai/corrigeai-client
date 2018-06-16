@@ -52,7 +52,7 @@ export class SignupComponent {
       .subscribe(
         result => {
           if (result) {
-            this.router.navigate(['/login']);
+            this.router.navigate(['/']);
             this.signUpForm.reset();
           }
         }

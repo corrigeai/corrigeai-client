@@ -82,7 +82,7 @@ export class ReviewEssay implements OnInit {
         (review: Review) => {
           this.reviewService.addReviewElement(review);
           this.reviewForm.reset();
-          this.router.navigate(['/']);
+          this.router.navigate(['profile']);
         }
       );
     }
