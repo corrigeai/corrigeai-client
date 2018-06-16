@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
@@ -7,6 +7,7 @@ import { Essay } from '../../models/essay';
 
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import { Subject } from 'rxjs/Subject';
+import {isUndefined} from "util";
 
 
 @Component({
@@ -14,9 +15,9 @@ import { Subject } from 'rxjs/Subject';
   templateUrl: './essay.component.html',
   styleUrls: ['./essay.component.scss']
 })
-export class EssayComponent implements OnInit, OnDestroy {
+export class EssayComponent implements OnInit {
     essay: Essay = new Essay('','','','','');
-    id: Subject<string> = new BehaviorSubject<string>(null);
+    id: string;
     imagePath;
     text;
 
@@ -27,27 +28,23 @@ export class EssayComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.essayService.receiveToReview().subscribe(
-            (response) => { 
-              this.essay = response.essay;
-              this.id.next(response.essay.id);
-              if(response.type == "Image"){
-                this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(response.essay.content);
+            (res) => {
+              let essay = res.essay;
+              this.essay = essay;
+              this.id = res.reviewId;
+              if(essay.type == "Image"){
+                this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(essay.content);
               }
               else {
-                this.text = response.essay.content;
+                this.text = res.essay.content;
               }
+
             });
     }
 
     onReviewEssay() {
-      this.id.subscribe(
-        (id) => {
-          this.router.navigate(['/review', id]);
-        }
-      );
-    }
-
-    ngOnDestroy() {
-      this.id.unsubscribe();
+      if(!isUndefined(this.id)) {
+        this.router.navigate(['/review', this.id]);
+      }
     }
 }

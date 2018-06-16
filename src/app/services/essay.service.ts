@@ -109,7 +109,6 @@ export class EssayService {
             this.errorService.handleError(error);
             return  Observable.throw(error);
           });
-        
     }
 
 }

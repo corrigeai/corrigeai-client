@@ -33,7 +33,7 @@ export class LoginComponent {
       (data) => {
           localStorage.setItem('token', JSON.stringify(data.token));
           localStorage.setItem('currentUser', JSON.stringify(data.user));
-          this.router.navigate(['/']);
+          this.router.navigate(['/profile']);
           this.loginForm.reset();      
         }
     );

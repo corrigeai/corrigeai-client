@@ -31,7 +31,7 @@ export class EditProfileComponent implements OnInit {
       'name': [user.name, Validators.required],
       'photoUrl': [user.photoUrl],
       'gender': [user.gender, Validators.required],
-      'username': [user.username, 
+      'username': [user.username,
                    [Validators.required,
                     Validators.pattern('^[a-zA-Z0-9_-]*$'),
                      Validators.minLength(4)]]
@@ -57,22 +57,25 @@ export class EditProfileComponent implements OnInit {
 
   onFileChange(event) {
     const reader = new FileReader();
-   
+
     if(event.target.files && event.target.files.length) {
       const [file] = event.target.files;
       reader.readAsDataURL(file);
-    
+
       reader.onload = () => {
-        this.imagePath = reader.result; 
+        this.imagePath = reader.result;
         this.editProfileForm.patchValue({
           photoUrl: reader.result
         });
-        
+
         // need to run CD since file load runs outside of zone
         this.cd.markForCheck();
       };
     }
+  }
 
+  getOut(){
+    this.router.navigate(['profile']);
   }
 
 }
