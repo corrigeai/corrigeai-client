@@ -12,6 +12,7 @@ import { WorkstationComponent } from './workstation/workstation.component';
 import { EssayCardComponent } from './essay/essay-card/essay-card.component';
 import { ReviewEssay } from './essay/review-essay/review-essay.component';
 import { EssayComponent } from './essay/essay.component';
+import { NotFoundPageComponent } from './auth/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent , pathMatch: 'full'},
@@ -22,9 +23,10 @@ const routes: Routes = [
   { path: 'myessays', component: WorkstationComponent, canActivate: [AuthGuardService]},
   { path: 'to-review', component: EssayComponent, canActivate: [AuthGuardService]},
   { path: 'review/:id', component: ReviewEssay, canActivate: [AuthGuardService]},
+
   {
     path: '**',
-    redirectTo: '/'
+    component: NotFoundPageComponent
   }
 ];
 

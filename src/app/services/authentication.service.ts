@@ -19,7 +19,7 @@ import {Observer} from 'rxjs/Observer';
 
 @Injectable()
 export class AuthenticationService {
-
+  isLogged;
   API = environment.apiUrl;
   userHasLoggedIn = new EventEmitter<any>();
   userHasLoggedOut = new EventEmitter<any>();
@@ -75,6 +75,7 @@ export class AuthenticationService {
 
 
   logOut() {
+    this.isLogged = false;
     localStorage.clear();
   }
 
@@ -87,6 +88,7 @@ export class AuthenticationService {
   }
 
   notifyUserLogIn(): void {
+    this.isLogged = true;
     this.userHasLoggedIn.emit();
   }
 
