@@ -1,0 +1,19 @@
+<div class="view">
+        <div class="panel">
+          <div class="panel-title">
+            Minhas Notas
+          </div>
+          <div class="panel-body">
+            <ul class="ticketView" *ngFor="let review of userReviews">
+              <li class="ticketView">
+                   <a href="#">
+                       <div>
+                            <span class="badge pull-left">{{review.grade}}</span>
+                            <span id="titulo">&nbsp;{{review.essay.title}}</span>     
+                       </div>
+                   </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
