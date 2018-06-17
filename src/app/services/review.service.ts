@@ -50,4 +50,15 @@ export class ReviewService {
             return  Observable.throw(error);
           });
     }
+
+    getReviewsAboutUser(): Observable<any> {
+        const httpOptions = this.authService.getOptions();
+        const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
+        return this.http.get(this.API.concat('tuiterapi/reviews/'.concat(userId)), httpOptions)
+        .map((response: Response) => response)
+        .catch((error: Response) => {
+            this.errorService.handleError(error);
+            return  Observable.throw(error);
+          });
+    }
 }

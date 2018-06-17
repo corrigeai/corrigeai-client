@@ -1,19 +1,22 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { ReviewService } from "../../services/review.service";
 
 @Component({
     selector: 'app-essays-status',
     templateUrl: './essays-status.component.html',
     styleUrls: ['./essays-status.component.scss']
 })
-export class EssaysStatusComponent {
-    userReviews = [
-        {grade: 940, 
-            essay: {
-                title: "Título da Redação Título da Redação Título da Redação Título da Redação Título da Redação " 
-            }},
-        {grade: 800, 
-            essay: {
-                title: "Título da Redação Título da Redação Título da Redação Título da Redação Título da Redação " 
-            }}
-        ];    
+export class EssaysStatusComponent  implements OnInit {
+    reviewsAboutUser; 
+
+    constructor(private reviewService: ReviewService) {}
+
+    ngOnInit() {
+        this.reviewService.getReviewsAboutUser()
+        .subscribe(
+            (reviews) => {
+                this.reviewsAboutUser = reviews;
+            }
+        );
+    }
 }
