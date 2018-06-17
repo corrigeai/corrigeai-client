@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { EventEmitter } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import {
@@ -18,14 +19,16 @@ import {Observer} from 'rxjs/Observer';
 
 @Injectable()
 export class AuthenticationService {
-
+  isLogged;
   API = environment.apiUrl;
+  userHasLoggedIn = new EventEmitter<any>();
+  userHasLoggedOut = new EventEmitter<any>();
 
   constructor(private http: HttpClient,
               private errorService: ErrorService) { }
 
   getOptions() {
-    const token =  JSON.parse(localStorage.getItem('token'));
+    const token =  JSON.parse(sessionStorage.getItem('token'));
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -59,7 +62,7 @@ export class AuthenticationService {
 
   updatePassword(userData: UpdatePassBody) {
     const httpOptions = this.getOptions();
-    const userId = JSON.parse(localStorage.getItem('currentUser')).id;
+    const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
 
     return this.http.patch(this.API.concat('tuiterapi/users/'+userId+'/pass'), userData, httpOptions)
     .map((res: Response) => {
@@ -72,15 +75,25 @@ export class AuthenticationService {
 
 
   logOut() {
-    localStorage.clear();
+    this.isLogged = false;
+    sessionStorage.clear();
   }
 
   isLoggedIn() {
     return Observable.create(
       (observer: Observer<boolean>) => {
-        observer.next(localStorage.getItem('token') !== null);
+        observer.next(sessionStorage.getItem('token') !== null);
       }
     );
+  }
+
+  notifyUserLogIn(): void {
+    this.isLogged = true;
+    this.userHasLoggedIn.emit();
+  }
+
+  notifyUserLogOut(): void {
+    this.userHasLoggedOut.emit();
   }
 
 }

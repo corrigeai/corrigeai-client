@@ -45,7 +45,7 @@ export class CreateEssayComponent implements OnInit {
     submitForm(form: any): void {
 
             var essayData = {};
-            essayData['userUsername'] = JSON.parse(localStorage.getItem('currentUser')).username;
+            essayData['userUsername'] = JSON.parse(sessionStorage.getItem('currentUser')).username;
             essayData['theme'] = form.theme;
             essayData['title'] = form.title;
             essayData['content'] = ((form.essayText !== null && form.essayText !== '') ? form.essayText : form.essayImg);

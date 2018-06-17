@@ -31,10 +31,11 @@ export class LoginComponent {
     this.authService.login(form)
     .subscribe(
       (data) => {
-          localStorage.setItem('token', JSON.stringify(data.token));
-          localStorage.setItem('currentUser', JSON.stringify(data.user));
+          sessionStorage.setItem('token', JSON.stringify(data.token));
+          sessionStorage.setItem('currentUser', JSON.stringify(data.user));
           this.router.navigate(['/profile']);
-          this.loginForm.reset();      
+          this.loginForm.reset(); 
+          this.authService.notifyUserLogIn();     
         }
     );
   }

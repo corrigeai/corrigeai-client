@@ -24,7 +24,7 @@ export class EditProfileComponent implements OnInit {
               private cd: ChangeDetectorRef,
               private _sanitizer: DomSanitizer
   ) {
-    const user = JSON.parse(localStorage.getItem('currentUser'));
+    const user = JSON.parse(sessionStorage.getItem('currentUser'));
     this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(user.photoUrl);
 
     this.editProfileForm = this.formBuilder.group({

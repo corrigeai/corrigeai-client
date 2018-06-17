@@ -52,7 +52,7 @@ export class ReviewEssay implements OnInit {
     let submission = {};
     let comments: string[] = [];
     let ratings: number[] = [];
-    const user = JSON.parse(localStorage.getItem('currentUser'));
+    const user = JSON.parse(sessionStorage.getItem('currentUser'));
     
     comments.push(
       form.comptc1text,
@@ -76,13 +76,11 @@ export class ReviewEssay implements OnInit {
 
     submitForm(form: any): void {
       let submission = this.complyForm(form);
-      console.log(submission);
-
       this.reviewService.updateReview(submission, this.reviewId).subscribe(
         (review: Review) => {
           this.reviewService.addReviewElement(review);
           this.reviewForm.reset();
-          this.router.navigate(['/']);
+          this.router.navigate(['profile']);
         }
       );
     }

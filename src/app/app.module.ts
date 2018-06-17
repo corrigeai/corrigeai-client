@@ -44,6 +44,7 @@ import { AuthenticationService } from './services/authentication.service';
 
 // Loading environment
 import { environment } from '../environments/environment';
+import { NotFoundPageComponent } from './auth/not-found/not-found.component';
 
 
 
@@ -68,6 +69,7 @@ import { environment } from '../environments/environment';
     EditProfileComponent,
     WorkstationComponent,
     DeleteEssayComponent,
+    NotFoundPageComponent,
     NotificationComponent,
     ReviewStationComponent
   ],
