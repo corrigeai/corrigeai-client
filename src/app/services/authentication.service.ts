@@ -28,7 +28,7 @@ export class AuthenticationService {
               private errorService: ErrorService) { }
 
   getOptions() {
-    const token =  JSON.parse(localStorage.getItem('token'));
+    const token =  JSON.parse(sessionStorage.getItem('token'));
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -62,7 +62,7 @@ export class AuthenticationService {
 
   updatePassword(userData: UpdatePassBody) {
     const httpOptions = this.getOptions();
-    const userId = JSON.parse(localStorage.getItem('currentUser')).id;
+    const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
 
     return this.http.patch(this.API.concat('tuiterapi/users/'+userId+'/pass'), userData, httpOptions)
     .map((res: Response) => {
@@ -76,13 +76,13 @@ export class AuthenticationService {
 
   logOut() {
     this.isLogged = false;
-    localStorage.clear();
+    sessionStorage.clear();
   }
 
   isLoggedIn() {
     return Observable.create(
       (observer: Observer<boolean>) => {
-        observer.next(localStorage.getItem('token') !== null);
+        observer.next(sessionStorage.getItem('token') !== null);
       }
     );
   }

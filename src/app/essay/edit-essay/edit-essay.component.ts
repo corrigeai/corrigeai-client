@@ -66,8 +66,6 @@ export class EditEssayComponent implements OnInit {
 
     submitForm(form: any): void {
         form = this.complyForm(form);
-        console.log(form);
-
         this.essayService.editEssay(form)
         .subscribe(
             (essay) => {

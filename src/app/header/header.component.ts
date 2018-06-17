@@ -18,7 +18,6 @@ export class HeaderComponent implements OnInit {
       .subscribe(
         (result) => {
           this.isLogged = result; 
-          console.log(result);
         }
       );
   

@@ -81,7 +81,7 @@ export class EssayService {
 
     getUserEssays(): Observable<any> {
         const httpOptions = this.authService.getOptions();
-        const userId = JSON.parse(localStorage.getItem('currentUser')).id;
+        const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
         return this.http.get<Essay[]>(this.API.concat('tuiterapi/users/'+userId+'/essays'), httpOptions)
         .map((essays: Essay[]) => essays)
         .catch((error: Response) => {
@@ -103,7 +103,7 @@ export class EssayService {
 
     receiveToReview() {
         const httpOptions = this.authService.getOptions();
-        const userId = JSON.parse(localStorage.getItem('currentUser')).id;
+        const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
         return this.http.get<Essay>(this.API.concat('tuiterapi/users/'+userId+'/evaluate'), httpOptions)
         .catch((error: Response) => {
             this.errorService.handleError(error);
