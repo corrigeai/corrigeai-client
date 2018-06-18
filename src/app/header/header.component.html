@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid">
-    
+
     <div class="navbar-header" *ngIf="isLogged">
         <button type="button" class="navbar-toggle collapsed"
                 data-toggle="collapse" data-target="#alignment-example"
@@ -39,7 +39,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown" appDropdown>
-          <a class="dropdown-toggle" role="button">
+          <a class="dropdown-toggle" role="button" (click)="onQualquer()">
             <span class="glyphicon glyphicon-bell"></span>&nbsp;&nbsp;
           </a>
 

@@ -5,6 +5,7 @@ import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import { Notification } from '../../models/notification';
 
+
 import { AuthenticationService } from './authentication.service';
 import { environment } from '../../environments/environment';
 import { Review } from '../../models/review';
@@ -15,6 +16,7 @@ import { Observable } from 'rxjs/Observable';
 export class NotificationService {
   private notificationsCollection: any[] = [];
   private stompClient;
+  notificationCollectionChanged = new EventEmitter<any>();
 
   API = environment.apiUrl;
 
@@ -39,16 +41,24 @@ export class NotificationService {
     return this.notificationsCollection;
   }
 
+  resetNotificationCollection(): void {
+    this.notificationsCollection = [];
+  }
+
+  notifyNotificationCollectionChanged(): void {
+    this.notificationCollectionChanged.emit();
+  }
+
   notifyNotificationDeletion(deletedNotification: Notification) {
     this.notificationsCollection = this.notificationsCollection
             .filter(notification => notification.id !== deletedNotification.id);
-}
+  }
 
   // HTTP related Methods
 
   viewUserNotifications(): Observable<any> {
     const httpOptions = this.authService.getOptions();
-    const userId = JSON.parse(localStorage.getItem('currentUser')).id;
+    const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
 
     return this.http.patch(this.API.concat('tuiterapi/users/' + userId + '/notifications'), {}, httpOptions)
                     .map((response: Response) => response)
@@ -64,20 +74,21 @@ export class NotificationService {
     .catch((error: Response) => {
         return  Observable.throw(error);
     });
-}
+  }
 
-  createReview(reviewData): Observable<any> {
+  deleteAllUserNotifications(): Observable<any> {
+    const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
     const httpOptions = this.authService.getOptions();
-    return this.http.post(this.API.concat('tuiterapi/reviews'), reviewData, httpOptions)
-                    .map((response: Response) => response)
-                    .catch((error: Response) => {
-                      return  Observable.throw(error);
-            });
+    return this.http.delete(this.API.concat('tuiterapi/users/' + userId + '/notifications/all'), httpOptions)
+    .map((response: Response) => response)
+    .catch((error: Response) => {
+        return  Observable.throw(error);
+    });
   }
 
   getUserNotifications(): Observable<any> {
     const httpOptions = this.authService.getOptions();
-    const userId = JSON.parse(localStorage.getItem('currentUser')).id;
+    const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
     return this.http.get<Notification[]>(this.API.concat('tuiterapi/users/' + userId + '/notifications'), httpOptions)
             .map((essays: Notification[]) => essays)
             .catch((error: Response) => {
@@ -88,7 +99,7 @@ export class NotificationService {
   // Web Socket related Methods
   connect(receivedNotificationHandler) {
     const entrypoint = this.API.concat('tuiterapi/notifications/ws');
-    const userId = JSON.parse(localStorage.getItem('currentUser')).id;
+    const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
     const socket = new SockJS(entrypoint);
 
     this.stompClient = Stomp.over(socket);
@@ -100,8 +111,12 @@ export class NotificationService {
     });
   }
 
+  disconnect() {
+    this.stompClient.disconnect();
+  }
+
   sendReviewNotification(essayId) {
-    const userId = JSON.parse(localStorage.getItem('currentUser')).id;
+    const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
 
     const notificationData = {};
     notificationData['userId'] =  userId;

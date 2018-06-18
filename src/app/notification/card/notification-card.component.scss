@@ -32,12 +32,19 @@
       cursor:pointer;
       overflow: hidden;
       outline:none;
-      color:grey;
+      color: #666666;
 
       &:hover {
         color: black;
-        text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
       }
     }
   }
+}
+
+.new-notification {
+  background-color: red;
+}
+
+.old-notification {
+  background-color: red;
 }

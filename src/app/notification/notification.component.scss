@@ -20,4 +20,25 @@
       border: 0;
     }
   }
+
+  .notifications-footer {
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(#000, 0.4);
+
+    .divider {
+      margin-bottom: 0px;
+      padding-bottom: 0px;
+    }
+
+    button {
+      background:none;
+      border:none;
+      margin:0;
+      padding:0;
+      cursor: pointer;
+      color: #1da1f2;
+      text-align: center;
+    }
+  }
 }
