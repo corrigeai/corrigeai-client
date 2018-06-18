@@ -1,0 +1,11 @@
+sudo: required
+addons:
+  chrome: stable
+
+language: node_js
+node_js:
+  - "8"
+  - "10"
+
+script:
+  - ng test
