@@ -4,7 +4,7 @@ export class Notification {
     reviewId: string;
     timeStamp: string;
     description: string;
-    isNew: boolean;
+    new: boolean;
 
     constructor(id: string, userId: string, reviewId: string, timeStamp: string, description: string, isNew: boolean) {
         this.id = id;
@@ -12,6 +12,6 @@ export class Notification {
         this.reviewId = reviewId;
         this.timeStamp = timeStamp;
         this.description = description;
-        this.isNew = isNew;
+        this.new = isNew;
     }
 }
