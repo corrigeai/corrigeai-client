@@ -13,9 +13,10 @@
                 alt="Avatar"/>
         </li>
         <div class="side-menu">
-          <p>Username: {{username}}</p>
-          <p>Nome: {{name}}</p>
-          <p>E-mail: {{email}}</p>
+          <li (click)="goToMyEssays()"><a class="sideText">Minhas Redações<span></span></a></li>
+          <li (click)="goToReview()"><a>Corrigir Redações<span></span></a></li>
+          <li (click)="goToMyProfile()"><a>Informações Pessoais<span></span></a></li>
+          <li (click)="goToUpdatePass()"><a>Segurança e privacidade<span></span></a></li>
         </div>
 
       </ul>
@@ -23,43 +24,5 @@
   </div>
 
   <div id="page-content-wrapper">
-    <div class="page-content">
-      <div class="container-fluid">
-        <div class="col-md-6">
-          <div class="panel">
-            <p class="panel-body">
-              Minhas redações
-            </p>
-            <img class="image" (click)="goToMyEssays()" src="../../assets/essay.png"/>
-          </div>
-        </div>
-          <div class="col-md-6">
-            <div class="panel">
-              <div class="panel-body">
-                Corrigir Redações
-              </div>
-              <img class="image" (click)="goToReview()" src="../../assets/my_essays.png"/>
-            </div>
-          </div>
-          <div class="row">
-          <div class="col-md-6">
-            <div class="panel">
-              <div class="panel-body">
-                Informações pessoais
-              </div>
-              <img class="image" (click)="goToMyProfile()" src="../../assets/user.png"/>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="panel">
-              <div class="panel-body">
-                Segurança e Privacidade
-              </div>
-              <img class="image" (click)="goToUpdatePass()" src="../../assets/security.png"/>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
