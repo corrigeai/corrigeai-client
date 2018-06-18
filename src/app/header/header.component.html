@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid">
-    
+
     <div class="navbar-header" *ngIf="isLogged">
         <button type="button" class="navbar-toggle collapsed"
                 data-toggle="collapse" data-target="#alignment-example"
@@ -38,6 +38,18 @@
     </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" appDropdown>
+          <a class="dropdown-toggle" role="button" (click)="onDropdownClicked()">
+            <span class="glyphicon glyphicon-bell"></span>&nbsp;&nbsp;
+          </a>
+
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
+            <li class="dropdown-header">Notificações</li>
+            <li role="separator" class="divider"></li>
+            <li><app-notification></app-notification></li>
+          </ul>
+        </li>
+
         <li class="dropdown" appDropdown>
           <a class="dropdown-toggle" role="button"><span class="glyphicon glyphicon-triangle-bottom"></span></a>
           <ul class="dropdown-menu">

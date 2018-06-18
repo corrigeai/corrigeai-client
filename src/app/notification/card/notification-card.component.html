@@ -1,0 +1,9 @@
+<div class="container" [ngStyle]="{'background-color':notification.new === false ? '#FFFFFF' : '#FFFF88'}">
+  <div class="card-header">
+      <h1>&nbsp;{{notification.description}}</h1>
+      <button type="button" (click)="onDeleteNotification()">&nbsp;<span class="glyphicon glyphicon-remove"></span>&nbsp;</button>
+  </div>
+  <div class="card-footer">
+    <p>&nbsp;{{notification.timeStamp}}</p>
+  </div>
+</div>

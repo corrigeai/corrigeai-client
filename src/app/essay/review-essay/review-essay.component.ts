@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { ReviewService } from '../../services/review.service';
+import { NotificationService } from '../../services/notification.service';
 import { Review } from '../../../models/review';
 
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
@@ -18,8 +19,8 @@ export class ReviewEssay implements OnInit {
   reviewId: string;
   reviewForm: FormGroup;
   // private subscription: Subscription;
-  
-  
+
+
   constructor(
     private formBuilder: FormBuilder,
     private reviewService: ReviewService,
@@ -39,7 +40,7 @@ export class ReviewEssay implements OnInit {
       'comptc5nota': [0, Validators.required],
     });
   }
-  
+
   ngOnInit() {
     this.route.params.subscribe(
       (params) => {
@@ -47,13 +48,13 @@ export class ReviewEssay implements OnInit {
       }
     );
   }
-  
+
   complyForm(form: any): any {
     let submission = {};
     let comments: string[] = [];
     let ratings: number[] = [];
     const user = JSON.parse(sessionStorage.getItem('currentUser'));
-    
+
     comments.push(
       form.comptc1text,
       form.comptc2text,

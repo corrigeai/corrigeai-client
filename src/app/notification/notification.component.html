@@ -1,17 +1,17 @@
-<div class="backdrop" [ngStyle]="{'display': display}"></div>
-<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display': display}">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" aria-label="Close" (click)="onNotificationHandled()"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">{{ notification?.title }}</h4>
-            </div>
-            <div class="modal-body">
-                <p>{{ notification?.message }}</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" (click)="onNotificationHandled()">Close</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+<div class="container">
+  <ul>
+    <li *ngFor="let notification of this.notifications">
+      <ul>
+        <li>
+          <app-notification-card [notification] = "notification"></app-notification-card>
+        </li>
+        <li role="separator" class="divider"></li>
+      </ul>
+
+    </li>
+  </ul>
+
+  <div class="notifications-footer">
+    <button (click)="onClearAllClicked()">&nbsp;Clear All&nbsp;</button>
+  </div>
+</div>

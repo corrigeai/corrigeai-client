@@ -1,9 +1,17 @@
 export class Notification {
-    title: string;
-    message: string;
+    id: string;
+    userId: string;
+    reviewId: string;
+    timeStamp: string;
+    description: string;
+    isNew: boolean;
 
-    constructor(title: string, message: string){
-        this.title = title;
-        this.message = message;
+    constructor(id: string, userId: string, reviewId: string, timeStamp: string, description: string, isNew: boolean) {
+        this.id = id;
+        this.userId = userId;
+        this.reviewId = reviewId;
+        this.timeStamp = timeStamp;
+        this.description = description;
+        this.isNew = isNew;
     }
 }
