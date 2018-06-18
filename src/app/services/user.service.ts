@@ -20,16 +20,16 @@ export class UserService {
   editUser(userData: EditUserBody): Observable<Boolean> {
     const httpOptions = this.authService.getOptions();
 
-    const userId = JSON.parse(localStorage.getItem('currentUser')).id;
+    const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
     return this.http.put(this.API.concat('tuiterapi/users/'+userId), userData, httpOptions)
       .map((res: Response) => {
         if (res) {
-          localStorage.setItem('currentUser', JSON.stringify(res));
+          sessionStorage.setItem('currentUser', JSON.stringify(res));
           return true;
         }
         return false;
       }).catch((error: Response) => {
-        return  Observable.throw(error.json());
+        return  Observable.throw(error);
       });
   }
 }

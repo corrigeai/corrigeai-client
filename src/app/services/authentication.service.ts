@@ -1,7 +1,14 @@
 import { Injectable } from '@angular/core';
+import { EventEmitter } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import {LoginBody, RegistrationBody, UpdatePassBody} from '../../models/body-obj.model';
+import {
+  LoginBody,
+  RegistrationBody,
+  UpdatePassBody
+} from '../../models/body-obj.model';
+import { ErrorService } from './error.service';
+
 import { environment } from '../../environments/environment';
 
 import 'rxjs/add/operator/map';
@@ -12,13 +19,16 @@ import {Observer} from 'rxjs/Observer';
 
 @Injectable()
 export class AuthenticationService {
-
+  isLogged;
   API = environment.apiUrl;
+  userHasLoggedIn = new EventEmitter<any>();
+  userHasLoggedOut = new EventEmitter<any>();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private errorService: ErrorService) { }
 
   getOptions() {
-    const token =  JSON.parse(localStorage.getItem('token'));
+    const token =  JSON.parse(sessionStorage.getItem('token'));
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -36,7 +46,8 @@ export class AuthenticationService {
       }
       return false;
     }).catch((error: Response) => {
-      return  Observable.throw(error.json());
+      this.errorService.handleError(error);
+      return  Observable.throw(error);
     });
   }
 
@@ -44,34 +55,45 @@ export class AuthenticationService {
     return this.http.post(this.API.concat('tuiterapi/auth/login'), userData)
     .map((response: Response) => response)
     .catch((error: Response) => {
+        this.errorService.handleError(error);
         return  Observable.throw(error);
       });
   }
 
   updatePassword(userData: UpdatePassBody) {
     const httpOptions = this.getOptions();
-    const userId = JSON.parse(localStorage.getItem('currentUser')).id;
+    const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
 
     return this.http.patch(this.API.concat('tuiterapi/users/'+userId+'/pass'), userData, httpOptions)
     .map((res: Response) => {
         return true;
     }).catch((error: Response) => {
-      return  Observable.throw(error.json());
+      this.errorService.handleError(error);
+      return  Observable.throw(error);
     });
-
   }
 
 
   logOut() {
-    localStorage.clear();
+    this.isLogged = false;
+    sessionStorage.clear();
   }
 
   isLoggedIn() {
     return Observable.create(
       (observer: Observer<boolean>) => {
-        observer.next(localStorage.getItem('token') !== null);
+        observer.next(sessionStorage.getItem('token') !== null);
       }
     );
+  }
+
+  notifyUserLogIn(): void {
+    this.isLogged = true;
+    this.userHasLoggedIn.emit();
+  }
+
+  notifyUserLogOut(): void {
+    this.userHasLoggedOut.emit();
   }
 
 }

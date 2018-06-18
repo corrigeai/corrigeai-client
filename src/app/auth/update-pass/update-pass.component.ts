@@ -12,7 +12,6 @@ import { CustomValidators } from '../../shared/custom-validators';
 })
 export class UpdatePassComponent implements OnInit {
   updatePassForm: FormGroup;
-  error: any;
 
   constructor(
     private router: Router,
@@ -20,10 +19,16 @@ export class UpdatePassComponent implements OnInit {
     private authService: AuthenticationService
   ) {}
 
-  ngOnInit() {  
+  ngOnInit() {
     this.updatePassForm = this.formBuilder.group({
-      'oldPassword': [null, [Validators.required, Validators.minLength(6)]],
-      'newPassword': [null, [Validators.required, Validators.minLength(6)]],
+      'oldPassword': [null, 
+          [Validators.required,
+           Validators.minLength(6),
+           Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d^a-zA-Z0-9].{0,}$')]],
+      'newPassword': [null, 
+          [Validators.required,
+           Validators.minLength(6),
+           Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d^a-zA-Z0-9].{0,}$')]],
       'confirmPassword': [null, [Validators.required, Validators.minLength(6)]],
     }, {
       validator: CustomValidators.Match('newPassword', 'confirmPassword')
@@ -37,12 +42,10 @@ export class UpdatePassComponent implements OnInit {
     .subscribe(
       result => {
         if (result) {
-          this.router.navigate(['/']);
-          this.error = undefined;
+          this.router.navigate(['/profile']);
           this.updatePassForm.reset();
         }
-      },
-      error => this.error = error
+      }
     );
 }
 

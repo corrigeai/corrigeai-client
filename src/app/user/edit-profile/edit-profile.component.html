@@ -1,5 +1,5 @@
 <div class="container">
-        <form class="fields" [formGroup]="editProfileForm" (ngSubmit)="submitForm(editProfileForm.value)">  
+        <form class="fields" [formGroup]="editProfileForm" (ngSubmit)="submitForm(editProfileForm.value)">
         <div class="row">
                 <div class="col-sm-0 col-xs-0 col-md-0 col-lg-4"></div>
                 <div class="col-sm-12 col-xs-12 col-md-12 col-lg-8">
@@ -10,21 +10,21 @@
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
                 <img  [src]="imagePath"
                 class="img-responsive thumbnail hidden-xs hidden-sm"
-                onerror="this.src='../../assets/default-profile.png'" 
+                onerror="this.src='../../assets/default-profile.png'"
                 alt="Avatar"/>
                 <img  [src]="imagePath"
                 class="img-responsive center thumbnail hidden-lg hidden-md"
-                onerror="this.src='../../assets/default-profile.png'" 
+                onerror="this.src='../../assets/default-profile.png'"
                 alt="Avatar"/>
 
                 <label class="btn btn-primary center"
                 for="my-file-selector">
-                    <input type="file"
-                    id="my-file-selector" 
+                    <input type="file" accept='image/*'
+                    id="my-file-selector"
                     style="display:none;"
                     class="center"
-                    (change)="onFileChange($event)">  
-                    Selecionar imagem      
+                    (change)="onFileChange($event)">
+                    Selecionar imagem
                 </label>
           </div>
         <div class="col-sm-12 col-xs-12 col-md-12 col-lg-8" >
@@ -34,7 +34,7 @@
                                                    'touched': editProfileForm.controls['name'].touched }" class="form-control" type="text"
                           placeholder="Nome completo" [formControl]="editProfileForm.controls['name']">
                       </div>
-                  
+
                       <div class="form-group" style="color:silver;">
                         <h3>Gênero</h3>
                         <label>
@@ -50,13 +50,6 @@
                           <span>outro</span>
                         </label>
                       </div>
-                  
-                      <div class="form-group">
-                        <h3>Nome de Usuário</h3>  
-                        <input [ngClass]="{'has-error': !editProfileForm.controls['username'].valid && editProfileForm.controls['username'].touched,
-                                                   'touched': editProfileForm.controls['username'].touched }" class="form-control" type="text"
-                          placeholder="Nome de Usuário" [formControl]="editProfileForm.controls['username']">
-                      </div>
             <div class="row">
               <div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">&nbsp;</div>
             </div>
@@ -69,12 +62,13 @@
             <div class="col-sm-0 col-xs-0 col-md-3 col-lg-6"></div>
             <div class="col-sm-12 col-xs-12 col-md-6 col-lg-4">
                 <div class="error-message" [hidden]="!error">{{error}}</div>
-                <button 
-                    class="btn btn-block" 
-                    type="submit" 
+                <button
+                    class="btn btn-block"
+                    type="submit"
                     [ngClass]="{'disabled': !editProfileForm.valid}"
-                    [disabled]='!editProfileForm.valid'>Editar Perfil</button>        
-            </div>  
+                    [disabled]='!editProfileForm.valid'>Editar Perfil</button>
+                    <button type="button" class="btn btn-block" (click)="getOut()">Sair</button>
+            </div>
             <div class="col-sm-0 col-xs-0 col-md-3 col-lg-2"></div>
         </div>
       <div class="row">

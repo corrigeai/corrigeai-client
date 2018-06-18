@@ -13,11 +13,11 @@ import { EssayCardComponent } from './essay/essay-card/essay-card.component';
 import { ReviewEssay } from './essay/review-essay/review-essay.component';
 import { EssayComponent } from './essay/essay.component';
 import { NotificationComponent } from './notification/notification.component';
+import { NotFoundPageComponent } from './auth/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent , pathMatch: 'full'},
   { path: 'signup', component: SignupComponent },
-  { path: 'login', component: LoginComponent },
   { path: 'update-pass', component: UpdatePassComponent, canActivate: [AuthGuardService] },
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
   {path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuardService]},
@@ -25,9 +25,10 @@ const routes: Routes = [
   { path: 'to-review', component: EssayComponent, canActivate: [AuthGuardService]},
   { path: 'notifications', component: NotificationComponent, canActivate: [AuthGuardService]},
   { path: 'review/:id', component: ReviewEssay, canActivate: [AuthGuardService]},
+
   {
     path: '**',
-    redirectTo: '/'
+    component: NotFoundPageComponent
   }
 ];
 
