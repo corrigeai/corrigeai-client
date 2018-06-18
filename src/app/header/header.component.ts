@@ -35,9 +35,8 @@ export class HeaderComponent implements OnInit {
       );
     }
 
-  onQualquer() {
+  onDropdownClicked() {
     this.flag = !this.flag;
-    console.log(this.flag);
 
     if (!this.flag) {
       this.notificationService.viewUserNotifications().subscribe(

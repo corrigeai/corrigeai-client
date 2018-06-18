@@ -38,7 +38,6 @@ export class NotificationComponent implements OnInit {
       this.notificationService.notificationCollectionChanged.subscribe(
         () => {
           this.notifications = this.notificationService.getNotificationCollection();
-          console.log(this.notifications);
         });
     }
 

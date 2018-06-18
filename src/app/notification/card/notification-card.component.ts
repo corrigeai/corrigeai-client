@@ -12,13 +12,8 @@ import { NotificationService } from '../../services/notification.service';
 })
 export class NotificationCardComponent implements OnInit {
     @Input() notification: Notification;
-    display = 'block';
 
     constructor(private notificationService: NotificationService) {}
-
-    onNotificationHandled() {
-        this.display = 'block';
-    }
 
     ngOnInit() {
 
