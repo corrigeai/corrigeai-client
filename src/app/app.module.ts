@@ -46,9 +46,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { environment } from '../environments/environment';
 import { NotFoundPageComponent } from './auth/not-found/not-found.component';
 import { EssaysStatusComponent } from './essay/essays-status/essays-status.component';
-
-
-
+import { ReviewComponent } from './review/review.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +59,7 @@ import { EssaysStatusComponent } from './essay/essays-status/essays-status.compo
     SignupComponent,
     NavbarComponent,
     HeaderComponent,
+    ReviewComponent,
     ProfileComponent,
     DropdownDirective,
     EditEssayComponent,

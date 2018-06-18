@@ -13,6 +13,7 @@ import { ErrorService } from './error.service';
 export class ReviewService {
 
     private reviewsCollection: any[] = [];
+    reviewDisplayed = new EventEmitter<any>();
 
     API = environment.apiUrl;
 
