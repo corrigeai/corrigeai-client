@@ -13,7 +13,7 @@ import { ErrorService } from './error.service';
 export class ReviewService {
 
     private reviewsCollection: any[] = [];
-    reviewDisplayed = new EventEmitter<any>();
+    ratingDisplayed = new EventEmitter<any>();
 
     API = environment.apiUrl;
 
@@ -56,6 +56,16 @@ export class ReviewService {
         const httpOptions = this.authService.getOptions();
         const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
         return this.http.get(this.API.concat('tuiterapi/reviews/'.concat(userId)), httpOptions)
+        .map((response: Response) => response)
+        .catch((error: Response) => {
+            this.errorService.handleError(error);
+            return  Observable.throw(error);
+          });
+    }
+
+    rateReview(ratingData): Observable<any> {
+        const httpOptions = this.authService.getOptions();
+        return this.http.post(this.API.concat('tuiterapi/reviews/rating/'), ratingData, httpOptions)
         .map((response: Response) => response)
         .catch((error: Response) => {
             this.errorService.handleError(error);

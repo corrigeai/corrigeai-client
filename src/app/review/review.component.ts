@@ -16,13 +16,13 @@ export class ReviewComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.reviewService.reviewDisplayed
-        .subscribe(
-            (content) => {
-                this.display = 'block';
-                this.review = content;
-            }
-        )
+        // this.reviewService.ratingDisplayed
+        // .subscribe(
+        //     (content) => {
+        //         this.display = 'block';
+        //         this.review = content;
+        //     }
+        // )
     }
     
     onCloseReview() {
@@ -30,6 +30,6 @@ export class ReviewComponent implements OnInit {
     }
 
     onRateReview() {
-        // TODO
+        this.reviewService.ratingDisplayed.emit();
     }
 }

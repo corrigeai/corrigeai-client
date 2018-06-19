@@ -9,7 +9,17 @@ import swal from 'sweetalert2';
     styleUrls: ['./essays-status.component.scss']
 })
 export class EssaysStatusComponent  implements OnInit {
-    reviewsAboutUser;    
+    reviewsAboutUser = [{
+        review: {
+        id:"",
+        essayId:"",
+        comments:['','',' ','',''],
+        ratings:[0,0,0,0,0]},
+        essay: {
+            title:"dasdasdsa"
+        }
+    
+    }];    
 
     constructor(private reviewService: ReviewService) {}
 
@@ -27,6 +37,6 @@ export class EssaysStatusComponent  implements OnInit {
     }
 
     displayReview(review: any) {
-        this.reviewService.reviewDisplayed.emit(review);
+        this.reviewService.ratingDisplayed.emit(review);
     }
 }

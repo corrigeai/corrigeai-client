@@ -1,5 +1,37 @@
-<div class="col-md-12 col-lg-12 col-sm-12">
-    <a (click)="myFunction()" 
-    [ngClass]="{ 'fa-thumbs-down':  active === -1 }"
-    class="fa fa-thumbs-up fa-5x"></a>
-</div>
+<div class="backdrop" [ngStyle]="{'display': display}"></div>
+<div class="modal" role="dialog" [ngStyle]="{'display': display}">
+    <div class="container modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" aria-label="Close" (click)="onCloseRating()"><span aria-hidden="true">&times;</span></button>
+                <h2 class="modal-title text-center">Avaliação da Correção</h2>
+            </div>
+            <div class="modal-body">
+                <form class="fields" [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm.value)">
+                    
+                        <div class="form-group">
+                            <textarea [ngClass]="{'has-error':!loginForm.controls['comment'].valid && loginForm.controls['comment'].touched,
+                                                'touched': loginForm.controls['comment'].touched }"
+                                class="form-control"
+                                type="comment" placeholder="Insira seu comentário" rows="10"
+                                [formControl]="loginForm.controls['comment']"></textarea>
+                        </div>
+                        <div class="form-group" id="bottom">
+                            <div class="btn-toolbar" role="toolbar" aria-label="...">
+                            <div class="btn-group" role="group" aria-label="...">
+                                <button (click)="toggleThumbs()" 
+                                [ngClass]="{ 'fa-thumbs-down':  thumbs === -1 }"
+                                class="btn btn-default fa fa-thumbs-up fa-2x"></button>
+                                <button class="btn btn-default"
+                                type="submit"
+                                [ngClass]="{'disabled': !loginForm.valid}"
+                                [disabled]='!loginForm.valid'>Submeter Avaliação</button>     
+                            </div>
+                        </div>
+                        </div>
+                    </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+     
