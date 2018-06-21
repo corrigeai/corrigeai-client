@@ -1,8 +1,44 @@
-.backdrop {
-    background-color: rgba(0,0,0,0.6);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
+.container {
+  width: 350px;
+  border-radius: 0;
+  height: auto;
+  max-height: 300px;
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+  border: 0;
+
+  ul {
+    padding: 0;
+    margin: 0;
+    border: 0;
+
+    li {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      border: 0;
+    }
+  }
+
+  .notifications-footer {
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(#000, 0.4);
+
+    .divider {
+      margin-bottom: 0px;
+      padding-bottom: 0px;
+    }
+
+    button {
+      background:none;
+      border:none;
+      margin:0;
+      padding:0;
+      cursor: pointer;
+      color: #1da1f2;
+      text-align: center;
+    }
+  }
 }

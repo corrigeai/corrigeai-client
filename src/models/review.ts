@@ -7,7 +7,7 @@ export class Review {
     constructor(id: string, essayId: string, comments: string[], ratings: number[]) {
         this.id = id;
         this.essayId = essayId;
-        this.comments = comments; 
+        this.comments = comments;
         this.ratings = ratings;
     }
 

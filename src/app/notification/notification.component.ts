@@ -1,6 +1,9 @@
-import { Component, OnInit } from "@angular/core";
-
-import { Notification } from "../../models/notification";
+import { Component, OnInit } from '@angular/core';
+import * as Stomp from 'stompjs';
+import * as SockJS from 'sockjs-client';
+import $ from 'jquery';
+import { Notification } from '../../models/notification';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
     selector: 'app-notification',
@@ -8,15 +11,40 @@ import { Notification } from "../../models/notification";
     styleUrls: ['./notification.component.scss']
 })
 export class NotificationComponent implements OnInit {
-    notification: Notification;
-    display = 'none';
+    notifications: Notification[];
 
-    constructor() {}
+    display = 'block';
 
-    onNotificationHandled() {
-        this.display = 'none';
+    constructor(private notificationService: NotificationService) {
+      this.notificationService = this.notificationService;
     }
 
     ngOnInit() {
+      const that  = this;
+
+      this.notificationService.connect((notificationFrame) => {
+        if (notificationFrame.body) {
+          that.notificationService.addNotificationElement(JSON.parse(notificationFrame.body));
+          that.notifications = that.notificationService.getNotificationCollection();
+        }
+      });
+
+      this.notificationService.getUserNotifications().subscribe(
+        (notifications) => {
+          this.notificationService.setNotificationCollection(notifications);
+          this.notifications = this.notificationService.getNotificationCollection();
+      });
+
+      this.notificationService.notificationCollectionChanged.subscribe(
+        () => {
+          this.notifications = this.notificationService.getNotificationCollection();
+        });
+    }
+
+    onClearAllClicked() {
+      this.notificationService.deleteAllUserNotifications().subscribe(
+        () => {
+          this.notificationService.resetNotificationCollection();
+        });
     }
 }

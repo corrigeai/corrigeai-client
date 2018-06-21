@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { NotFoundPageComponent } from './auth/not-found/not-found.component';
 import { NotificationComponent } from './notification/notification.component';
+import { NotificationCardComponent } from './notification/card/notification-card.component';
 import { ReviewStationComponent } from './reviewstation/reviewstation.component';
 
 // User related components
@@ -42,6 +43,7 @@ import { RateReviewComponent } from './review/rate-review/rate-review.component'
 import { UserService } from './services/user.service';
 import { ErrorService } from './services/error.service';
 import { EssayService } from './services/essay.service';
+import { NotificationService } from './services/notification.service';
 import { AuthGuardService } from './auth-guard.service';
 import { ReviewService } from './services/review.service';
 import { AuthenticationService } from './services/authentication.service';
@@ -78,6 +80,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     EssaysStatusComponent,
     NotFoundPageComponent,
     NotificationComponent,
+    NotificationCardComponent,
     ReviewStationComponent
   ],
   imports: [
@@ -92,6 +95,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     EssayService,
     ErrorService,
     ReviewService,
+    NotificationService,
     AuthGuardService,
     AuthenticationService,
     {provide: 'API', useValue: environment.apiUrl}

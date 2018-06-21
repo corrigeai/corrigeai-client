@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class EssayService {
-    
+
     private essayCollection: Essay[] = [];
     essayCreated = new EventEmitter<any>();
     essayEdited = new EventEmitter<Essay>();
@@ -41,7 +41,7 @@ export class EssayService {
     getEssayCollection(): Essay[] {
         return this.essayCollection;
     }
-    
+
     //Event Emission related methods
 
     notifyEssayCreation(): void {
