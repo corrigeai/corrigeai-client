@@ -16,9 +16,7 @@ import { Subject } from 'rxjs/Subject';
 })
 export class ReviewEssay implements OnInit {
   reviewId: string;
-  reviewForm: FormGroup;
-  // private subscription: Subscription;
-  
+  reviewForm: FormGroup;  
   
   constructor(
     private formBuilder: FormBuilder,

@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { ReviewService } from "../../services/review.service";
 
 import swal from 'sweetalert2';
+import {isUndefined} from "util";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-essays-status',
@@ -9,25 +11,19 @@ import swal from 'sweetalert2';
     styleUrls: ['./essays-status.component.scss']
 })
 export class EssaysStatusComponent  implements OnInit {
-    reviewsAboutUser = [{
-        review: {
-        id:"",
-        essayId:"",
-        comments:['','',' ','',''],
-        ratings:[0,0,0,0,0]},
-        essay: {
-            title:"dasdasdsa"
-        }
-    
-    }];    
+    reviewsAboutUser;    
 
-    constructor(private reviewService: ReviewService) {}
+    constructor(private router: Router,
+        private reviewService: ReviewService) {}
 
     ngOnInit() {
         this.reviewService.getReviewsAboutUser()
         .subscribe(
             (reviews) => {
                 this.reviewsAboutUser = reviews;
+                this.reviewService
+                .setReviewCollection(
+                    reviews.map(function(item) {return item.review}))
             }
         );
     }
@@ -37,6 +33,8 @@ export class EssaysStatusComponent  implements OnInit {
     }
 
     displayReview(review: any) {
-        this.reviewService.ratingDisplayed.emit(review);
+        if(!isUndefined(review.id)) {
+            this.router.navigate(['/prev-review', review.id]);
+          }
     }
 }

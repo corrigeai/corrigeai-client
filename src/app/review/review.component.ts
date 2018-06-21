@@ -1,6 +1,10 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+
 import { Review } from "../../models/review";
 import { ReviewService } from "../services/review.service";
+
+import {isUndefined} from "util";
 
 
 @Component({
@@ -9,26 +13,33 @@ import { ReviewService } from "../services/review.service";
     styleUrls: ['./review.component.scss']
 })
 export class ReviewComponent implements OnInit {
-    display = 'none';
-    @Input() review: Review = new Review("","",['','',' ','',''],[0,0,0,0,0]);
+    review: Review = new Review("","",['','',' ','',''],[0,0,0,0,0]);
+    reviewId: string;
 
-    constructor(private  reviewService: ReviewService) {
+    constructor(private  reviewService: ReviewService,
+        private router: Router, 
+        private route: ActivatedRoute) {
     }
 
     ngOnInit() {
-        // this.reviewService.ratingDisplayed
-        // .subscribe(
-        //     (content) => {
-        //         this.display = 'block';
-        //         this.review = content;
-        //     }
-        // )
+        this.route.params.subscribe(
+            (params) => {
+              this.reviewId = params['id'];
+            }
+          );
+          
+        this.reviewService.getReviewsAboutUser()
+        .subscribe(
+            (result) => {
+                this.reviewService.setReviewCollection(
+                    result.map(function(item) {return item.review}));
+                if(!isUndefined(this.reviewId)){
+                    this.review = this.reviewService.getReviewByAttribute('id', this.reviewId);
+                }
+            }
+        );  
     }
     
-    onCloseReview() {
-        this.display = 'none';
-    }
-
     onRateReview() {
         this.reviewService.ratingDisplayed.emit();
     }

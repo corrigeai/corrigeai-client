@@ -14,6 +14,7 @@ export class ReviewService {
 
     private reviewsCollection: any[] = [];
     ratingDisplayed = new EventEmitter<any>();
+    checkReview = new EventEmitter<Review>();
 
     API = environment.apiUrl;
 
@@ -39,6 +40,28 @@ export class ReviewService {
     getReviewCollection(): Review[] {
         return this.reviewsCollection;
     }
+
+    getReviewByIndex(index: number): Review {
+        return this.getReviewCollection()[index];
+    }
+
+    getReviewByAttribute(key: any, value: any): Review {
+        const size = this.getReviewCollection().length;
+        let result: Review;
+        if(size < 1){
+            result = null;
+        }
+        else {
+            for(let i = 0; i < this.getReviewCollection().length; i++){
+                if(this.getReviewCollection()[i][key] === value) {
+                    result = this.getReviewCollection()[i];
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+
 
     // HTTP related Methods
 

@@ -6,7 +6,6 @@ import { EssayService } from '../services/essay.service';
 import { Essay } from '../../models/essay';
 
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import { Subject } from 'rxjs/Subject';
 import {isUndefined} from "util";
 
 
