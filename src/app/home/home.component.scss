@@ -7,6 +7,6 @@
   @include apply-fixed-container();
   @include apply-flexlayout(row, nowrap, center, center);
 
-  background: linear-gradient(rgba(0, 0, 0, 0.54), rgba(0, 0, 0, 0.54)), url("assets/home-background.jpeg") no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.54), rgba(0, 0, 0, 0.54)), url("../../assets/home-background.jpeg") no-repeat;
   background-size: 100%;
 }
