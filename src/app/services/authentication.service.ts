@@ -39,7 +39,7 @@ export class AuthenticationService {
   }
 
   signUp(userData: RegistrationBody): Observable<Boolean> {
-    return this.http.post(this.API.concat('tuiterapi/users'), userData)
+    return this.http.post(this.API.concat('/users'), userData)
     .map((res: Response) => {
       if (res) {
         return true;
@@ -52,7 +52,7 @@ export class AuthenticationService {
   }
 
   login(userData: LoginBody): Observable<any> {
-    return this.http.post(this.API.concat('tuiterapi/auth/login'), userData)
+    return this.http.post(this.API.concat('/auth/login'), userData)
     .map((response: Response) => response)
     .catch((error: Response) => {
         this.errorService.handleError(error);
@@ -64,7 +64,7 @@ export class AuthenticationService {
     const httpOptions = this.getOptions();
     const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
 
-    return this.http.patch(this.API.concat('tuiterapi/users/'+userId+'/pass'), userData, httpOptions)
+    return this.http.patch(this.API.concat('/users/'+userId+'/pass'), userData, httpOptions)
     .map((res: Response) => {
         return true;
     }).catch((error: Response) => {
