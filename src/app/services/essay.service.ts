@@ -61,7 +61,7 @@ export class EssayService {
     //HTTP related methods
     createEssay(essayData): Observable<any> {
         const httpOptions = this.authService.getOptions();
-        return this.http.post(this.API.concat('/essays'), essayData, httpOptions)
+        return this.http.post(this.API.concat('essays'), essayData, httpOptions)
         .map((response: Response) => response)
         .catch((error: Response) => {
             this.errorService.handleError(error);
@@ -71,7 +71,7 @@ export class EssayService {
 
     deleteEssay(id): Observable<any> {
         const httpOptions = this.authService.getOptions();
-        return this.http.delete(this.API.concat('/essays/'+id), httpOptions)
+        return this.http.delete(this.API.concat('essays/'+id), httpOptions)
         .map((response: Response) => response)
         .catch((error: Response) => {
             this.errorService.handleError(error);
@@ -82,7 +82,7 @@ export class EssayService {
     getUserEssays(): Observable<any> {
         const httpOptions = this.authService.getOptions();
         const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
-        return this.http.get<Essay[]>(this.API.concat('/users/'+userId+'/essays'), httpOptions)
+        return this.http.get<Essay[]>(this.API.concat('users/'+userId+'/essays'), httpOptions)
         .map((essays: Essay[]) => essays)
         .catch((error: Response) => {
             this.errorService.handleError(error);
@@ -94,7 +94,7 @@ export class EssayService {
         const essayId = essayData.id;
         delete essayData.id;
         const httpOptions = this.authService.getOptions();
-        return this.http.put(this.API.concat('/essays/'+essayId), essayData, httpOptions)
+        return this.http.put(this.API.concat('essays/'+essayId), essayData, httpOptions)
         .catch((error: Response) => {
             this.errorService.handleError(error);
             return  Observable.throw(error);
@@ -104,7 +104,7 @@ export class EssayService {
     receiveToReview() {
         const httpOptions = this.authService.getOptions();
         const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
-        return this.http.get<Essay>(this.API.concat('/users/'+userId+'/evaluate'), httpOptions)
+        return this.http.get<Essay>(this.API.concat('users/'+userId+'/evaluate'), httpOptions)
         .catch((error: Response) => {
             this.errorService.handleError(error);
             return  Observable.throw(error);
