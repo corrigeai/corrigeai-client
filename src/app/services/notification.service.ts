@@ -60,7 +60,7 @@ export class NotificationService {
     const httpOptions = this.authService.getOptions();
     const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
 
-    return this.http.patch(this.API.concat('tuiterapi/users/' + userId + '/notifications'), {}, httpOptions)
+    return this.http.patch(this.API.concat('users/' + userId + '/notifications'), {}, httpOptions)
                     .map((response: Response) => response)
                     .catch((error: Response) => {
                       return  Observable.throw(error);
@@ -69,7 +69,7 @@ export class NotificationService {
 
   deleteNotification(id): Observable<any> {
     const httpOptions = this.authService.getOptions();
-    return this.http.delete(this.API.concat('tuiterapi/notifications/' + id), httpOptions)
+    return this.http.delete(this.API.concat('notifications/' + id), httpOptions)
     .map((response: Response) => response)
     .catch((error: Response) => {
         return  Observable.throw(error);
@@ -79,7 +79,7 @@ export class NotificationService {
   deleteAllUserNotifications(): Observable<any> {
     const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
     const httpOptions = this.authService.getOptions();
-    return this.http.delete(this.API.concat('tuiterapi/users/' + userId + '/notifications/all'), httpOptions)
+    return this.http.delete(this.API.concat('users/' + userId + '/notifications/all'), httpOptions)
     .map((response: Response) => response)
     .catch((error: Response) => {
         return  Observable.throw(error);
@@ -89,7 +89,7 @@ export class NotificationService {
   getUserNotifications(): Observable<any> {
     const httpOptions = this.authService.getOptions();
     const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
-    return this.http.get<Notification[]>(this.API.concat('tuiterapi/users/' + userId + '/notifications'), httpOptions)
+    return this.http.get<Notification[]>(this.API.concat('users/' + userId + '/notifications'), httpOptions)
             .map((essays: Notification[]) => essays)
             .catch((error: Response) => {
             return  Observable.throw(error);
@@ -98,7 +98,7 @@ export class NotificationService {
 
   // Web Socket related Methods
   connect(receivedNotificationHandler) {
-    const entrypoint = this.API.concat('tuiterapi/notifications/ws');
+    const entrypoint = this.API.concat('notifications/ws');
     const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
     const socket = new SockJS(entrypoint);
 
@@ -107,7 +107,7 @@ export class NotificationService {
 
     this.stompClient.connect({}, function(frame) {
       // Subscribe to the user channel
-      that.stompClient.subscribe('/notification_ch/' + userId, receivedNotificationHandler);
+      that.stompClient.subscribe('notification_ch/' + userId, receivedNotificationHandler);
     });
   }
 
@@ -121,6 +121,6 @@ export class NotificationService {
     const notificationData = {};
     notificationData['userId'] =  userId;
 
-    this.stompClient.send('/tuiterapi/send/message/' + essayId, {}, JSON.stringify(notificationData)) ;
+    this.stompClient.send('send/message/' + essayId, {}, JSON.stringify(notificationData)) ;
   }
 }

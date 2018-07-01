@@ -67,7 +67,7 @@ export class ReviewService {
 
     updateReview(reviewData, reviewId): Observable<any> {
         const httpOptions = this.authService.getOptions();
-        return this.http.put(this.API.concat('tuiterapi/reviews/'.concat(reviewId)), reviewData, httpOptions)
+        return this.http.put(this.API.concat('reviews/'.concat(reviewId)), reviewData, httpOptions)
         .map((response: Response) => response)
         .catch((error: Response) => {
             this.errorService.handleError(error);

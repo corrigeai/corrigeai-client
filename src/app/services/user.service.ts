@@ -21,7 +21,7 @@ export class UserService {
     const httpOptions = this.authService.getOptions();
 
     const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
-    return this.http.put(this.API.concat('tuiterapi/users/'+userId), userData, httpOptions)
+    return this.http.put(this.API.concat('users/'+userId), userData, httpOptions)
       .map((res: Response) => {
         if (res) {
           sessionStorage.setItem('currentUser', JSON.stringify(res));
