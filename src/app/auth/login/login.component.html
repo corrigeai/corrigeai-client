@@ -1,19 +1,21 @@
 <div class="container">
-  <h1>Corrige Aí</h1>
-  <h2>Plataforma de criação e correção de redações</h2>
+  <div class="login-card">
+    <h1>Corrige Aí</h1>
+    <h2>Plataforma de criação e correção de redações</h2>
 
-  <form class="fields" [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm.value)">
-    <input [ngClass]="{'has-error':!loginForm.controls['identifier'].valid
-                      && loginForm.controls['identifier'].touched,
-                      'touched': loginForm.controls['identifier'].touched }" type="identifier" [formControl]="loginForm.controls['identifier']"
-      placeholder="Email ou Nome de Usuário">
-    <input [ngClass]="{'has-error':!loginForm.controls['password'].valid
-                      && loginForm.controls['password'].touched,
-                      'touched': loginForm.controls['password'].touched }" placeholder="Senha" type="password" [formControl]="loginForm.controls['password']">
-    <button class="btn btn-block btn-login" type="submit">Entrar</button>
-    <button class="btn btn-block btn-forgot-pass">Esqueceu a senha?</button>
+    <form class="fields" [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm.value)">
+      <input [ngClass]="{'has-error':!loginForm.controls['identifier'].valid
+                        && loginForm.controls['identifier'].touched,
+                        'touched': loginForm.controls['identifier'].touched }" type="identifier" [formControl]="loginForm.controls['identifier']"
+        placeholder="Email ou Nome de Usuário">
+      <input [ngClass]="{'has-error':!loginForm.controls['password'].valid
+                        && loginForm.controls['password'].touched,
+                        'touched': loginForm.controls['password'].touched }" placeholder="Senha" type="password" [formControl]="loginForm.controls['password']">
+      <button class="btn btn-block btn-login" type="submit">Entrar</button>
+      <button class="btn btn-block btn-forgot-pass">Esqueceu a senha?</button>
 
-    <p>Ainda não tem uma conta?</p>
-    <button class="btn btn-block btn-signup" routerLink="/signup">Criar conta agora</button>
-  </form>
+      <p>Ainda não tem uma conta?</p>
+      <button class="btn btn-block btn-signup" routerLink="/signup">Criar conta agora</button>
+    </form>
+  </div>
 </div>

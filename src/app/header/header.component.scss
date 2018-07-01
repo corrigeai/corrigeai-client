@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import './../shared/util.scss';
 
+.navbar {
+  background-color: #3F4047;
+  border: 0px;
+
+  .app-header-button {
+    color: #CFC2C0;
+    font-size: 16px;
+  }
+}
+
+/*
 .nav.navbar-nav li a {
     color:#400B3C;
     font-weight: bold;
@@ -32,3 +44,4 @@ a.navbar-brand {
   font-size: 13px;
   color: black;
 }
+*/

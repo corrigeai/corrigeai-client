@@ -17,8 +17,9 @@ import { NotFoundPageComponent } from './auth/not-found/not-found.component';
 import { ReviewComponent } from './review/review.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent , pathMatch: 'full'},
+  { path: '', component: LoginComponent , pathMatch: 'full'},
   { path: 'signup', component: SignupComponent },
+  { path: 'home', component: HomeComponent , canActivate: [AuthGuardService]},
   { path: 'update-pass', component: UpdatePassComponent, canActivate: [AuthGuardService] },
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
   {path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuardService]},

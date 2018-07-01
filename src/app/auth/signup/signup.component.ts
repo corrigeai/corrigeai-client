@@ -21,10 +21,10 @@ export class SignupComponent {
     private authService: AuthenticationService
   ) {
     this.signUpForm = formBuilder.group({
-      'name': [null, 
+      'name': [null,
                 [Validators.required,
                  Validators.maxLength(100)]],
-      'email': [null, 
+      'email': [null,
                 [Validators.required,
                  Validators.email]],
       'username': [null,
@@ -59,4 +59,8 @@ export class SignupComponent {
       );
   }
 
+
+  goBack() {
+    this.router.navigate(['/']);
+  }
 }

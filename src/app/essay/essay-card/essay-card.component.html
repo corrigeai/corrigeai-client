@@ -1,36 +1,23 @@
 <div class="container">
-        <div class="panel panel-default thumbnail">
-                <ul class="list-group">
-                        <li class="list-group-item">
-                                <span class="badge pull-right"><h4>&nbsp;N/A&nbsp;</h4></span>
-                                <span id="nota" class="pull-right"><h4>Nota:&nbsp;</h4></span>   
-                        </li>
-                        <li class="list-group-item">
-                                <h3>&nbsp;Título:&nbsp;{{essay.title}}</h3>
-                        </li>
-                        <li class="list-group-item text-muted ">
-                                <strong><h4>&nbsp;Tema:&nbsp;{{essay.theme}}</h4></strong>
-                        </li>
-                      </ul>
-                <div class="panel-body">
-                        <div class="well"><p>{{essay.content}}</p></div>  
-                
-                <div class="col-md-5 form-group">
-                                <button type="button" 
-                                (click)="onEditEssay()" 
-                                class="btn btn-block">
-                                &nbsp;<strong>Editar</strong>&nbsp;
-                        </button>
-                        <button type="button"
-                          (click)="openDeleteEssay()"
-                          class="btn btn-warning btn-lg">
-                    &nbsp;<span class="glyphicon glyphicon-trash"></span>&nbsp;
-                  </button>
-                  <app-delete-essay [display]="display" [hidden]="!display" (displayEvent)="refreshDisplay($event)" (deleteEssay)="onDeleteEssay($event)">
-                  </app-delete-essay>
+  <div class="card-header">
+    <div class="top-header">
+      <h3>{{essay.title}}</h3>
 
-                        </div>
-                </div>
-                <div class="col-md-7 form-group"></div>
-</div>
+      <div class="grade">
+          <p>&nbsp;N/A&nbsp;</p>
+      </div>
+    </div>
+
+    <strong><h4>Tema: {{essay.theme}}</h4></strong>
+  </div>
+
+  <hr>
+  <p>{{essay.content}}</p>
+
+  <div class="card-footer">
+      <button type="button" (click)="onEditEssay()"><span class="glyphicon glyphicon-pencil"></span></button>
+      <button type="button" (click)="openDeleteEssay()">&nbsp;<span class="glyphicon glyphicon-trash"></span>&nbsp;</button>
+      <app-delete-essay [display]="display" [hidden]="!display" (displayEvent)="refreshDisplay($event)" (deleteEssay)="onDeleteEssay($event)">
+      </app-delete-essay>
+  </div>
 </div>

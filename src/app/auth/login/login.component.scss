@@ -3,81 +3,88 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 
-
 .container {
-  @include apply-flexlayout(column, nowrap, center, center);
-  background-color: rgba(127, 135, 152, 0.59);
-  padding: 40px 50px 40px 50px;
-  max-width: 540px;
-  border-radius: 1px;
+  @include apply-fixed-container();
+  @include apply-flexlayout(row, nowrap, center, center);
 
-  h1 {
-    font-family: 'Montserrat';
-    font-size: 4rem;
-    text-align: center;
-    font-weight: bold;
-    color: white;
-    padding: 0px;
-    margin: 0px;
-  }
+  background: linear-gradient(rgba(0, 0, 0, 0.54), rgba(0, 0, 0, 0.54)), url("../../../assets/home-background.jpeg") no-repeat;
+  background-size: 100%;
 
-  h2 {
-    text-align: center;
-    color: white;
-    font-family: Lato;
-    font-size: 2rem;
-    text-align: center;
-    color: white;
-    padding: 0px 10px 0px 10px;
-    margin: 15px 0px 30px 0px;
-  }
+  .login-card {
+    @include apply-flexlayout(column, nowrap, center, center);
+    background-color: rgba(127, 135, 152, 0.59);
+    padding: 40px 50px 40px 50px;
+    max-width: 540px;
+    border-radius: 1px;
 
-  .fields {
-    input {
-      box-sizing: border-box;
-      padding: 10px;
-      width: 100%;
-      outline: 0;
-      font-family: 'Roboto';
-      font-size: 1.2em;
-    }
-
-    .has-error {
-      border: 1px solid red;
-    }
-
-    .touched {
-      background-color: rgb(250, 255, 189);
-    }
-
-    button {
-      margin: 5px;
-      background-color: #6AB1F7;
-      border-radius: 5px;
-      font-family: Lato;
-      font-size: 2.3rem;
+    h1 {
+      font-family: 'Montserrat';
+      font-size: 4rem;
+      text-align: center;
+      font-weight: bold;
       color: white;
+      padding: 0px;
+      margin: 0px;
     }
 
-    .btn-login {
-      margin-top: 8%;
-    }
-
-    .btn-forgot-pass {
-      background-color: rgba(106, 177, 247, 0.57);
-    }
-
-    p {
-      margin-top: 10%;
+    h2 {
+      text-align: center;
+      color: white;
       font-family: Lato;
       font-size: 2rem;
       text-align: center;
       color: white;
+      padding: 0px 10px 0px 10px;
+      margin: 15px 0px 30px 0px;
     }
 
-    .btn-signup {
-      background-color: rgba(19, 206, 102, 0);
-      border: 2px solid #6AB1F7;
+    .fields {
+      input {
+        box-sizing: border-box;
+        padding: 10px;
+        width: 100%;
+        outline: 0;
+        font-family: 'Roboto';
+        font-size: 1.2em;
+      }
+
+      .has-error {
+        border: 1px solid red;
+      }
+
+      .touched {
+        background-color: rgb(250, 255, 189);
+      }
+
+      button {
+        margin: 5px;
+        background-color: #6AB1F7;
+        border-radius: 5px;
+        font-family: Lato;
+        font-size: 2.3rem;
+        color: white;
+      }
+
+      .btn-login {
+        margin-top: 8%;
+      }
+
+      .btn-forgot-pass {
+        background-color: rgba(106, 177, 247, 0.57);
+      }
+
+      p {
+        margin-top: 10%;
+        font-family: Lato;
+        font-size: 2rem;
+        text-align: center;
+        color: white;
+      }
+
+      .btn-signup {
+        background-color: rgba(19, 206, 102, 0);
+        border: 2px solid #6AB1F7;
+      }
     }
   }
 }

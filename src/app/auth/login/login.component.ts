@@ -33,9 +33,9 @@ export class LoginComponent {
       (data) => {
           sessionStorage.setItem('token', JSON.stringify(data.token));
           sessionStorage.setItem('currentUser', JSON.stringify(data.user));
-          this.router.navigate(['/profile']);
-          this.loginForm.reset(); 
-          this.authService.notifyUserLogIn();     
+          this.router.navigate(['/home']);
+          this.loginForm.reset();
+          this.authService.notifyUserLogIn();
         }
     );
   }
