@@ -87,3 +87,44 @@ $colors: (
   min-height: 100vh;
   min-width: 100vw;
 }
+
+.app-form-type1 {
+  input {
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    outline: 0;
+    font-family: 'Roboto';
+    font-size: 1.2em;
+  }
+
+  p {
+    margin-top: 10%;
+    font-family: Lato;
+    font-size: 2rem;
+    text-align: center;
+    color: white;
+  }
+
+  button {
+    margin: 5px;
+    border-radius: 5px;
+    font-family: Lato;
+    font-size: 2.3rem;
+    color: white;
+  }
+
+  .app-btn-type1 {
+    background-color: #6AB1F7;
+    margin-top: 8%;
+  }
+
+  .app-btn-type2 {
+    background-color: rgba(106, 177, 247, 0.57);
+  }
+
+  .app-btn-type3 {
+    background-color: rgba(19, 206, 102, 0);
+    border: 2px solid #6AB1F7;
+  }
+}
