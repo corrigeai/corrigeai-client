@@ -1,21 +1,21 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { EventEmitter } from "@angular/core";
+import { EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import { AuthenticationService } from './authentication.service';
 import { environment } from '../../environments/environment';
-import { Review } from "../../models/review";
+import { ErrorService } from './error.service';
+import { Review } from '../../models/review';
 
 import { Observable } from 'rxjs/Observable';
-import { ErrorService } from './error.service';
+
 
 @Injectable()
 export class ReviewService {
 
-    private reviewsCollection: any[] = [];
     ratingDisplayed = new EventEmitter<any>();
     checkReview = new EventEmitter<Review>();
-
+    private reviewsCollection: any[] = [];
     API = environment.apiUrl;
 
     constructor(private http: HttpClient,
@@ -24,13 +24,13 @@ export class ReviewService {
 
     // reviewsCollection related Methods
 
-    updateReviewElement(original: Review, newReview: Review) {
-        let index = this.reviewsCollection.indexOf(original);
+    updateReviewElement(original: Review, newReview: Review): void {
+        const index = this.reviewsCollection.indexOf(original);
         this.reviewsCollection[index] = newReview;
     }
 
-    addReviewElement(Review: Review):void {
-        this.reviewsCollection.push(Review);
+    addReviewElement(review: Review): void {
+        this.reviewsCollection.push(review);
     }
 
     setReviewCollection(ReviewCollection: Review[]): void {
@@ -48,12 +48,11 @@ export class ReviewService {
     getReviewByAttribute(key: any, value: any): Review {
         const size = this.getReviewCollection().length;
         let result: Review;
-        if(size < 1){
+        if (size < 1) {
             result = null;
-        }
-        else {
-            for(let i = 0; i < this.getReviewCollection().length; i++){
-                if(this.getReviewCollection()[i][key] === value) {
+        } else {
+            for (let i = 0; i < this.getReviewCollection().length; i++) {
+                if (this.getReviewCollection()[i][key] === value) {
                     result = this.getReviewCollection()[i];
                     break;
                 }

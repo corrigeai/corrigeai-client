@@ -1,33 +1,30 @@
-import { Injectable } from '@angular/core';
-import { EventEmitter } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
-import {
-  LoginBody,
-  RegistrationBody,
-  UpdatePassBody
-} from '../../models/body-obj.model';
+import { LoginBody, RegistrationBody, UpdatePassBody } from '../../models/body-obj.model';
+import { environment } from '../../environments/environment';
 import { ErrorService } from './error.service';
 
-import { environment } from '../../environments/environment';
-
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs/Observable';
 import {Observer} from 'rxjs/Observer';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+
 
 @Injectable()
 export class AuthenticationService {
-  isLogged;
-  API = environment.apiUrl;
-  userHasLoggedIn = new EventEmitter<any>();
+
   userHasLoggedOut = new EventEmitter<any>();
+  userHasLoggedIn = new EventEmitter<any>();
+  API = environment.apiUrl;
+  isLogged;
 
   constructor(private http: HttpClient,
-              private errorService: ErrorService) { }
+              private errorService: ErrorService) {}
 
-  getOptions() {
+  getOptions(): { headers: HttpHeaders; } {
     const token =  JSON.parse(sessionStorage.getItem('token'));
     const httpOptions = {
       headers: new HttpHeaders({
@@ -60,11 +57,11 @@ export class AuthenticationService {
       });
   }
 
-  updatePassword(userData: UpdatePassBody) {
+  updatePassword(userData: UpdatePassBody): Observable<any> {
     const httpOptions = this.getOptions();
     const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
 
-    return this.http.patch(this.API.concat('users/'+userId+'/pass'), userData, httpOptions)
+    return this.http.patch(this.API.concat('users/' + userId + '/pass'), userData, httpOptions)
     .map((res: Response) => {
         return true;
     }).catch((error: Response) => {
@@ -73,13 +70,12 @@ export class AuthenticationService {
     });
   }
 
-
-  logOut() {
+  logOut(): void {
     this.isLogged = false;
     sessionStorage.clear();
   }
 
-  isLoggedIn() {
+  isLoggedIn(): Observable<boolean> {
     return Observable.create(
       (observer: Observer<boolean>) => {
         observer.next(sessionStorage.getItem('token') !== null);
