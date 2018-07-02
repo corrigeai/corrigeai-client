@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core';
 
 import { AuthenticationService } from './authentication.service';
 import { environment } from '../../environments/environment';
-import {EditUserBody} from '../../models/body-obj.model';
 
 import { Observable } from 'rxjs/Observable';
 import {Observer} from 'rxjs/Observer';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import { User } from '../../models/user';
 
 
 @Injectable()
@@ -18,7 +18,7 @@ export class UserService {
 
   constructor(private http: HttpClient, private authService: AuthenticationService) {}
 
-  editUser(userData: EditUserBody): Observable<Boolean> {
+  editUser(userData: User): Observable<Boolean> {
     const httpOptions = this.authService.getOptions();
     const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
 

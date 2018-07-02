@@ -2,9 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 
-import { LoginBody, RegistrationBody, UpdatePassBody } from '../../models/body-obj.model';
 import { environment } from '../../environments/environment';
 import { ErrorService } from './error.service';
+import { User } from '../../models/user';
 
 import { Observable } from 'rxjs/Observable';
 import {Observer} from 'rxjs/Observer';
@@ -35,7 +35,7 @@ export class AuthenticationService {
     return httpOptions;
   }
 
-  signUp(userData: RegistrationBody): Observable<Boolean> {
+  signUp(userData: User): Observable<Boolean> {
     return this.http.post(this.API.concat('users'), userData)
     .map((res: Response) => {
       if (res) {
@@ -48,7 +48,7 @@ export class AuthenticationService {
     });
   }
 
-  login(userData: LoginBody): Observable<any> {
+  login(userData: { email: string, password: string }): Observable<any> {
     return this.http.post(this.API.concat('auth/login'), userData)
     .map((response: Response) => response)
     .catch((error: Response) => {
@@ -57,7 +57,7 @@ export class AuthenticationService {
       });
   }
 
-  updatePassword(userData: UpdatePassBody): Observable<any> {
+  updatePassword(userData: { oldPassword: string, newPassword: string }): Observable<any> {
     const httpOptions = this.getOptions();
     const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
 
