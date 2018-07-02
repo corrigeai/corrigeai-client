@@ -16,14 +16,21 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthenticationService {
 
+  /** Event emitter to notify the user has logged out */
   userHasLoggedOut = new EventEmitter<any>();
+  /** Event emitter to notify the user has logged in */
   userHasLoggedIn = new EventEmitter<any>();
+  /** Production/Development API URL */
   API = environment.apiUrl;
+  /** Whether user is validated */
   isLogged;
 
   constructor(private http: HttpClient,
               private errorService: ErrorService) {}
 
+  /**
+   * Generates a description of the communication options for the target resource
+   */
   getOptions(): { headers: HttpHeaders; } {
     const token =  JSON.parse(sessionStorage.getItem('token'));
     const httpOptions = {
@@ -35,8 +42,12 @@ export class AuthenticationService {
     return httpOptions;
   }
 
-  login(userData: { email: string, password: string }): Observable<any> {
-    return this.http.post(this.API.concat('auth/login'), userData)
+  /**
+   * Attempts to validate user session with given login information.
+   * @param loginData - The user login information.
+   */
+  login(loginData: { email: string, password: string }): Observable<any> {
+    return this.http.post(this.API.concat('auth/login'), loginData)
     .map((response: Response) => response)
     .catch((error: Response) => {
         this.errorService.handleError(error);
@@ -44,6 +55,10 @@ export class AuthenticationService {
       });
   }
 
+  /**
+   * Attempts to replace validated user password information.
+   * @param userData - Information about user's old and new password.
+   */
   updatePassword(userData: { oldPassword: string, newPassword: string }): Observable<any> {
     const httpOptions = this.getOptions();
     const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
@@ -57,11 +72,17 @@ export class AuthenticationService {
     });
   }
 
+  /**
+   * Invalidates user session.
+   */
   logOut(): void {
     this.isLogged = false;
     sessionStorage.clear();
   }
 
+  /**
+   * Checks whether user is validated.
+   */
   isLoggedIn(): Observable<boolean> {
     return Observable.create(
       (observer: Observer<boolean>) => {
@@ -70,11 +91,17 @@ export class AuthenticationService {
     );
   }
 
+  /**
+   * Emits event notifying the user has logged in.
+   */
   notifyUserLogIn(): void {
     this.isLogged = true;
     this.userHasLoggedIn.emit();
   }
 
+  /**
+   * Emits event notifying the user has logged out.
+   */
   notifyUserLogOut(): void {
     this.userHasLoggedOut.emit();
   }

@@ -14,9 +14,13 @@ import { Observable } from 'rxjs/Observable';
 export class EssayService {
 
     private essayCollection: Essay[] = [];
+    /** Event emitter to notify an essay has been created */
     essayCreated = new EventEmitter<any>();
+    /** Event emitter to notify an essay has been edited */
     essayEdited = new EventEmitter<Essay>();
+    /** Event emitter to notify an essay has been deleted */
     essayDeleted = new EventEmitter<any>();
+    /** Production/Development API URL */
     API = environment.apiUrl;
 
     constructor(private http: HttpClient,
@@ -44,14 +48,23 @@ export class EssayService {
 
     // Event Emission related methods
 
+    /**
+     * Emits event notifying an essay has been created.
+     */
     notifyEssayCreation(): void {
         this.essayCreated.emit();
     }
 
+    /**
+     * Emits event notifying an essay has been edited.
+     */
     notifyEssayEdition(essay: Essay): void {
         this.essayEdited.emit(essay);
     }
 
+    /**
+     * Emits event notifying an essay has been deleted.
+     */
     notifyEssayDeletion(deletedEssay: Essay): void {
         this.essayCollection = this.essayCollection
                 .filter(essay => essay.id !== deletedEssay.id);
@@ -60,6 +73,10 @@ export class EssayService {
 
     // HTTP related methods
 
+    /**
+     * Requests the creation of an essay.
+     * @param essayData - The essay related data.
+     */
     createEssay(essayData): Observable<any> {
         const httpOptions = this.authService.getOptions();
         return this.http.post(this.API.concat('essays'), essayData, httpOptions)
@@ -70,9 +87,13 @@ export class EssayService {
           });
     }
 
-    deleteEssay(id): Observable<any> {
+    /**
+     * Requests the deletion of an essay.
+     * @param essayId - Id of the essay to be deleted.
+     */
+    deleteEssay(essayId: string): Observable<any> {
         const httpOptions = this.authService.getOptions();
-        return this.http.delete(this.API.concat('essays/' + id), httpOptions)
+        return this.http.delete(this.API.concat('essays/' + essayId), httpOptions)
         .map((response: Response) => response)
         .catch((error: Response) => {
             this.errorService.handleError(error);
@@ -80,6 +101,9 @@ export class EssayService {
         });
     }
 
+    /**
+     * Requests the essays related to the currently validated user.
+     */
     getUserEssays(): Observable<any> {
         const httpOptions = this.authService.getOptions();
         const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
@@ -91,6 +115,10 @@ export class EssayService {
           });
     }
 
+    /**
+     * Requests the edition of an essay.
+     * @param essayData - The new essay data.
+     */
     editEssay(essayData): Observable<any> {
         const essayId = essayData.id;
         delete essayData.id;
@@ -102,6 +130,9 @@ export class EssayService {
           });
     }
 
+    /**
+     * Requests a valid essay for the currently validated user.
+     */
     receiveToReview(): Observable<any> {
         const httpOptions = this.authService.getOptions();
         const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;

@@ -15,12 +15,17 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class UserService {
 
+  /** Production/Development API URL */
   API = environment.apiUrl;
 
   constructor(private http: HttpClient,
               private authService: AuthenticationService,
               private errorService: ErrorService) {}
 
+  /**
+   * Requests the edition of a user.
+   * @param userData - The new user data.
+   */
   editUser(userData: User): Observable<Boolean> {
     const httpOptions = this.authService.getOptions();
     const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
@@ -38,6 +43,10 @@ export class UserService {
       });
   }
 
+  /**
+   * Requests the creation of a user.
+   * @param userData - The user related data.
+   */
   createUser(userData: User): Observable<Boolean> {
     return this.http.post(this.API.concat('users'), userData)
     .map((res: Response) => {

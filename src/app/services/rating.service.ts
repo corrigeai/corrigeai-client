@@ -13,12 +13,18 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class RatingService {
 
+    /** Production/Development API URL */
     API = environment.apiUrl;
 
     constructor(private http: HttpClient,
         private authService: AuthenticationService,
         private errorService: ErrorService) {}
 
+    /**
+     * Requests the edition of a rating.
+     * @param ratingData - The new rating data.
+     * @param ratingId - Id of the rating to be edited.
+     */
     editRating(ratingData: Rating, ratingId: string): Observable<any> {
         const httpOptions = this.authService.getOptions();
         return this.http.put(this.API.concat('reviews/rating/' + ratingId), ratingData, httpOptions)
@@ -29,6 +35,10 @@ export class RatingService {
           });
     }
 
+    /**
+     * Requests the creation of a rating.
+     * @param ratingData - The rating related data.
+     */
     createRating(ratingData: Rating): Observable<any> {
         const httpOptions = this.authService.getOptions();
         return this.http.post(this.API.concat('reviews/rating'), ratingData, httpOptions)
@@ -39,6 +49,10 @@ export class RatingService {
           });
     }
 
+    /**
+     * Requests a rating by its id.
+     * @param ratingId - Requested rating id.
+     */
     getRatingById(ratingId: string): Observable<any> {
         const httpOptions = this.authService.getOptions();
         return this.http.get(this.API.concat('reviews/rating/' + ratingId), httpOptions)
@@ -49,6 +63,10 @@ export class RatingService {
           });
     }
 
+    /**
+     * Requests the deletion of a rating.
+     * @param ratingId - To be deleted rating id.
+     */
     deleteRating(ratingId: string): Observable<any> {
         const httpOptions = this.authService.getOptions();
         return this.http.delete(this.API.concat('reviews/rating/' + ratingId), httpOptions)
@@ -59,6 +77,10 @@ export class RatingService {
           });
     }
 
+    /**
+     * Requests rating related to specific user.
+     * @param userId - Id of the user.
+     */
     getRatingsByUserId(userId: string): Observable<any> {
         const httpOptions = this.authService.getOptions();
         return this.http.get(this.API.concat('users/' + userId + '/ratings'), httpOptions)

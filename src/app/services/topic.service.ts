@@ -13,12 +13,17 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class TopicService {
 
+    /** Production/Development API URL */
     API = environment.apiUrl;
 
     constructor(private http: HttpClient,
         private authService: AuthenticationService,
         private errorService: ErrorService) {}
 
+    /**
+     * Requests the creation of a topic.
+     * @param topicData - The topic related data.
+     */
     createTopic(topicData: Topic): Observable<any> {
         const httpOptions = this.authService.getOptions();
         return this.http.post(this.API.concat('topics'), topicData, httpOptions)
@@ -29,6 +34,10 @@ export class TopicService {
           });
     }
 
+    /**
+     * Requests the edition of a topic.
+     * @param topicData - The new topic data.
+     */
     editTopic(topicData: Topic, topicId: string): Observable<any> {
         const httpOptions = this.authService.getOptions();
         return this.http.put(this.API.concat('topics/' + topicId), topicData, httpOptions)
@@ -39,6 +48,10 @@ export class TopicService {
           });
     }
 
+    /**
+     * Requests a topic by its id.
+     * @param topicId - Requested topic id.
+     */
     getTopicById(topicId: string): Observable<any> {
         const httpOptions = this.authService.getOptions();
         return this.http.get(this.API.concat('topics/' + topicId), httpOptions)
@@ -49,6 +62,9 @@ export class TopicService {
           });
     }
 
+    /**
+     * Requests all existing topics.
+     */
     getAllTopics(): Observable<any> {
         const httpOptions = this.authService.getOptions();
         return this.http.get(this.API.concat('topics/all'), httpOptions)
@@ -59,6 +75,9 @@ export class TopicService {
           });
     }
 
+    /**
+     * Requests currently open topic.
+     */
     getOpenTopic(): Observable<any> {
         const httpOptions = this.authService.getOptions();
         return this.http.get(this.API.concat('topics'), httpOptions)
@@ -69,6 +88,10 @@ export class TopicService {
           });
     }
 
+    /**
+     * Requests essays related to specific topic.
+     * @param topicId - Id of the topic.
+     */
     getEssaysByTopic(topicId: string): Observable<any> {
         const httpOptions = this.authService.getOptions();
         return this.http.get(this.API.concat('topics/' + topicId + '/essays'), httpOptions)

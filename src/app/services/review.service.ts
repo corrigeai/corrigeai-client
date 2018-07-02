@@ -13,9 +13,11 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class ReviewService {
 
+    /** Event emitter to notify the display of a rating */
     ratingDisplayed = new EventEmitter<any>();
     checkReview = new EventEmitter<Review>();
     private reviewsCollection: any[] = [];
+    /** Production/Development API URL */
     API = environment.apiUrl;
 
     constructor(private http: HttpClient,
@@ -64,6 +66,11 @@ export class ReviewService {
 
     // HTTP related Methods
 
+    /**
+     * Requests the edition of a review.
+     * @param reviewData - The new review data.
+     * @param reviewId - The id of the review to be edited.
+     */
     updateReview(reviewData, reviewId): Observable<any> {
         const httpOptions = this.authService.getOptions();
         return this.http.put(this.API.concat('reviews/'.concat(reviewId)), reviewData, httpOptions)
@@ -74,6 +81,9 @@ export class ReviewService {
           });
     }
 
+    /**
+     * Requests the reviews related to the currently validated user.
+     */
     getReviewsAboutUser(): Observable<any> {
         const httpOptions = this.authService.getOptions();
         const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
