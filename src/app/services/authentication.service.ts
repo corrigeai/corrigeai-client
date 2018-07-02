@@ -35,19 +35,6 @@ export class AuthenticationService {
     return httpOptions;
   }
 
-  signUp(userData: User): Observable<Boolean> {
-    return this.http.post(this.API.concat('users'), userData)
-    .map((res: Response) => {
-      if (res) {
-        return true;
-      }
-      return false;
-    }).catch((error: Response) => {
-      this.errorService.handleError(error);
-      return  Observable.throw(error);
-    });
-  }
-
   login(userData: { email: string, password: string }): Observable<any> {
     return this.http.post(this.API.concat('auth/login'), userData)
     .map((response: Response) => response)
