@@ -53,6 +53,7 @@ import { environment } from '../environments/environment';
 
 // Third party
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { RatingService } from './services/rating.service';
 
 
 @NgModule({
@@ -95,6 +96,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     EssayService,
     ErrorService,
     ReviewService,
+    RatingService,
     NotificationService,
     AuthGuardService,
     AuthenticationService,

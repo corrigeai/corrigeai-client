@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('tuiter-angular-ui App', () => {
+describe('corrigeai-angular-ui App', () => {
   let page: AppPage;
 
   beforeEach(() => {
