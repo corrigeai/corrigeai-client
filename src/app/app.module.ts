@@ -10,8 +10,8 @@ import { HeaderComponent } from './header/header.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { NotFoundPageComponent } from './auth/not-found/not-found.component';
 import { NotificationComponent } from './notification/notification.component';
-import { NotificationCardComponent } from './notification/card/notification-card.component';
 import { ReviewStationComponent } from './reviewstation/reviewstation.component';
+import { NotificationCardComponent } from './notification/card/notification-card.component';
 
 // User related components
 import { ProfileComponent } from './user/profile/profile.component';
@@ -43,9 +43,11 @@ import { RateReviewComponent } from './review/rate-review/rate-review.component'
 import { UserService } from './services/user.service';
 import { ErrorService } from './services/error.service';
 import { EssayService } from './services/essay.service';
-import { NotificationService } from './services/notification.service';
 import { AuthGuardService } from './auth-guard.service';
 import { ReviewService } from './services/review.service';
+import { TopicService } from './services/topic.service';
+import { RatingService } from './services/rating.service';
+import { NotificationService } from './services/notification.service';
 import { AuthenticationService } from './services/authentication.service';
 
 // Loading environment
@@ -53,7 +55,6 @@ import { environment } from '../environments/environment';
 
 // Third party
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { RatingService } from './services/rating.service';
 
 
 @NgModule({
@@ -81,8 +82,8 @@ import { RatingService } from './services/rating.service';
     EssaysStatusComponent,
     NotFoundPageComponent,
     NotificationComponent,
-    NotificationCardComponent,
-    ReviewStationComponent
+    ReviewStationComponent,
+    NotificationCardComponent
   ],
   imports: [
     BrowserModule,
@@ -96,9 +97,10 @@ import { RatingService } from './services/rating.service';
     EssayService,
     ErrorService,
     ReviewService,
+    TopicService,
     RatingService,
-    NotificationService,
     AuthGuardService,
+    NotificationService,
     AuthenticationService,
     {provide: 'API', useValue: environment.apiUrl}
   ],

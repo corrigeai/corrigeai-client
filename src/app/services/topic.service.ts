@@ -5,13 +5,13 @@ import { Injectable } from '@angular/core';
 import { AuthenticationService } from './authentication.service';
 import { environment } from '../../environments/environment';
 import { ErrorService } from './error.service';
-import { Rating } from '../../models/rating';
+import { Topic } from '../../models/topic';
 
 import { Observable } from 'rxjs/Observable';
 
 
 @Injectable()
-export class RatingService {
+export class TopicService {
 
     API = environment.apiUrl;
 
@@ -19,9 +19,9 @@ export class RatingService {
         private authService: AuthenticationService,
         private errorService: ErrorService) {}
 
-    editRating(ratingData: Rating, ratingId: string): Observable<any> {
+    createTopic(topicData: Topic): Observable<any> {
         const httpOptions = this.authService.getOptions();
-        return this.http.put(this.API.concat('reviews/rating/' + ratingId), ratingData, httpOptions)
+        return this.http.post(this.API.concat('topics'), topicData, httpOptions)
         .map((response: Response) => response)
         .catch((error: Response) => {
             this.errorService.handleError(error);
@@ -29,9 +29,9 @@ export class RatingService {
           });
     }
 
-    createRating(ratingData: Rating): Observable<any> {
+    editTopic(topicData: Topic, topicId: string): Observable<any> {
         const httpOptions = this.authService.getOptions();
-        return this.http.post(this.API.concat('reviews/rating'), ratingData, httpOptions)
+        return this.http.put(this.API.concat('topics/' + topicId), topicData, httpOptions)
         .map((response: Response) => response)
         .catch((error: Response) => {
             this.errorService.handleError(error);
@@ -39,9 +39,9 @@ export class RatingService {
           });
     }
 
-    getRatingById(ratingId: string): Observable<any> {
+    getTopicById(topicId: string): Observable<any> {
         const httpOptions = this.authService.getOptions();
-        return this.http.get(this.API.concat('reviews/rating/' + ratingId), httpOptions)
+        return this.http.get(this.API.concat('topics/' + topicId), httpOptions)
         .map((response: Response) => response)
         .catch((error: Response) => {
             this.errorService.handleError(error);
@@ -49,9 +49,9 @@ export class RatingService {
           });
     }
 
-    deleteRating(ratingId: string): Observable<any> {
+    getAllTopics(): Observable<any> {
         const httpOptions = this.authService.getOptions();
-        return this.http.delete(this.API.concat('reviews/rating/' + ratingId), httpOptions)
+        return this.http.get(this.API.concat('topics/all'), httpOptions)
         .map((response: Response) => response)
         .catch((error: Response) => {
             this.errorService.handleError(error);
@@ -59,9 +59,19 @@ export class RatingService {
           });
     }
 
-    getRatingsByUserId(userId: string): Observable<any> {
+    getOpenTopic(): Observable<any> {
         const httpOptions = this.authService.getOptions();
-        return this.http.get(this.API.concat('users/' + userId + '/ratings'), httpOptions)
+        return this.http.get(this.API.concat('topics'), httpOptions)
+        .map((response: Response) => response)
+        .catch((error: Response) => {
+            this.errorService.handleError(error);
+            return  Observable.throw(error);
+          });
+    }
+
+    getEssaysByTopic(topicId: string): Observable<any> {
+        const httpOptions = this.authService.getOptions();
+        return this.http.get(this.API.concat('topics/' + topicId + '/essays'), httpOptions)
         .map((response: Response) => response)
         .catch((error: Response) => {
             this.errorService.handleError(error);
@@ -70,4 +80,3 @@ export class RatingService {
     }
 
 }
-
