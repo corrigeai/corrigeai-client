@@ -1,3 +1,8 @@
+@import './../shared/util.scss';
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+
 .well {
     border-radius: 0;
     background-color:  rgba(255, 255, 255, 0.90);
@@ -15,7 +20,63 @@
 }
 
 .container {
-    background-color:  rgba(25, 20, 20, 0.45);
+  @include apply-fixed-container();
+  @include apply-flexlayout(row, nowrap, center, center);
+  background-color:  #F2F4F5;
+
+  .card {
+    @include apply-flexlayout(column, nowrap, center, center);
+    margin-top: 70px;
+    min-width: 400px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: white;
+    padding: 20px;
+
+    h1 {
+      text-align: center;
+      font-family: 'Lato';
+      font-size: 30px;
+      color: #8190A5;
+      font-weight: bold;
+      margin-bottom: 0px;
+    }
+
+    h2 {
+      font-family: 'Roboto';
+      font-size: 20px;
+      font-weight: 300;
+      color: #8190A5;
+      margin-top: 0px;
+    }
+
+    button {
+      margin: 5px;
+      background-color: #6AB1F7;
+      border-radius: 5px;
+      font-family: 'Lato';
+      font-size: 2.3rem;
+      color: white;
+    }
+
+    .card-essay-info {
+      @include apply-flexlayout(column, nowrap, flex-start, flex-start);
+      width: 100%;
+      border: 1px black;
+      margin-bottom: 20px;
+
+      p {
+        font-family: 'Lato';
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      label {
+        font-family: 'Lato';
+        font-size: 15px;
+        font-weight: 400;
+      }
+    }
+  }
 
     .comment {
         color:black;

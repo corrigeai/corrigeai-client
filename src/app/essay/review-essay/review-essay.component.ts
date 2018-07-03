@@ -17,8 +17,8 @@ import { Subject } from 'rxjs/Subject';
 })
 export class ReviewEssay implements OnInit {
   reviewId: string;
-  reviewForm: FormGroup;  
-  
+  reviewForm: FormGroup;
+
   constructor(
     private formBuilder: FormBuilder,
     private reviewService: ReviewService,
@@ -79,7 +79,7 @@ export class ReviewEssay implements OnInit {
         (review: Review) => {
           this.reviewService.addReviewElement(review);
           this.reviewForm.reset();
-          this.router.navigate(['profile']);
+          this.router.navigate(['to-review']);
         }
       );
     }

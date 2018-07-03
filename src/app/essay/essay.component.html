@@ -1,5 +1,43 @@
 <div class="container">
-    <div class="row">
+  <div class="card">
+      <div class="card-header">
+        <h1>Corrigir Redação</h1>
+        <h2>Nós escolhemos uma redação para você corrigir!</h2>
+      </div>
+
+      <hr>
+
+      <div class="card-essay-info">
+        <p>Título</p>
+        <label>{{essay.title}}</label>
+      </div>
+
+      <div class="card-essay-info">
+          <p>Tema</p>
+          <label>{{essay.theme}}</label>
+      </div>
+
+      <div id="card-essay-info">
+          <div *ngIf="essay.type == 'Text'">
+              <strong>
+                  <div class="well">
+                      <p>&ldquo;{{essay.content}}&rdquo;</p>
+                  </div>
+              </strong>
+          </div>
+          <div *ngIf="essay.type != 'Text'">
+                      <img  [src]="imagePath"
+                      class="thumbnail"
+                      onerror="this.src='../../assets/no_image.png'"
+                      alt="Essay"/>
+          </div>
+      </div>
+
+      <button class="btn btn-block btn-submit" (click)="onReviewEssay()">Corrigir Redação</button>
+  </div>
+
+  <app-header></app-header>
+   <!-- <div class="row">
         <div class="col-xs-6">&nbsp;</div>
     </div>
     <div class="row">
@@ -32,20 +70,19 @@
                                 <div *ngIf="essay.type != 'Text'">
                                             <img  [src]="imagePath"
                                             class="thumbnail"
-                                            onerror="this.src='../../assets/no_image.png'" 
-                                            alt="Essay"/> 
+                                            onerror="this.src='../../assets/no_image.png'"
+                                            alt="Essay"/>
                                 </div>
                             </div>
                          </li>
-                    </ul>  
-        </div> 
-    </div>  
+                    </ul>
+        </div>
+    </div>
     <div class="col-xs-12">
-        <div class="well"><p>{{text}}</p></div> 
+        <div class="well"><p>{{text}}</p></div>
     </div>
     <div>
             <a style="cursor: pointer;" class="comment" (click)="onReviewEssay()">
                 <span class="glyphicon glyphicon-comment"></span>
             </a>
-        </div>
-</div>
+        </div>-->
