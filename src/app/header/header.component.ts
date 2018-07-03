@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 import { AuthenticationService } from '../services/authentication.service';
 import { NotificationService } from '../services/notification.service';
@@ -12,12 +13,16 @@ import { NotificationService } from '../services/notification.service';
 export class HeaderComponent implements OnInit {
   @Input() isLogged;
   private flag: boolean;
+  private user;
+  private imagePath;
 
   constructor(private router: Router,
     private authService: AuthenticationService,
+    private _sanitizer: DomSanitizer,
     private notificationService: NotificationService) {
       this.flag = false;
-
+      this.user = JSON.parse(sessionStorage.getItem('currentUser'));
+      this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(this.user.photoUrl);
       this.authService.isLoggedIn()
       .subscribe(
         (result) => {

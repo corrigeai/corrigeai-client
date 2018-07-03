@@ -1,4 +1,77 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button class="navbar-btn header-ham" data-toggle="collapse" data-target=".collapseMenu"><span class="glyphicon glyphicon-menu-hamburger"></span>&nbsp;&nbsp;</button>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" appDropdown>
+          <a class="dropdown-toggle app-header-button" role="button" (click)="onDropdownClicked()">
+            <span class="glyphicon glyphicon-bell"></span>&nbsp;&nbsp;
+          </a>
+
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
+            <li class="dropdown-header">Notificações</li>
+            <li role="separator" class="divider"></li>
+            <li><app-notification></app-notification></li>
+          </ul>
+        </li>
+      </ul>
+  </div>
+</div>
+
+<div class="app-nav-bar collapse collapseMenu">
+    <div class="app-nav-profile">
+      <div class="app-nav-userimg">
+        <img  [src]="imagePath"
+          class="img-responsive center thumbnail"
+          onerror="this.src='../../assets/default-profile.png'"
+          alt="Avatar"/>
+      </div>
+
+      <div class="app-nav-userbox">
+        <div class="app-nav-usertitle">
+          <div class="profile-usertitle-name">
+            <p>{{user.name}}</p>
+          </div>
+
+          <div class="app-nav-edit-profile">
+            <a href="/profile">Editar Perfil</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-nav-menu">
+      <ul class="nav">
+        <li class="active">
+          <a href="/home">
+            <i class="glyphicon glyphicon-briefcase"></i> Dashboard
+          </a>
+        </li>
+
+        <li>
+          <a href="/myessays">
+            <i class="glyphicon glyphicon-list-alt"></i> Minhas Redações
+          </a>
+        </li>
+
+        <li>
+          <a href="#" target="_blank">
+            <i class="glyphicon glyphicon-ok"></i> Corrigir Redações
+          </a>
+        </li>
+
+        <li>
+            <a (click)="onLogout()">
+              <i class="glyphicon glyphicon-off"></i> Sair
+            </a>
+          </li>
+      </ul>
+    </div>
+  </div>
+
+<!--<nav class="navbar navbar-default navbar-fixed-top app-header">
   <div class="container-fluid">
     <div class="navbar-header">
         <button type="button"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
@@ -18,7 +91,7 @@
         </li>
       </ul>
   </div>
-</nav>
+</nav>-->
 
 
 <!--<nav class="navbar navbar-default navbar-fixed-top" role="navigation">

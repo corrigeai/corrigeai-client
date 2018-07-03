@@ -1,7 +1,65 @@
-<div class="container card">
+<app-header></app-header>
+<div class="container">
+  <div class="card">
+    <div class="img-container">
+        <img  [src]="imagePath"
+          class="img-responsive center thumbnail"
+          onerror="this.src='../../assets/default-profile.png'"
+          alt="Avatar"/>
+    </div>
+
+    <div class="field-container">
+      <p>Nome:</p>
+
+      <input [ngClass]="{'has-error': !editProfileForm.controls['name'].valid && editProfileForm.controls['name'].touched,
+                                                    'touched': editProfileForm.controls['name'].touched }" class="form-control" type="text"
+                            placeholder="Nome completo" [formControl]="editProfileForm.controls['name']">
+    </div>
+
+    <div class="field-container">
+      <p>Email:</p>
+
+      <input [ngClass]="{'has-error': !editProfileForm.controls['email'].valid && editProfileForm.controls['email'].touched,
+                            'touched': editProfileForm.controls['email'].touched }" class="form-control" type="text"
+                            placeholder="Email" [formControl]="editProfileForm.controls['email']">
+    </div>
+
+    <div class="form-group" style="color:silver;">
+      <h3>Gênero</h3>
+      <label>
+        <input type="radio" value="Male" [formControl]="editProfileForm.controls['gender']">
+        <span>homem</span>
+      </label>
+
+      <label>
+        <input type="radio" value="Female" [formControl]="editProfileForm.controls['gender']">
+        <span>mulher</span>
+      </label>
+
+      <label>
+        <input type="radio" value="Unknown" [formControl]="editProfileForm.controls['gender']">
+        <span>outro</span>
+      </label>
+    </div>
+
+    <p>Username:</p>
+
+    <input [ngClass]="{'has-error': !editProfileForm.controls['name'].valid && editProfileForm.controls['name'].touched,
+                                                   'touched': editProfileForm.controls['name'].touched }" class="form-control" type="text"
+                          placeholder="Username" [formControl]="editProfileForm.controls['name']">
+
+    <button
+                    class="btn btn-block btn-submit"
+                    type="submit"
+                    [ngClass]="{'disabled': !editProfileForm.valid}"
+                    [disabled]='!editProfileForm.valid'>Editar Perfil</button>
+  </div>
+</div>
+
+<!--<div class="container card">
   <div class="row">
     <div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">&nbsp;</div>
-  </div>    
+  </div>
   <div class="row">
     <div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">&nbsp;</div>
   </div>
@@ -9,7 +67,7 @@
     <div class="col-sm-12 col-xs-12 col-md-12 col-lg-4">
         <img  [src]="imagePath"
         class="img-responsive center thumbnail"
-        onerror="this.src='../../assets/default-profile.png'" 
+        onerror="this.src='../../assets/default-profile.png'"
         alt="Avatar"/>
     </div>
   <div class="col-sm-12 col-xs-12 col-md-12 col-lg-8" >
@@ -58,9 +116,8 @@
 <div class="row">
   <div class="col-sm-12 title">&nbsp;</div>
 </div>
-</div>
-  
+</div>-->
 
-    
-            
-  
+
+
+

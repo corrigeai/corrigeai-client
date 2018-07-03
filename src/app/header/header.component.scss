@@ -1,15 +1,161 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 @import './../shared/util.scss';
 
 .navbar {
   background-color: #3F4047;
   border: 0px;
+  height: 50px;
+  max-height: 50px;
+
+  .header-ham {
+    background-color: transparent; /* Blue background */
+    border: none; /* Remove borders */
+    color: #CFC2C0; /* White text */
+    padding: 12px 16px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer;
+
+    &:hover {
+      color: #AFA2A0;
+    }
+  }
 
   .app-header-button {
     color: #CFC2C0;
     font-size: 16px;
   }
 }
+
+.side-bar {
+  z-index: 1;
+  margin-top: 50px;
+  background-color: #262A2D;
+  max-width: 10%;
+  width: 200px;
+  height: calc(100vh - 50px);
+
+  ul {
+    list-style: none;
+    padding: 0px;
+
+    li {
+      display: block;
+      padding: 5px;
+      margin-bottom: 10px;
+      font-size: 15px;
+      color: #8F92A0;
+      font-family: 'Lato';
+
+      &:hover {
+        color: #5b9bd1;
+        background:#FBFBFB;
+      }
+    }
+  }
+}
+
+.collapse.in {
+  display: inline-block;
+  z-index: 1;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import './../shared/util.scss';
+
+/* Profile container */
+.app-nav-bar {
+  position:fixed;
+  top: 50px;
+  left: 0px;
+  margin: 0px 0;
+  width: 65%;
+  max-width: 300px;
+  height: 100%;
+
+  color: #8F92A0;
+  background:#262A2D;
+  height: 100vh;
+
+  transition: 0.5s;
+
+  .app-nav-header {
+    margin-bottom: 20px;
+
+    .app-nav-close {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      color: #8F92A0;
+      font-size: 20px;
+      margin-top: 10px;
+      margin-left: 55px;
+    }
+  }
+
+  .app-nav-profile {
+    @include apply-flexlayout(row, nowrap, center, center);
+    margin-bottom: 20px;
+    .app-nav-userimg {
+      max-width: 75px;
+      margin-right: 10px;
+      img {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-border-radius: 50% !important;
+        -moz-border-radius: 50% !important;
+        border-radius: 50% !important;
+      }
+    }
+
+    .app-nav-userbox {
+      text-align: center;
+      margin-top: 30px;
+
+      .app-nav-usertitle {
+        color: #FBFBFB;
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 7px;
+      }
+
+      .app-nav-edit-profile {
+        a {
+          color: #8F92A0;
+          text-transform: uppercase;
+          font-size: 12px;
+          font-weight: 600;
+          margin-bottom: 15px;
+        }
+      }
+    }
+
+  }
+}
+
+.app-nav-menu ul li:last-child {
+  border-bottom: none;
+}
+
+.app-nav-menu ul li a {
+  color: #93a3b5;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.app-nav-menu ul li a i {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.app-nav-menu ul li a:hover {
+  background-color: #fafcfd;
+  color: #5b9bd1;
+}
+
 
 /*
 .nav.navbar-nav li a {
