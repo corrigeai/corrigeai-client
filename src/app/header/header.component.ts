@@ -13,8 +13,8 @@ import { NotificationService } from '../services/notification.service';
 export class HeaderComponent implements OnInit {
   @Input() isLogged;
   private flag: boolean;
-  private user;
-  private imagePath;
+  user;
+  imagePath;
 
   constructor(private router: Router,
     private authService: AuthenticationService,
