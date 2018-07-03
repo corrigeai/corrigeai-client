@@ -1,27 +1,36 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
 
-import { environment } from '../../environments/environment';
-import {EditUserBody} from '../../models/body-obj.model';
-
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import {Observer} from 'rxjs/Observer';
 import { AuthenticationService } from './authentication.service';
+import { environment } from '../../environments/environment';
+import { ErrorService } from './error.service';
+import { User } from '../../models/user';
+
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+
 
 @Injectable()
 export class UserService {
 
+  /** Production/Development API URL */
   API = environment.apiUrl;
 
-  constructor(private http: HttpClient, private authService: AuthenticationService) { }
+  constructor(private http: HttpClient,
+              private authService: AuthenticationService,
+              private errorService: ErrorService) {}
 
-  editUser(userData: EditUserBody): Observable<Boolean> {
+  /**
+   * Requests the edition of a user.
+   * @param userData - The new user data.
+   */
+  editUser(userData: User): Observable<Boolean> {
     const httpOptions = this.authService.getOptions();
-
     const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
-    return this.http.put(this.API.concat('users/'+userId), userData, httpOptions)
+
+    return this.http.put(this.API.concat('users/' + userId), userData, httpOptions)
       .map((res: Response) => {
         if (res) {
           sessionStorage.setItem('currentUser', JSON.stringify(res));
@@ -29,7 +38,25 @@ export class UserService {
         }
         return false;
       }).catch((error: Response) => {
+        this.errorService.handleError(error);
         return  Observable.throw(error);
       });
+  }
+
+  /**
+   * Requests the creation of a user.
+   * @param userData - The user related data.
+   */
+  createUser(userData: User): Observable<Boolean> {
+    return this.http.post(this.API.concat('users'), userData)
+    .map((res: Response) => {
+      if (res) {
+        return true;
+      }
+      return false;
+    }).catch((error: Response) => {
+      this.errorService.handleError(error);
+      return  Observable.throw(error);
+    });
   }
 }
