@@ -4,62 +4,62 @@
             <h2>Competência 1</h2>
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 form-group">
                 <label for="sel1">Potuação:</label>
-                <input  
+                <input
                 [value]="review.ratings[0]"
-                class="form-control" 
+                class="form-control"
                 readonly>
-            </div>   
+            </div>
             <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 form-group">
                 <label for="textbox1">Comentário</label>
                 <textarea class="form-control"
                 placeholder="Insira seu comentário aqui"
                 [value]="review.comments[0]"
                 rows="5" readonly></textarea>
-            </div>      
+            </div>
         </div>
         <div class="row">
             <h2>Competência 2</h2>
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 form-group">
                 <label for="sel1">Potuação:</label>
-                <input type="text" 
-                class="form-control" 
+                <input type="text"
+                class="form-control"
                 [value]="review.ratings[1]"
                 readonly>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 form-group">
                 <label for="textbox1">Comentário</label>
                 <textarea class="form-control"
-                    placeholder="Insira seu comentário aqui" 
+                    placeholder="Insira seu comentário aqui"
                     [value]="review.comments[1]"
                     rows="5" readonly></textarea>
-            </div>         
+            </div>
         </div>
         <div class="row">
             <h2>Competência 3</h2>
              <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 form-group">
                 <label for="sel1">Potuação:</label>
-                <input type="text" 
-                class="form-control" 
+                <input type="text"
+                class="form-control"
                 [value]="review.ratings[2]"
                 readonly>
-        </div>  
+        </div>
             <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 form-group">
                 <label for="textbox1">Comentário:</label>
                 <textarea class="form-control"
                     placeholder="Insira seu comentário aqui"
                     [value]="review.comments[2]"
                     rows="5" readonly></textarea>
-            </div>       
+            </div>
         </div>
         <div class="row">
-            <h2>Competência 4</h2>   
+            <h2>Competência 4</h2>
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 form-group">
                     <label for="sel1">Potuação:</label>
-                    <input type="text" 
-                    class="form-control" 
+                    <input type="text"
+                    class="form-control"
                     [value]="review.ratings[3]"
                     readonly>
-            </div>   
+            </div>
             <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 form-group">
                     <label for="textbox1">Comentário:</label>
                     <textarea class="form-control"
@@ -69,11 +69,11 @@
             </div>
         </div>
         <div class="row">
-            <h2>Competência 5</h2>   
+            <h2>Competência 5</h2>
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 form-group">
                     <label for="sel1">Potuação:</label>
-                    <input type="text" 
-                    class="form-control" 
+                    <input type="text"
+                    class="form-control"
                     [value]="review.ratings[4]"
                     readonly>
             </div>
@@ -88,7 +88,7 @@
         </div>
         <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 form-group">&nbsp;</div>
-        </div>   
+        </div>
         <div class="row">
                 <div class="col-xs-0 col-sm-0 col-md-2 col-lg-2 form-group">
                     </div>
@@ -102,23 +102,23 @@
             </div>
         <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">&nbsp;</div>
-        </div>        
+        </div>
         <div class="row">
                 <div class="col-xs-0 col-sm-0 col-md-2 col-lg-2 form-group">
                 &nbsp;
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 form-group">
-                        <button 
-                        type="button" 
+                        <button
+                        type="button"
                         class="btn btn-block btn-primary"
                         (click)="onRateReview()"
-                        data-dismiss="modal">Avaliar Revisão</button>            
+                        data-dismiss="modal">Avaliar Revisão</button>
                 </div>
                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 form-group">
                 </div>
             </div>
         <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 form-group">&nbsp;</div>
-        </div>    
         </div>
-        
+        </div>
+        <app-header></app-header>

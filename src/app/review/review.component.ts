@@ -17,7 +17,7 @@ export class ReviewComponent implements OnInit {
     reviewId: string;
 
     constructor(private  reviewService: ReviewService,
-        private router: Router, 
+        private router: Router,
         private route: ActivatedRoute) {
     }
 
@@ -27,7 +27,7 @@ export class ReviewComponent implements OnInit {
               this.reviewId = params['id'];
             }
           );
-          
+
         this.reviewService.getReviewsAboutUser()
         .subscribe(
             (result) => {
@@ -37,9 +37,9 @@ export class ReviewComponent implements OnInit {
                     this.review = this.reviewService.getReviewByAttribute('id', this.reviewId);
                 }
             }
-        );  
+        );
     }
-    
+
     onRateReview() {
         this.reviewService.ratingDisplayed.emit();
     }
