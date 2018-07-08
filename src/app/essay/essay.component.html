@@ -18,14 +18,14 @@
       </div>
 
       <div id="card-essay-info">
-          <div *ngIf="essay.type == 'Text'">
+          <div *ngIf="essay.type === 'Text'">
               <strong>
                   <div class="well" style="border: none;">
                       <p>&ldquo;{{essay.content}}&rdquo;</p>
                   </div>
               </strong>
           </div>
-          <div *ngIf="essay.type != 'Text'">
+          <div *ngIf="essay.type === 'Image'">
                       <img  [src]="imagePath"
                       class="thumbnail"
                       onerror="this.src='../../assets/no_image.png'"
