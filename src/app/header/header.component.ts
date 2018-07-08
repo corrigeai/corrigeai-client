@@ -4,6 +4,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 import { AuthenticationService } from '../services/authentication.service';
 import { NotificationService } from '../services/notification.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +20,8 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router,
     private authService: AuthenticationService,
     private _sanitizer: DomSanitizer,
-    private notificationService: NotificationService) {
+    private notificationService: NotificationService,
+    private userService: UserService) {
       this.flag = false;
       this.user = JSON.parse(sessionStorage.getItem('currentUser'));
       this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(this.user.photoUrl);
@@ -38,6 +40,10 @@ export class HeaderComponent implements OnInit {
           this.isLogged = true;
         }
       );
+      this.userService.editUserEvent
+        .subscribe(() => {
+          this.user = JSON.parse(sessionStorage.getItem('currentUser'));
+        });
     }
     
     onDropdownClicked() {

@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 import { AuthenticationService } from './authentication.service';
 import { environment } from '../../environments/environment';
@@ -17,6 +17,7 @@ export class UserService {
 
   /** Production/Development API URL */
   API = environment.apiUrl;
+  editUserEvent = new EventEmitter<any>();
 
   constructor(private http: HttpClient,
               private authService: AuthenticationService,

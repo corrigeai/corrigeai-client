@@ -64,6 +64,7 @@ export class ProfileComponent implements OnInit {
     .subscribe(
       result => {
         if (result) {
+          this.userService.editUserEvent.emit();
           this.router.navigate(['profile']);
           this.error = undefined;
         }
