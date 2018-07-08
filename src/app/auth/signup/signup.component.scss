@@ -17,6 +17,31 @@
     max-width: 540px;
     border-radius: 1px;
 
+    button {
+      &:hover {
+        color: white;
+      }
+    }
+
+    .app-gender {
+      @include apply-flexlayout(row, nowrap, flex-start, flex-start);
+
+      label {
+        margin: 0 auto;
+        margin-top:20px;
+        margin-bottom: 10px;
+      }
+
+      p {
+        margin-top: 15px;
+        text-align: right;
+        color: #F1F0F5;
+        font-family: 'Lato';
+        font-size: 18px;
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+    }
     h2 {
       margin-top: 10%;
       margin-bottom: 30px;

@@ -5,6 +5,7 @@
 .app-nav-bar {
   position:fixed;
   top: 50px;
+  left: 0px;
   margin: 0px 0;
   width: 65%;
   max-width: 300px;
@@ -13,6 +14,22 @@
   color: #8F92A0;
   background:#262A2D;
   height: 100vh;
+
+  transition: 0.5s;
+
+  .app-nav-header {
+    margin-bottom: 20px;
+
+    .app-nav-close {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      color: #8F92A0;
+      font-size: 20px;
+      margin-top: 10px;
+      margin-left: 55px;
+    }
+  }
 
   .app-nav-profile {
     @include apply-flexlayout(row, nowrap, center, center);

@@ -63,6 +63,16 @@ export class ReviewService {
         return result;
     }
 
+    getReviewsOfEssay(essayId: string): Review[] {
+      return this.reviewsCollection.filter((review) => {
+        if (review.essayId === essayId) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+    }
+
 
     // HTTP related Methods
 
@@ -87,7 +97,7 @@ export class ReviewService {
     getReviewsAboutUser(): Observable<any> {
         const httpOptions = this.authService.getOptions();
         const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
-        return this.http.get(this.API.concat('reviews/'.concat(userId)), httpOptions)
+        return this.http.get(this.API.concat('users/'.concat(userId)).concat('/essaysReviews'), httpOptions)
         .map((response: Response) => response)
         .catch((error: Response) => {
             this.errorService.handleError(error);
