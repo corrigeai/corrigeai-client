@@ -43,6 +43,7 @@ export class HeaderComponent implements OnInit {
       this.userService.editUserEvent
         .subscribe(() => {
           this.user = JSON.parse(sessionStorage.getItem('currentUser'));
+          this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(this.user.photoUrl);
         });
     }
     
