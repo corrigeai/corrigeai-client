@@ -1,30 +1,53 @@
+@import './../../shared/util.scss';
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+
 .container {
-  h2 {
-    margin-top: 10%;
-    margin-bottom: 30px;
-    font-weight: bold;
-    text-align: center;
-    color: silver;
-  }
+  @include apply-fixed-container();
+  @include apply-flexlayout(row, nowrap, center, center);
 
-  .fields {
-    width: 100%;
-    margin: auto;
-  
-    .has-error {
-        border: 1px solid red;
-    }
+  background: linear-gradient(rgba(0, 0, 0, 0.54), rgba(0, 0, 0, 0.54)), url("../../../assets/home-background.jpeg") no-repeat;
+  background-size: 100%;
 
-    .touched {
-      background-color: rgb(250, 255, 189);
-    }
-  
+  .signup-card {
+    @include apply-flexlayout(column, nowrap, center, center);
+    background-color: rgba(127, 135, 152, 0.59);
+    padding: 40px 50px 40px 50px;
+    max-width: 540px;
+    border-radius: 1px;
+
     button {
-      background-color: #1da1f2;
-      color: white;
-      border-radius: 30px;
-      font-size: 20px;
-      padding: 10px;
+      &:hover {
+        color: white;
+      }
+    }
+
+    .app-gender {
+      @include apply-flexlayout(row, nowrap, flex-start, flex-start);
+
+      label {
+        margin: 0 auto;
+        margin-top:20px;
+        margin-bottom: 10px;
+      }
+
+      p {
+        margin-top: 15px;
+        text-align: right;
+        color: #F1F0F5;
+        font-family: 'Lato';
+        font-size: 18px;
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+    }
+    h2 {
+      margin-top: 10%;
+      margin-bottom: 30px;
+      font-weight: bold;
+      text-align: center;
+      color: silver;
     }
   }
 }

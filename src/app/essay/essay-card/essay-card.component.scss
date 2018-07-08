@@ -1,49 +1,138 @@
-li {
-    width:100%;
-    padding:3px;
-    border-top: 2px transparent;
-    border-bottom: 2px transparent;
-    background-color: transparent;
-}
-
-span {
-    padding:10px;
-}
-
-.well {
-    word-wrap: break-word;
-    white-space: normal;  
-    max-height: 100px;
-    overflow-y: hidden;  
-}
+@import './../../shared/util.scss';
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 
 .container {
-    border-radius: 0;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  width: 90%;
+
+  .top-header {
+    display: flex;
+    @include apply-flexlayout(row, nowrap, space-between, center);
+
+    .grade {
+      background-color: #FFBA5C;
+      border-radius: 15px;
+      padding: 8px;
+      margin-top: 5px;
+
+
+      p {
+        color: #FFFFFF;
+        font-family: 'Lato';
+        font-size: 20px;
+        text-align: left;
+        font-weight: bold;
+        text-align: center;
+      }
+    }
+  }
+
+  h3 {
+    color: #47525E;
+    font-family: 'Lato';
+    font-size: 23px;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 0px;
+    padding: 0px;
+  }
+
+  h4 {
+    margin-top: 1px;
+    color: #47525E;
+    font-family: 'Roboto';
+    font-size: 15px;
+    text-align: left;
+  }
+
 }
 
-.thumbnail {
-    border-radius: 0;
-    background-color: rgba(255, 255, 255, 0.80);
+.card-footer {
+  @include apply-flexlayout(row, nowrap, space-between, center);
+
+  .footer-buttons {
+    @include apply-flexlayout(row, nowrap, flex-end, center);
+  }
+
+  a {
+    color: black;
+    text-transform: uppercase;
+    font-family: 'Roboto';
+    font-size: 12px;
+
+  }
 }
 
-.well {
-    border-radius: 0;
-}
+.card-reviews {
+  ul {
+    padding: 0px;
+  }
 
-#nota {
-    border-radius: 0;
+  li {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    background-color: #F2F4F5;
+    margin-bottom: 15px;
+    @include apply-flexlayout(column, nowrap, center, flex-start);
+
+    .review-area {
+      @include apply-flexlayout(row, nowrap, space-between, space-between);
+      width: 100%;
+      padding: 5px;
+      border-bottom: 0.1px solid #EFEFEF;
+
+      .review-grade {
+        width: 50px;
+        text-align:center;
+        background-color: #DF9A3C;
+      }
+
+      .review-details {
+        width: 100%;
+        margin: auto 0;
+      }
+
+      &:last-child {
+        border-bottom: 0px;
+        background-color: black;
+      }
+    }
+
+    p {
+      font-family: 'Lato';
+      font-size: 13px;
+      font-weight: bold;
+      width: 100%;
+      text-align: justify;
+      text-justify: inter-word;
+
+      .review-comment {
+        font-weight: normal;
+      }
+    }
+
+
+  }
 }
 
 button {
-    border: none;
-    outline: 0;
-    display: inline-block;
-    padding: 8px;
+  background-color: transparent; /* Blue background */
+  border: none; /* Remove borders */
+  color: #47525E; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer;
+
+  &:hover {
     color: black;
-    background-color: lightslategray;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
-    border-radius: 0;
   }
+}
+
+card-footer {
+
+}

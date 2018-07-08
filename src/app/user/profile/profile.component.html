@@ -1,7 +1,84 @@
-<div class="container card">
+<div class="container">
+  <div class="card">
+    <form class="fields" [formGroup]="editProfileForm" (ngSubmit)="submitForm(editProfileForm.value)">
+    <div class="img-container">
+        <img  [src]="imagePath"
+          class="img-responsive center thumbnail"
+          onerror="this.src='../../assets/default-profile.png'"
+          alt="Avatar"/>
+
+        <label class="select-img-btn"
+          for="my-file-selector">
+              <input type="file" accept='image/*'
+              id="my-file-selector"
+              style="display:none;"
+              class="center"
+              (change)="onFileChange($event)">
+              Selecionar imagem
+          </label>
+    </div>
+
+    <div class="field-container">
+      <p>Nome</p>
+
+      <input [ngClass]="{'has-error': !editProfileForm.controls['name'].valid && editProfileForm.controls['name'].touched,
+                                                    'touched': editProfileForm.controls['name'].touched }" class="form-control" type="text"
+                            placeholder="Nome completo" [formControl]="editProfileForm.controls['name']">
+    </div>
+
+    <div class="field-container">
+        <p>Username</p>
+
+        <input [ngClass]="{'has-error': !editProfileForm.controls['username'].valid && editProfileForm.controls['username'].touched,
+                                                      'touched': editProfileForm.controls['username'].touched }" class="form-control" type="text"
+                              placeholder="Username" [formControl]="editProfileForm.controls['username']" disabled>
+    </div>
+
+    <div class="field-container">
+      <p>Email</p>
+
+      <input [ngClass]="{'has-error': !editProfileForm.controls['email'].valid && editProfileForm.controls['email'].touched,
+                            'touched': editProfileForm.controls['email'].touched }" class="form-control" type="text"
+                            placeholder="Email" [formControl]="editProfileForm.controls['email']" disabled>
+    </div>
+
+    <div class="form-group" style="color:silver;">
+      <p>Gênero</p>
+      <div class="form-gender">
+        <label>
+          <input type="radio" value="Male" [formControl]="editProfileForm.controls['gender']">
+          <span>homem</span>
+        </label>
+
+        <label>
+          <input type="radio" value="Female" [formControl]="editProfileForm.controls['gender']">
+          <span>mulher</span>
+        </label>
+
+        <label>
+          <input type="radio" value="Unknown" [formControl]="editProfileForm.controls['gender']">
+          <span>outro</span>
+        </label>
+      </div>
+    </div>
+
+    <button
+                    class="btn btn-block btn-submit"
+                    type="submit"
+                    [ngClass]="{'disabled': !editProfileForm.valid}"
+                    [disabled]='!editProfileForm.valid'>Salvar</button>
+
+    <button
+                    class="btn btn-block btn-password" routerLink="/update-pass">Alterar Senha</button>
+  </form>
+  </div>
+</div>
+
+<app-header></app-header>
+<!--<div class="container card">
   <div class="row">
     <div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">&nbsp;</div>
-  </div>    
+  </div>
   <div class="row">
     <div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">&nbsp;</div>
   </div>
@@ -9,7 +86,7 @@
     <div class="col-sm-12 col-xs-12 col-md-12 col-lg-4">
         <img  [src]="imagePath"
         class="img-responsive center thumbnail"
-        onerror="this.src='../../assets/default-profile.png'" 
+        onerror="this.src='../../assets/default-profile.png'"
         alt="Avatar"/>
     </div>
   <div class="col-sm-12 col-xs-12 col-md-12 col-lg-8" >
@@ -58,9 +135,8 @@
 <div class="row">
   <div class="col-sm-12 title">&nbsp;</div>
 </div>
-</div>
-  
+</div>-->
 
-    
-            
-  
+
+
+

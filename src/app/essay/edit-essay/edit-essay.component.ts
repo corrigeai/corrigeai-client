@@ -66,6 +66,7 @@ export class EditEssayComponent implements OnInit {
 
     submitForm(form: any): void {
         form = this.complyForm(form);
+        form['type'] = ((form.essayText !== null && form.essayText !== '') ? 'Text' : 'Image');
         this.essayService.editEssay(form)
         .subscribe(
             (essay) => {
@@ -73,6 +74,18 @@ export class EditEssayComponent implements OnInit {
                 this.onEndSubmission();
             }
         );           
+    }
+
+    isEmpty(value: any): string {
+        if(value == null){
+            return 'true';
+        }
+        else if (value == '') {
+            return 'true';
+        }
+        else {
+            return 'false';
+        }
     }
 
     onFileChange(event) {

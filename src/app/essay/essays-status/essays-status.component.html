@@ -1,0 +1,19 @@
+<div class="view">
+        <div class="panel">
+          <div class="panel-title">
+            Minhas Notas
+          </div>
+          <div class="panel-body">
+            <ul class="ticketView" *ngFor="let obj of reviewsAboutUser">
+              <li class="ticketView">
+                   <a>
+                       <div (click)="displayReview(obj.review)"  role="button">
+                            <span class="badge pull-left">{{sum(obj.review.ratings)}}</span>
+                            <span id="titulo">&nbsp;{{obj.essay.title}}</span>     
+                       </div>
+                   </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>

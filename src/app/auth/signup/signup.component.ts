@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ViewEncapsulation} from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { AuthenticationService } from '../../services/authentication.service';
 import { CustomValidators } from '../../shared/custom-validators';
+import { UserService } from '../../services/user.service';
+
 
 @Component({
   selector: 'app-signup',
@@ -18,13 +19,13 @@ export class SignupComponent {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private authService: AuthenticationService
+    private userService: UserService
   ) {
     this.signUpForm = formBuilder.group({
-      'name': [null, 
+      'name': [null,
                 [Validators.required,
                  Validators.maxLength(100)]],
-      'email': [null, 
+      'email': [null,
                 [Validators.required,
                  Validators.email]],
       'username': [null,
@@ -40,7 +41,7 @@ export class SignupComponent {
                            [Validators.required,
                             Validators.minLength(6)]],
       'gender': [null, Validators.required],
-    },{
+    }, {
       validator: CustomValidators.Match('password', 'confirmPassword')
     });
   }
@@ -48,7 +49,7 @@ export class SignupComponent {
   submitForm(form: any): void {
     delete form.confirmPassword;
 
-    this.authService.signUp(form)
+    this.userService.createUser(form)
       .subscribe(
         result => {
           if (result) {
@@ -59,4 +60,8 @@ export class SignupComponent {
       );
   }
 
+
+  goBack() {
+    this.router.navigate(['/']);
+  }
 }

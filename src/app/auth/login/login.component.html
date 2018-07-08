@@ -1,27 +1,21 @@
-  <h2>Entrar no CorrigeAí</h2>
-  
-  <form class="fields" [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm.value)">
-      <div class="form-group">
-          <input [ngClass]="{'has-error':!loginForm.controls['identifier'].valid && loginForm.controls['identifier'].touched,
-                             'touched': loginForm.controls['identifier'].touched }"
-              class="form-control"
-              type="identifier" placeholder="Email/Nome de usuário"
-              [formControl]="loginForm.controls['identifier']">
-      </div>
+<div class="container">
+  <div class="login-card">
+    <h1>Corrige Aí</h1>
+    <h2>Plataforma de criação e correção de redações</h2>
 
-      <div class="form-group">
-          <input [ngClass]="{'has-error':!loginForm.controls['password'].valid && loginForm.controls['password'].touched,
-                             'touched': loginForm.controls['password'].touched }"
-              class="form-control"
-              type="password" placeholder="Senha (6 dígitos, uma letra e um número)"
-              [formControl]="loginForm.controls['password']">
-      </div>
+    <form class="fields" [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm.value)">
+      <input [ngClass]="{'has-error':!loginForm.controls['identifier'].valid
+                        && loginForm.controls['identifier'].touched,
+                        'touched': loginForm.controls['identifier'].touched }" type="identifier" [formControl]="loginForm.controls['identifier']"
+        placeholder="Email ou Nome de Usuário">
+      <input [ngClass]="{'has-error':!loginForm.controls['password'].valid
+                        && loginForm.controls['password'].touched,
+                        'touched': loginForm.controls['password'].touched }" placeholder="Senha" type="password" [formControl]="loginForm.controls['password']">
+      <button class="btn btn-block btn-login" type="submit">Entrar</button>
+      <button class="btn btn-block btn-forgot-pass">Esqueceu a senha?</button>
 
-      <button class="btn btn-block"
-          type="submit"
-          [ngClass]="{'disabled': !loginForm.valid}"
-          [disabled]='!loginForm.valid'>Entrar</button>    
-      <a routerLink="/signup">
-        <h3>Ou Crie uma conta</h3>
-      </a>
-  </form>  
+      <p>Ainda não tem uma conta?</p>
+      <button class="btn btn-block btn-signup" routerLink="/signup">Criar conta agora</button>
+    </form>
+  </div>
+</div>

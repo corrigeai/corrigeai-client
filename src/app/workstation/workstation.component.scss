@@ -1,20 +1,45 @@
+@import './../shared/util.scss';
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+
 .container {
+  @include apply-fixed-container();
+  margin-top: 50px;
 
-    .plus {
-        color:black;
-        position: fixed;
-        bottom: 0;
-        right: 10%;
-        bottom: 10%;
-        span {
-            font-size: 2em;
-            background-color: darkcyan;
-            color: black;
-            padding: 25px;
-            border-radius: 45px;
+  background-color: #F2F4F5;
 
-        }
+  h2 {
+    color: #47525E;
+    font-family: 'Lato';
+    font-size: 30px;
+    text-align: left;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0px;
+  }
+
+  .plus {
+    position: fixed;
+    bottom: 35px;
+    right: 15px;
+
+    span {
+      font-size: 1.8em;
+      background-color: #6AB1F7;
+      color: #F2F4F5;
+      padding: 25px;
+      border-radius: 45px;
     }
+
+    &:hover {
+      span {
+        background-color: #4A91D7;
+      }
+    }
+  }
 }
 
 .essays {

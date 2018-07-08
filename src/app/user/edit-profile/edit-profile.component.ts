@@ -49,6 +49,7 @@ export class EditProfileComponent implements OnInit {
           this.router.navigate(['profile']);
           this.error = undefined;
           this.editProfileForm.reset();
+          this.userService.editUserEvent.emit();
         }
       },
       error => this.error = error

@@ -14,16 +14,19 @@ import { ReviewEssay } from './essay/review-essay/review-essay.component';
 import { EssayComponent } from './essay/essay.component';
 import { NotificationComponent } from './notification/notification.component';
 import { NotFoundPageComponent } from './auth/not-found/not-found.component';
+import { ReviewComponent } from './review/review.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent , pathMatch: 'full'},
+  { path: '', component: LoginComponent , pathMatch: 'full'},
   { path: 'signup', component: SignupComponent },
+  { path: 'home', component: HomeComponent , canActivate: [AuthGuardService]},
   { path: 'update-pass', component: UpdatePassComponent, canActivate: [AuthGuardService] },
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
   {path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuardService]},
   { path: 'myessays', component: WorkstationComponent, canActivate: [AuthGuardService]},
   { path: 'to-review', component: EssayComponent, canActivate: [AuthGuardService]},
   { path: 'notifications', component: NotificationComponent, canActivate: [AuthGuardService]},
+  { path: 'prev-review/:id', component: ReviewComponent},
   { path: 'review/:id', component: ReviewEssay, canActivate: [AuthGuardService]},
 
   {

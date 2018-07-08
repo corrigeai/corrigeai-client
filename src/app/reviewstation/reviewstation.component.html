@@ -1,28 +1,31 @@
 <div class="container">
-<div class="essays">
+  <div class="essays">
     <div class="row">
-        <div class="col-md-12">
-            <h2>Redações a serem revisadas</h2>
-        </div>
-        <div class="col-md-12">&nbsp;</div>
+      <div class="col-md-12">
+        <h2>Redações a serem revisadas</h2>
       </div>
-      <div class="row">
-          <div class="col-md-12">
-              <div class="essays">
-                  <ul>
-                    <li *ngFor="let essay of essaysToReview">
-                      <app-essay-card 
-                          [essay] = "essay"
-                      ></app-essay-card>
-                    </li>
-                  </ul>
-                </div>           
-          </div>
-      </div>
-  </div>     
-  <a style="cursor: pointer;" class="plus" (click)="onNewEssay()">
-      <span class="glyphicon glyphicon-plus"></span>
-    </a>     
+
+      <div class="col-md-12">&nbsp;</div>
     </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="essays">
+          <ul>
+            <li *ngFor="let essay of essaysToReview">
+              <app-essay-card [essay] = "essay"></app-essay-card>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a style="cursor: pointer;" class="plus" (click)="onNewEssay()">
+    <span class="glyphicon glyphicon-plus"></span>
+  </a>
+</div>
+
 <app-create-essay></app-create-essay>
 <app-edit-essay></app-edit-essay>
+<app-header></app-header>

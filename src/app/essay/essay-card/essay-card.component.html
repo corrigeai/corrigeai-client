@@ -1,36 +1,70 @@
 <div class="container">
-        <div class="panel panel-default thumbnail">
-                <ul class="list-group">
-                        <li class="list-group-item">
-                                <span class="badge pull-right"><h4>&nbsp;N/A&nbsp;</h4></span>
-                                <span id="nota" class="pull-right"><h4>Nota:&nbsp;</h4></span>   
-                        </li>
-                        <li class="list-group-item">
-                                <h3>&nbsp;Título:&nbsp;{{essay.title}}</h3>
-                        </li>
-                        <li class="list-group-item text-muted ">
-                                <strong><h4>&nbsp;Tema:&nbsp;{{essay.theme}}</h4></strong>
-                        </li>
-                      </ul>
-                <div class="panel-body">
-                        <div class="well"><p>{{essay.content}}</p></div>  
-                
-                <div class="col-md-5 form-group">
-                                <button type="button" 
-                                (click)="onEditEssay()" 
-                                class="btn btn-block">
-                                &nbsp;<strong>Editar</strong>&nbsp;
-                        </button>
-                        <button type="button"
-                          (click)="openDeleteEssay()"
-                          class="btn btn-warning btn-lg">
-                    &nbsp;<span class="glyphicon glyphicon-trash"></span>&nbsp;
-                  </button>
-                  <app-delete-essay [display]="display" [hidden]="!display" (displayEvent)="refreshDisplay($event)" (deleteEssay)="onDeleteEssay($event)">
-                  </app-delete-essay>
+  <div class="card-header">
+    <div class="top-header">
+      <h3>{{essay.title}}</h3>
 
-                        </div>
-                </div>
-                <div class="col-md-7 form-group"></div>
-</div>
+      <div class="grade">
+          <p>&nbsp;N/A&nbsp;</p>
+      </div>
+    </div>
+
+    <strong><h4>Tema: {{essay.theme}}</h4></strong>
+  </div>
+
+  <hr>
+
+  <p>{{essay.content}}</p>
+
+  <div class="card-footer">
+    <div class="footer-review" collapse>
+      <a data-toggle="collapse" href="#review-list">Ver {{reviews.length}} revisões ...</a>
+    </div>
+    <div class="footer-buttons">
+      <button type="button" (click)="onEditEssay()"><span class="glyphicon glyphicon-pencil"></span></button>
+      <button type="button" (click)="openDeleteEssay()">&nbsp;<span class="glyphicon glyphicon-trash"></span>&nbsp;</button>
+      <app-delete-essay [display]="display" [hidden]="!display" (displayEvent)="refreshDisplay($event)" (deleteEssay)="onDeleteEssay($event)">
+      </app-delete-essay>
+    </div>
+  </div>
+
+  <div id="review-list" class="card-reviews collapse">
+    <hr>
+
+    <ul>
+        <li *ngFor="let review of reviews" class="panel panel-default">
+          <div class="review-area">
+            <p>Competência 1: <span class="review-comment">{{review.comments[0]}}</span></p>
+            <div><span class="review-grade badge">{{review.ratings[0]}}</span></div>
+          </div>
+
+          <div class="review-area">
+              <p>Competência 2: <span class="review-comment">{{review.comments[1]}}</span></p>
+              <div><span class="review-grade badge">{{review.ratings[1]}}</span></div>
+          </div>
+
+          <div class="review-area">
+              <p>Competência 3: <span class="review-comment">{{review.comments[2]}}</span></p>
+              <div><span class="review-grade badge">{{review.ratings[2]}}</span></div>
+          </div>
+
+          <div class="review-area">
+              <p>Competência 4: <span class="review-comment">{{review.comments[3]}}</span></p>
+              <div><span class="review-grade badge">{{review.ratings[3]}}</span></div>
+          </div>
+
+          <div class="review-area">
+              <p>Competência 5: <span class="review-comment">{{review.comments[4]}}</span></p>
+              <div><span class="badge review-grade">{{review.ratings[4]}}</span></div>
+          </div>
+
+          <div class="review-area">
+              <p>Comentário Geral: <span class="review-comment">{{review.comments[5]}}</span></p>
+          </div>
+
+          <div class="review-details">
+            <p><a (click)="onReviewDetailsClicked(review)">Detalhes</a></p>
+          </div>
+        </li>
+      </ul>
+  </div>
 </div>

@@ -1,4 +1,11 @@
+@import './../shared/util.scss';
+
 .container {
+  @include apply-fixed-container();
+
+  ul{
+    list-style:none;
+  }
 
     .plus {
         color:black;

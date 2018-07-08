@@ -6,13 +6,13 @@
                 <div class="col-md-10 form-group">
                         <label for="textbox1">Competência 1</label>
                         <textarea class="form-control"
-                            placeholder="Insira seu comentário aqui" 
+                            placeholder="Insira seu comentário aqui"
                         id="textbox1" rows="5" id="comment"
                         [ngClass]="{'has-error':!reviewForm.controls['comptc1text'].valid && reviewForm.controls['comptc1text'].touched,
                                        'touched': reviewForm.controls['comptc1text'].touched }"
                         [formControl]="reviewForm.controls['comptc1text']"></textarea>
                     </div>
-                    
+
                 <div class="col-md-2 form-group">
                         <label for="sel1">Potuação:</label>
                         <select class="form-control" id="sel1"
@@ -24,20 +24,20 @@
                             <option>160</option>
                             <option>200</option>
                         </select>
-                </div>         
+                </div>
             </div>
 
             <div class="row">
                     <div class="col-md-10 form-group">
                             <label for="textbox1">Competência 2</label>
                             <textarea class="form-control"
-                                placeholder="Insira seu comentário aqui" 
+                                placeholder="Insira seu comentário aqui"
                             id="textbox1" rows="5" id="comment"
                             [ngClass]="{'has-error':!reviewForm.controls['comptc2text'].valid && reviewForm.controls['comptc2text'].touched,
                                        'touched': reviewForm.controls['comptc2text'].touched }"
                             [formControl]="reviewForm.controls['comptc2text']"></textarea>
                         </div>
-                        
+
                     <div class="col-md-2 form-group">
                             <label for="sel1">Potuação:</label>
                             <select class="form-control" id="sel1"
@@ -49,20 +49,20 @@
                                 <option>160</option>
                                 <option>200</option>
                             </select>
-                    </div>         
+                    </div>
             </div>
 
             <div class="row">
                     <div class="col-md-10 form-group">
                             <label for="textbox1">Competência 3</label>
                             <textarea class="form-control"
-                                placeholder="Insira seu comentário aqui" 
+                                placeholder="Insira seu comentário aqui"
                                 [ngClass]="{'has-error':!reviewForm.controls['comptc3text'].valid && reviewForm.controls['comptc3text'].touched,
                                        'touched': reviewForm.controls['comptc3text'].touched }"
                                        id="textbox1" rows="5" id="comment"
                             [formControl]="reviewForm.controls['comptc3text']"></textarea>
                         </div>
-                        
+
                     <div class="col-md-2 form-group">
                             <label for="sel1">Potuação:</label>
                             <select class="form-control" id="sel1"
@@ -74,20 +74,20 @@
                                 <option>160</option>
                                 <option>200</option>
                             </select>
-                    </div>         
+                    </div>
             </div>
 
             <div class="row">
                     <div class="col-md-10 form-group">
                             <label for="textbox1">Competência 4</label>
                             <textarea class="form-control"
-                                placeholder="Insira seu comentário aqui" 
+                                placeholder="Insira seu comentário aqui"
                             id="textbox1" rows="5" id="comment"
                             [ngClass]="{'has-error':!reviewForm.controls['comptc4text'].valid && reviewForm.controls['comptc4text'].touched,
                                        'touched': reviewForm.controls['comptc4text'].touched }"
                             [formControl]="reviewForm.controls['comptc4text']"></textarea>
                         </div>
-                        
+
                     <div class="col-md-2 form-group">
                             <label for="sel1">Potuação:</label>
                             <select class="form-control" id="sel1"
@@ -99,7 +99,7 @@
                                 <option>160</option>
                                 <option>200</option>
                             </select>
-                    </div>         
+                    </div>
             </div>
 
             <div class="row">
@@ -108,11 +108,11 @@
                             <textarea class="form-control"
                                 placeholder="Insira seu comentário aqui"
                                 [ngClass]="{'has-error':!reviewForm.controls['comptc5text'].valid && reviewForm.controls['comptc5text'].touched,
-                                       'touched': reviewForm.controls['comptc5text'].touched }" 
+                                       'touched': reviewForm.controls['comptc5text'].touched }"
                             id="textbox1" rows="5" id="comment"
                             [formControl]="reviewForm.controls['comptc5text']"></textarea>
                         </div>
-                        
+
                     <div class="col-md-2 form-group">
                             <label for="sel1">Potuação:</label>
                             <select class="form-control" id="sel1"
@@ -124,7 +124,7 @@
                                 <option>160</option>
                                 <option>200</option>
                             </select>
-                    </div>         
+                    </div>
             </div>
 
             <div class="row">
@@ -135,7 +135,7 @@
                     <button class="btn btn-block btn-primary"
                     type="submit"
                     [ngClass]="{'disabled': !reviewForm.valid}"
-                    [disabled]='!reviewForm.valid'>Submeter</button>            
+                    [disabled]='!reviewForm.valid'>Submeter</button>
                 </div>
                 <div class="col-md-8"></div>
             </div>
@@ -148,5 +148,6 @@
       </form>
 </div>
 
+<app-header></app-header>
 
- 
+

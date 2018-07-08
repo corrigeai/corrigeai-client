@@ -1,0 +1,130 @@
+$color-primary: #1976D2;
+$color-secondary: #378FE7;
+$color-accent: #009688;
+$color-primary-text: #212121;
+$color-secondary-text: #757575;
+$color-text-icons: #FFFFFF;
+$color-divider: #BDBDBD;
+$color-background: #E5E5E5;
+$color-secondary-background: #607D8B;
+$color-ok: #00FF00;
+$color-error: #FF0000;
+
+$color-darkening-perc: 15%;
+$color-lightening-perc: 15%;
+
+$colors: (
+    primary: (
+        base: $color-primary,
+        lighter: lighten($color-primary, $color-lightening-perc),
+        darker: darken($color-primary, $color-darkening-perc)
+    ),
+    secondary: (
+        base: $color-secondary,
+        lighter: lighten($color-secondary, $color-lightening-perc),
+        darker: darken($color-primary, $color-darkening-perc)
+    ),
+    text-icons: (
+        base: $color-text-icons,
+        lighter: lighten($color-text-icons, $color-lightening-perc),
+        darker: darken($color-text-icons, $color-darkening-perc)
+    ),
+    accent: (
+        base: $color-accent,
+        lighter: lighten($color-accent, $color-lightening-perc),
+        darker: darken($color-accent, $color-darkening-perc)
+    ),
+    primary-text: (
+        base: $color-primary-text,
+        lighter: lighten($color-primary-text, $color-lightening-perc),
+        darker: darken($color-primary-text, $color-darkening-perc)
+    ),
+    secondary-text: (
+        base: $color-secondary-text,
+        lighter: lighten($color-secondary-text, $color-lightening-perc),
+        darker: darken($color-secondary-text, $color-darkening-perc)
+    ),
+    divider: (
+        base: $color-divider,
+        lighter: lighten($color-divider, $color-lightening-perc),
+        darker: darken($color-divider, $color-darkening-perc)
+    ),
+    color-background: (
+        base: $color-background,
+        lighter: lighten($color-background, $color-lightening-perc),
+        darker: darken($color-background, $color-darkening-perc)
+    ),
+    secondary-background: (
+        base: $color-secondary-background,
+        lighter: lighten($color-secondary-background, $color-lightening-perc),
+        darker: darken($color-secondary-background, $color-darkening-perc)
+    ),
+    ok: (
+        base: $color-ok,
+        lighter: lighten($color-ok, $color-lightening-perc),
+        darker: darken($color-ok, $color-darkening-perc)
+    ),
+    error: (
+        base: $color-error,
+        lighter: lighten($color-error, $color-lightening-perc),
+        darker: darken($color-error, $color-darkening-perc)
+    )
+);
+
+@function color($color-name, $color-variant:base, $transparency:1.0) {
+    @return rgba(map-get(map-get($colors, $color-name), $color-variant), $transparency);
+}
+
+@mixin apply-flexlayout($direction, $wrap, $mainalign, $crossalign) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  justify-content: $mainalign;
+  align-items: $crossalign;
+}
+
+@mixin apply-fixed-container() {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+.app-form-type1 {
+  input {
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    outline: 0;
+    font-family: 'Roboto';
+    font-size: 1.2em;
+  }
+
+  p {
+    margin-top: 10%;
+    font-family: Lato;
+    font-size: 2rem;
+    text-align: center;
+    color: white;
+  }
+
+  button {
+    margin: 5px;
+    border-radius: 5px;
+    font-family: Lato;
+    font-size: 2.3rem;
+    color: white;
+  }
+
+  .app-btn-type1 {
+    background-color: #6AB1F7;
+    margin-top: 8%;
+  }
+
+  .app-btn-type2 {
+    background-color: rgba(106, 177, 247, 0.57);
+  }
+
+  .app-btn-type3 {
+    background-color: rgba(19, 206, 102, 0);
+    border: 2px solid #6AB1F7;
+  }
+}
