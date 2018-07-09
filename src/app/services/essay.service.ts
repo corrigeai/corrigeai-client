@@ -138,8 +138,7 @@ export class EssayService {
     receiveToReview(): Observable<any> {
         const httpOptions = this.authService.getOptions();
         const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
-
-        return this.http.get<Essay>(this.API.concat('users/' + userId + '/evaluate'), 
+        return this.http.get<Essay>(this.API.concat('users/' + userId + '/evaluate'), httpOptions)
         .catch((error: Response) => {
             this.errorService.handleError(error);
             return  Observable.throw(error);
