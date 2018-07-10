@@ -23,33 +23,6 @@
                     Selecionar imagem
                 </label>
           </div>
-        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-8" >
-                <div class="form-group">
-                        <h3>Nome</h3>
-                        <input [ngClass]="{'has-error': !editProfileForm.controls['name'].valid && editProfileForm.controls['name'].touched,
-                                                   'touched': editProfileForm.controls['name'].touched }" class="form-control" type="text"
-                          placeholder="Nome completo" [formControl]="editProfileForm.controls['name']">
-                      </div>
-
-                      <div class="form-group" style="color:silver;">
-                        <h3>Gênero</h3>
-                        <label>
-                          <input type="radio" value="Male" [formControl]="editProfileForm.controls['gender']">
-                          <span>homem</span>
-                        </label>
-                        <label>
-                          <input type="radio" value="Female" [formControl]="editProfileForm.controls['gender']">
-                          <span>mulher</span>
-                        </label>
-                        <label>
-                          <input type="radio" value="Unknown" [formControl]="editProfileForm.controls['gender']">
-                          <span>outro</span>
-                        </label>
-                      </div>
-            <div class="row">
-              <div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">&nbsp;</div>
-            </div>
-        </div>
       </div>
         <div class="row">
                 <div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">&nbsp;</div>

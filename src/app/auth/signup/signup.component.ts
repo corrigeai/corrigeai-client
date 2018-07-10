@@ -39,8 +39,7 @@ export class SignupComponent {
                     Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d^a-zA-Z0-9].{0,}$')]],
       'confirmPassword': [null,
                            [Validators.required,
-                            Validators.minLength(6)]],
-      'gender': [null, Validators.required],
+                            Validators.minLength(6)]]
     }, {
       validator: CustomValidators.Match('password', 'confirmPassword')
     });

@@ -12,23 +12,6 @@
                         type="email" placeholder="Email"
                         [formControl]="signUpForm.controls['email']">
 
-      <div style="color:silver;" class="app-form-control app-gender">
-        <p>Gênero</p>
-        <label>
-          <input type="radio" value="Male" [formControl]="signUpForm.controls['gender']">
-            <span>homem</span>
-        </label>
-
-        <label>
-          <input type="radio" value="Female" [formControl]="signUpForm.controls['gender']">
-            <span>mulher</span>
-        </label>
-
-        <label>
-          <input type="radio" value="Unknown" [formControl]="signUpForm.controls['gender']">
-            <span>outro</span>
-          </label>
-      </div>
 
       <input [ngClass]="{'has-error': !signUpForm.controls['username'].valid && signUpForm.controls['username'].touched,
                         'touched': signUpForm.controls['username'].touched }"
