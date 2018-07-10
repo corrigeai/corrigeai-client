@@ -13,7 +13,6 @@ import { UserService } from '../../services/user.service';
 })
 export class ProfileComponent implements OnInit {
   name: String = "Dummy name";
-  gender: String = "Unknown";
   email: String = "test@test.com";
   username: String = "dummy_user";
   imagePath: SafeResourceUrl;
@@ -34,7 +33,6 @@ export class ProfileComponent implements OnInit {
     'name': [user.name, Validators.required],
     'email': [user.email, Validators.required],
     'photoUrl': [user.photoUrl],
-    'gender': [user.gender, Validators.required],
     'username': [user.username,
             [Validators.required,
               Validators.pattern('^[a-zA-Z0-9_-]*$'),
@@ -46,7 +44,6 @@ export class ProfileComponent implements OnInit {
 
       const user = JSON.parse(sessionStorage.getItem('currentUser'));
       this.name = user.name;
-      this.gender = user.gender;
       this.email = user.email;
       this.username = user.username;
       this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(user.photoUrl);
