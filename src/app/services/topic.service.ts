@@ -83,7 +83,8 @@ export class TopicService {
         return this.http.get(this.API.concat('topics'), httpOptions)
         .map((response: Response) => response)
         .catch((error: Response) => {
-            this.errorService.handleError(error);
+            // we do not want the user to see an error if there is not a topic,
+            // just see a message to wait a bit for a new topic
             return  Observable.throw(error);
           });
     }
