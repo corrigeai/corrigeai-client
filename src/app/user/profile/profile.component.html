@@ -42,26 +42,6 @@
                             placeholder="Email" [formControl]="editProfileForm.controls['email']" disabled>
     </div>
 
-    <div class="form-group" style="color:silver;">
-      <p>Gênero</p>
-      <div class="form-gender">
-        <label>
-          <input type="radio" value="Male" [formControl]="editProfileForm.controls['gender']">
-          <span>homem</span>
-        </label>
-
-        <label>
-          <input type="radio" value="Female" [formControl]="editProfileForm.controls['gender']">
-          <span>mulher</span>
-        </label>
-
-        <label>
-          <input type="radio" value="Unknown" [formControl]="editProfileForm.controls['gender']">
-          <span>outro</span>
-        </label>
-      </div>
-    </div>
-
     <button
                     class="btn btn-block btn-submit"
                     type="submit"
@@ -75,67 +55,6 @@
 </div>
 
 <app-header></app-header>
-<!--<div class="container card">
-  <div class="row">
-    <div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">&nbsp;</div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">&nbsp;</div>
-  </div>
-    <div class="row">
-    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-4">
-        <img  [src]="imagePath"
-        class="img-responsive center thumbnail"
-        onerror="this.src='../../assets/default-profile.png'"
-        alt="Avatar"/>
-    </div>
-  <div class="col-sm-12 col-xs-12 col-md-12 col-lg-8" >
-          <div class="form-group">
-            <label class="control-label col-sm-2 title" for="email">Username:</label>
-            <div class="col-sm-10">
-              <p class="form-control-static well well-sm">{{username}}</p>
-            </div>
-          </div>
-          <div class="form-group">
-              <label class="control-label col-sm-2 title" for="email">Name:</label>
-              <div class="col-sm-10">
-                <p class="form-control-static well well-sm">{{name}}</p>
-              </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2 title" for="email">Gender:</label>
-                <div class="col-sm-10">
-                  <p class="form-control-static well well-sm">{{gender}}</p>
-                </div>
-              </div>
-              <div class="form-group">
-                  <label class="control-label col-sm-2 title" for="email">Email:</label>
-                  <div class="col-sm-10">
-                    <p class="form-control-static well well-sm">{{email}} </p>
-                  </div>
-                </div>
-      <div class="row">
-          <div class="col-sm-4"></div>
-          <div class="col-sm-4"></div>
-        <div class="col-sm-4 title">&nbsp;</div>
-      </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">&nbsp;</div>
-  </div>
-  <div class="row">
-  <div class="col-sm-4"></div>
-  <div class="col-sm-4 title"><button class="btn btn-block" (click)="onEditProfile()">Editar Perfil</button></div>
-  <div class="col-sm-4"></div>
-</div>
-<div class="row">
-<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">&nbsp;</div>
-</div>
-<div class="row">
-  <div class="col-sm-12 title">&nbsp;</div>
-</div>
-</div>-->
 
 
 

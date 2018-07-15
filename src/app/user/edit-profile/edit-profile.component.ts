@@ -30,7 +30,6 @@ export class EditProfileComponent implements OnInit {
     this.editProfileForm = this.formBuilder.group({
       'name': [user.name, Validators.required],
       'photoUrl': [user.photoUrl],
-      'gender': [user.gender, Validators.required],
       'username': [user.username,
                    [Validators.required,
                     Validators.pattern('^[a-zA-Z0-9_-]*$'),
