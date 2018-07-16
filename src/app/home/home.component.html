@@ -11,7 +11,13 @@
       </div>
       <button>Participar!</button>
   </div>
-  <div class="card">
-    
+  <div class="card" *ngIf="hasRatings">
+    <p>Avaliações positivas {{ratingApprove}}</p>
+    <p>Avaliações negativas {{ratingDesapprove}}</p>
+    <p>Avaliações positivas {{approvePercent}}%</p>
+    <p>Avaliações negativas {{desapprovePercent}}%</p>
+  </div>
+  <div class="card" *ngIf="!hasRatings">
+    <p>Você ainda não teve nenhum review avaliado.</p>
   </div>
 </div>
