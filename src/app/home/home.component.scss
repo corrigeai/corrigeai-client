@@ -5,114 +5,45 @@
 
 .container {
   @include apply-fixed-container();
+  @include apply-flexlayout(column, nowrap, flex-start, center);
 
   padding: 0px;
-  margin: 0px;
+  margin-top: 50px;
 
-  background-color: white;
+  background-color: #F3F2F8;
   background-size: 100%;
 
-/* Profile container */
-.profile {
-  margin: 20px 0;
-}
+  .split-screen {
+    margin-top: 10px;
 
-/* Profile sidebar */
-.profile-sidebar {
-  padding: 20px 0 10px 0;
-  background: #fff;
-}
+    @include apply-flexlayout(row, nowrap, space-around, center);
+    width: 90%;
 
-.profile-userpic img {
-  float: none;
-  margin: 0 auto;
-  width: 50%;
-  height: 50%;
-  -webkit-border-radius: 50% !important;
-  -moz-border-radius: 50% !important;
-  border-radius: 50% !important;
-}
+    .app-panel {
+      background-color: white;
+      min-width: 49%;
+      min-height: 30vh;
+      border-radius: 10px;
+      padding: 8px;
 
-.profile-usertitle {
-  text-align: center;
-  margin-top: 20px;
-}
+      h2 {
+        font-family: 'Lato';
+        font-size: 1.5rem;
+        font-weight: bold;
 
-.profile-usertitle-name {
-  color: #5a7391;
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 7px;
-}
+      }
+    }
 
-.profile-usertitle-job {
-  text-transform: uppercase;
-  color: #5b9bd1;
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: 15px;
-}
+    .left-side {
+      min-width: 59%
+    }
 
-.profile-userbuttons {
-  text-align: center;
-  margin-top: 10px;
-}
+    .right-side {
+      min-width: 39%;
 
-.profile-userbuttons .btn {
-  text-transform: uppercase;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 6px 15px;
-  margin-right: 5px;
-}
-
-.profile-userbuttons .btn:last-child {
-  margin-right: 0px;
-}
-
-.profile-usermenu {
-  margin-top: 30px;
-}
-
-.profile-usermenu ul li {
-  border-bottom: 1px solid #f0f4f7;
-}
-
-.profile-usermenu ul li:last-child {
-  border-bottom: none;
-}
-
-.profile-usermenu ul li a {
-  color: #93a3b5;
-  font-size: 14px;
-  font-weight: 400;
-}
-
-.profile-usermenu ul li a i {
-  margin-right: 8px;
-  font-size: 14px;
-}
-
-.profile-usermenu ul li a:hover {
-  background-color: #fafcfd;
-  color: #5b9bd1;
-}
-
-.profile-usermenu ul li.active {
-  border-bottom: none;
-}
-
-.profile-usermenu ul li.active a {
-  color: #5b9bd1;
-  background-color: #f6f9fb;
-  border-left: 2px solid #5b9bd1;
-  margin-left: -2px;
-}
-
-/* Profile Content */
-.profile-content {
-  padding: 20px;
-  background: #fff;
-  min-height: 460px;
-}
+      .topic-content {
+        @include apply-flexlayout(column, nowrap, center, center);
+      }
+    }
+  }
 }

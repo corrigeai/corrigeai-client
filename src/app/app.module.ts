@@ -10,8 +10,10 @@ import { HeaderComponent } from './header/header.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { NotFoundPageComponent } from './auth/not-found/not-found.component';
 import { NotificationComponent } from './notification/notification.component';
+import { TopicComponent } from './topic/topic.component';
 import { ReviewStationComponent } from './reviewstation/reviewstation.component';
 import { NotificationCardComponent } from './notification/card/notification-card.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 // User related components
 import { ProfileComponent } from './user/profile/profile.component';
@@ -83,7 +85,9 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     NotFoundPageComponent,
     NotificationComponent,
     ReviewStationComponent,
-    NotificationCardComponent
+    NotificationCardComponent,
+    TopicComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
