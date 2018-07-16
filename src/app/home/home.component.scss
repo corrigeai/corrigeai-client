@@ -5,52 +5,79 @@
 
 .container {
   @include apply-fixed-container();
-  @include apply-flexlayout(row, nowrap, center, center);
-  background-color:  #F2F4F5;
+  @include apply-flexlayout(column, wrap, flex-start, center);
 
-  .card {
-    @include apply-flexlayout(column, nowrap, center, center);
-    min-width: 400px;
-    min-height: 300px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 0px;
+  margin-top: 50px;
+
+  background-color: #F3F2F8;
+  background-size: 100%;
+
+  .app-panel {
     background-color: white;
-    padding: 20px;
+    height: 30vh;
+    border-radius: 5px;
+    padding: 8px;
 
     h1 {
-      text-align: center;
+      font-size: 2rem;
       font-family: 'Lato';
-      font-size: 30px;
-      color: #8190A5;
-      font-weight: bold;
-      margin-bottom: 0px;
+      text-transform: capitalize;
     }
 
     h2 {
-      font-family: 'Roboto';
-      font-size: 20px;
-      font-weight: 300;
-      color: #8190A5;
-      margin-top: 0px;
-    }
-
-    button {
-      margin: 5px;
-      padding: 5px 15px;
-      background-color: #6AB1F7;
-      border-radius: 5px;
       font-family: 'Lato';
-      font-size: 2.3rem;
-      color: white;
-      border: none;
+      font-size: 1.5rem;
+      font-weight: bold;
+
+    }
+  }
+
+  .split-screen {
+    margin-top: 10px;
+
+    @include apply-flexlayout(row, nowrap, space-around, center);
+    width: 90%;
+
+    .left-side {
+      width: 55%
     }
 
-    p {
-      font-family: 'Roboto';
-      font-size: 18px;
-      font-weight: bold;
-      color: #8190A5;
-      margin-top: 0px;
-      text-transform: uppercase;
+    .right-side {
+      width: 44%;
+
+      .topic-content {
+        width: 100%;
+        height: 100%;
+        @include apply-flexlayout(column, nowrap, center, center);
+      }
+    }
+  }
+
+  .reviews {
+    margin-top: 10px;
+    width: 90%;
+  }
+}
+
+@media (max-width: 1000px) {
+
+  .container {
+    .split-screen {
+      @include apply-flexlayout(column, nowrap, center, center);
+
+      .left-side {
+        width: 100%;
+      }
+
+      .right-side {
+        margin-top: 10px;
+        width: 100%;
+      }
+    }
+
+    .app-panel {
+      height: auto;
     }
   }
 }

@@ -1,23 +1,29 @@
 <div class="container">
   <app-header></app-header>
-  <div class="card">
-      <p>conquistas:</p>
+
+  <div class="split-screen">
+    <div class="left-side app-panel">
+      <h2>Conquistas:</h2>
       <img src="" alt="">
-  </div>
-  <div class="card">
-      <p>tópico da semana:</p>
-      <div class="card-header">
+    </div>
+    <div class="right-side app-panel">
+      <h2>Tópico semanal:</h2>
+      <div class="topic-content">
         <h1>{{ topic || noTopicMessage }}</h1>
+        <button class="btn btn-default app-btn-type1">Participar!</button>
       </div>
-      <button>Participar!</button>
+    </div>
   </div>
-  <div class="card" *ngIf="hasRatings">
-    <p>Avaliações positivas {{ratingApprove}}</p>
-    <p>Avaliações negativas {{ratingDesapprove}}</p>
-    <p>Avaliações positivas {{approvePercent}}%</p>
-    <p>Avaliações negativas {{desapprovePercent}}%</p>
-  </div>
-  <div class="card" *ngIf="!hasRatings">
-    <p>Você ainda não teve nenhum review avaliado.</p>
+
+  <div class="reviews app-panel">
+    <div class="card" *ngIf="hasRatings">
+      <p>Avaliações positivas {{ratingApprove}}</p>
+      <p>Avaliações negativas {{ratingDesapprove}}</p>
+      <p>Avaliações positivas {{approvePercent}}%</p>
+      <p>Avaliações negativas {{desapprovePercent}}%</p>
+    </div>
+    <div class="card" *ngIf="!hasRatings">
+      <p>Você ainda não teve nenhum review avaliado.</p>
+    </div>
   </div>
 </div>

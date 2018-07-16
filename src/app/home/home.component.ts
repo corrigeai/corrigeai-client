@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TopicService } from '../services/topic.service';
 import { RatingService } from '../services/rating.service';
 
@@ -11,7 +12,7 @@ export class HomeComponent implements OnInit {
     description: String;
     topic: String;
     noTopicMessage: String;
-    
+
     ratingApprove: number;
     ratingDesapprove: number;
     approvePercent: number;
@@ -41,7 +42,7 @@ export class HomeComponent implements OnInit {
                     this.hasRatings = true;
                     this.ratingApprove = res.filter(rating => rating.vote === 'Upvote').length;
                     this.ratingDesapprove = res.length - this.ratingApprove;
-    
+
                     this.approvePercent = this.ratingApprove / res.length;
                     this.desapprovePercent = 1 - this.approvePercent;
                 }

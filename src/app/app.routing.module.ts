@@ -15,6 +15,8 @@ import { EssayComponent } from './essay/essay.component';
 import { NotificationComponent } from './notification/notification.component';
 import { NotFoundPageComponent } from './auth/not-found/not-found.component';
 import { ReviewComponent } from './review/review.component';
+import { TopicComponent } from './topic/topic.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent , pathMatch: 'full'},
@@ -28,6 +30,8 @@ const routes: Routes = [
   { path: 'notifications', component: NotificationComponent, canActivate: [AuthGuardService]},
   { path: 'prev-review/:id', component: ReviewComponent},
   { path: 'review/:id', component: ReviewEssay, canActivate: [AuthGuardService]},
+  { path: 'topic', component: TopicComponent, canActivate: [AuthGuardService]},
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
 
   {
     path: '**',

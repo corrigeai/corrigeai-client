@@ -1,5 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Arvo);
+@import './../../shared/util.scss';
 
+#wrapper {
+  @include apply-fixed-container();
+  @include apply-flexlayout(row, nowrap, center, center);
+  background: linear-gradient(rgba(0, 0, 0, 0.54), rgba(0, 0, 0, 0.54)), url("../../../assets/home-background.jpeg") no-repeat;
+  background-size: cover;
+}
 
 /* SELECTED TEXT */
 ::selection { background: #ff5e99; color: #FFFFFF; text-shadow: 0; }
@@ -8,19 +15,15 @@
 html {
     font-size: 18px;font-size: 1.13rem;
     -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;                          
+    -ms-text-size-adjust: 100%;           
     }
 
 html, input { font-family: "arvo", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
-
-
 body {                
-    background: #4A575A;
     margin: auto;
     color: #fff;
     }
-
 
 a {
     -webkit-transition: all 200ms ease;

@@ -1,0 +1,9 @@
+@import './../shared/util.scss';
+
+.container {
+  @include apply-fixed-container();
+
+  margin-top: 50px;
+
+
+}

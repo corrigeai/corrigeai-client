@@ -4,11 +4,23 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 @import './../shared/util.scss';
 
-.navbar {
+.app-navbar {
+  position: fixed;
+  right: 0px;
+  top: 0px;
   background-color: #3F4047;
   border: 0px;
   height: 50px;
   max-height: 50px;
+  width: 100%;
+
+  @include apply-flexlayout(row, nowrap, space-between, center);
+
+  ul {
+    list-style: none;
+    margin-right: 10px;
+    margin-top: 10px;
+  }
 
   .header-ham {
     background-color: transparent; /* Blue background */
