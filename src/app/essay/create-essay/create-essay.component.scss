@@ -47,9 +47,9 @@
 }
 
 .modal-body {
-    max-height: calc(100vh - 210px);
-    overflow-y: auto;
-    overflow-x: hidden;
+  max-height: calc(100vh - 210px);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .modal-foot {
@@ -57,7 +57,14 @@
 }
 
 .btn{
-  height: 80px;
-  width: 400px;
+  height: 50px;
+  width: 100%;
+  max-width: 400px;
   margin: auto;
+}
+
+@media (max-height: 600px) {
+ .btn {
+   height: 30px;
+ }
 }

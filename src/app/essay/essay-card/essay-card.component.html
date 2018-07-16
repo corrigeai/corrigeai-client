@@ -17,7 +17,7 @@
 
   <div class="card-footer">
     <div class="footer-review" collapse>
-      <a data-toggle="collapse" href="#review-list">Ver {{reviews.length}} revisões ...</a>
+      <a data-toggle="collapse" href="#review-list-{{essay.id}}">VER {{reviews.length}} revisões ...</a>
     </div>
     <div class="footer-buttons">
       <button type="button" (click)="onEditEssay()"><span class="glyphicon glyphicon-pencil"></span></button>
@@ -27,7 +27,7 @@
     </div>
   </div>
 
-  <div id="review-list" class="card-reviews collapse">
+  <div id="review-list-{{essay.id}}" class="card-reviews collapse">
     <hr>
 
     <ul>

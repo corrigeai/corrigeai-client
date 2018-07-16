@@ -19,6 +19,10 @@
   ul {
     list-style: none;
     padding: 0px;
+
+    li {
+      margin-bottom: 15px;
+    }
   }
 
   .plus {
@@ -50,4 +54,21 @@
 h2 {
     color: silver;
     font-weight: bold;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    h2 {
+      text-align: center;
+    }
+
+    .plus {
+      bottom: 25px;
+      right: 15px;
+
+      span {
+        font-size: 1rem;
+      }
+    }
+  }
 }
