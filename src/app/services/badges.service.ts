@@ -25,7 +25,7 @@ export class BadgesService {
      */
     getBadgesByUserId(userId: string): Observable<any> {
         const httpOptions = this.authService.getOptions();
-        return this.http.get(this.API.concat('badges/' + userId), httpOptions)
+        return this.http.get(this.API.concat('users/badges/' + userId), httpOptions)
         .map((response: Response) => response)
         .catch((error: Response) => {
             this.errorService.handleError(error);
