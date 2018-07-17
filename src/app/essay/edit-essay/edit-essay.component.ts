@@ -33,12 +33,11 @@ export class EditEssayComponent implements OnInit {
         this.display = 'none';
     }
 
-    ngOnInit() {      
+    ngOnInit() {
         this.essayService.essayEdited
         .subscribe(
             (essay: Essay) => {
                 this.original = essay;
-                this.imagePath;
                 this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(essay.content);
                 this.editEssayForm.patchValue({
                     essayImg : (essay.type == 'Image' ? essay.content: null),
@@ -73,7 +72,7 @@ export class EditEssayComponent implements OnInit {
                 this.essayService.updateEssayElement(this.original,essay);
                 this.onEndSubmission();
             }
-        );           
+        );
     }
 
     isEmpty(value: any): string {
@@ -90,17 +89,17 @@ export class EditEssayComponent implements OnInit {
 
     onFileChange(event) {
         const reader = new FileReader();
-       
+
         if(event.target.files && event.target.files.length) {
           const [file] = event.target.files;
           reader.readAsDataURL(file);
-        
+
           reader.onload = () => {
-            this.imagePath = reader.result; 
+            this.imagePath = reader.result;
             this.editEssayForm.patchValue({
                 essayImg: reader.result
             });
-            
+
             // need to run CD since file load runs outside of zone
             this.cd.markForCheck();
           };

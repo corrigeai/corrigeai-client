@@ -3,9 +3,11 @@ import { EventEmitter } from '@angular/core';
 import { Injectable } from '@angular/core';
 
 import { AuthenticationService } from './authentication.service';
+import { EssayService } from './essay.service';
 import { environment } from '../../environments/environment';
 import { ErrorService } from './error.service';
 import { Review } from '../../models/review';
+import { Essay } from './../../models/essay';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -22,6 +24,7 @@ export class ReviewService {
 
     constructor(private http: HttpClient,
         private authService: AuthenticationService,
+        private essayService: EssayService,
         private errorService: ErrorService) {}
 
     // reviewsCollection related Methods
@@ -64,6 +67,7 @@ export class ReviewService {
     }
 
     getReviewsOfEssay(essayId: string): Review[] {
+
       return this.reviewsCollection.filter((review) => {
         if (review.essayId === essayId) {
           return true;
@@ -72,7 +76,6 @@ export class ReviewService {
         }
       });
     }
-
 
     // HTTP related Methods
 

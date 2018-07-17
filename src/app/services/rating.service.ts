@@ -41,7 +41,7 @@ export class RatingService {
      */
     createRating(ratingData: Rating): Observable<any> {
         const httpOptions = this.authService.getOptions();
-        return this.http.post(this.API.concat('reviews/rating'), ratingData, httpOptions)
+        return this.http.post(this.API.concat('ratings  '), ratingData, httpOptions)
         .map((response: Response) => response)
         .catch((error: Response) => {
             this.errorService.handleError(error);

@@ -16,14 +16,29 @@
   </div>
 
   <div class="reviews app-panel">
-    <div class="card" *ngIf="hasRatings">
+    <div class="review-summary" *ngIf="hasRatings">
       <p>Avaliações positivas {{ratingApprove}}</p>
       <p>Avaliações negativas {{ratingDesapprove}}</p>
       <p>Avaliações positivas {{approvePercent}}%</p>
       <p>Avaliações negativas {{desapprovePercent}}%</p>
+  </div>
+
+  <hr>
+
+  <div class="">
+    <div class="review-list" *ngIf="hasRatings">
+      <ul>
+        <li class="rating-card" *ngFor="let rating of ratings">
+          <p><span>Redação:</span> {{getEssayOfRating(rating)}}</p>
+          <p><span>Comentário:</span> {{rating.comment}}</p>
+          <p><span>Voto:</span> {{rating.vote}}</p>
+        </li>
+      </ul>
     </div>
-    <div class="card" *ngIf="!hasRatings">
-      <p>Você ainda não teve nenhum review avaliado.</p>
-    </div>
+  </div>
+
+  <div class="card" *ngIf="!hasRatings">
+    <p>Você ainda não teve nenhum review avaliado.</p>
+  </div>
   </div>
 </div>
