@@ -23,6 +23,19 @@ export class UserService {
               private authService: AuthenticationService,
               private errorService: ErrorService) {}
 
+  subscribeToTopic(): Observable<Boolean> {
+    const user = JSON.parse(sessionStorage.getItem('currentUser'));
+    user.usingWeekelyTopic = true;
+
+    return this.editUser(user);
+  }
+
+  unsubscribeToTopic(): Observable<Boolean> {
+    const user = JSON.parse(sessionStorage.getItem('currentUser'));
+    user.usingWeekelyTopic = false;
+    return this.editUser(user);
+  }
+
   /**
    * Requests the edition of a user.
    * @param userData - The new user data.

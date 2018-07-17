@@ -116,6 +116,17 @@ export class EssayService {
           });
     }
 
+    getEssayById(essayId: String): Observable<any> {
+      const httpOptions = this.authService.getOptions();
+
+      return this.http.get<Essay>(this.API.concat('essays/' + essayId), httpOptions)
+      .map((essay: Essay) => essay)
+      .catch((error: Response) => {
+          this.errorService.handleError(error);
+          return  Observable.throw(error);
+        });
+    }
+
     /**
      * Requests the edition of an essay.
      * @param essayData - The new essay data.

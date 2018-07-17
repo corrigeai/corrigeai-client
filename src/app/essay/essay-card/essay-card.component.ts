@@ -52,7 +52,6 @@ export class EssayCardComponent implements OnInit {
     }
 
     onReviewDetailsClicked(review) {
-      console.log(review);
       this.router.navigate(['/prev-review/'.concat(review.id)]);
     }
 }

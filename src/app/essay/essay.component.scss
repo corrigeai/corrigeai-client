@@ -27,10 +27,12 @@
   .card {
     @include apply-flexlayout(column, nowrap, center, center);
     margin-top: 70px;
-    min-width: 400px;
+    min-width: 300px;
+    max-width: 700px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     background-color: white;
     padding: 20px;
+
 
     h1 {
       text-align: center;
@@ -59,14 +61,26 @@
     }
 
     .card-essay-info {
-      @include apply-flexlayout(column, nowrap, flex-start, flex-start);
       width: 100%;
+      height: auto;
       border: 1px black;
       margin-bottom: 20px;
+
+      .card-text {
+        width: 100%;
+
+        p {
+          font-weight: normal;
+          width: 100%;
+          max-width: 100%;
+          text-justify: inter-word;
+        }
+      }
 
       p {
         font-family: 'Lato';
         font-size: 16px;
+        text-align: left;
         font-weight: bold;
       }
 
@@ -77,20 +91,4 @@
       }
     }
   }
-
-    .comment {
-        color:black;
-        position: fixed;
-        bottom: 0;
-        right: 10%;
-        bottom: 10%;
-        span {
-            font-size: 2em;
-            background-color: darkcyan;
-            color: black;
-            padding: 25px;
-            border-radius: 45px;
-
-        }
-    }
 }

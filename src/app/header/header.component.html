@@ -1,16 +1,15 @@
-<div class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
+<div class="app-navbar">
+    <div class="app-navbar-left">
         <button class="navbar-btn header-ham" data-toggle="collapse" data-target=".collapseMenu"><span class="glyphicon glyphicon-menu-hamburger"></span>&nbsp;&nbsp;</button>
     </div>
 
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="app-navbar-right">
         <li class="dropdown" appDropdown>
           <a class="dropdown-toggle app-header-button" role="button" (click)="onDropdownClicked()">
             <span class="glyphicon glyphicon-bell"></span>&nbsp;&nbsp;
           </a>
 
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
+          <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu3">
             <li class="dropdown-header">Notificações</li>
             <li role="separator" class="divider"></li>
             <li><app-notification></app-notification></li>
@@ -18,7 +17,6 @@
         </li>
       </ul>
   </div>
-</div>
 
 <div class="app-nav-bar collapse collapseMenu">
     <div class="app-nav-profile">
@@ -36,7 +34,7 @@
           </div>
 
           <div class="app-nav-edit-profile">
-            <a  routerLink="/profile">Editar Perfil</a>
+            <a routerLink="/profile">Editar Perfil</a>
           </div>
         </div>
       </div>
@@ -45,19 +43,19 @@
     <div class="app-nav-menu">
       <ul class="nav">
         <li class="active">
-          <a  routerLink="/home">
+          <a routerLink="/home">
             <i class="glyphicon glyphicon-briefcase"></i> Dashboard
           </a>
         </li>
 
         <li>
-          <a  routerLink="/myessays">
+          <a routerLink="/myessays">
             <i class="glyphicon glyphicon-list-alt"></i> Minhas Redações
           </a>
         </li>
 
         <li>
-          <a  routerLink="/to-review">
+          <a routerLink="/to-review">
             <i class="glyphicon glyphicon-ok"></i> Corrigir Redações
           </a>
         </li>

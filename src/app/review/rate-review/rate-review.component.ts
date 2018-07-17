@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ReviewService } from '../../services/review.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RatingService } from '../../services/rating.service';
+import { Review } from '../../../models/review';
 
 @Component({
     selector: 'app-rate-review',
@@ -9,6 +10,7 @@ import { RatingService } from '../../services/rating.service';
     styleUrls: ['./rate-review.component.scss']
 })
 export class RateReviewComponent implements OnInit {
+    review: Review;
     loginForm: FormGroup;
     display = 'none';
     thumbs = 1;
@@ -25,18 +27,31 @@ export class RateReviewComponent implements OnInit {
         ],
         });
     }
+
     ngOnInit() {
         this.reviewService.ratingDisplayed
         .subscribe(
-            () => {
-                this.display = 'block';
+            (review: Review) => {
+              this.display = 'block';
+              this.review = review;
+              console.log(this.review);
             });
     }
 
     submitForm(form: any): void {
        form['approved'] = this.thumbs;
        console.log(form);
-       this.ratingService.createRating(form)
+
+
+
+       let rating = {
+         'userId': JSON.parse(sessionStorage.getItem('currentUser')).id,
+         'reviewId': this.review.id,
+         'vote': form.approved,
+         'comment': form.comment
+       };
+
+       this.ratingService.createRating(rating)
        .subscribe(
         (data) => {
             this.thumbs = 1;

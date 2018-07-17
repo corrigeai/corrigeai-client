@@ -7,17 +7,16 @@
   background-color: white;
   border-radius: 5px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  width: 90%;
+  width: 85%;
 
   .top-header {
-    display: flex;
     @include apply-flexlayout(row, nowrap, space-between, center);
 
     .grade {
       background-color: #FFBA5C;
       border-radius: 15px;
       padding: 8px;
-      margin-top: 5px;
+      margin-top: 20px;
 
 
       p {
@@ -26,7 +25,6 @@
         font-size: 20px;
         text-align: left;
         font-weight: bold;
-        text-align: center;
       }
     }
   }
@@ -34,11 +32,12 @@
   h3 {
     color: #47525E;
     font-family: 'Lato';
-    font-size: 23px;
+    font-size: 20px;
     font-weight: bold;
     text-align: left;
     margin-bottom: 0px;
     padding: 0px;
+    max-width: 90%;
   }
 
   h4 {
@@ -133,6 +132,16 @@ button {
   }
 }
 
-card-footer {
 
+@media (max-width: 1000px) {
+  .container {
+    .top-header {
+      @include apply-flexlayout(column-reverse, nowrap, space-between, center);
+
+    }
+
+    h4 {
+      text-align: center;
+    }
+  }
 }

@@ -8,7 +8,7 @@
             </div>
             <div class="modal-body">
                 <form class="fields" [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm.value)">
-                    
+
                         <div class="form-group">
                             <textarea [ngClass]="{'has-error':!loginForm.controls['comment'].valid && loginForm.controls['comment'].touched,
                                                 'touched': loginForm.controls['comment'].touched }"
@@ -19,19 +19,18 @@
                         <div class="form-group" id="bottom">
                             <div class="btn-toolbar" role="toolbar" aria-label="...">
                             <div class="btn-group" role="group" aria-label="...">
-                                <button (click)="toggleThumbs()" 
+                                <button (click)="toggleThumbs()"
                                 [ngClass]="{ 'fa-thumbs-down':  thumbs === -1 }"
                                 class="btn btn-default fa fa-thumbs-up fa-2x"></button>
                                 <button class="btn btn-default"
                                 type="submit"
                                 [ngClass]="{'disabled': !loginForm.valid}"
-                                [disabled]='!loginForm.valid'>Submeter Avaliação</button>     
+                                [disabled]='!loginForm.valid'>Submeter Avaliação</button>
                             </div>
                         </div>
                         </div>
                     </form>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-     
+        </div>
+      </div>
+</div>

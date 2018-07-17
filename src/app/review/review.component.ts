@@ -33,7 +33,7 @@ export class ReviewComponent implements OnInit {
             (result) => {
                 this.reviewService.setReviewCollection(
                     result.map(function(item) {return item.review}));
-                if(!isUndefined(this.reviewId)){
+                if (!isUndefined(this.reviewId)) {
                     this.review = this.reviewService.getReviewByAttribute('id', this.reviewId);
                 }
             }
@@ -41,6 +41,6 @@ export class ReviewComponent implements OnInit {
     }
 
     onRateReview() {
-        this.reviewService.ratingDisplayed.emit();
+        this.reviewService.ratingDisplayed.emit(this.review);
     }
 }

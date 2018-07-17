@@ -10,8 +10,10 @@ import { HeaderComponent } from './header/header.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { NotFoundPageComponent } from './auth/not-found/not-found.component';
 import { NotificationComponent } from './notification/notification.component';
+import { TopicComponent } from './topic/topic.component';
 import { ReviewStationComponent } from './reviewstation/reviewstation.component';
 import { NotificationCardComponent } from './notification/card/notification-card.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 // User related components
 import { ProfileComponent } from './user/profile/profile.component';
@@ -22,8 +24,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { WorkstationComponent } from './workstation/workstation.component';
 
 // Authorization related components
-import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
 import { UpdatePassComponent } from './auth/update-pass/update-pass.component';
 
 // Essay related components
@@ -44,8 +46,9 @@ import { UserService } from './services/user.service';
 import { ErrorService } from './services/error.service';
 import { EssayService } from './services/essay.service';
 import { AuthGuardService } from './auth-guard.service';
-import { ReviewService } from './services/review.service';
 import { TopicService } from './services/topic.service';
+import { ReviewService } from './services/review.service';
+import { BadgesService } from './services/badges.service';
 import { RatingService } from './services/rating.service';
 import { NotificationService } from './services/notification.service';
 import { AuthenticationService } from './services/authentication.service';
@@ -55,7 +58,6 @@ import { environment } from '../environments/environment';
 
 // Third party
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-
 
 @NgModule({
   declarations: [
@@ -83,7 +85,9 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     NotFoundPageComponent,
     NotificationComponent,
     ReviewStationComponent,
-    NotificationCardComponent
+    NotificationCardComponent,
+    TopicComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -96,8 +100,9 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     UserService,
     EssayService,
     ErrorService,
-    ReviewService,
     TopicService,
+    ReviewService,
+    BadgesService,
     RatingService,
     AuthGuardService,
     NotificationService,
