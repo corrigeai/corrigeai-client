@@ -4,7 +4,40 @@
   <div class="split-screen">
     <div class="left-side app-panel">
       <h2>Conquistas:</h2>
-      <img src="" alt="">
+      <div class="badges">
+        <div *ngIf="createdEssays >= 1">
+          <img src="../../assets/award_1.png" alt="">
+        </div>
+
+        <div *ngIf="createdEssays >= 10">
+          <img src="../../assets/award_10.png" alt="">
+        </div>
+
+        <div *ngIf="createdEssays >= 20">
+          <img src="../../assets/award_20.png" alt="">
+        </div>
+
+        <div *ngIf="createdEssays >= 50">
+          <img src="../../assets/award_50_2.png" alt="">
+        </div>
+
+        <div *ngIf="reviewedEssays >= 1">
+          <img src="../../assets/r_1.png" alt="">
+        </div>
+
+        <div *ngIf="createdEssays >= 10">
+            <img src="../../assets/r_10.png" alt="">
+        </div>
+
+        <div *ngIf="reviewedEssays >= 20">
+          <img src="../../assets/r_2.png" alt="">
+        </div>
+
+        <div *ngIf="reviewedEssays >= 50">
+          <img src="../../assets/r_3.png" alt="">
+        </div>
+
+      </div>
     </div>
     <div class="right-side app-panel">
       <h2>Tópico semanal:</h2>
@@ -29,7 +62,7 @@
     <div class="review-list" *ngIf="hasRatings">
       <ul>
         <li class="rating-card" *ngFor="let rating of ratings">
-          <p><span>Redação:</span> {{getEssayOfRating(rating)}}</p>
+          <p><span>Redação:</span> </p>
           <p><span>Comentário:</span> {{rating.comment}}</p>
           <p><span>Voto:</span> {{rating.vote}}</p>
         </li>

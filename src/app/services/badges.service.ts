@@ -23,8 +23,9 @@ export class BadgesService {
      * Requests the badges of a user.
      * @param userId - Requesting user id.
      */
-    getBadgesByUserId(userId: string): Observable<any> {
+    getBadgesByUserId(): Observable<any> {
         const httpOptions = this.authService.getOptions();
+        const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
         return this.http.get(this.API.concat('users/badges/' + userId), httpOptions)
         .map((response: Response) => response)
         .catch((error: Response) => {

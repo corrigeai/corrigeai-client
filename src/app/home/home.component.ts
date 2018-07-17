@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { TopicService } from '../services/topic.service';
 import { RatingService } from '../services/rating.service';
 import { ReviewService } from '../services/review.service';
+import { EssayService } from '../services/essay.service';
+import { BadgesService } from '../services/badges.service';
 import { Rating } from '../../models/rating';
 
 @Component({
@@ -20,6 +22,9 @@ export class HomeComponent implements OnInit {
     approvePercent: number;
     desapprovePercent: number;
 
+    createdEssays: number;
+    reviewedEssays: number;
+
     hasRatings: boolean;
     ratings: Rating[] = [];
 
@@ -27,6 +32,8 @@ export class HomeComponent implements OnInit {
         private topicService: TopicService,
         private ratingService: RatingService,
         private reviewService: ReviewService,
+        private badgeService: BadgesService,
+        private essayService: EssayService,
         private router: Router
     ) {
         this.description = "O CorrigeAí ajuda você a se conectar com outras pessoas e juntos se ajudarem na escrita de redações.";
@@ -38,6 +45,13 @@ export class HomeComponent implements OnInit {
             .subscribe(res => {
                 this.topic = res.theme;
             });
+
+        this.badgeService.getBadgesByUserId().subscribe(
+          (response) => {
+            this.createdEssays = response.createdEssays;
+            this.reviewedEssays = response.reviewedEssays;
+          }
+        );
 
         this.ratingService.getRatingsOfCurrentUser()
             .subscribe(res => {
@@ -53,11 +67,5 @@ export class HomeComponent implements OnInit {
                     this.ratings = res;
                 }
             });
-    }
-
-
-    getEssayOfRating(rating: Rating): String {
-      console.log(rating);
-      return this.reviewService.getEssayOfReview(rating.reviewId).title;
     }
 }
