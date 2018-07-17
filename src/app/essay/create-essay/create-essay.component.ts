@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { EssayService } from '../../services/essay.service';
+import { TopicService } from '../../services/topic.service';
 import { Essay } from '../../../models/essay';
 
 @Component({
@@ -11,19 +12,24 @@ import { Essay } from '../../../models/essay';
 })
 export class CreateEssayComponent implements OnInit {
     createEssayForm: FormGroup;
+    theme: String;
     imagePath = null;
     display = 'none';
 
     constructor(private formBuilder: FormBuilder,
         private cd: ChangeDetectorRef,
-         private essayService: EssayService) {
+        private essayService: EssayService,
+        private topicService: TopicService) {
+
+
             this.createEssayForm = this.formBuilder.group({
-                title : [null, Validators.required],
-                theme : [null, Validators.required],
-                essayImg : [null],
-                essayText : [null]
-                });
-        }
+              title : [null, Validators.required],
+              theme : [this.theme, Validators.required],
+              essayImg : [null],
+              essayText : [null]
+              });
+
+    }
 
     onEndSubmission() {
         this.display = 'none';
@@ -40,6 +46,16 @@ export class CreateEssayComponent implements OnInit {
                     this.cd.markForCheck();
                 }
             );
+
+        const user = JSON.parse(sessionStorage.getItem('currentUser'));
+        console.log(user);
+            if (user.usingWeekelyTopic === true) {
+              this.topicService.getOpenTopic().subscribe(
+                (res) => {
+                  this.theme = res.theme;
+                }
+              );
+            }
     }
 
     submitForm(form: any): void {
@@ -49,7 +65,7 @@ export class CreateEssayComponent implements OnInit {
             essayData['theme'] = form.theme;
             essayData['title'] = form.title;
             essayData['content'] = ((form.essayText !== null && form.essayText !== '') ? form.essayText : form.essayImg);
-            essayData['type'] = ((form.essayText !== null && form.essayText !== '') ? 'Text' : 'Image');        
+            essayData['type'] = ((form.essayText !== null && form.essayText !== '') ? 'Text' : 'Image');
 
             this.essayService.createEssay(essayData)
             .subscribe(
@@ -75,17 +91,17 @@ export class CreateEssayComponent implements OnInit {
 
     onFileChange(event) {
         const reader = new FileReader();
-       
+
         if(event.target.files && event.target.files.length) {
           const [file] = event.target.files;
           reader.readAsDataURL(file);
-        
+
           reader.onload = () => {
             this.imagePath = reader.result;
             this.createEssayForm.patchValue({
                 essayImg: reader.result
             });
-            
+
             // need to run CD since file load runs outside of zone
             this.cd.markForCheck();
           };

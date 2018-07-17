@@ -43,20 +43,23 @@
       <h2>Tópico semanal:</h2>
       <div class="topic-content">
         <h1>{{ topic || noTopicMessage }}</h1>
-        <button class="btn btn-default app-btn-type1">Participar!</button>
+        <button class="btn btn-default app-btn-type1" (click)="joinTopic()" *ngIf="!isInTopic">Participar!</button>
+        <button class="btn btn-default app-btn-type1" (click)="leaveTopic()" *ngIf="isInTopic">Sair!</button>
       </div>
     </div>
   </div>
 
   <div class="reviews app-panel">
+    <h2>Avaliações de Revisão:</h2>
+    <hr>
     <div class="review-summary" *ngIf="hasRatings">
-      <p>Avaliações positivas {{ratingApprove}}</p>
-      <p>Avaliações negativas {{ratingDesapprove}}</p>
-      <p>Avaliações positivas {{approvePercent}}%</p>
-      <p>Avaliações negativas {{desapprovePercent}}%</p>
+      <p>Avaliações positivas: {{ratingApprove}}</p>
+      <p>Avaliações negativas: {{ratingDesapprove}}</p>
+      <p>Avaliações positivas: {{approvePercent}}%</p>
+      <p>Avaliações negativas: {{desapprovePercent}}%</p>
   </div>
 
-  <hr>
+  <hr *ngIf="hasRatings">
 
   <div class="">
     <div class="review-list" *ngIf="hasRatings">

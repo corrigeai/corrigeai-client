@@ -15,7 +15,7 @@
 
   .app-panel {
     background-color: white;
-    height: 30vh;
+    min-height: 30vh;
     border-radius: 5px;
     padding: 8px;
 
@@ -71,6 +71,17 @@
   .reviews {
     margin-top: 10px;
     width: 90%;
+
+    p {
+      font-family: 'Lato';
+      font-size: 1.5rem;
+    }
+
+    h2 {
+      font-family: 'Lato';
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
 
     .review-summary {
       @include apply-flexlayout(row, nowrap, space-between, center);
