@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EssayService } from '../../services/essay.service';
 import { TopicService } from '../../services/topic.service';
 import { Essay } from '../../../models/essay';
+import { User } from '../../../models/user';
 
 @Component({
   selector: 'app-create-essay',
@@ -21,13 +22,12 @@ export class CreateEssayComponent implements OnInit {
         private essayService: EssayService,
         private topicService: TopicService) {
 
-
-            this.createEssayForm = this.formBuilder.group({
-              title : [null, Validators.required],
-              theme : [this.theme, Validators.required],
-              essayImg : [null],
-              essayText : [null]
-              });
+        this.createEssayForm = this.formBuilder.group({
+                title : [null, Validators.required],
+                theme : [null, Validators.required],
+                essayImg : [null],
+                essayText : [null]
+            });
 
     }
 
@@ -41,21 +41,24 @@ export class CreateEssayComponent implements OnInit {
         this.essayService.essayCreated
             .subscribe(
                 () => {
-                    this.createEssayForm.reset();
                     this.display = 'block';
                     this.cd.markForCheck();
                 }
             );
 
-        const user = JSON.parse(sessionStorage.getItem('currentUser'));
-        console.log(user);
-            if (user.usingWeekelyTopic === true) {
-              this.topicService.getOpenTopic().subscribe(
-                (res) => {
-                  this.theme = res.theme;
-                }
-              );
-            }
+        let user: User = JSON.parse(sessionStorage.getItem('currentUser'));
+        if (user.usingWeekelyTopic) {
+            this.topicService.getOpenTopic()
+            .subscribe(res => {
+                this.theme = res.theme;
+                this.createEssayForm = this.formBuilder.group({
+                    title : [null, Validators.required],
+                    theme : [res.theme, Validators.required],
+                    essayImg : [null],
+                    essayText : [null]
+                });
+            });
+        }
     }
 
     submitForm(form: any): void {

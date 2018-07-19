@@ -22,7 +22,7 @@
                 <h3>Tema</h3>
 
                 <div class="form-group">
-                  <input [ngClass]="{'has-error': !createEssayForm.controls['theme'].valid && createEssayForm.controls['title'].touched,
+                  <input [attr.disabled]="theme" [ngClass]="{'has-error': !createEssayForm.controls['theme'].valid && createEssayForm.controls['title'].touched,
                                     'touched': createEssayForm.controls['theme'].touched }" class="form-control" type="text"
                                     placeholder="Seu Tema" [formControl]="createEssayForm.controls['theme']">
                 </div>
