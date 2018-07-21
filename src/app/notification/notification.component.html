@@ -1,4 +1,5 @@
 <div class="container">
+  <p *ngIf="notifications.length == 0">Nenhuma notificação no momento</p>
   <ul>
     <li *ngFor="let notification of this.notifications">
       <ul>
@@ -12,6 +13,6 @@
   </ul>
 
   <div class="notifications-footer">
-    <button (click)="onClearAllClicked()">&nbsp;Clear All&nbsp;</button>
+    <button (click)="onClearAllClicked()">&nbsp;Limpar Todas&nbsp;</button>
   </div>
 </div>

@@ -39,10 +39,11 @@ export class RateReviewComponent implements OnInit {
     }
 
     submitForm(form: any): void {
-       form['approved'] = this.thumbs;
-       console.log(form);
-
-
+      if (this.thumbs === 1) {
+        form['approved'] = 'Upvote';
+      } else {
+        form['approved'] = 'Downvote';
+      }
 
        let rating = {
          'userId': JSON.parse(sessionStorage.getItem('currentUser')).id,

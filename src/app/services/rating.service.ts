@@ -96,5 +96,14 @@ export class RatingService {
         return this.getRatingsByUserId(id);
     }
 
+    getEssayByReviewId(reviewId: string) {
+      const httpOptions = this.authService.getOptions();
+      return this.http.get(this.API.concat('reviews/' + reviewId + '/essay'), httpOptions)
+        .map((response: Response) => response)
+        .catch((error: Response) => {
+            this.errorService.handleError(error);
+            return  Observable.throw(error);
+          });
+    }
 }
 

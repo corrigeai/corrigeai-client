@@ -16,8 +16,19 @@
   .app-panel {
     background-color: white;
     min-height: 30vh;
-    border-radius: 5px;
-    padding: 8px;
+    border-radius: 1px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+    .header {
+      margin: 0px;
+      min-height: 40px;
+      background-color: #2F3037;
+      @include apply-flexlayout(row, nowrap, center, center);
+    }
+
+    .body {
+      padding: 8px;
+    }
 
     h1 {
       font-size: 2rem;
@@ -26,10 +37,11 @@
     }
 
     h2 {
-      font-family: 'Lato';
-      font-size: 1.5rem;
+      font-family: 'Roboto';
+      font-size: 1.8rem;
       font-weight: bold;
-
+      margin: 0px;
+      color: white;
     }
 
     .badges {
@@ -51,7 +63,7 @@
     margin-top: 10px;
 
     @include apply-flexlayout(row, nowrap, space-around, center);
-    width: 90%;
+    width: 90.5%;
 
     .left-side {
       width: 55%
@@ -77,12 +89,6 @@
       font-size: 1.5rem;
     }
 
-    h2 {
-      font-family: 'Lato';
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-
     .review-summary {
       @include apply-flexlayout(row, nowrap, space-between, center);
     }
@@ -103,8 +109,18 @@
       p {
         font-family: 'Lato';
 
-        span {
+        .bold-text {
           font-weight: bold;
+        }
+
+        .downvote {
+          color: red;
+          font-size: 13px;
+        }
+
+        .upvote {
+          color: #66CD00;
+          font-size: 13px;
         }
       }
     }

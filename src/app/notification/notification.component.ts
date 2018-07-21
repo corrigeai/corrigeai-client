@@ -11,7 +11,7 @@ import { NotificationService } from '../services/notification.service';
     styleUrls: ['./notification.component.scss']
 })
 export class NotificationComponent implements OnInit {
-    notifications: Notification[];
+    notifications: Notification[] = [];
 
     display = 'block';
 

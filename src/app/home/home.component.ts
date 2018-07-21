@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
 
     hasRatings: boolean;
     ratings: Rating[] = [];
+    essayTitles: String[] = [];
 
     constructor(
         private topicService: TopicService,
@@ -70,8 +71,20 @@ export class HomeComponent implements OnInit {
                     this.approvePercent = (this.ratingApprove / res.length) * 100;
                     this.desapprovePercent = (1 - this.approvePercent) * 100;
                     this.ratings = res;
+                    console.log(res);
+                    for (let i = 0; i < this.ratings.length; i++) {
+                      this.ratingService.getEssayByReviewId(this.ratings[i].reviewId).subscribe(res2 => {
+                        this.essayTitles[i] = res2.title;
+                      });
+                    }
                 }
             });
+    }
+
+    getEssayTitle(rating) {
+      this.ratingService.getEssayByReviewId(rating.reviewId).subscribe(res => {
+        return res.title;
+      });
     }
 
     joinTopic() {

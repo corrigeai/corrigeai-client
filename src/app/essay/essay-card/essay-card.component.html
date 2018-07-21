@@ -4,7 +4,8 @@
       <h3>{{essay.title}}</h3>
 
       <div class="grade">
-          <p>&nbsp;N/A&nbsp;</p>
+          <p *ngIf="reviews.length === 0">&nbsp;N/A&nbsp;</p>
+          <p *ngIf="reviews.length > 0">&nbsp;{{grade}}&nbsp;</p>
       </div>
     </div>
 
