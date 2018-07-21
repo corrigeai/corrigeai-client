@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class EssayCardComponent implements OnInit {
     @Input() essay: Essay;
+    grade: number;
     reviews: Review[] = [];
     display = false;
 
@@ -28,8 +29,29 @@ export class EssayCardComponent implements OnInit {
                 console.log(this.reviewService.getReviewCollection());
                 console.log(this.essay.id);
                 this.reviews = this.reviewService.getReviewsOfEssay(this.essay.id);
+                this.calculateGrade();
+
             }
         );
+    }
+
+    private calculateGrade() {
+      let sum = 0;
+      for (let i = 0; i < this.reviews.length; i++) {
+          const reviewGrade = (this.reviews[i].ratings[0] +
+                               this.reviews[i].ratings[1] +
+                               this.reviews[i].ratings[2] +
+                               this.reviews[i].ratings[3] +
+                               this.reviews[i].ratings[4]);
+
+          sum += reviewGrade;
+      }
+
+      if (this.reviews.length > 0) {
+        this.grade = sum / this.reviews.length;
+      } else {
+        this.grade = 0;
+      }
     }
 
     onEditEssay() {

@@ -44,7 +44,6 @@ export class RateReviewComponent implements OnInit {
       } else {
         form['approved'] = 'Downvote';
       }
-       console.log(form);
 
        let rating = {
          'userId': JSON.parse(sessionStorage.getItem('currentUser')).id,
