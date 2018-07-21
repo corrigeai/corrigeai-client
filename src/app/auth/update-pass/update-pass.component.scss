@@ -12,7 +12,7 @@
   .card {
     @include apply-flexlayout(column, nowrap, center, center);
     margin-top: 70px;
-    min-width: 400px;
+    min-width: 300px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     background-color: white;
     padding: 20px;
