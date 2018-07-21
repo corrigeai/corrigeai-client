@@ -8,6 +8,7 @@
     </div>
     <div class="row">
       <div class="">
+        <div *ngIf="userEssays.length == 0">Você não tem redações.</div>
         <div class="essays">
           <ul>
             <li *ngFor="let essay of userEssays">

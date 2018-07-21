@@ -75,9 +75,10 @@
     <div class="review-list" *ngIf="hasRatings">
       <ul>
         <li class="rating-card" *ngFor="let rating of ratings; let i = index">
-          <p><span>Redação:</span> {{essayTitles[i]}}</p>
-          <p><span>Comentário:</span> {{rating.comment}}</p>
-          <p><span>Voto:</span> {{rating.vote}}</p>
+          <p><span class="bold-text">Redação:</span> {{essayTitles[i]}}</p>
+          <p><span class="bold-text">Comentário:</span> {{rating.comment}}</p>
+          <p><span class="bold-text">Voto: </span><span *ngIf="rating.vote == 'Downvote'" class="glyphicon glyphicon-thumbs-down downvote"></span>
+            <span *ngIf="rating.vote == 'Upvote'" class="glyphicon glyphicon-thumbs-up upvote"></span></p>
         </li>
       </ul>
     </div>

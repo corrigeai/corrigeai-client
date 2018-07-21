@@ -109,8 +109,13 @@
       p {
         font-family: 'Lato';
 
-        span {
+        .bold-text {
           font-weight: bold;
+        }
+
+        .downvote {
+          color: red;
+          font-size: 13px;
         }
       }
     }
