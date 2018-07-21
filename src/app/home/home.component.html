@@ -64,8 +64,8 @@
   <div class="">
     <div class="review-list" *ngIf="hasRatings">
       <ul>
-        <li class="rating-card" *ngFor="let rating of ratings">
-          <p><span>Redação:</span> </p>
+        <li class="rating-card" *ngFor="let rating of ratings; let i = index">
+          <p><span>Redação:</span> {{essayTitles[i]}}</p>
           <p><span>Comentário:</span> {{rating.comment}}</p>
           <p><span>Voto:</span> {{rating.vote}}</p>
         </li>
