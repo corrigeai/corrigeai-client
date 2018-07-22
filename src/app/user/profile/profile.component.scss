@@ -31,11 +31,31 @@
     .img-container {
       margin-bottom: 15px;
 
-      img {
+      .thumbnail {
+        position: relative;
+        width: 250px;
+        height: 250px;
+        overflow: hidden;
+      }
+
+      .thumbnail img {
         display: block;
         margin-left: auto;
         margin-right: auto;
-        width: 50%;
+        width: 100%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        height: 100%;
+        width: auto;
+        -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+        transform: translate(-50%,-50%);
+      }
+
+      .thumbnail img.portrait {
+        width: 100%;
+        height: auto;
       }
 
       .select-img-btn {
@@ -167,4 +187,12 @@ button:hover, a:hover {
 {
 margin-left:auto;
 margin-right:auto;
+}
+
+@media(min-width: 450px) {
+  .container {
+    .card {
+      min-width: 400px;
+    }
+  }
 }

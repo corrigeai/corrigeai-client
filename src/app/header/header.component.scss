@@ -113,6 +113,7 @@
     .app-nav-userimg {
       max-width: 75px;
       margin-right: 10px;
+
       img {
         margin: 0;
         width: 100%;
@@ -121,6 +122,8 @@
         -moz-border-radius: 50% !important;
         border-radius: 50% !important;
       }
+
+
     }
 
     .app-nav-userbox {
@@ -167,39 +170,3 @@
   background-color: #fafcfd;
   color: #5b9bd1;
 }
-
-
-/*
-.nav.navbar-nav li a {
-    color:#400B3C;
-    font-weight: bold;
-    font-family: 'Open Sans',serif;
-    font-size: large;
-
-}
-a.navbar-brand {
-    font-family: 'Open Sans',serif;
-    color:#400B3C;
-    font-size: large;
-}
-
-.navbar-brand {
-    margin: 0;
-}
-
-.navbar-brand img
-{
-    max-height: 100%;
-}
-
-.nav.navbar-nav.navbar-right a {
-    cursor: pointer;
-}
-
-.dropdown-header {
-  font-style: sans-serif;
-  font-weight: bold;
-  font-size: 13px;
-  color: black;
-}
-*/
