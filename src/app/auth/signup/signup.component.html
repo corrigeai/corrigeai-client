@@ -1,5 +1,7 @@
 <div class="container">
   <div class="signup-card">
+    <h1>Crie sua conta</h1>
+
     <form class="app-form-type1" [formGroup]="signUpForm" (ngSubmit)="submitForm(signUpForm.value)">
 
       <input [ngClass]="{'has-error': !signUpForm.controls['name'].valid && signUpForm.controls['name'].touched,
