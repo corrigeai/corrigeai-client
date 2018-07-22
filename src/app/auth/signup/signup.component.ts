@@ -1,5 +1,5 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ViewEncapsulation} from '@angular/core';
+import { ViewEncapsulation, OnInit} from '@angular/core';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -13,7 +13,7 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./signup.component.scss'],
    encapsulation: ViewEncapsulation.None
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit {
   signUpForm: FormGroup;
 
   constructor(
@@ -21,7 +21,7 @@ export class SignupComponent {
     private formBuilder: FormBuilder,
     private userService: UserService
   ) {
-    this.signUpForm = formBuilder.group({
+    this.signUpForm = this.formBuilder.group({
       'name': [null,
                 [Validators.required,
                  Validators.maxLength(100)]],
@@ -43,6 +43,12 @@ export class SignupComponent {
     }, {
       validator: CustomValidators.Match('password', 'confirmPassword')
     });
+  }
+
+  ngOnInit(): void {
+    if (sessionStorage.getItem('token')) {
+      this.router.navigate(["/home"]);
+    }
   }
 
   submitForm(form: any): void {
