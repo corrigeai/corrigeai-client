@@ -1,5 +1,5 @@
 <div class="container">
-  <p *ngIf="notifications.length == 0">Nenhuma notificação no momento</p>
+  <p class="nocontent" *ngIf="notifications.length == 0">Nenhuma notificação no momento.</p>
   <ul>
     <li *ngFor="let notification of this.notifications">
       <ul>
