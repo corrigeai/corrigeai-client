@@ -19,6 +19,15 @@
     border-radius: 1px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 
+    .nocontent {
+      font-family: 'Montserrat';
+      font-style: italic;
+      font-weight: light;
+      font-size: 1.3rem;
+      text-align: center;
+      padding-top: 10px;
+    }
+
     .header {
       margin: 0px;
       min-height: 40px;
@@ -66,7 +75,7 @@
     width: 90.5%;
 
     .left-side {
-      width: 55%
+      width: 55%;
     }
 
     .right-side {
@@ -85,12 +94,13 @@
     width: 90%;
 
     p {
-      font-family: 'Lato';
+      font-family: 'Roboto';
       font-size: 1.5rem;
     }
 
     .review-summary {
       @include apply-flexlayout(row, nowrap, space-between, center);
+
     }
 
     ul {
@@ -100,11 +110,25 @@
 
     .rating-card {
       list-style: none;
-      background-color: #F3F3F3;
+      background-color: #0F1017;
+      color:white;
       margin: 0px;
-      border-radius: 5px;
+      border-radius: 1px;
       padding: 8px;
       margin-bottom: 5px;
+      border: 1px solid black;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+      @include apply-flexlayout(row, nowrap, flex-start, center);
+
+      .rc-left {
+        width: 5%;
+        height: calc(100%);
+        min-width: 50px;
+      }
+
+      .rc-right {
+        width: 80%;
+      }
 
       p {
         font-family: 'Lato';
@@ -115,12 +139,12 @@
 
         .downvote {
           color: red;
-          font-size: 13px;
+          font-size: 4rem;
         }
 
         .upvote {
           color: #66CD00;
-          font-size: 13px;
+          font-size: 4rem;
         }
       }
     }
@@ -149,6 +173,8 @@
   }
 }
 
+
+
 @media (max-width: 700px) {
   .container {
     .reviews {
@@ -156,5 +182,7 @@
         @include apply-flexlayout(column, nowrap, flex-start, center);
       }
     }
+
+
   }
 }

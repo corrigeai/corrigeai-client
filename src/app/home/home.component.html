@@ -6,6 +6,8 @@
       <div class="header">
         <h2>Conquistas</h2>
       </div>
+
+      <p class="nocontent" *ngIf="createdEssays == 0 && reviewedEssays == 0">Não há conquistas para mostrar</p>
       <div class="body">
         <div class="badges">
           <div *ngIf="createdEssays >= 1">
@@ -75,17 +77,27 @@
     <div class="review-list" *ngIf="hasRatings">
       <ul>
         <li class="rating-card" *ngFor="let rating of ratings; let i = index">
-          <p><span class="bold-text">Redação:</span> {{essayTitles[i]}}</p>
-          <p><span class="bold-text">Comentário:</span> {{rating.comment}}</p>
-          <p><span class="bold-text">Voto: </span><span *ngIf="rating.vote == 'Downvote'" class="glyphicon glyphicon-thumbs-down downvote"></span>
-            <span *ngIf="rating.vote == 'Upvote'" class="glyphicon glyphicon-thumbs-up upvote"></span></p>
+          <div class="rc-left">
+              <p><span *ngIf="rating.vote == 'Downvote'" class="glyphicon glyphicon-thumbs-down downvote"></span>
+                <span *ngIf="rating.vote == 'Upvote'" class="glyphicon glyphicon-thumbs-up upvote"></span></p>
+          </div>
+
+          <div class="rc-right">
+            <div class="rc-right-top">
+                <p><span class="bold-text">Redação:</span> {{essayTitles[i]}}</p>
+            </div>
+            <div class="rc-right-bottom">
+                <p><span class="bold-text">Comentário:</span> {{rating.comment}}</p>
+            </div>
+          </div>
+
         </li>
       </ul>
     </div>
   </div>
 
   <div class="card" *ngIf="!hasRatings">
-    <p>Você ainda não teve nenhum review avaliado.</p>
+    <p class="nocontent">Você ainda não teve nenhum review avaliado.</p>
   </div>
 </div>
   </div>

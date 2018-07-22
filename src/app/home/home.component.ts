@@ -21,8 +21,8 @@ export class HomeComponent implements OnInit {
 
     ratingApprove: number;
     ratingDesapprove: number;
-    approvePercent: number;
-    desapprovePercent: number;
+    approvePercent: string;
+    desapprovePercent: string;
 
     createdEssays: number;
     reviewedEssays: number;
@@ -68,8 +68,8 @@ export class HomeComponent implements OnInit {
                     this.ratingApprove = res.filter(rating => rating.vote === 'Upvote').length;
                     this.ratingDesapprove = res.length - this.ratingApprove;
 
-                    this.approvePercent = (this.ratingApprove / res.length) * 100;
-                    this.desapprovePercent = (1 - this.approvePercent) * 100;
+                    this.approvePercent = parseFloat(((this.ratingApprove / res.length) * 100) + '').toFixed(2);
+                    this.desapprovePercent = parseFloat(((this.ratingDesapprove / res.length) * 100) + '').toFixed(2);
                     this.ratings = res;
                     console.log(res);
                     for (let i = 0; i < this.ratings.length; i++) {
