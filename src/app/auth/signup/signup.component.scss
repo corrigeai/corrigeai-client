@@ -16,6 +16,15 @@
     padding: 40px 50px 40px 50px;
     max-width: 540px;
     border-radius: 1px;
+    h1 {
+      font-family: 'Montserrat';
+      font-size: 3rem;
+      text-align: center;
+      font-weight: bold;
+      color: white;
+      padding: 0px;
+      margin-bottom: 10px;
+    }
 
     button {
       &:hover {
