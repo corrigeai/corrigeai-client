@@ -58,6 +58,20 @@ import { environment } from '../environments/environment';
 
 // Third party
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import {StompConfig, StompService} from '@stomp/ng2-stompjs';
+import * as SockJS from 'sockjs-client';
+
+const API = environment.apiUrl;
+const entrypoint = API.concat('notifications/ws');
+
+const stompConfig = {
+  url: new SockJS(entrypoint),
+  headers: {},
+  heartbeat_in: 0,
+  heartbeat_out: 20000,
+  reconnect_delay: 5000,
+  debug: true
+};
 
 @NgModule({
   declarations: [
@@ -106,6 +120,11 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     RatingService,
     AuthGuardService,
     NotificationService,
+    StompService,
+    {
+      provide: StompConfig,
+      useValue: stompConfig
+    },
     AuthenticationService,
     {provide: 'API', useValue: environment.apiUrl}
   ],

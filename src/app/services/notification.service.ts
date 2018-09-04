@@ -8,8 +8,8 @@ import { Notification } from '../../models/notification';
 import { Review } from '../../models/review';
 
 import { Observable } from 'rxjs/Observable';
+import {StompService} from '@stomp/ng2-stompjs';
 import * as SockJS from 'sockjs-client';
-import * as Stomp from 'stompjs';
 
 @Injectable()
 export class NotificationService {
@@ -21,7 +21,9 @@ export class NotificationService {
   API = environment.apiUrl;
   private stompClient;
 
-  constructor(private http: HttpClient, private authService: AuthenticationService) {}
+  constructor(private http: HttpClient,
+              private authService: AuthenticationService,
+              private _stompClient: StompService) {}
 
   // notificatinsCollection related Methods
 
@@ -123,17 +125,21 @@ export class NotificationService {
    * Engages websocket between client and api.
    */
   connect(receivedNotificationHandler): void {
-    const entrypoint = this.API.concat('notifications/ws');
+    //const entrypoint = this.API.concat('notifications/ws');
     const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
-    const socket = new SockJS(entrypoint);
+    //const socket = new SockJS(entrypoint);
 
-    this.stompClient = Stomp.over(socket);
+    /*this.stompClient = Stomp.over(socket);
+
     const that = this;
 
-    this.stompClient.connect({}, function(frame) {
+    this.stompClient.connect({}, function(frame) {*/
       // Subscribe to the user channel
-      that.stompClient.subscribe('notification_ch/' + userId, receivedNotificationHandler);
-    });
+      /*that.stompClient.subscribe('notification_ch/' + userId, receivedNotificationHandler);
+    });*/
+
+    //this._stompClient.initAndConnect();
+    this._stompClient.subscribe('notification_ch/' + userId, receivedNotificationHandler);
   }
 
   /**
@@ -152,6 +158,6 @@ export class NotificationService {
     const notificationData = {};
     notificationData['userId'] =  userId;
 
-    this.stompClient.send('send/message/' + essayId, {}, JSON.stringify(notificationData)) ;
+    this._stompClient.publish('send/message/' + essayId, JSON.stringify(notificationData));
   }
 }

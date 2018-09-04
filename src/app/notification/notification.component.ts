@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as Stomp from 'stompjs';
-import * as SockJS from 'sockjs-client';
-import $ from 'jquery';
 import { Notification } from '../../models/notification';
 import { NotificationService } from '../services/notification.service';
 
