@@ -125,7 +125,7 @@ export class NotificationService {
    * Engages websocket between client and api.
    */
   connect(receivedNotificationHandler): void {
-    //const entrypoint = this.API.concat('notifications/ws');
+    const entrypoint = this.API.concat('notifications/ws');
     const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
     //const socket = new SockJS(entrypoint);
 
@@ -139,14 +139,14 @@ export class NotificationService {
     });*/
 
     //this._stompClient.initAndConnect();
-    this._stompClient.subscribe('notification_ch/' + userId, receivedNotificationHandler);
+    this._stompClient.subscribe('notification_ch/' + userId);
   }
 
   /**
    * Disengages websocket between client and api.
    */
   disconnect(): void {
-    this.stompClient.disconnect();
+    this._stompClient.disconnect();
   }
 
   /**
