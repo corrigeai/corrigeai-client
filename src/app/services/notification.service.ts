@@ -9,8 +9,8 @@ import { Review } from '../../models/review';
 
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import {StompService} from '@stomp/ng2-stompjs';
-import {Message} from '@stomp/stompjs';
+import { StompService } from '@stomp/ng2-stompjs';
+import { Message } from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
 
 @Injectable()
@@ -21,6 +21,9 @@ export class NotificationService {
   private notificationsCollection: any[] = [];
   /** Production/Development API URL */
   API = environment.apiUrl;
+  // Web Socket related Methods
+  private subscription: Subscription;
+  public messages: Observable<Message>;
   private stompClient;
 
   constructor(private http: HttpClient,
@@ -122,17 +125,13 @@ export class NotificationService {
           });
   }
 
-  // Web Socket related Methods
-  private subscription: Subscription;
-  public messages: Observable<Message>;
-
   /**
    * Engages websocket between client and api.
    */
   connect(receivedNotificationHandler): void {
     const entrypoint = this.API.concat('notifications/ws');
     const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
-    //const socket = new SockJS(entrypoint);
+    // const socket = new SockJS(entrypoint);
 
     /*this.stompClient = Stomp.over(socket);
 
@@ -143,7 +142,7 @@ export class NotificationService {
       /*that.stompClient.subscribe('notification_ch/' + userId, receivedNotificationHandler);
     });*/
 
-    //this._stompClient.initAndConnect();
+    // this._stompClient.initAndConnect();
     this.messages = this._stompClient.subscribe('/notification_ch/' + userId);
 
     // Subscribe a function to be run on_next message

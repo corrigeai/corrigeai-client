@@ -19,22 +19,24 @@ export class EditProfileComponent implements OnInit {
   imagePath;
 
   constructor(private router: Router,
-              private formBuilder: FormBuilder,
-              private userService: UserService,
-              private cd: ChangeDetectorRef,
-              private _sanitizer: DomSanitizer
+    private formBuilder: FormBuilder,
+    private userService: UserService,
+    private cd: ChangeDetectorRef,
+    private _sanitizer: DomSanitizer
   ) {
     const user = JSON.parse(sessionStorage.getItem('currentUser'));
-    this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(user.photoUrl);
 
-    this.editProfileForm = this.formBuilder.group({
-      'name': [user.name, Validators.required],
-      'photoUrl': [user.photoUrl],
-      'username': [user.username,
-                   [Validators.required,
-                    Validators.pattern('^[a-zA-Z0-9_-]*$'),
-                     Validators.minLength(4)]]
+    if (!user == null) {
+      this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(user.photoUrl);
+      this.editProfileForm = this.formBuilder.group({
+        'name': [user.name, Validators.required],
+        'photoUrl': [user.photoUrl],
+        'username': [user.username,
+        [Validators.required,
+        Validators.pattern('^[a-zA-Z0-9_-]*$'),
+        Validators.minLength(4)]]
       });
+    }
   }
 
   ngOnInit() {
@@ -42,23 +44,23 @@ export class EditProfileComponent implements OnInit {
 
   submitForm(form: any): void {
     this.userService.editUser(form)
-    .subscribe(
-      result => {
-        if (result) {
-          this.router.navigate(['profile']);
-          this.error = undefined;
-          this.editProfileForm.reset();
-          this.userService.editUserEvent.emit();
-        }
-      },
-      error => this.error = error
-    );
+      .subscribe(
+        result => {
+          if (result) {
+            this.router.navigate(['profile']);
+            this.error = undefined;
+            this.editProfileForm.reset();
+            this.userService.editUserEvent.emit();
+          }
+        },
+        error => this.error = error
+      );
   }
 
   onFileChange(event) {
     const reader = new FileReader();
 
-    if(event.target.files && event.target.files.length) {
+    if (event.target.files && event.target.files.length) {
       const [file] = event.target.files;
       reader.readAsDataURL(file);
 
@@ -74,7 +76,7 @@ export class EditProfileComponent implements OnInit {
     }
   }
 
-  getOut(){
+  getOut() {
     this.router.navigate(['profile']);
   }
 

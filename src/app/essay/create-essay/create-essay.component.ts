@@ -28,7 +28,6 @@ export class CreateEssayComponent implements OnInit {
                 essayImg : [null],
                 essayText : [null]
             });
-
     }
 
     onEndSubmission() {
@@ -46,7 +45,7 @@ export class CreateEssayComponent implements OnInit {
                 }
             );
 
-        let user: User = JSON.parse(sessionStorage.getItem('currentUser'));
+        const user: User = JSON.parse(sessionStorage.getItem('currentUser'));
         if (user.usingWeekelyTopic) {
             this.topicService.getOpenTopic()
             .subscribe(res => {
@@ -63,7 +62,7 @@ export class CreateEssayComponent implements OnInit {
 
     submitForm(form: any): void {
 
-            var essayData = {};
+            const essayData = {};
             essayData['userUsername'] = JSON.parse(sessionStorage.getItem('currentUser')).username;
             essayData['theme'] = form.theme;
             essayData['title'] = form.title;
@@ -81,13 +80,11 @@ export class CreateEssayComponent implements OnInit {
     }
 
     isEmpty(value: any): string {
-        if(value == null){
+        if (value == null) {
             return 'true';
-        }
-        else if (value == '') {
+        } else if (value === '') {
             return 'true';
-        }
-        else {
+        } else {
             return 'false';
         }
     }
@@ -95,7 +92,7 @@ export class CreateEssayComponent implements OnInit {
     onFileChange(event) {
         const reader = new FileReader();
 
-        if(event.target.files && event.target.files.length) {
+        if (event.target.files && event.target.files.length) {
           const [file] = event.target.files;
           reader.readAsDataURL(file);
 

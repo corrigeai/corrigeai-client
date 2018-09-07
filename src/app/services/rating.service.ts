@@ -92,7 +92,7 @@ export class RatingService {
     }
 
     getRatingsOfCurrentUser() {
-        let id = JSON.parse(sessionStorage.getItem('currentUser')).id;
+        const id = JSON.parse(sessionStorage.getItem('currentUser')).id;
         return this.getRatingsByUserId(id);
     }
 

@@ -1,4 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { DeleteEssayComponent } from './delete-essay.component';
 
@@ -8,7 +11,9 @@ describe('DeleteEssayComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DeleteEssayComponent ]
+      declarations: [ DeleteEssayComponent ],
+      imports: [RouterTestingModule, HttpClientTestingModule],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

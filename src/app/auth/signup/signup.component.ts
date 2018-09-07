@@ -47,7 +47,7 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     if (sessionStorage.getItem('token')) {
-      this.router.navigate(["/home"]);
+      this.router.navigate(['/home']);
     }
   }
 

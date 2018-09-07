@@ -1,10 +1,10 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import { Review } from "../../models/review";
-import { ReviewService } from "../services/review.service";
+import { Review } from '../../models/review';
+import { ReviewService } from '../services/review.service';
 
-import {isUndefined} from "util";
+import {isUndefined} from 'util';
 
 
 @Component({
@@ -13,7 +13,7 @@ import {isUndefined} from "util";
     styleUrls: ['./review.component.scss']
 })
 export class ReviewComponent implements OnInit {
-    review: Review = new Review("","",['','',' ','',''],[0,0,0,0,0]);
+    review: Review = new Review('', '', ['', '', '', '', ''], [0, 0, 0, 0, 0]);
     reviewId: string;
 
     constructor(private  reviewService: ReviewService,
@@ -32,7 +32,7 @@ export class ReviewComponent implements OnInit {
         .subscribe(
             (result) => {
                 this.reviewService.setReviewCollection(
-                    result.map(function(item) {return item.review}));
+                    result.map(function(item) { return item.review; }));
                 if (!isUndefined(this.reviewId)) {
                     this.review = this.reviewService.getReviewByAttribute('id', this.reviewId);
                 }

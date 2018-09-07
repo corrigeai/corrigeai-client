@@ -1,9 +1,9 @@
-import { Component, OnInit } from "@angular/core";
-import { ReviewService } from "../../services/review.service";
+import { Component, OnInit } from '@angular/core';
+import { ReviewService } from '../../services/review.service';
 
 import swal from 'sweetalert2';
-import {isUndefined} from "util";
-import { Router } from "@angular/router";
+import {isUndefined} from 'util';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-essays-status',
@@ -11,7 +11,7 @@ import { Router } from "@angular/router";
     styleUrls: ['./essays-status.component.scss']
 })
 export class EssaysStatusComponent  implements OnInit {
-    reviewsAboutUser;    
+    reviewsAboutUser;
 
     constructor(private router: Router,
         private reviewService: ReviewService) {}
@@ -23,7 +23,7 @@ export class EssaysStatusComponent  implements OnInit {
                 this.reviewsAboutUser = reviews;
                 this.reviewService
                 .setReviewCollection(
-                    reviews.map(function(item) {return item.review}))
+                    reviews.map(function(item) { return item.review; }));
             }
         );
     }
@@ -33,7 +33,7 @@ export class EssaysStatusComponent  implements OnInit {
     }
 
     displayReview(review: any) {
-        if(!isUndefined(review.id)) {
+        if (!isUndefined(review.id)) {
             this.router.navigate(['/prev-review', review.id]);
           }
     }

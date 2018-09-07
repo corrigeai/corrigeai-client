@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { EssayService } from '../../services/essay.service';
-import { Essay } from '../../../models/essay';
-import { Review } from '../../../models/review';
-import { ReviewService } from '../../services/review.service';
 import { Router } from '@angular/router';
+
+import { ReviewService } from '../../services/review.service';
+import { EssayService } from '../../services/essay.service';
+import { Review } from '../../../models/review';
+import { Essay } from '../../../models/essay';
 
 @Component({
   selector: 'app-essay-card',
@@ -25,7 +26,7 @@ export class EssayCardComponent implements OnInit {
         .subscribe(
             (result) => {
                 this.reviewService.setReviewCollection(
-                    result.map(function(item) {return item.review}));
+                    result.map(function(item) { return item.review; }));
                 console.log(this.reviewService.getReviewCollection());
                 console.log(this.essay.id);
                 this.reviews = this.reviewService.getReviewsOfEssay(this.essay.id);

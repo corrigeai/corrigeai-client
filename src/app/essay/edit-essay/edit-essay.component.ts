@@ -40,9 +40,9 @@ export class EditEssayComponent implements OnInit {
                 this.original = essay;
                 this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(essay.content);
                 this.editEssayForm.patchValue({
-                    essayImg : (essay.type == 'Image' ? essay.content: null),
+                    essayImg : (essay.type === 'Image' ? essay.content : null),
                     theme : essay.theme,
-                    essayText: (essay.type == 'Text' ? essay.content: null),
+                    essayText: (essay.type === 'Text' ? essay.content : null),
                     title : essay.title
                 });
                 this.display = 'block';
@@ -51,13 +51,13 @@ export class EditEssayComponent implements OnInit {
     }
 
     isValid64Base(text) {
-        var regex = /^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$/;
+        const regex = /^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$/;
         return regex.test(text);
     }
 
-    complyForm(form: any):any {
-        form["id"] = this.original.id;
-        form["content"] = ((form["essayText"] !== null && form["essayText"] !== '') ? form["essayText"] : form["essayImg"])
+    complyForm(form: any): any {
+        form['id'] = this.original.id;
+        form['content'] = ((form['essayText'] !== null && form['essayText'] !== '') ? form['essayText'] : form['essayImg']);
         delete form.essayImg;
         delete form.essayText;
         return form;
@@ -69,20 +69,18 @@ export class EditEssayComponent implements OnInit {
         this.essayService.editEssay(form)
         .subscribe(
             (essay) => {
-                this.essayService.updateEssayElement(this.original,essay);
+                this.essayService.updateEssayElement(this.original, essay);
                 this.onEndSubmission();
             }
         );
     }
 
     isEmpty(value: any): string {
-        if(value == null){
+        if (value == null) {
             return 'true';
-        }
-        else if (value == '') {
+        } else if (value === '') {
             return 'true';
-        }
-        else {
+        } else {
             return 'false';
         }
     }
@@ -90,7 +88,7 @@ export class EditEssayComponent implements OnInit {
     onFileChange(event) {
         const reader = new FileReader();
 
-        if(event.target.files && event.target.files.length) {
+        if (event.target.files && event.target.files.length) {
           const [file] = event.target.files;
           reader.readAsDataURL(file);
 

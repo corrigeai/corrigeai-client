@@ -15,12 +15,12 @@ export class DeleteEssayComponent implements OnInit {
   ngOnInit() {
   }
 
-  closeDeleteEssay(){
+  closeDeleteEssay() {
     this.display = false;
     this.displayEvent.emit(this.display);
   }
 
-  acceptDeleteEssay(){
+  acceptDeleteEssay() {
     this.deleteEssay.emit({});
     this.closeDeleteEssay();
   }

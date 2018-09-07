@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import {CommonModule} from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -104,6 +105,7 @@ const stompConfig = {
     DashboardComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
@@ -127,6 +129,9 @@ const stompConfig = {
     },
     AuthenticationService,
     {provide: 'API', useValue: environment.apiUrl}
+  ],
+  exports: [
+    ErrorComponent
   ],
   bootstrap: [AppComponent]
 })
