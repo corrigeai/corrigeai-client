@@ -1,6 +1,6 @@
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { AuthenticationService } from '../../services/authentication.service';
 
@@ -9,9 +9,9 @@ import { AuthenticationService } from '../../services/authentication.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  
+
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -26,13 +26,13 @@ export class LoginComponent implements OnInit{
         ],
       });
   }
-  
+
   ngOnInit(): void {
     if (sessionStorage.getItem('token')) {
-      this.router.navigate(["/home"]);
+      this.router.navigate(['/home']);
     }
   }
-  
+
   submitForm(form: any): void {
     this.authService.login(form)
     .subscribe(

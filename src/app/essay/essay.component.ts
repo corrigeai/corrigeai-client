@@ -5,8 +5,8 @@ import { Router } from '@angular/router';
 import { EssayService } from '../services/essay.service';
 import { Essay } from '../../models/essay';
 
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {isUndefined} from "util";
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { isUndefined } from 'util';
 
 
 @Component({
@@ -15,7 +15,7 @@ import {isUndefined} from "util";
   styleUrls: ['./essay.component.scss']
 })
 export class EssayComponent implements OnInit {
-    essay: Essay = new Essay('','','','','');
+    essay: Essay = new Essay('', '', '', '', '');
     id: string;
     imagePath;
     text;
@@ -28,13 +28,12 @@ export class EssayComponent implements OnInit {
     ngOnInit() {
         this.essayService.receiveToReview().subscribe(
             (res) => {
-              let essay = res.essay;
+              const essay = res.essay;
               this.essay = essay;
               this.id = res.reviewId;
-              if(essay.type == "Image"){
+              if (essay.type === 'Image') {
                 this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(essay.content);
-              }
-              else {
+              } else {
                 this.text = res.essay.content;
               }
 
@@ -42,7 +41,7 @@ export class EssayComponent implements OnInit {
     }
 
     onReviewEssay() {
-      if(!isUndefined(this.id)) {
+      if (!isUndefined(this.id)) {
         this.router.navigate(['/review', this.id]);
       }
     }

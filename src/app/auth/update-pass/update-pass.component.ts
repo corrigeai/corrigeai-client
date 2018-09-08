@@ -21,11 +21,11 @@ export class UpdatePassComponent implements OnInit {
 
   ngOnInit() {
     this.updatePassForm = this.formBuilder.group({
-      'oldPassword': [null, 
+      'oldPassword': [null,
           [Validators.required,
            Validators.minLength(6),
            Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d^a-zA-Z0-9].{0,}$')]],
-      'newPassword': [null, 
+      'newPassword': [null,
           [Validators.required,
            Validators.minLength(6),
            Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d^a-zA-Z0-9].{0,}$')]],
