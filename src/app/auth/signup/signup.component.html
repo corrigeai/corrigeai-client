@@ -32,6 +32,19 @@
                         class="app-form-control"
                         type="password" placeholder="Confirmar Senha"
                         [formControl]="signUpForm.controls['confirmPassword']">
+      
+      <label class="radio-inline">
+          Estudante Grátis
+        <input type="radio" value="Free" name="optradio" [checked]="true" [formControl]="signUpForm.controls['role']">
+      </label>
+      <label class="radio-inline">
+          Estudante Premium 
+          <input type="radio" value="Premium" name="optradio" [formControl]="signUpForm.controls['role']">
+      </label>
+      <label class="radio-inline">
+          Professor
+        <input type="radio" name="optradio" value="Teacher" [formControl]="signUpForm.controls['role']">
+      </label>
 
       <button class="btn btn-block app-btn-type1"
               type="submit"

@@ -39,7 +39,8 @@ export class SignupComponent implements OnInit {
                     Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d^a-zA-Z0-9].{0,}$')]],
       'confirmPassword': [null,
                            [Validators.required,
-                            Validators.minLength(6)]]
+                            Validators.minLength(6)]],
+      'role': ['Free', [Validators.required]]
     }, {
       validator: CustomValidators.Match('password', 'confirmPassword')
     });
