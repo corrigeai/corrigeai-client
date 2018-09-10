@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000/corrigeai/'
+  apiUrl: 'http://localhost:3000/corrigeai/',
+  paypalClientID: ''
 };

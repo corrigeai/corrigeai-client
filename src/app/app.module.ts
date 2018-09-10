@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { NgxPayPalModule } from 'ngx-paypal';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { ErrorComponent } from './errors/error.component';
@@ -23,6 +24,9 @@ import { EditProfileComponent } from './user/edit-profile/edit-profile.component
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { WorkstationComponent } from './workstation/workstation.component';
+
+// Payment
+import { PaymentComponent } from './user/payment/payment.component';
 
 // Authorization related components
 import { LoginComponent } from './auth/login/login.component';
@@ -102,11 +106,13 @@ const stompConfig = {
     ReviewStationComponent,
     NotificationCardComponent,
     TopicComponent,
-    DashboardComponent
+    DashboardComponent,
+    PaymentComponent
   ],
   imports: [
     CommonModule,
     BrowserModule,
+    NgxPayPalModule,
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,

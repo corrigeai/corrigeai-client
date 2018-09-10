@@ -31,6 +31,7 @@
     "font-awesome": "^4.7.0",
     "hoek": "^4.2.1",
     "jquery": "^3.3.1",
+    "ngx-paypal": "^3.1.0",
     "rxjs": "^5.5.6",
     "serve-favicon": "^2.5.0",
     "sockjs-client": "^1.1.5",
