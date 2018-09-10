@@ -48,7 +48,7 @@
           </a>
         </li>
 
-        <li>
+        <li *ngIf="user.role !== 'Teacher'">
           <a routerLink="/myessays">
             <i class="glyphicon glyphicon-list-alt"></i> Minhas Redações
           </a>
