@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PaymentComponent } from './payment.component';
@@ -8,7 +9,9 @@ describe('PaymentComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PaymentComponent ]
+      declarations: [ PaymentComponent ],
+
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));
