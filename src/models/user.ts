@@ -6,9 +6,11 @@ export class User {
     usingWeekelyTopic: boolean;
     photoUrl?: string;
     id?: string;
+    role: string;
 
     constructor(email: string, username: string, name: string,
-                password: string, photoUrl?: string, id?: string, usingWeekelyTopic?: boolean) {
+                password: string, photoUrl?: string, id?: string,
+                usingWeekelyTopic?: boolean, role?: string) {
         this.email = email;
         this.username = username;
         this.name = name;
@@ -16,6 +18,7 @@ export class User {
         this.photoUrl = photoUrl;
         this.id = id;
         this.usingWeekelyTopic = usingWeekelyTopic;
+        this.role = role;
     }
 
 }
