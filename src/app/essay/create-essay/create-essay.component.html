@@ -48,7 +48,7 @@
                             [formControl]="createEssayForm.controls['essayText']"></textarea>
                 </div>
               </div>
-
+              <app-payment [value]="5"></app-payment>
               <div class="modal-footer">
                   <button class="btn btn-block btn-danger"
                           type="submit" [ngClass]="{'disabled': !createEssayForm.valid}"
