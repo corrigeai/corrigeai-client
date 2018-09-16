@@ -16,6 +16,12 @@ export class CreateEssayComponent implements OnInit {
     theme: String;
     imagePath = null;
     display = 'none';
+    user: User;
+    needPayment: boolean;
+
+    paymentValue: number = 0;
+    singleEssayPrice = 12;
+
 
     constructor(private formBuilder: FormBuilder,
         private cd: ChangeDetectorRef,
@@ -45,8 +51,13 @@ export class CreateEssayComponent implements OnInit {
                 }
             );
 
-        const user: User = JSON.parse(sessionStorage.getItem('currentUser'));
-        if (user.usingWeekelyTopic) {
+        this.user = JSON.parse(sessionStorage.getItem('currentUser'));
+
+        if(this.user.role === 'Free') {
+            this.paymentValue = this.singleEssayPrice;
+        }
+
+        if (this.user.usingWeekelyTopic) {
             this.topicService.getOpenTopic()
             .subscribe(res => {
                 this.theme = res.theme;

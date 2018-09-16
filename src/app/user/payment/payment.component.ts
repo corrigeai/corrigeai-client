@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { PayPalConfig, PayPalIntegrationType, PayPalEnvironment } from 'ngx-paypal';
 
 import { environment } from '../../../environments/environment';
+import { EventEmitter } from 'events';
 
 @Component({
   selector: 'app-payment',
@@ -12,6 +13,7 @@ export class PaymentComponent implements OnInit {
   public payPalConfig?: PayPalConfig;
 
   @Input('value') value: number;
+  @Output('onPay') onPay = new EventEmitter();
 
   constructor() { }
 
@@ -30,7 +32,7 @@ export class PaymentComponent implements OnInit {
       },
       onPaymentComplete: (data, actions) => {
         console.log('Payment Complete');
-        //TODO: create registry on sever.
+        this.onPay.emit('');
       },
       onCancel: (data, actions) => {
         console.log('Operation canceled');

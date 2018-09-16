@@ -47,13 +47,19 @@
                             [readonly]="imagePath != null"
                             [formControl]="createEssayForm.controls['essayText']"></textarea>
                 </div>
-              </div>
-              <app-payment [value]="5"></app-payment>
-              <div class="modal-footer">
-                  <button class="btn btn-block btn-danger"
-                          type="submit" [ngClass]="{'disabled': !createEssayForm.valid}"
-                          [disabled]='!createEssayForm.valid'>Submeter Redação</button>
-                <div class="row">&nbsp;</div>
+                
+                <button class="btn btn-block btn-danger buy" [ngClass]="{'disabled': !createEssayForm.valid}"
+                [disabled]='!createEssayForm.valid'>
+                  <p>Submeter Redação(correção profissional)</p>
+                  <app-payment [value]="paymentValue" *ngIf="createEssayForm.valid" (onPay)="submitForm()">
+
+                  </app-payment>
+                </button>
+                
+                
+                <button class="btn btn-block btn-danger"
+                type="submit" [ngClass]="{'disabled': !createEssayForm.valid}"
+                [disabled]='!createEssayForm.valid'>Submeter Redação(correção gratuita)</button>
               </div>
             </form>
           </div>
