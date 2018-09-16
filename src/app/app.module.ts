@@ -65,6 +65,7 @@ import { environment } from '../environments/environment';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import {StompConfig, StompService} from '@stomp/ng2-stompjs';
 import * as SockJS from 'sockjs-client';
+import { PaymentService } from './services/payment.service';
 
 const API = environment.apiUrl;
 const entrypoint = API.concat('notifications/ws');
@@ -134,7 +135,7 @@ const stompConfig = {
       useValue: stompConfig
     },
     AuthenticationService,
-    {provide: 'API', useValue: environment.apiUrl}
+    {provide: 'API', useValue: environment.apiUrl, providers: [PaymentService]}
   ],
   exports: [
     ErrorComponent

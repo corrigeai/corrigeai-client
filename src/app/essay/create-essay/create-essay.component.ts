@@ -5,6 +5,7 @@ import { EssayService } from '../../services/essay.service';
 import { TopicService } from '../../services/topic.service';
 import { Essay } from '../../../models/essay';
 import { User } from '../../../models/user';
+import { PaymentService } from '../../services/payment.service';
 
 @Component({
   selector: 'app-create-essay',
@@ -26,7 +27,8 @@ export class CreateEssayComponent implements OnInit {
     constructor(private formBuilder: FormBuilder,
         private cd: ChangeDetectorRef,
         private essayService: EssayService,
-        private topicService: TopicService) {
+        private topicService: TopicService,
+        private paymentService: PaymentService) {
 
         this.createEssayForm = this.formBuilder.group({
                 title : [null, Validators.required],
@@ -71,7 +73,7 @@ export class CreateEssayComponent implements OnInit {
         }
     }
 
-    submitForm(form: any): void {
+    submitForm(form: any, paid: boolean): void {
 
             const essayData = {};
             essayData['userUsername'] = JSON.parse(sessionStorage.getItem('currentUser')).username;
@@ -84,7 +86,20 @@ export class CreateEssayComponent implements OnInit {
             .subscribe(
                 (essay: Essay) => {
                     this.essayService.addEssayElement(essay);
-                    this.onEndSubmission();
+
+                    if(paid) {
+                        let record = {
+                            essayId: essay.id,
+                            value: this.paymentValue * 0.2  // TODO: Check this value.
+                        };
+
+                        this.paymentService.createRecord(record)
+                            .subscribe(() => {
+                                this.onEndSubmission();
+                            });
+                    } else {
+                        this.onEndSubmission();
+                    }
                 }
             );
 
