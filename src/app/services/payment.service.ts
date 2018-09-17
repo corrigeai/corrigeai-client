@@ -26,4 +26,15 @@ export class PaymentService {
       });
   }
 
+  addPack(packData) : Observable<any> {
+    const httpOptions = this.authService.getOptions();
+    return this.http.post(
+        this.API.concat('packs/', packData.userId, '/', packData.type), packData, httpOptions)
+    .map((response: Response) => response)
+    .catch((error: Response) => {
+        this.errorService.handleError(error);
+        return  Observable.throw(error);
+      });
+  }
+
 }

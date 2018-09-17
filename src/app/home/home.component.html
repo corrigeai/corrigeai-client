@@ -82,7 +82,8 @@
             Pacote Platinum 
               <input type="radio" [value]="platinumPack" name="optradio" [checked]="true" [(ngModel)]="packageType" [formControl]="buyPack.controls['plan']">
           </label>
-          <app-payment [value]="buyPack.controls['plan'].value"></app-payment>
+          <app-payment [value]="buyPack.controls['plan'].value"
+          style="margin-top: 10px;"></app-payment>
       </div>
     </div>
   </div>

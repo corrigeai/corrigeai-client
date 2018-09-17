@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TopicService } from '../services/topic.service';
 import { RatingService } from '../services/rating.service';
-import { ReviewService } from '../services/review.service';
-import { EssayService } from '../services/essay.service';
 import { BadgesService } from '../services/badges.service';
 import { UserService } from '../services/user.service';
 import { Rating } from '../../models/rating';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { PaymentService } from '../services/payment.service';
+import { User } from '../../models/user';
 
 @Component({
     selector: 'app-home',
@@ -37,14 +37,15 @@ export class HomeComponent implements OnInit {
     buyPack: FormGroup;
     packageType: number; // Recommended package to buy
 
+    user: User;
+
     constructor(
         private topicService: TopicService,
         private ratingService: RatingService,
-        private reviewService: ReviewService,
         private badgeService: BadgesService,
-        private essayService: EssayService,
         private userService: UserService,
         private router: Router,
+        private paymentService: PaymentService,
         private formBuilder: FormBuilder,
     ) {
         this.description = 'O CorrigeAí ajuda você a se conectar com outras pessoas e juntos se ajudarem na escrita de redações.';
@@ -89,6 +90,18 @@ export class HomeComponent implements OnInit {
                     }
                 }
             });
+    }
+
+    addPack() {
+      let packValue = this.buyPack.controls['plan'].value;
+      let type = packValue == this.basicPack ? 'Basic': 'Platinum';
+      this.user = JSON.parse(sessionStorage.getItem('currentUser'));
+
+      this.paymentService.addPack({type, userId: this.user.id})
+        .subscribe(() => {
+            console.log('opa');
+            
+        });
     }
 
     getEssayTitle(rating) {
