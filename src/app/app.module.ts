@@ -57,6 +57,7 @@ import { BadgesService } from './services/badges.service';
 import { RatingService } from './services/rating.service';
 import { NotificationService } from './services/notification.service';
 import { AuthenticationService } from './services/authentication.service';
+import { PaymentService } from './services/payment.service';
 
 // Loading environment
 import { environment } from '../environments/environment';
@@ -65,7 +66,6 @@ import { environment } from '../environments/environment';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import {StompConfig, StompService} from '@stomp/ng2-stompjs';
 import * as SockJS from 'sockjs-client';
-import { PaymentService } from './services/payment.service';
 
 const API = environment.apiUrl;
 const entrypoint = API.concat('notifications/ws');
@@ -129,13 +129,14 @@ const stompConfig = {
     RatingService,
     AuthGuardService,
     NotificationService,
+    PaymentService,
     StompService,
     {
       provide: StompConfig,
       useValue: stompConfig
     },
     AuthenticationService,
-    {provide: 'API', useValue: environment.apiUrl, providers: [PaymentService]}
+    {provide: 'API', useValue: environment.apiUrl}
   ],
   exports: [
     ErrorComponent
