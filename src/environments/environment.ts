@@ -6,5 +6,5 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:3000/corrigeai/',
-  paypalClientID: ''
+  paypalClientID: 'Aba3fGns8Vood6V5V04sf0yQSFn6ZWx9jqjESTefBiLLamy-XWLDNSu-U9F5mYDmLPT47FranYn2jc9V'
 };
