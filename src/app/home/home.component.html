@@ -59,6 +59,34 @@
     </div>
   </div>
 
+  <div class="split-screen">
+    <div class="left-side app-panel">
+      <div class="header">
+        <h2>Adicione mais um pacote</h2>
+      </div>
+      
+      <div class="body">
+        
+      </div>
+    </div>
+    <div class="right-side app-panel">
+      <div class="header">
+          <h2>Seus Créditos</h2>
+      </div>
+      <div class="body">
+          <label class="radio-inline">
+            Pacote básico
+            <input type="radio" [value]="basicPack" name="optradio" [(ngModel)]="packageType" [formControl]="buyPack.controls['plan']">
+          </label>
+          <label class="radio-inline">
+            Pacote Platinum 
+              <input type="radio" [value]="platinumPack" name="optradio" [checked]="true" [(ngModel)]="packageType" [formControl]="buyPack.controls['plan']">
+          </label>
+          <app-payment [value]="buyPack.controls['plan'].value"></app-payment>
+      </div>
+    </div>
+  </div>
+
   <div class="reviews app-panel">
     <div class="header">
       <h2>Avaliações de Revisão</h2>

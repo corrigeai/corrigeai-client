@@ -12,7 +12,7 @@ import { EventEmitter } from 'events';
 export class PaymentComponent implements OnInit {
   public payPalConfig?: PayPalConfig;
 
-  @Input('value') value: number;
+  @Input() value: number;
   @Output('onPay') onPay = new EventEmitter();
 
   constructor() { }

@@ -7,6 +7,7 @@ import { EssayService } from '../services/essay.service';
 import { BadgesService } from '../services/badges.service';
 import { UserService } from '../services/user.service';
 import { Rating } from '../../models/rating';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
     selector: 'app-home',
@@ -31,6 +32,11 @@ export class HomeComponent implements OnInit {
     ratings: Rating[] = [];
     essayTitles: String[] = [];
 
+    basicPack = 55;
+    platinumPack = 100;
+    buyPack: FormGroup;
+    packageType: number; // Recommended package to buy
+
     constructor(
         private topicService: TopicService,
         private ratingService: RatingService,
@@ -38,10 +44,14 @@ export class HomeComponent implements OnInit {
         private badgeService: BadgesService,
         private essayService: EssayService,
         private userService: UserService,
-        private router: Router
+        private router: Router,
+        private formBuilder: FormBuilder,
     ) {
-        this.description = "O CorrigeAí ajuda você a se conectar com outras pessoas e juntos se ajudarem na escrita de redações.";
+        this.description = 'O CorrigeAí ajuda você a se conectar com outras pessoas e juntos se ajudarem na escrita de redações.';
         this.noTopicMessage = 'Em breve será lançado um tópico semanal';
+        this.buyPack = this.formBuilder.group({
+          'plan': [this.platinumPack, []]
+        });
     }
 
     ngOnInit() {
