@@ -49,14 +49,13 @@ export class PaymentService {
       });
   }
 
-  getLasValidPack(): Observable<any> {
+  getLastValidPack(): Observable<any> {
     const httpOptions = this.authService.getOptions();
     const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
     return this.http.get(
         this.API.concat('packs/' + userId + '/actual'), httpOptions)
     .map((response: Response) => response)
     .catch((error: Response) => {
-        this.errorService.handleError(error);
         return  Observable.throw(error);
       });
   }

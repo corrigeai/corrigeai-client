@@ -50,14 +50,18 @@
                             [formControl]="createEssayForm.controls['essayText']"></textarea>
                 </div>
 
-                <button class="btn btn-block btn-danger buy" [ngClass]="{'disabled': !createEssayForm.valid}"
+                <button class="btn btn-block btn-danger buy" [ngClass]="{'disabled': !createEssayForm.valid}" *ngIf="!hasPacks"
                 [disabled]='!createEssayForm.valid'>
                   <p>Submeter Redação(correção profissional)</p>
-                  <app-payment [value]="paymentValue" *ngIf="createEssayForm.valid" (onPay)="submitForm(createEssayForm.value, true)">
+                  <app-payment [value]="paymentValue" *ngIf="createEssayForm.valid">
 
                   </app-payment>
                 </button>
 
+                <button class="btn btn-block btn-danger buy" [ngClass]="{'disabled': !createEssayForm.valid}" *ngIf="hasPacks"
+                [disabled]='!createEssayForm.valid' (click)="submitForm(createEssayForm.value, true)">
+                  <p>Submeter Redação(correção profissional)</p>
+                </button>
 
                 <button class="btn btn-block btn-danger"
                 type="submit" [ngClass]="{'disabled': !createEssayForm.valid}"

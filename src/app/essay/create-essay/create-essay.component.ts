@@ -25,6 +25,7 @@ export class CreateEssayComponent implements OnInit {
 
     @ViewChild('essayImage')
     essayImage: ElementRef;
+    hasPacks = false;
 
     constructor(private formBuilder: FormBuilder,
         private cd: ChangeDetectorRef,
@@ -64,9 +65,12 @@ export class CreateEssayComponent implements OnInit {
         if (this.user.role === 'Free') {
             this.paymentValue = this.singleEssayPrice;
         } else {
-            this.paymentService.getLasValidPack()
+            this.paymentService.getLastValidPack()
                 .subscribe(res => {
-                    console.log(res);
+                    this.hasPacks = true;
+                    this.paymentValue = 0;
+                }, err => {
+                    console.log('err', err);
                 });
         }
 
