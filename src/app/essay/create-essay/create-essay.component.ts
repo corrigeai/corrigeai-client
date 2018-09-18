@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { EssayService } from '../../services/essay.service';
@@ -23,6 +23,8 @@ export class CreateEssayComponent implements OnInit {
     paymentValue: number = 0;
     singleEssayPrice = 12;
 
+    @ViewChild('essayImage')
+    essayImage: ElementRef;
 
     constructor(private formBuilder: FormBuilder,
         private cd: ChangeDetectorRef,
@@ -50,6 +52,10 @@ export class CreateEssayComponent implements OnInit {
                 () => {
                     this.display = 'block';
                     this.cd.markForCheck();
+
+                    if (this.essayImage) {
+                      this.essayImage.nativeElement.value = '';
+                    }
                 }
             );
 
