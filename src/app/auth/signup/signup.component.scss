@@ -39,6 +39,24 @@
       text-align: center;
       color: silver;
     }
+
+    .radio-line {
+      margin-top: 4px;
+      border-radius: 2px;
+      background-color: white;
+      padding: 2px;
+      padding-top: 5px;
+      @include apply-flexlayout(row, nowrap, center, center);
+
+
+      .app-radio-inline {
+        font-family: 'Montserrat';
+        font-size: 15px;
+        font-weight: normal;
+        margin-left: 10px;
+      }
+
+    }
   }
 }
 
