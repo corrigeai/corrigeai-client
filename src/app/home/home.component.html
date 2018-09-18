@@ -69,7 +69,7 @@
           <ul>
               <li class="pack-card" *ngFor="let pack of packs; let i = index">
                 <p class="pack-title">Pacote</p>
-                <p class="pack-sub">{{pack.type}}</p>
+                <p class="pack-sub">{{pack.type}} Restantes: {{pack.counter}}</p>
                 <p class="pack-title">Adicionado em</p>
                 <p class="pack-sub">{{pack.createdAt.substring(0, 10)}}</p>
               </li>
