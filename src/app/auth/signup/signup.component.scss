@@ -41,3 +41,17 @@
     }
   }
 }
+
+@media (max-width: 1000px) {
+  .container {
+    .signup-card {
+      position: fixed;
+      top:0;
+      right: 0px;
+      min-width: 100%;
+      min-height: 100%;
+      padding: 0px 20px 0px 20px;
+    }
+
+    }
+  }
