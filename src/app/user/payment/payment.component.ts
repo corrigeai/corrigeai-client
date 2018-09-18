@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, OnChanges } from '@angular/core';
 import { PayPalConfig, PayPalIntegrationType, PayPalEnvironment } from 'ngx-paypal';
 
 import { environment } from '../../../environments/environment';
@@ -9,15 +9,19 @@ import { EventEmitter } from 'events';
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.scss']
 })
-export class PaymentComponent implements OnInit {
+export class PaymentComponent implements OnInit, OnChanges {
+
   public payPalConfig?: PayPalConfig;
 
-  @Input() value: number;
+  @Input() value;
   @Output('onPay') onPay = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
+    this.initConfig();
+  }
+  ngOnChanges() {
     this.initConfig();
   }
 

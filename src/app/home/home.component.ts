@@ -101,11 +101,11 @@ export class HomeComponent implements OnInit {
     }
 
     addPack() {
-      let packValue = this.buyPack.controls['plan'].value;
-      let type = packValue == this.basicPack ? 'Basic': 'Platinum';
+      const packValue = this.buyPack.controls['plan'].value;
+      const type = packValue === this.basicPack ? 'Basic' : 'Platinum';
       this.user = JSON.parse(sessionStorage.getItem('currentUser'));
 
-      let data = {
+      const data = {
         userId: this.user.id,
         packageType: type
       };
