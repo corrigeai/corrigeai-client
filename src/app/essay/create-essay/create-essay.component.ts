@@ -102,8 +102,8 @@ export class CreateEssayComponent implements OnInit {
                 (essay: Essay) => {
                     this.essayService.addEssayElement(essay);
 
-                    if(paid) {
-                        let record = {
+                    if (paid) {
+                        const record = {
                             essayId: essay.id,
                             value: this.paymentValue * 0.2  // TODO: Check this value.
                         };

@@ -14,7 +14,7 @@ export class PaymentComponent implements OnInit, OnChanges {
   public payPalConfig?: PayPalConfig;
 
   @Input() value;
-  @Output('onPay') onPay = new EventEmitter();
+  @Output() payEvent = new EventEmitter();
 
   constructor() { }
 
@@ -36,7 +36,7 @@ export class PaymentComponent implements OnInit, OnChanges {
       },
       onPaymentComplete: (data, actions) => {
         console.log('Payment Complete');
-        this.onPay.emit('');
+        this.payEvent.emit('');
       },
       onCancel: (data, actions) => {
         console.log('Operation canceled');

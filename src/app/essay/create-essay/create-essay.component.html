@@ -53,7 +53,7 @@
                 <button class="btn btn-block btn-danger buy" [ngClass]="{'disabled': !createEssayForm.valid}" *ngIf="!hasPacks"
                 [disabled]='!createEssayForm.valid'>
                   <p>Submeter Redação(correção profissional)</p>
-                  <app-payment [value]="paymentValue" *ngIf="createEssayForm.valid">
+                  <app-payment [value]="paymentValue" *ngIf="createEssayForm.valid" (payEvent)="submitForm(createEssayForm.value, true)">
 
                   </app-payment>
                 </button>
