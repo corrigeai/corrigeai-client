@@ -154,6 +154,22 @@
 @media (max-width: 1000px) {
 
   .container {
+    .app-panel {
+      .badges {
+        width: 100%;
+        @include apply-flexlayout(row, wrap, flex-start, flex-start);
+        div {
+          width: 20%;
+          height: 20%;
+
+          img {
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+    }
+
     .split-screen {
       @include apply-flexlayout(column, nowrap, center, center);
 
@@ -182,7 +198,5 @@
         @include apply-flexlayout(column, nowrap, flex-start, center);
       }
     }
-
-
   }
 }

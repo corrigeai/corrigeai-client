@@ -50,10 +50,14 @@
 
 
       .app-radio-inline {
-        font-family: 'Montserrat';
+        font-family: 'Roboto';
         font-size: 15px;
         font-weight: normal;
         margin-left: 10px;
+
+        input {
+          margin-top: 10px;
+        }
       }
 
     }
