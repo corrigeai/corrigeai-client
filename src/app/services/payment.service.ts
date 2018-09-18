@@ -37,4 +37,16 @@ export class PaymentService {
       });
   }
 
+  getPacks(): Observable<any> {
+    const httpOptions = this.authService.getOptions();
+    const userId = JSON.parse(sessionStorage.getItem('currentUser')).id;
+    console.log('executou');
+    return this.http.get(
+        this.API.concat('packs/' + userId), httpOptions)
+    .map((response: Response) => response)
+    .catch((error: Response) => {
+        this.errorService.handleError(error);
+        return  Observable.throw(error);
+      });
+  }
 }

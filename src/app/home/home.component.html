@@ -60,30 +60,41 @@
   </div>
 
   <div class="split-screen">
-    <div class="left-side app-panel">
+    <div class="left-side app-panel packs-panel">
       <div class="header">
-        <h2>Adicione mais um pacote</h2>
+        <h2>Seus Créditos</h2>
       </div>
-      
+
       <div class="body">
-        
+          <ul>
+              <li class="pack-card" *ngFor="let pack of packs; let i = index">
+                <p class="pack-title">Pacote</p>
+                <p class="pack-sub">{{pack.type}}</p>
+                <p class="pack-title">Adicionado em</p>
+                <p class="pack-sub">{{pack.createdAt.substring(0, 10)}}</p>
+              </li>
+          </ul>
       </div>
     </div>
-    <div class="right-side app-panel">
+    <div class="right-side app-panel add-pack-panel">
       <div class="header">
-          <h2>Seus Créditos</h2>
+          <h2>Adicione mais um pacote</h2>
       </div>
       <div class="body">
+        <div class="pack-opts">
           <label class="radio-inline">
             Pacote básico
             <input type="radio" [value]="basicPack" name="optradio" [(ngModel)]="packageType" [formControl]="buyPack.controls['plan']">
           </label>
           <label class="radio-inline">
-            Pacote Platinum 
+            Pacote Platinum
               <input type="radio" [value]="platinumPack" name="optradio" [checked]="true" [(ngModel)]="packageType" [formControl]="buyPack.controls['plan']">
           </label>
+        </div>
+        <div>
           <app-payment [value]="buyPack.controls['plan'].value"
           style="margin-top: 10px;"></app-payment>
+        </div>
       </div>
     </div>
   </div>

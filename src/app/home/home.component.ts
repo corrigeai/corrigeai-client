@@ -5,6 +5,7 @@ import { RatingService } from '../services/rating.service';
 import { BadgesService } from '../services/badges.service';
 import { UserService } from '../services/user.service';
 import { Rating } from '../../models/rating';
+import { Pack } from '../../models/pack';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { PaymentService } from '../services/payment.service';
 import { User } from '../../models/user';
@@ -32,6 +33,8 @@ export class HomeComponent implements OnInit {
     ratings: Rating[] = [];
     essayTitles: String[] = [];
 
+    packs: Pack[] = [];
+
     basicPack = 55;
     platinumPack = 100;
     buyPack: FormGroup;
@@ -56,6 +59,11 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.paymentService.getPacks().subscribe(res => {
+          this.packs = res;
+          console.log(this.packs);
+        });
+
         this.topicService.getOpenTopic()
             .subscribe(res => {
                 this.topic = res.theme;
@@ -105,7 +113,7 @@ export class HomeComponent implements OnInit {
       this.paymentService.addPack(data)
         .subscribe(() => {
             console.log('opa');
-            
+
         });
     }
 

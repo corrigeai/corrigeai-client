@@ -68,6 +68,54 @@
     }
   }
 
+  .packs-panel {
+    .body {
+      ul {
+        padding:0px;
+        margin: 0px;
+        @include apply-flexlayout(row, wrap, flex-start, flex-start);
+      }
+      .pack-card {
+        list-style: none;
+        background-color:rgb(25, 25, 25);
+        color:white;
+        font-family: Verdana;
+        margin: 0px;
+        border-radius: 2px;
+        padding: 8px;
+        margin-bottom: 5px;
+
+
+        @include apply-flexlayout(column, nowrap, flex-start, flex-start);
+        margin: 5px;
+
+        p {
+          margin: 0px;
+          padding: 0px;
+        }
+
+        .pack-title {
+          font-weight: bold;
+        }
+
+        .pack-sub {
+          padding-bottom: 5px;
+        }
+      }
+    }
+  }
+
+  .add-pack-panel {
+    .body {
+      @include apply-flexlayout(column, nowrap, space-between, center);
+
+      .pack-opts {
+        font-size: 15px;
+        margin-bottom: 30px;
+      }
+    }
+  }
+
   .split-screen {
     margin-top: 10px;
 
