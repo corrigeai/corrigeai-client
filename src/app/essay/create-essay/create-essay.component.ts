@@ -20,7 +20,7 @@ export class CreateEssayComponent implements OnInit {
     user: User;
     needPayment: boolean;
 
-    paymentValue: number = 0;
+    paymentValue = 0;
     singleEssayPrice = 12;
 
     @ViewChild('essayImage')
@@ -61,8 +61,13 @@ export class CreateEssayComponent implements OnInit {
 
         this.user = JSON.parse(sessionStorage.getItem('currentUser'));
 
-        if(this.user.role === 'Free') {
+        if (this.user.role === 'Free') {
             this.paymentValue = this.singleEssayPrice;
+        } else {
+            this.paymentService.getLasValidPack()
+                .subscribe(res => {
+                    console.log(res);
+                });
         }
 
         if (this.user.usingWeekelyTopic) {
