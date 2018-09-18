@@ -12,9 +12,9 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  name: String = 'Dummy name';
-  email: String = 'test@test.com';
-  username: String = 'dummy_user';
+  name: String = "Dummy name";
+  email: String = "test@test.com";
+  username: String = "dummy_user";
   imagePath: SafeResourceUrl;
   editProfileForm: FormGroup;
   fileToUpload: File = null;
@@ -27,18 +27,17 @@ export class ProfileComponent implements OnInit {
     private _sanitizer: DomSanitizer
   ) {
     const user = JSON.parse(sessionStorage.getItem('currentUser'));
-    if (! user == null ) {
-      this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(user.photoUrl);
-      this.editProfileForm = this.formBuilder.group({
-        'name': [user.name, Validators.required],
-        'email': [user.email, Validators.required],
-        'photoUrl': [user.photoUrl],
-        'username': [user.username,
-                [Validators.required,
-                  Validators.pattern('^[a-zA-Z0-9_-]*$'),
-                  Validators.minLength(4)]]
-        });
-    }
+    this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(user.photoUrl);
+
+    this.editProfileForm = this.formBuilder.group({
+    'name': [user.name, Validators.required],
+    'email': [user.email, Validators.required],
+    'photoUrl': [user.photoUrl],
+    'username': [user.username,
+            [Validators.required,
+              Validators.pattern('^[a-zA-Z0-9_-]*$'),
+              Validators.minLength(4)]]
+    });
   }
 
   ngOnInit() {
