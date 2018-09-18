@@ -97,7 +97,12 @@ export class HomeComponent implements OnInit {
       let type = packValue == this.basicPack ? 'Basic': 'Platinum';
       this.user = JSON.parse(sessionStorage.getItem('currentUser'));
 
-      this.paymentService.addPack({type, userId: this.user.id})
+      let data = {
+        userId: this.user.id,
+        packageType: type
+      };
+
+      this.paymentService.addPack(data)
         .subscribe(() => {
             console.log('opa');
             
