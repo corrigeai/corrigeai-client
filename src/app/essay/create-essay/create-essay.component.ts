@@ -22,10 +22,13 @@ export class CreateEssayComponent implements OnInit {
 
     paymentValue = 0;
     singleEssayPrice = 12;
+    premiumBasicEssayPrice = 11;
+    premiumPlatinumEssayPrice = 10;
 
     @ViewChild('essayImage')
     essayImage: ElementRef;
     hasPacks = false;
+    lastPack: any;
 
     constructor(private formBuilder: FormBuilder,
         private cd: ChangeDetectorRef,
@@ -69,6 +72,7 @@ export class CreateEssayComponent implements OnInit {
                 .subscribe(res => {
                     this.hasPacks = true;
                     this.paymentValue = 0;
+                    this.lastPack = res;
                 }, err => {
                     console.log('err', err);
                 });
@@ -96,6 +100,7 @@ export class CreateEssayComponent implements OnInit {
             essayData['title'] = form.title;
             essayData['content'] = ((form.essayText !== null && form.essayText !== '') ? form.essayText : form.essayImg);
             essayData['type'] = ((form.essayText !== null && form.essayText !== '') ? 'Text' : 'Image');
+            essayData['premium'] = paid;
 
             this.essayService.createEssay(essayData)
             .subscribe(
@@ -103,10 +108,7 @@ export class CreateEssayComponent implements OnInit {
                     this.essayService.addEssayElement(essay);
 
                     if (paid) {
-                        const record = {
-                            essayId: essay.id,
-                            value: this.paymentValue * 0.2  // TODO: Check this value.
-                        };
+                        const record = this.createRecord(essay);
 
                         this.paymentService.createRecord(record)
                             .subscribe(() => {
@@ -118,6 +120,29 @@ export class CreateEssayComponent implements OnInit {
                 }
             );
 
+    }
+
+    private createRecord(essay) {
+        let record;
+        if (!this.hasPacks) {
+            record = {
+                essayId: essay.id,
+                value: this.paymentValue * 0.2
+            };
+        } else {
+            if (this.lastPack.type === 'Basic') {
+                record = {
+                    essayId: essay.id,
+                    value: this.premiumBasicEssayPrice * 0.2
+                };
+            } else {
+                record = {
+                    essayId: essay.id,
+                    value: this.premiumPlatinumEssayPrice * 0.2
+                };
+            }
+        }
+        return record;
     }
 
     isEmpty(value: any): string {

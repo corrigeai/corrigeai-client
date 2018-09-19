@@ -9,7 +9,6 @@ import { Essay } from '../../models/essay';
   styleUrls: ['./reviewstation.component.scss']
 })
 export class ReviewStationComponent implements OnInit {
-  // essay: Essay = new Essay('A queda de Dom Quixote','Emo Vibes', null);
   essaysToReview: Essay[];
 
   constructor(private essayService: EssayService) {
