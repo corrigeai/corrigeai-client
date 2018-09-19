@@ -45,7 +45,7 @@ export class RateReviewComponent implements OnInit {
         form['approved'] = 'Downvote';
       }
 
-       let rating = {
+       const rating = {
          'userId': JSON.parse(sessionStorage.getItem('currentUser')).id,
          'reviewId': this.review.id,
          'vote': form.approved,

@@ -12,9 +12,9 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  name: String = "Dummy name";
-  email: String = "test@test.com";
-  username: String = "dummy_user";
+  name: String = 'Dummy name';
+  email: String = 'test@test.com';
+  username: String = 'dummy_user';
   imagePath: SafeResourceUrl;
   editProfileForm: FormGroup;
   fileToUpload: File = null;

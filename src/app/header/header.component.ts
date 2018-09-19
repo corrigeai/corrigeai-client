@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   private flag: boolean;
   user;
   imagePath;
-  
+
   constructor(private router: Router,
     private authService: AuthenticationService,
     private _sanitizer: DomSanitizer,
@@ -31,9 +31,9 @@ export class HeaderComponent implements OnInit {
           this.isLogged = result;
         }
       );
-      
+
     }
-    
+
     ngOnInit() {
       this.authService.userHasLoggedIn.subscribe(
         () => {
@@ -46,10 +46,10 @@ export class HeaderComponent implements OnInit {
           this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(this.user.photoUrl);
         });
     }
-    
+
     onDropdownClicked() {
       this.flag = !this.flag;
-      
+
       if (!this.flag) {
         this.notificationService.viewUserNotifications().subscribe(
           notifications => {
@@ -58,7 +58,7 @@ export class HeaderComponent implements OnInit {
           });
         }
       }
-      
+
       onLogout (): void {
         this.authService.logOut();
         this.notificationService.disconnect();
@@ -66,4 +66,4 @@ export class HeaderComponent implements OnInit {
         this.router.navigate(['/']);
       }
     }
-    
+

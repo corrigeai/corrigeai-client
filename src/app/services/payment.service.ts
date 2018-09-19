@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { ErrorService } from './error.service';
 import { AuthenticationService } from './authentication.service';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 
 @Injectable()

@@ -35,7 +35,7 @@ import { UpdatePassComponent } from './auth/update-pass/update-pass.component';
 
 // Essay related components
 import { EssayComponent } from './essay/essay.component';
-import { ReviewEssay } from './essay/review-essay/review-essay.component';
+import { ReviewEssayComponent } from './essay/review-essay/review-essay.component';
 import { EssayCardComponent } from './essay/essay-card/essay-card.component';
 import { EditEssayComponent } from './essay/edit-essay/edit-essay.component';
 import {CreateEssayComponent} from './essay/create-essay/create-essay.component';
@@ -81,7 +81,7 @@ const stompConfig = {
 
 @NgModule({
   declarations: [
-    ReviewEssay,
+    ReviewEssayComponent,
     AppComponent,
     HomeComponent,
     EssayComponent,

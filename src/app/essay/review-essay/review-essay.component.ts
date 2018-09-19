@@ -15,7 +15,7 @@ import { Subject } from 'rxjs/Subject';
   templateUrl: './review-essay.component.html',
   styleUrls: ['review-essay.component.scss']
 })
-export class ReviewEssay implements OnInit {
+export class ReviewEssayComponent implements OnInit {
   reviewId: string;
   reviewForm: FormGroup;
 
@@ -48,9 +48,9 @@ export class ReviewEssay implements OnInit {
   }
 
   complyForm(form: any): any {
-    let submission = {};
-    let comments: string[] = [];
-    let ratings: number[] = [];
+    const submission = {};
+    const comments: string[] = [];
+    const ratings: number[] = [];
     const user = JSON.parse(sessionStorage.getItem('currentUser'));
 
     comments.push(
@@ -67,14 +67,14 @@ export class ReviewEssay implements OnInit {
       form.comptc4nota,
       form.comptc5nota);
 
-      submission["reviewingUserId"] = user.id;
-      submission["comments"] = comments;
-      submission["ratings"] = ratings;
+      submission['reviewingUserId'] = user.id;
+      submission['comments'] = comments;
+      submission['ratings'] = ratings;
       return submission;
     }
 
     submitForm(form: any): void {
-      let submission = this.complyForm(form);
+      const submission = this.complyForm(form);
       this.reviewService.updateReview(submission, this.reviewId).subscribe(
         (review: Review) => {
           this.reviewService.addReviewElement(review);

@@ -10,7 +10,7 @@ import { EditProfileComponent } from './user/edit-profile/edit-profile.component
 import { HomeComponent } from './home/home.component';
 import { WorkstationComponent } from './workstation/workstation.component';
 import { EssayCardComponent } from './essay/essay-card/essay-card.component';
-import { ReviewEssay } from './essay/review-essay/review-essay.component';
+import { ReviewEssayComponent } from './essay/review-essay/review-essay.component';
 import { EssayComponent } from './essay/essay.component';
 import { NotificationComponent } from './notification/notification.component';
 import { NotFoundPageComponent } from './auth/not-found/not-found.component';
@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'to-review', component: EssayComponent, canActivate: [AuthGuardService]},
   { path: 'notifications', component: NotificationComponent, canActivate: [AuthGuardService]},
   { path: 'prev-review/:id', component: ReviewComponent},
-  { path: 'review/:id', component: ReviewEssay, canActivate: [AuthGuardService]},
+  { path: 'review/:id', component: ReviewEssayComponent, canActivate: [AuthGuardService]},
   { path: 'topic', component: TopicComponent, canActivate: [AuthGuardService]},
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
 
