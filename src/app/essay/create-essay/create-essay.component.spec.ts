@@ -9,6 +9,7 @@ import { CreateEssayComponent } from './create-essay.component';
 import { EssayService } from '../../services/essay.service';
 import { ErrorService } from '../../services/error.service';
 import { TopicService } from '../../services/topic.service';
+import { PaymentService } from '../../services/payment.service';
 
 
 describe('CreateEssayComponent', () => {
@@ -24,7 +25,8 @@ describe('CreateEssayComponent', () => {
         ErrorService,
         EssayService,
         ReactiveFormsModule,
-        AuthenticationService
+        AuthenticationService,
+        PaymentService
        ],
       imports: [RouterTestingModule, HttpClientTestingModule],
       schemas: [ NO_ERRORS_SCHEMA ]
