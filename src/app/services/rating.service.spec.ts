@@ -6,7 +6,7 @@ import { AuthenticationService } from './authentication.service';
 import { RatingService } from './rating.service';
 import { ErrorService } from './error.service';
 
-describe('AuthenticationService', () => {
+describe('RatingService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
         providers: [

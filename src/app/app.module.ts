@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { NgxPayPalModule } from 'ngx-paypal';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { ErrorComponent } from './errors/error.component';
@@ -24,6 +25,9 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { WorkstationComponent } from './workstation/workstation.component';
 
+// Payment
+import { PaymentComponent } from './user/payment/payment.component';
+
 // Authorization related components
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
@@ -31,7 +35,7 @@ import { UpdatePassComponent } from './auth/update-pass/update-pass.component';
 
 // Essay related components
 import { EssayComponent } from './essay/essay.component';
-import { ReviewEssay } from './essay/review-essay/review-essay.component';
+import { ReviewEssayComponent } from './essay/review-essay/review-essay.component';
 import { EssayCardComponent } from './essay/essay-card/essay-card.component';
 import { EditEssayComponent } from './essay/edit-essay/edit-essay.component';
 import {CreateEssayComponent} from './essay/create-essay/create-essay.component';
@@ -53,6 +57,7 @@ import { BadgesService } from './services/badges.service';
 import { RatingService } from './services/rating.service';
 import { NotificationService } from './services/notification.service';
 import { AuthenticationService } from './services/authentication.service';
+import { PaymentService } from './services/payment.service';
 
 // Loading environment
 import { environment } from '../environments/environment';
@@ -76,7 +81,7 @@ const stompConfig = {
 
 @NgModule({
   declarations: [
-    ReviewEssay,
+    ReviewEssayComponent,
     AppComponent,
     HomeComponent,
     EssayComponent,
@@ -102,11 +107,13 @@ const stompConfig = {
     ReviewStationComponent,
     NotificationCardComponent,
     TopicComponent,
-    DashboardComponent
+    DashboardComponent,
+    PaymentComponent
   ],
   imports: [
     CommonModule,
     BrowserModule,
+    NgxPayPalModule,
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
@@ -122,6 +129,7 @@ const stompConfig = {
     RatingService,
     AuthGuardService,
     NotificationService,
+    PaymentService,
     StompService,
     {
       provide: StompConfig,

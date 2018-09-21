@@ -8,7 +8,6 @@ import { Essay } from '../../models/essay';
   styleUrls: ['./workstation.component.scss']
 })
 export class WorkstationComponent implements OnInit {
-  // essay: Essay = new Essay('A queda de Dom Quixote','Emo Vibes', null);
   userEssays: Essay[] = [];
 
   constructor(private essayService: EssayService) {

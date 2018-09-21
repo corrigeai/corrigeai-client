@@ -51,3 +51,9 @@
     }
   }
 }
+
+@media (max-width: 375px) {
+  .container {
+    max-width: 290px;
+  }
+}
