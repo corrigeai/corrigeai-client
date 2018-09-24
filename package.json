@@ -26,6 +26,7 @@
     "@stomp/ng2-stompjs": "^4.0.1",
     "angular-font-awesome": "^3.1.2",
     "bootstrap": "^3.3.7",
+    "chart.js": "^2.7.2",
     "core-js": "^2.4.1",
     "express": "^4.16.3",
     "font-awesome": "^4.7.0",
@@ -42,6 +43,7 @@
   "devDependencies": {
     "@angular/compiler-cli": "^5.2.0",
     "@angular/language-service": "^5.2.0",
+    "@types/chart.js": "^2.7.35",
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",

@@ -46,6 +46,9 @@ import { EssaysStatusComponent } from './essay/essays-status/essays-status.compo
 import { ReviewComponent } from './review/review.component';
 import { RateReviewComponent } from './review/rate-review/rate-review.component';
 
+// Chart related components
+import { RatingEvolutionComponent } from './charts/rating-evolution/rating-evolution.component';
+
 // Services
 import { UserService } from './services/user.service';
 import { ErrorService } from './services/error.service';
@@ -58,6 +61,7 @@ import { RatingService } from './services/rating.service';
 import { NotificationService } from './services/notification.service';
 import { AuthenticationService } from './services/authentication.service';
 import { PaymentService } from './services/payment.service';
+import { StatsService } from './services/stats.service';
 
 // Loading environment
 import { environment } from '../environments/environment';
@@ -108,7 +112,8 @@ const stompConfig = {
     NotificationCardComponent,
     TopicComponent,
     DashboardComponent,
-    PaymentComponent
+    PaymentComponent,
+    RatingEvolutionComponent
   ],
   imports: [
     CommonModule,
@@ -130,6 +135,7 @@ const stompConfig = {
     AuthGuardService,
     NotificationService,
     PaymentService,
+    StatsService,
     StompService,
     {
       provide: StompConfig,

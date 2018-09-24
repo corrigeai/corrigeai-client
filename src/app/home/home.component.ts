@@ -59,6 +59,7 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.user = JSON.parse(sessionStorage.getItem('currentUser'));
         this.paymentService.getPacks().subscribe(res => {
           this.packs = res;
           console.log(this.packs);
@@ -72,8 +73,7 @@ export class HomeComponent implements OnInit {
         this.topicService.getOpenTopic()
             .subscribe(res => {
                 this.topic = res.theme;
-                const user = JSON.parse(sessionStorage.getItem('currentUser'));
-                this.isInTopic = user.usingWeekelyTopic;
+                this.isInTopic = this.user.usingWeekelyTopic;
             });
 
         this.badgeService.getBadgesByUserId().subscribe(
