@@ -64,6 +64,11 @@ export class HomeComponent implements OnInit {
           console.log(this.packs);
         });
 
+        this.paymentService.packAdded
+            .subscribe(newPack => {
+              this.packs.push(newPack);
+            });
+
         this.topicService.getOpenTopic()
             .subscribe(res => {
                 this.topic = res.theme;
@@ -90,7 +95,6 @@ export class HomeComponent implements OnInit {
                     this.approvePercent = parseFloat(((this.ratingApprove / res.length) * 100) + '').toFixed(2);
                     this.desapprovePercent = parseFloat(((this.ratingDesapprove / res.length) * 100) + '').toFixed(2);
                     this.ratings = res;
-                    console.log(res);
                     for (let i = 0; i < this.ratings.length; i++) {
                       this.ratingService.getEssayByReviewId(this.ratings[i].reviewId).subscribe(res2 => {
                         this.essayTitles[i] = res2.title;
@@ -111,9 +115,8 @@ export class HomeComponent implements OnInit {
       };
 
       this.paymentService.addPack(data)
-        .subscribe(() => {
-            console.log('opa');
-
+        .subscribe(newPack => {
+            this.paymentService.addPackElement(newPack);
         });
     }
 
