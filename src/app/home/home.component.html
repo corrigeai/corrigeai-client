@@ -59,7 +59,7 @@
     </div>
   </div>
 
-  <div class="split-screen">
+  <div class="split-screen" *ngIf="user.role !=='Teacher'">
     <div class="left-side app-panel packs-panel">
       <div class="header">
         <h2>Seus Créditos</h2>
