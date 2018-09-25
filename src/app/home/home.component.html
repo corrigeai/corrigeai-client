@@ -84,15 +84,17 @@
         <div class="pack-opts">
           <label class="radio-inline">
             Pacote básico
-            <input type="radio" [value]="basicPack" name="optradio" [(ngModel)]="packageType" [formControl]="buyPack.controls['plan']">
+            <input type="radio" [value]="basicPack" name="optradio" 
+              [(ngModel)]="packageType" [formControl]="buyPack.controls['plan']">
           </label>
           <label class="radio-inline">
             Pacote Platinum
-              <input type="radio" [value]="platinumPack" name="optradio" [checked]="true" [(ngModel)]="packageType" [formControl]="buyPack.controls['plan']">
+              <input type="radio" [value]="platinumPack" name="optradio" [checked]="true" 
+              [(ngModel)]="packageType" [formControl]="buyPack.controls['plan']">
           </label>
         </div>
         <div>
-          <app-payment [value]="buyPack.controls['plan'].value"></app-payment>
+          <app-payment [value]="buyPack.controls['plan'].value || 100" (payEvent)="addPack()"></app-payment>
         </div>
       </div>
     </div>

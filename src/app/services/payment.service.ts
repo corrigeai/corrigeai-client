@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
@@ -11,10 +11,19 @@ import { Observable } from 'rxjs/Observable';
 export class PaymentService {
   API = environment.apiUrl;
 
+  private packCollection: any[] = [];
+
+  packAdded = new EventEmitter<any>();
+
   constructor(private http: HttpClient,
     private authService: AuthenticationService,
     private errorService: ErrorService) { }
 
+
+  addPackElement(pack): void {
+    this.packCollection.push(pack);
+    this.packAdded.emit(pack);
+  }
 
   createRecord(recordData): Observable<any> {
     const httpOptions = this.authService.getOptions();

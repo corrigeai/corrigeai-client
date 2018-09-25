@@ -1,8 +1,7 @@
-import { Component, OnInit, Input, Output, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, OnChanges, EventEmitter } from '@angular/core';
 import { PayPalConfig, PayPalIntegrationType, PayPalEnvironment } from 'ngx-paypal';
 
 import { environment } from '../../../environments/environment';
-import { EventEmitter } from 'events';
 
 @Component({
   selector: 'app-payment',
