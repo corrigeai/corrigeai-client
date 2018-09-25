@@ -40,7 +40,7 @@ export class ApprovalRateComponent implements OnInit, OnChanges {
 
     const colors = this.createIndexes(labels.length).map(i => this.intToRGB(i));
 
-    this.chart = new Chart('canvas', {
+    this.chart = new Chart('aproval-rate', {
       type: 'bar',
       data: {
         datasets: [{
@@ -69,7 +69,7 @@ export class ApprovalRateComponent implements OnInit, OnChanges {
         }
       }
     });
-  };
+  }
 
   private createIndexes(length) {
     return Array(length).fill(undefined).map((_, idx) => idx.toString());
@@ -77,12 +77,12 @@ export class ApprovalRateComponent implements OnInit, OnChanges {
 
   private intToRGB(value) {
     value = parseInt(value) * 1000 * Math.random();
-    
+
     const blue = Math.floor(value % 256);
     const green = Math.floor(value / 256 % 256);
     const red = Math.floor(value / 256 / 256 % 256);
 
-    return "rgb(" + red + "," + green + "," + blue + ")";
+    return 'rgb(' + red + ',' + green + ',' + blue + ')';
   }
 
 }

@@ -59,6 +59,16 @@
     </div>
   </div>
 
+  <div class="split-screen">
+    <div class="left-side app-panel">
+      <app-approval-rate [userId]="user.id" *ngIf="user"></app-approval-rate>
+    </div>
+    <div class="right-side app-panel">
+        <app-rating-evolution [userId]="user.id" *ngIf="user" *ngIf="user.role !=='Teacher'"></app-rating-evolution>
+    </div>
+  </div>
+  
+
   <div class="split-screen" *ngIf="user.role !=='Teacher'">
     <div class="left-side app-panel packs-panel">
       <div class="header">
@@ -143,4 +153,3 @@
 </div>
   </div>
 </div>
-<app-approval-rate [userId]="user.id" *ngIf="user"></app-approval-rate>

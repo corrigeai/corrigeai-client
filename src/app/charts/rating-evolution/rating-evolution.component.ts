@@ -36,7 +36,7 @@ export class RatingEvolutionComponent implements OnInit, OnChanges {
     const labels = this.createIndexes(this.data.length);
     const colors = labels.map(i => this.intToRGB(i));
 
-    this.chart = new Chart('canvas', {
+    this.chart = new Chart('evolution', {
       type: 'line',
       data: {
         datasets: [{
