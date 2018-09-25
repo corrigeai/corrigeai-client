@@ -40,7 +40,7 @@ export class RatingEvolutionComponent implements OnInit, OnChanges {
       type: 'line',
       data: {
         datasets: [{
-          data: this.data,
+          data: this.data.reverse(),
           backgroundColor: colors,
           fill: false
         }],
