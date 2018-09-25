@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('token', JSON.stringify(data.token));
           sessionStorage.setItem('currentUser', JSON.stringify(data.user));
           this.router.navigate(['/home']);
-          window.location.reload();
           this.loginForm.reset();
           this.authService.notifyUserLogIn();
         }
