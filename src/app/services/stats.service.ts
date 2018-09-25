@@ -34,4 +34,14 @@ export class StatsService {
         return  Observable.throw(error);
       });
   }
+
+  getMeanRatingPerRequirement(userId: string): Observable<any> {
+    const httpOptions = this.authService.getOptions();
+    return this.http.get(this.API.concat('metrics/rew-rating/', userId), httpOptions)
+    .map((response: Response) => response)
+    .catch((error: Response) => {
+        this.errorService.handleError(error);
+        return  Observable.throw(error);
+      });
+  }
 }

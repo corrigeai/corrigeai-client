@@ -63,8 +63,11 @@
     <div class="left-side app-panel">
       <app-approval-rate [userId]="user.id" *ngIf="user"></app-approval-rate>
     </div>
-    <div class="right-side app-panel">
-        <app-rating-evolution [userId]="user.id" *ngIf="user" *ngIf="user.role !=='Teacher'"></app-rating-evolution>
+    <div class="right-side app-panel" *ngIf="user && user.role !=='Teacher'">
+        <app-rating-evolution [userId]="user.id"></app-rating-evolution>
+    </div>
+    <div class="right-side app-panel" *ngIf="user && user.role ==='Teacher'">
+        <!-- <app-rating-evolution [userId]="user.id" *ngIf="user" *ngIf="user.role !=='Teacher'"></app-rating-evolution> -->
     </div>
   </div>
   
