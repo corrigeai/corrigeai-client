@@ -24,4 +24,14 @@ export class StatsService {
         return  Observable.throw(error);
       });
   }
+
+  getApprovalRate(userId: string): Observable<any> {
+    const httpOptions = this.authService.getOptions();
+    return this.http.get(this.API.concat('metrics/eval-rating/', userId), httpOptions)
+    .map((response: Response) => response)
+    .catch((error: Response) => {
+        this.errorService.handleError(error);
+        return  Observable.throw(error);
+      });
+  }
 }

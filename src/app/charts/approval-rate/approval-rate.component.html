@@ -1,0 +1,8 @@
+<div>
+  <p *ngIf="!data || data.lenght == 0">
+    Você ainda não tem correções avaliadas.
+  </p>
+  <div *ngIf="chart">
+    <canvas id="canvas">{{ chart }}</canvas>
+  </div>
+</div>

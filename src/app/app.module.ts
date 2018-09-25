@@ -70,6 +70,7 @@ import { environment } from '../environments/environment';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import {StompConfig, StompService} from '@stomp/ng2-stompjs';
 import * as SockJS from 'sockjs-client';
+import { ApprovalRateComponent } from './charts/approval-rate/approval-rate.component';
 
 const API = environment.apiUrl;
 const entrypoint = API.concat('notifications/ws');
@@ -113,7 +114,8 @@ const stompConfig = {
     TopicComponent,
     DashboardComponent,
     PaymentComponent,
-    RatingEvolutionComponent
+    RatingEvolutionComponent,
+    ApprovalRateComponent
   ],
   imports: [
     CommonModule,
