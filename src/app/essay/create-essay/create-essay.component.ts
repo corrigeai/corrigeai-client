@@ -64,7 +64,6 @@ export class CreateEssayComponent implements OnInit {
             );
 
         this.user = JSON.parse(sessionStorage.getItem('currentUser'));
-
         if (this.user.role === 'Free') {
             this.paymentValue = this.singleEssayPrice;
         } else {
@@ -72,9 +71,11 @@ export class CreateEssayComponent implements OnInit {
                 .subscribe(res => {
                     this.hasPacks = true;
                     this.paymentValue = 0;
+                    console.log('opa3', this.paymentValue);
                     this.lastPack = res;
                 }, err => {
-                    console.log('err', err);
+                    this.paymentValue = this.singleEssayPrice;
+                    console.log('opa2', this.paymentValue);
                 });
         }
 

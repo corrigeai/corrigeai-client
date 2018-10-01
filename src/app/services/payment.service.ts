@@ -53,7 +53,6 @@ export class PaymentService {
         this.API.concat('packs/' + userId), httpOptions)
     .map((response: Response) => response)
     .catch((error: Response) => {
-        this.errorService.handleError(error);
         return  Observable.throw(error);
       });
   }
