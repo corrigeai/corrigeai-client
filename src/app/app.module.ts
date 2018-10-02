@@ -46,6 +46,9 @@ import { EssaysStatusComponent } from './essay/essays-status/essays-status.compo
 import { ReviewComponent } from './review/review.component';
 import { RateReviewComponent } from './review/rate-review/rate-review.component';
 
+// Chart related components
+import { RatingEvolutionComponent } from './charts/rating-evolution/rating-evolution.component';
+
 // Services
 import { UserService } from './services/user.service';
 import { ErrorService } from './services/error.service';
@@ -58,6 +61,7 @@ import { RatingService } from './services/rating.service';
 import { NotificationService } from './services/notification.service';
 import { AuthenticationService } from './services/authentication.service';
 import { PaymentService } from './services/payment.service';
+import { StatsService } from './services/stats.service';
 
 // Loading environment
 import { environment } from '../environments/environment';
@@ -66,6 +70,7 @@ import { environment } from '../environments/environment';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import {StompConfig, StompService} from '@stomp/ng2-stompjs';
 import * as SockJS from 'sockjs-client';
+import { ApprovalRateComponent } from './charts/approval-rate/approval-rate.component';
 
 const API = environment.apiUrl;
 const entrypoint = API.concat('notifications/ws');
@@ -108,7 +113,9 @@ const stompConfig = {
     NotificationCardComponent,
     TopicComponent,
     DashboardComponent,
-    PaymentComponent
+    PaymentComponent,
+    RatingEvolutionComponent,
+    ApprovalRateComponent
   ],
   imports: [
     CommonModule,
@@ -130,6 +137,7 @@ const stompConfig = {
     AuthGuardService,
     NotificationService,
     PaymentService,
+    StatsService,
     StompService,
     {
       provide: StompConfig,

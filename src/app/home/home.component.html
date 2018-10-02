@@ -60,6 +60,16 @@
   </div>
 
   <div class="split-screen">
+    <div class="left-side app-panel">
+      <app-approval-rate [userId]="user.id" *ngIf="user"></app-approval-rate>
+    </div>
+    <div class="right-side app-panel" *ngIf="user && user.role !=='Teacher'">
+        <app-rating-evolution [userId]="user.id"></app-rating-evolution>
+    </div>
+  </div>
+  
+
+  <div class="split-screen" *ngIf="user.role !=='Teacher'">
     <div class="left-side app-panel packs-panel">
       <div class="header">
         <h2>Seus Créditos</h2>
