@@ -132,6 +132,20 @@ button {
   }
 }
 
+.image-content {
+  img {
+    margin-left: 35%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .image-content {
+    img {
+      margin-left: 0%;
+    }
+  }
+}
+
 
 @media (max-width: 1000px) {
   .container {
