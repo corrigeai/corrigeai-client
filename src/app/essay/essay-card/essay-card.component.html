@@ -14,7 +14,13 @@
 
   <hr>
 
-  <p>{{essay.content}}</p>
+  <div *ngIf="essay.type !== 'Image'">
+    <p>{{essay.content}}</p>
+  </div>
+  <div *ngIf="essay.type === 'Image'" class="image-content">
+    <img [src]="essay.content" >
+  </div>
+
 
   <div class="card-footer">
     <div class="footer-review" collapse>
