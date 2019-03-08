@@ -1,7 +1,25 @@
 [![Build Status](https://travis-ci.org/corrigeai/corrigeai-client.svg?branch=master)](https://travis-ci.org/corrigeai/corrigeai-client)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+</br>
+
 # CorrigeAiAngularUi
 
+### Essay submission social network implemented for the exercise of project management practices and development process.
+### Course project for the discipline Project in Computer Science, U.F.C.G Computer Science program.
+
+This application is available at [Corrigeai](https://corrigeai.herokuapp.com).
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
+
+## Prerequisites
+
+* node.js
+* node package manager (npm)
+
+## Installing
+
+Once inside the project running `npm install` will install the application dependencies.
+
 
 ## Development server
 
